@@ -105,6 +105,9 @@ besökare **aldrig** kan se utkast och inte kan ändra frågor.
      kontrollerat fakta mot *Sverige i fokus*.
 4. En fråga med källan "EXEMPEL …" kan inte markeras som granskad förrän du skrivit in den riktiga källan.
 
+**Förhandsvisa som användare:** på en fråga i adminsidan, klicka **Förhandsvisa kapitlet som användare**.
+Då ser du kapitlet precis som användarna, inklusive utkast (bara du ser utkasten). Svar sparas inte.
+
 ⚠️ **De 10 exempelfrågorna är bara testdata.** Ersätt dem med frågor som du själv har granskat.
 
 ### Skapa utkast med Claude
@@ -141,7 +144,7 @@ tests/          Vitest-tester
 
 - [x] Delmål 1: Grundprojekt, design, konfiguration, PWA och startsida
 - [x] Delmål 2: Frågedatabas och adminsida
-- [ ] Delmål 3: Övning per kapitel
+- [x] Delmål 3: Övning per kapitel
 - [ ] Delmål 4: Gratisläge
 - [ ] Delmål 5: Provsimulering
 - [ ] Delmål 6: Resultat, repetition och framsteg

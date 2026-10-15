@@ -35,6 +35,9 @@ export default async function EditQuestionPage({ params, searchParams }: Props) 
             Exempelfråga – byt ut eller granska mot källan
           </span>
         )}
+        <Link href={`/ova/kapitel/${question.chapter}?utkast=1`} className="text-sm font-semibold text-primary">
+          Förhandsvisa kapitlet som användare →
+        </Link>
         <span className="ms-auto text-xs text-muted">
           Ändrad {new Date(question.updated_at).toLocaleString("sv-SE")}
         </span>

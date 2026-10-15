@@ -66,6 +66,37 @@ describe.skipIf(!configured)("databasens säkerhetsregler", () => {
     expect(data?.status).toBe("draft");
   });
 
+  it("en anonym användare kan inte spara svar eller rapporter på utkast", async () => {
+    const anon = createClient(url!, publicKey!, { auth: { persistSession: false } });
+    const { data: signIn, error: signInError } = await anon.auth.signInAnonymously();
+    expect(signInError).toBeNull();
+    const answer = await anon
+      .from("answers")
+      .insert({ question_id: draftId, selected_index: 0, is_correct: true, mode: "chapter" });
+    expect(answer.error).not.toBeNull();
+    const report = await anon
+      .from("question_reports")
+      .insert({ question_id: draftId, user_id: signIn.user!.id, message: "test" });
+    expect(report.error).not.toBeNull();
+    await admin.auth.admin.deleteUser(signIn.user!.id);
+  });
+
+  it("en användare kan inte spara svar i någon annans namn", async () => {
+    const { data: reviewed } = await visitor.from("questions").select("id").limit(1);
+    if (!reviewed?.length) return; // Inga granskade frågor ännu – inget att testa mot.
+    const anon = createClient(url!, publicKey!, { auth: { persistSession: false } });
+    const { data: signIn } = await anon.auth.signInAnonymously();
+    const res = await anon.from("answers").insert({
+      user_id: "00000000-0000-0000-0000-000000000000",
+      question_id: reviewed[0].id,
+      selected_index: 0,
+      is_correct: true,
+      mode: "chapter",
+    });
+    expect(res.error).not.toBeNull();
+    await admin.auth.admin.deleteUser(signIn.user!.id);
+  });
+
   it("besökare kan inte läsa felrapporter", async () => {
     const { data } = await visitor.from("question_reports").select("id");
     expect(data).toEqual([]);

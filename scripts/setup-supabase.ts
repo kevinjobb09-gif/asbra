@@ -221,6 +221,8 @@ async function configureAuth(ref: string) {
   await api("PATCH", `/v1/projects/${ref}/config/auth`, {
     site_url: siteUrl,
     uri_allow_list: [...allow].join(","),
+    // Besökare får en anonym inloggning så att de kan öva utan konto.
+    external_anonymous_users_enabled: true,
   });
   console.log(`✔ Inloggningen inställd (${siteUrl}).`);
 }
