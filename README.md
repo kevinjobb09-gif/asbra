@@ -111,8 +111,8 @@ besökare **aldrig** kan se utkast och inte kan ändra frågor.
 4. En fråga med källan "EXEMPEL …" kan inte markeras som granskad förrän du skrivit in den riktiga källan.
 
 **Gratisfrågor:** bocka i **Gratisfråga** på en granskad fråga för att den ska ingå i gratisläget
-(`/ova/gratis`). Varje besökare får 30 gratisfrågor (ändras i `freeQuestionLimit` i `se.ts`), spridda över kapitlen.
-Välj minst 30 gratisfrågor från olika kapitel. Översikten på `/admin` visar hur många du har.
+(`/ova/gratis`). Varje besökare får 15 gratisfrågor (ändras i `freeQuestionLimit` i `se.ts`), spridda över kapitlen.
+Välj gärna minst 30 gratisfrågor från olika kapitel (så att olika besökare får olika frågor). Översikten på `/admin` visar hur många du har.
 Övriga granskade frågor kan bara läsas av den som har köpt tillgång. Det skyddet ligger i databasen.
 
 **Testa provsimuleringen:** öppna `/prov?utkast=1&minuter=2` som admin. Då blir provtiden 2 minuter, så att du
@@ -216,7 +216,7 @@ Statistiken sparar inga personuppgifter och använder inga spårningscookies.
 
 - [ ] Kontrollera provformatet (antal frågor, tid, godkäntgräns) på uhr.se och uppdatera `se.ts` + `lastVerified`.
 - [ ] Skriv in de riktiga kapitelrubrikerna i `se.ts`.
-- [ ] Ta bort exempelfrågorna och lägg in egna, granskade frågor. Minst 30 gratisfrågor från olika kapitel.
+- [ ] Ta bort exempelfrågorna och lägg in egna, granskade frågor. Gärna minst 30 gratisfrågor från olika kapitel.
 - [ ] Kör `npm.cmd run oversatt-forklaringar`.
 - [ ] Bestäm varumärkesnamnet och fyll i företagsnamn, organisationsnummer och adress i `brand.ts`.
 - [ ] Läs igenom villkor och integritetspolicy (gärna med jurist) och fyll i `[DATUM]` och `[E-POSTTJÄNST]`.

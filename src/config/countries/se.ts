@@ -35,7 +35,7 @@ export const se: CountryConfig = {
     accessMonths: 6,
   },
 
-  freeQuestionLimit: 30,
+  freeQuestionLimit: 15,
 
   reviewCorrectStreak: 2,
 
