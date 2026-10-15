@@ -8,6 +8,7 @@ import { gradeExam, pickExamQuestions, type ExamResult } from "@/lib/exam/exam";
 import { formatClock, isTimeUp, remainingMs, timeWarning, usedSeconds } from "@/lib/exam/timer";
 import type { PracticeQuestion } from "@/lib/practice/session";
 import { ensureUser, getBrowserClient } from "@/lib/supabase/client";
+import { useI18n } from "@/i18n/client";
 import { ExamResultView } from "./ExamResultView";
 
 type Props = {
@@ -50,6 +51,7 @@ const currentTime = () => Date.now();
 
 export function ExamSession(props: Props) {
   const { pool, questionCount, timeLimitSeconds, passThreshold, chapters, country, officialInfoUrl, preview = false } = props;
+  const { t } = useI18n();
   const storageKey = `${country}:prov:v1${preview ? ":preview" : ""}`;
 
   const [phase, setPhase] = useState<Phase>({ name: "intro" });
@@ -155,35 +157,26 @@ export function ExamSession(props: Props) {
     const n = Math.min(questionCount, pool.length);
     return (
       <div className="space-y-5">
-        <h1 className="text-3xl font-extrabold">Provsimulering</h1>
-        <ul className="space-y-3 rounded-2xl border border-line bg-surface p-5">
-          <li>
-            <strong>{n} frågor</strong> från alla kapitel, med fyra svarsalternativ.
-          </li>
-          <li>
-            <strong>{minutes} minuter.</strong> Klockan går även om du stänger sidan.
-          </li>
-          <li>Du kan byta svar och hoppa mellan frågorna tills du lämnar in.</li>
-          <li>
-            <strong>Du ser resultatet först när du lämnat in</strong>, precis som på riktigt.
-          </li>
+        <h1 className="text-3xl font-extrabold">{t("exam.title")}</h1>
+        <ul className="list-disc space-y-3 rounded-2xl border border-line bg-surface p-5 ps-9">
+          <li>{t("exam.ruleQuestions", { n })}</li>
+          <li>{t("exam.ruleTime", { m: minutes })}</li>
+          <li>{t("exam.ruleChange")}</li>
+          <li className="font-semibold">{t("exam.ruleResult")}</li>
         </ul>
         {pool.length < questionCount && (
           <p className="rounded-xl bg-cta-soft p-3 text-sm text-cta-dark">
-            Just nu finns {pool.length} frågor, så provet blir kortare än det riktiga ({questionCount} frågor).
+            {t("exam.shorter", { n: pool.length, total: questionCount })}
           </p>
         )}
-        <p className="text-sm text-muted">
-          Det här är en övning. Antal frågor och tid bygger på de uppgifter vi har om provet. Kontrollera alltid
-          aktuell information hos UHR.
-        </p>
+        <p className="text-sm text-muted">{t("exam.disclaimer")}</p>
         <button
           type="button"
           onClick={start}
           disabled={pool.length === 0}
           className="w-full rounded-full bg-cta px-6 py-4 text-lg font-bold text-white hover:bg-cta-dark disabled:opacity-50"
         >
-          Starta provet
+          {t("exam.start")}
         </button>
       </div>
     );
@@ -228,7 +221,7 @@ export function ExamSession(props: Props) {
 
   function handIn() {
     const missing = questions.length - answeredCount;
-    if (missing > 0 && !window.confirm(`Du har ${missing} obesvarade frågor. Vill du lämna in ändå?`)) return;
+    if (missing > 0 && !window.confirm(t("exam.confirmUnanswered", { n: missing }))) return;
     void submit(questions, answers, startedAt, false);
   }
 
@@ -239,7 +232,7 @@ export function ExamSession(props: Props) {
         <div className="flex items-center justify-between gap-2">
           <span
             role="timer"
-            aria-label={`Tid kvar: ${formatClock(left)}`}
+            aria-label={t("exam.timeLeft", { time: formatClock(left) })}
             className={`flex items-center gap-1.5 rounded-full px-3 py-1 font-mono text-lg font-bold tabular-nums ${
               warning === "normal" ? "bg-primary-soft text-primary" : warning === "low" ? "bg-cta-soft text-cta-dark" : "animate-pulse bg-cta text-white"
             }`}
@@ -247,7 +240,7 @@ export function ExamSession(props: Props) {
             <Clock size={18} aria-hidden /> {formatClock(left)}
           </span>
           <span className="text-sm font-semibold text-muted">
-            Fråga {index + 1} av {questions.length}
+            {t("exam.questionOf", { i: index + 1, n: questions.length })}
           </span>
           <button
             type="button"
@@ -255,18 +248,18 @@ export function ExamSession(props: Props) {
             aria-expanded={showOverview}
             className="flex items-center gap-1 rounded-full border-2 border-line bg-surface px-3 py-1 text-sm font-semibold"
           >
-            <LayoutGrid size={16} aria-hidden /> Översikt
+            <LayoutGrid size={16} aria-hidden /> {t("exam.overview")}
           </button>
         </div>
         {phase.resumed && answeredCount === 0 && index === 0 && (
-          <p className="mt-1 text-xs text-muted">Du fortsätter provet du startade tidigare.</p>
+          <p className="mt-1 text-xs text-muted">{t("exam.resumed")}</p>
         )}
       </div>
 
       {showOverview ? (
         <div className="mt-5 space-y-4">
           <p className="font-semibold">
-            {answeredCount} av {questions.length} besvarade
+            {t("exam.answeredOf", { a: answeredCount, t: questions.length })}
           </p>
           <div className="grid grid-cols-6 gap-2 sm:grid-cols-10">
             {questions.map((q, i) => (
@@ -274,7 +267,7 @@ export function ExamSession(props: Props) {
                 key={q.id}
                 type="button"
                 onClick={() => go(i)}
-                aria-label={`Fråga ${i + 1}${answers[i] !== null ? ", besvarad" : ", obesvarad"}`}
+                aria-label={`${t("exam.questionLabel", { n: i + 1 })}, ${answers[i] !== null ? t("exam.answered") : t("exam.unanswered")}`}
                 className={`aspect-square rounded-xl border-2 text-sm font-bold ${
                   answers[i] !== null ? "border-primary bg-primary-soft text-primary" : "border-line bg-surface"
                 } ${i === index ? "ring-2 ring-cta ring-offset-1" : ""}`}
@@ -288,15 +281,15 @@ export function ExamSession(props: Props) {
             onClick={handIn}
             className="w-full rounded-full bg-cta px-6 py-4 text-lg font-bold text-white hover:bg-cta-dark"
           >
-            Lämna in provet
+            {t("exam.handIn")}
           </button>
         </div>
       ) : (
         <div className="mt-5 space-y-5">
-          <h2 lang="sv" className="text-xl leading-snug font-bold sm:text-2xl">
+          <h2 lang="sv" dir="ltr" className="text-xl leading-snug font-bold sm:text-2xl">
             {question.question}
           </h2>
-          <div className="space-y-2" role="radiogroup" aria-label="Svarsalternativ">
+          <div lang="sv" dir="ltr" className="space-y-2" role="radiogroup" aria-label={t("session.answerOptions")}>
             {question.options.map((option, i) => (
               <AnswerOption
                 key={i}
@@ -309,7 +302,7 @@ export function ExamSession(props: Props) {
           </div>
           {answers[index] !== null && (
             <p className="text-sm text-muted">
-              Du har valt {LETTERS[answers[index]!]}. Du kan byta svar tills du lämnar in.
+              {t("exam.chosen", { letter: LETTERS[answers[index]!] })}
             </p>
           )}
         </div>
@@ -327,11 +320,11 @@ export function ExamSession(props: Props) {
             >
               <span className="rtl:hidden">←</span>
               <span className="hidden rtl:inline">→</span>
-              <span className="sr-only">Föregående fråga</span>
+              <span className="sr-only">{t("exam.previous")}</span>
             </button>
             {isLast ? (
               <button type="button" onClick={handIn} className="flex-1 rounded-full bg-cta px-6 py-3 text-lg font-bold text-white hover:bg-cta-dark">
-                Lämna in
+                {t("exam.handInShort")}
               </button>
             ) : (
               <button
@@ -339,7 +332,7 @@ export function ExamSession(props: Props) {
                 onClick={() => go(index + 1)}
                 className="flex-1 rounded-full bg-primary px-6 py-3 text-lg font-bold text-white hover:bg-primary-dark"
               >
-                Nästa fråga
+                {t("exam.next")}
               </button>
             )}
           </div>

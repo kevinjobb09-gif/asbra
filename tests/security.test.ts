@@ -27,6 +27,12 @@ describe("säker vidarebefordran efter inloggning", () => {
     expect(safeRedirectPath("/admin")).toBe("/admin");
   });
 
+  it("tillåter hela adresser på den egna sajten (från e-postmallen)", () => {
+    expect(safeRedirectPath("https://min-sajt.se/konto?x=1", "/", "https://min-sajt.se")).toBe("/konto?x=1");
+    expect(safeRedirectPath("https://evil.com/konto", "/", "https://min-sajt.se")).toBe("/");
+    expect(safeRedirectPath("https://min-sajt.se.evil.com/", "/", "https://min-sajt.se")).toBe("/");
+  });
+
   it("stoppar länkar till andra sajter", () => {
     expect(safeRedirectPath("https://evil.com")).toBe("/");
     expect(safeRedirectPath("//evil.com")).toBe("/");

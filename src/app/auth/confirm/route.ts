@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
   const { searchParams, origin } = request.nextUrl;
   const tokenHash = searchParams.get("token_hash");
   const type = searchParams.get("type") as EmailOtpType | null;
-  const next = safeRedirectPath(searchParams.get("next"));
+  const next = safeRedirectPath(searchParams.get("next"), "/", origin);
 
   if (tokenHash && type && ALLOWED_TYPES.includes(type)) {
     const supabase = await createClient();

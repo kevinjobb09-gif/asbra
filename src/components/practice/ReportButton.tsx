@@ -3,11 +3,13 @@
 import { useState } from "react";
 import { Flag } from "lucide-react";
 import { ensureUser, getBrowserClient } from "@/lib/supabase/client";
+import { useI18n } from "@/i18n/client";
 
 type Status = "closed" | "open" | "sending" | "sent" | "error";
 
 /** Låter användaren rapportera fel i en fråga. Kommentaren är frivillig. */
 export function ReportButton({ questionId, disabled }: { questionId: string; disabled?: boolean }) {
+  const { t } = useI18n();
   const [status, setStatus] = useState<Status>("closed");
   const [message, setMessage] = useState("");
 
@@ -22,7 +24,7 @@ export function ReportButton({ questionId, disabled }: { questionId: string; dis
   }
 
   if (status === "sent") {
-    return <p className="text-sm text-muted">Tack! Vi kontrollerar frågan.</p>;
+    return <p className="text-sm text-muted">{t("report.thanks")}</p>;
   }
 
   if (status === "closed") {
@@ -33,7 +35,7 @@ export function ReportButton({ questionId, disabled }: { questionId: string; dis
         onClick={() => setStatus("open")}
         className="inline-flex items-center gap-1.5 text-sm font-semibold text-muted underline-offset-2 hover:underline disabled:opacity-50"
       >
-        <Flag size={14} aria-hidden /> Rapportera fel i frågan
+        <Flag size={14} aria-hidden /> {t("report.button")}
       </button>
     );
   }
@@ -41,7 +43,7 @@ export function ReportButton({ questionId, disabled }: { questionId: string; dis
   return (
     <div className="space-y-2 rounded-2xl border border-line bg-surface p-3">
       <label className="block text-sm font-semibold" htmlFor={`report-${questionId}`}>
-        Vad är fel? (frivilligt)
+        {t("report.label")}
       </label>
       <textarea
         id={`report-${questionId}`}
@@ -51,7 +53,7 @@ export function ReportButton({ questionId, disabled }: { questionId: string; dis
         onChange={(e) => setMessage(e.target.value)}
         className="w-full rounded-xl border-2 border-line px-3 py-2 text-sm"
       />
-      {status === "error" && <p className="text-sm text-wrong">Det gick inte att skicka. Försök igen.</p>}
+      {status === "error" && <p className="text-sm text-wrong">{t("report.error")}</p>}
       <div className="flex gap-2">
         <button
           type="button"
@@ -59,10 +61,10 @@ export function ReportButton({ questionId, disabled }: { questionId: string; dis
           disabled={status === "sending"}
           className="rounded-full bg-primary px-4 py-2 text-sm font-bold text-white disabled:opacity-60"
         >
-          {status === "sending" ? "Skickar …" : "Skicka"}
+          {status === "sending" ? t("report.sending") : t("report.send")}
         </button>
         <button type="button" onClick={() => setStatus("closed")} className="px-3 py-2 text-sm font-semibold text-muted">
-          Avbryt
+          {t("report.cancel")}
         </button>
       </div>
     </div>

@@ -1,4 +1,7 @@
+"use client";
+
 import { Check, X } from "lucide-react";
+import { useI18n } from "@/i18n/client";
 
 /**
  * Lägen för ett svarsalternativ:
@@ -29,6 +32,7 @@ type Props = {
 };
 
 export function AnswerOption({ index, text, state = "idle", onSelect, disabled }: Props) {
+  const { t } = useI18n();
   return (
     <button
       type="button"
@@ -51,8 +55,8 @@ export function AnswerOption({ index, text, state = "idle", onSelect, disabled }
         {state === "correct" ? <Check size={18} strokeWidth={3} /> : state === "wrong" ? <X size={18} strokeWidth={3} /> : letters[index]}
       </span>
       <span className="flex-1">{text}</span>
-      {state === "correct" && <span className="sr-only">(rätt svar)</span>}
-      {state === "wrong" && <span className="sr-only">(fel svar)</span>}
+      {state === "correct" && <span className="sr-only">{t("session.correctSr")}</span>}
+      {state === "wrong" && <span className="sr-only">{t("session.wrongSr")}</span>}
     </button>
   );
 }

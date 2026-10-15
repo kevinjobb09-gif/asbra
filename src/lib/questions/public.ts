@@ -1,10 +1,10 @@
 import "server-only";
-import { createClient as createSupabaseClient } from "@supabase/supabase-js";
-import type { CountryCode } from "@/config";
+import { createClient as createSupabaseClient, type SupabaseClient } from "@supabase/supabase-js";
+import type { CountryCode, LanguageCode } from "@/config";
 import { publicEnv } from "@/lib/env";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient as createUserClient } from "@/lib/supabase/server";
-import type { PracticeQuestion } from "@/lib/practice/session";
+import type { ExplanationTranslation, PracticeQuestion } from "@/lib/practice/session";
 
 const PRACTICE_COLUMNS = "id, chapter, section, question, options, correct_index, explanation, source_reference";
 
@@ -18,16 +18,47 @@ function publicClient() {
   });
 }
 
-/** Granskade gratisfrågor – det som visas i gratisläget. */
-export async function getFreeQuestionPool(country: CountryCode): Promise<PracticeQuestion[]> {
-  const { data, error } = await publicClient()
+type Row = PracticeQuestion & { question_translations?: ExplanationTranslation[] };
+
+/**
+ * Bygger en fråga mot tabellen questions. För andra språk än svenska hämtas
+ * förklaringens översättning till just det språket i samma anrop.
+ */
+function selectQuestions(supabase: SupabaseClient, lang: LanguageCode) {
+  if (lang === "sv") return supabase.from("questions").select(PRACTICE_COLUMNS);
+  return supabase
     .from("questions")
-    .select(PRACTICE_COLUMNS)
-    .eq("country", country)
-    .eq("status", "reviewed") // Dubbel säkerhet utöver RLS.
-    .eq("is_free", true);
+    .select(`${PRACTICE_COLUMNS}, question_translations(language, explanation, status)`)
+    .eq("question_translations.language", lang);
+}
+
+function toPractice(rows: unknown[] | null): PracticeQuestion[] {
+  return ((rows ?? []) as Row[]).map(({ question_translations, ...q }) => ({
+    ...q,
+    translation: question_translations?.[0] ?? null,
+  }));
+}
+
+async function run(query: PromiseLike<{ data: unknown[] | null; error: { message: string } | null }>) {
+  const { data, error } = await query;
   if (error) throw new Error(`Kunde inte hämta frågor: ${error.message}`);
-  return data as PracticeQuestion[];
+  return toPractice(data);
+}
+
+/** Granskade gratisfrågor – det som visas i gratisläget. */
+export function getFreeQuestionPool(country: CountryCode, lang: LanguageCode): Promise<PracticeQuestion[]> {
+  return run(
+    selectQuestions(publicClient(), lang)
+      .eq("country", country)
+      .eq("status", "reviewed") // Dubbel säkerhet utöver RLS.
+      .eq("is_free", true),
+  );
+}
+
+/** En enskild granskad gratisfråga (för delbara sidor). Andra frågor visas aldrig publikt. */
+export async function getFreeQuestion(id: string, lang: LanguageCode): Promise<PracticeQuestion | null> {
+  const rows = await run(selectQuestions(publicClient(), lang).eq("id", id).eq("status", "reviewed").eq("is_free", true));
+  return rows[0] ?? null;
 }
 
 /**
@@ -38,18 +69,33 @@ export async function getFreeQuestionPool(country: CountryCode): Promise<Practic
 export async function getChapterQuestions(
   country: CountryCode,
   chapter: number,
-  { isAdmin }: { isAdmin: boolean },
+  { isAdmin, lang }: { isAdmin: boolean; lang: LanguageCode },
 ): Promise<PracticeQuestion[]> {
   const supabase = isAdmin ? createAdminClient() : await createUserClient();
-  const { data, error } = await supabase
-    .from("questions")
-    .select(PRACTICE_COLUMNS)
-    .eq("country", country)
-    .eq("chapter", chapter)
-    .eq("status", "reviewed")
-    .order("id");
-  if (error) throw new Error(`Kunde inte hämta frågor: ${error.message}`);
-  return data as PracticeQuestion[];
+  return run(
+    selectQuestions(supabase, lang).eq("country", country).eq("chapter", chapter).eq("status", "reviewed").order("id"),
+  );
+}
+
+/** Alla granskade frågor som användaren har tillgång till (till provsimuleringen). */
+export async function getAllReviewedQuestions(
+  country: CountryCode,
+  { isAdmin, lang }: { isAdmin: boolean; lang: LanguageCode },
+): Promise<PracticeQuestion[]> {
+  const supabase = isAdmin ? createAdminClient() : await createUserClient();
+  return run(selectQuestions(supabase, lang).eq("country", country).eq("status", "reviewed"));
+}
+
+/** Granskade frågor med vissa id, i samma ordning som `ids`. Användarens behörighet gäller (RLS). */
+export async function getReviewedQuestionsByIds(
+  ids: string[],
+  { isAdmin, lang }: { isAdmin: boolean; lang: LanguageCode },
+): Promise<PracticeQuestion[]> {
+  if (ids.length === 0) return [];
+  const supabase = isAdmin ? createAdminClient() : await createUserClient();
+  const rows = await run(selectQuestions(supabase, lang).in("id", ids).eq("status", "reviewed"));
+  const byId = new Map(rows.map((q) => [q.id, q]));
+  return ids.flatMap((id) => byId.get(id) ?? []);
 }
 
 /** Antal granskade frågor per kapitel (bara siffror, inget innehåll). */
@@ -69,42 +115,11 @@ export async function getReviewedCountsByChapter(country: CountryCode): Promise<
  * BARA FÖR ADMIN: frågor inklusive utkast, för att förhandsgranska.
  * Anropa bara efter att admin-behörigheten kontrollerats.
  */
-export async function getAllQuestionsForPreview(country: CountryCode, chapter?: number): Promise<PracticeQuestion[]> {
-  let query = createAdminClient().from("questions").select(PRACTICE_COLUMNS).eq("country", country).order("id");
-  if (chapter) query = query.eq("chapter", chapter);
-  const { data, error } = await query;
-  if (error) throw new Error(`Kunde inte hämta frågor: ${error.message}`);
-  return data as PracticeQuestion[];
-}
-
-/** Alla granskade frågor som användaren har tillgång till (till provsimuleringen). */
-export async function getAllReviewedQuestions(
+export function getAllQuestionsForPreview(
   country: CountryCode,
-  { isAdmin }: { isAdmin: boolean },
+  { chapter, lang }: { chapter?: number; lang: LanguageCode },
 ): Promise<PracticeQuestion[]> {
-  const supabase = isAdmin ? createAdminClient() : await createUserClient();
-  const { data, error } = await supabase
-    .from("questions")
-    .select(PRACTICE_COLUMNS)
-    .eq("country", country)
-    .eq("status", "reviewed");
-  if (error) throw new Error(`Kunde inte hämta frågor: ${error.message}`);
-  return data as PracticeQuestion[];
-}
-
-/** Granskade frågor med vissa id, i samma ordning som `ids`. Användarens behörighet gäller (RLS). */
-export async function getReviewedQuestionsByIds(
-  ids: string[],
-  { isAdmin }: { isAdmin: boolean },
-): Promise<PracticeQuestion[]> {
-  if (ids.length === 0) return [];
-  const supabase = isAdmin ? createAdminClient() : await createUserClient();
-  const { data, error } = await supabase
-    .from("questions")
-    .select(PRACTICE_COLUMNS)
-    .in("id", ids)
-    .eq("status", "reviewed");
-  if (error) throw new Error(`Kunde inte hämta frågor: ${error.message}`);
-  const byId = new Map((data as PracticeQuestion[]).map((q) => [q.id, q]));
-  return ids.flatMap((id) => byId.get(id) ?? []);
+  let query = selectQuestions(createAdminClient(), lang).eq("country", country).order("id");
+  if (chapter) query = query.eq("chapter", chapter);
+  return run(query);
 }

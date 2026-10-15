@@ -1,3 +1,4 @@
+import { LANGUAGE_CODES } from "../languages";
 import type { CountryConfig } from "./types";
 
 /**
@@ -18,7 +19,7 @@ export const se: CountryConfig = {
     url: "https://www.uhr.se",
   },
 
-  unaffiliatedAuthorities: ["UHR (Universitets- och högskolerådet)", "Migrationsverket"],
+  unaffiliatedAuthorities: ["UHR", "Migrationsverket"],
 
   exam: {
     questionCount: 60,
@@ -40,7 +41,8 @@ export const se: CountryConfig = {
 
   timeZone: "Europe/Stockholm",
 
-  explanationLanguages: ["sv", "en", "ar", "fa", "prs", "so", "ti"],
+  // Alla språk i src/config/languages.ts. Ta bort ett språk här för att dölja det.
+  explanationLanguages: [...LANGUAGE_CODES],
 
   // TODO: Byt ut mot de riktiga kapitelrubrikerna i Sverige i fokus.
   chapters: Array.from({ length: 13 }, (_, i) => ({

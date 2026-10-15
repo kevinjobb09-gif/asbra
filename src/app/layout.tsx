@@ -1,18 +1,24 @@
 import type { Metadata, Viewport } from "next";
-import { Noto_Sans } from "next/font/google";
-import { brand, getCountry } from "@/config";
+import { Noto_Sans, Noto_Sans_Arabic, Noto_Sans_Ethiopic, Noto_Sans_Thai } from "next/font/google";
+import { brand, getCountry, languages } from "@/config";
+import { getI18n } from "@/i18n/server";
+import { I18nProvider } from "@/i18n/client";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
+import { RefBanner } from "@/components/RefBanner";
 import "./globals.css";
 
-// Noto Sans klarar å, ä, ö och de flesta latinska tecken. Arabiska och
-// tigrinja-typsnitt läggs till i delmålet om språk.
+// Ett typsnitt per skriftsystem. Webbläsaren laddar bara de tecken som faktiskt
+// används på sidan, så arabiska typsnitt laddas inte för den som läser svenska.
 const notoSans = Noto_Sans({
   variable: "--font-noto-sans",
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin", "latin-ext", "cyrillic", "cyrillic-ext", "vietnamese"],
   display: "swap",
 });
+const notoArabic = Noto_Sans_Arabic({ variable: "--font-arabic", subsets: ["arabic"], display: "swap", preload: false });
+const notoEthiopic = Noto_Sans_Ethiopic({ variable: "--font-ethiopic", subsets: ["ethiopic"], display: "swap", preload: false });
+const notoThai = Noto_Sans_Thai({ variable: "--font-thai", subsets: ["thai"], display: "swap", preload: false });
 
 const country = getCountry();
 
@@ -34,13 +40,19 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const { lang, dir, messages } = await getI18n();
+  const fonts = [notoSans, notoArabic, notoEthiopic, notoThai].map((f) => f.variable).join(" ");
+
   return (
-    <html lang="sv" dir="ltr">
-      <body className={`${notoSans.variable} flex min-h-dvh flex-col antialiased`}>
-        <SiteHeader />
-        <main className="flex-1">{children}</main>
-        <SiteFooter />
+    <html lang={languages[lang].htmlLang} dir={dir}>
+      <body className={`${fonts} flex min-h-dvh flex-col antialiased`}>
+        <I18nProvider lang={lang} messages={messages}>
+          <SiteHeader />
+          <RefBanner />
+          <main className="flex-1">{children}</main>
+          <SiteFooter />
+        </I18nProvider>
         <ServiceWorkerRegister />
       </body>
     </html>

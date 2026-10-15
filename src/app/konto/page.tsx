@@ -1,0 +1,75 @@
+import type { Metadata } from "next";
+import { getCountry, languages } from "@/config";
+import { getI18n } from "@/i18n/server";
+import { getAccess } from "@/lib/access";
+import { createClient } from "@/lib/supabase/server";
+import { ButtonLink } from "@/components/ButtonLink";
+import { DeleteAccountForm } from "./DeleteAccountForm";
+import { logout } from "./actions";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await getI18n();
+  return { title: t("account.title"), robots: { index: false } };
+}
+export const dynamic = "force-dynamic";
+
+type Props = { searchParams: Promise<{ raderad?: string }> };
+
+export default async function AccountPage({ searchParams }: Props) {
+  const { raderad } = await searchParams;
+  const country = getCountry();
+  const [{ t, lang }, access] = await Promise.all([getI18n(), getAccess()]);
+  const { data } = await (await createClient()).auth.getUser();
+  const user = data.user;
+  const dateFormat = new Intl.DateTimeFormat(languages[lang].htmlLang, { dateStyle: "long", timeZone: country.timeZone });
+
+  if (raderad) {
+    return (
+      <div className="mx-auto max-w-lg px-4 py-16 text-center">
+        <h1 className="text-2xl font-extrabold">{t("account.deleted")}</h1>
+        <ButtonLink href="/" variant="outline" className="mt-8">
+          {t("common.toHome")}
+        </ButtonLink>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mx-auto max-w-lg space-y-6 px-4 py-8">
+      <h1 className="text-3xl font-extrabold">{t("account.title")}</h1>
+
+      {user?.email ? (
+        <section className="space-y-3 rounded-2xl border border-line bg-surface p-5">
+          <p>
+            <span className="text-sm text-muted">{t("account.email")}</span>
+            <br />
+            <strong dir="ltr">{user.email}</strong>
+          </p>
+          <p>
+            {access.expiresAt
+              ? t("account.accessUntil", { date: dateFormat.format(new Date(access.expiresAt)) })
+              : t("account.noAccess")}
+          </p>
+          {!access.hasFullAccess && <ButtonLink href="/kop">{t("account.buy")}</ButtonLink>}
+          <form action={logout}>
+            <button className="font-semibold text-primary underline-offset-2 hover:underline">{t("account.logout")}</button>
+          </form>
+        </section>
+      ) : (
+        <section className="space-y-3 rounded-2xl border border-line bg-surface p-5">
+          <p>{t("account.notLoggedIn")}</p>
+          <ButtonLink href="/logga-in">{t("account.login")}</ButtonLink>
+          {user && <p className="text-sm text-muted">{t("account.anonymousNote")}</p>}
+        </section>
+      )}
+
+      {user && (
+        <section className="space-y-3 rounded-2xl border-2 border-wrong-line/40 bg-surface p-5">
+          <h2 className="text-lg font-extrabold">{t("account.deleteTitle")}</h2>
+          <p className="text-sm text-muted">{t("account.deleteText")}</p>
+          <DeleteAccountForm />
+        </section>
+      )}
+    </div>
+  );
+}

@@ -1,5 +1,8 @@
+"use client";
+
 import { Check, Lock } from "lucide-react";
-import { formatPrice, getCountry, languages } from "@/config";
+import { formatPrice, getCountry } from "@/config";
+import { useI18n } from "@/i18n/client";
 import { ButtonLink } from "./ButtonLink";
 
 type Props = {
@@ -11,55 +14,48 @@ type Props = {
 };
 
 /** Erbjudandet att låsa upp allt. Visas efter gratisläget och på låsta sidor. */
-export function UnlockOffer({ title = "Lås upp allt och bli redo för provet", intro, showFreeLink }: Props) {
+export function UnlockOffer({ title, intro, showFreeLink }: Props) {
+  const { t } = useI18n();
   const country = getCountry();
   const { exam, pricing, chapters } = country;
-  const otherLanguages = country.explanationLanguages.filter((c) => c !== country.examLanguage);
+  const price = formatPrice(country);
 
-  // <bdi> håller varje språknamn i sin egen skrivriktning, så att arabiska och persiska inte blandas ihop.
-  const languageList = otherLanguages.map((c, i) => (
-    <span key={c}>
-      <bdi lang={languages[c].htmlLang}>{languages[c].nativeName}</bdi>
-      {i < otherLanguages.length - 1 ? ", " : ""}
-    </span>
-  ));
-
-  const benefits: { key: string; content: React.ReactNode }[] = [
-    { key: "kapitel", content: `Alla frågor i alla ${chapters.length} kapitel` },
-    { key: "prov", content: `Provsimulering: ${exam.questionCount} frågor på ${exam.durationMinutes} minuter` },
-    { key: "repetera", content: "Repetera frågorna du svarat fel på" },
-    { key: "framsteg", content: "Se vilka kapitel du behöver plugga mer på" },
-    { key: "sprak", content: <>Förklaringar på ditt språk: {languageList}</> },
+  const benefits = [
+    t("offer.benefitChapters", { n: chapters.length }),
+    t("offer.benefitExam", { q: exam.questionCount, m: exam.durationMinutes }),
+    t("offer.benefitReview"),
+    t("offer.benefitProgress"),
+    t("offer.benefitLanguages", { n: country.explanationLanguages.length }),
   ];
 
   return (
     <section className="overflow-hidden rounded-3xl border-2 border-primary bg-surface shadow-lg shadow-primary/10">
       <div className="bg-primary px-5 py-6 text-center text-white">
         <Lock className="mx-auto mb-2 opacity-80" aria-hidden />
-        <h2 className="text-2xl font-extrabold text-balance">{title}</h2>
+        <h2 className="text-2xl font-extrabold text-balance">{title ?? t("offer.title")}</h2>
         {intro && <p className="mt-2 text-white/85">{intro}</p>}
       </div>
       <div className="space-y-5 p-5">
         <ul className="space-y-2">
           {benefits.map((b) => (
-            <li key={b.key} className="flex items-start gap-2">
+            <li key={b} className="flex items-start gap-2">
               <Check className="mt-0.5 shrink-0 text-primary" size={20} strokeWidth={3} aria-hidden />
-              <span>{b.content}</span>
+              <span>{b}</span>
             </li>
           ))}
         </ul>
         <div className="text-center">
-          <p className="text-4xl font-extrabold">{formatPrice(country)}</p>
-          <p className="text-sm text-muted">
-            Betala en gång. Tillgång i {pricing.accessMonths} månader. Ingen prenumeration.
+          <p className="text-4xl font-extrabold" dir="ltr">
+            {price}
           </p>
+          <p className="text-sm text-muted">{t("offer.payOnce", { months: pricing.accessMonths })}</p>
         </div>
         <ButtonLink href="/kop" size="lg" className="w-full">
-          Lås upp allt – {formatPrice(country)}
+          {t("offer.cta", { price })}
         </ButtonLink>
         {showFreeLink && (
           <ButtonLink href="/ova/gratis" variant="outline" className="w-full">
-            Prova gratis först
+            {t("offer.tryFree")}
           </ButtonLink>
         )}
       </div>

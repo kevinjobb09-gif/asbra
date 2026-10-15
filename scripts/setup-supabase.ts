@@ -15,6 +15,7 @@
 import { randomBytes } from "node:crypto";
 import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { parseArgs } from "node:util";
+import { brand } from "../src/config/brand";
 
 const API = "https://api.supabase.com";
 const ENV_FILE = ".env.local";
@@ -212,6 +213,17 @@ async function seedSamples(ref: string) {
   console.log("✔ 10 exempelfrågor inlagda som utkast.");
 }
 
+/** Enkel e-post med en knapp. {{ .TokenHash }} och {{ .RedirectTo }} fylls i av Supabase. */
+function loginEmail(button: string, text: string): string {
+  const link = "{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=email&next={{ .RedirectTo }}";
+  return `<div style="font-family:Arial,sans-serif;max-width:480px;margin:auto;padding:24px">
+<h2 style="color:${brand.colors.primary}">${brand.name}</h2>
+<p>${text}</p>
+<p><a href="${link}" style="display:inline-block;background:#d9480f;color:#fff;padding:14px 28px;border-radius:999px;text-decoration:none;font-weight:bold">${button}</a></p>
+<p style="color:#777;font-size:12px">Har du inte bett om att logga in kan du strunta i det här mejlet.</p>
+</div>`;
+}
+
 async function configureAuth(ref: string) {
   const siteUrl = env.get("NEXT_PUBLIC_SITE_URL") || "http://localhost:3000";
   const current = await api<{ uri_allow_list: string | null }>("GET", `/v1/projects/${ref}/config/auth`);
@@ -223,6 +235,13 @@ async function configureAuth(ref: string) {
     uri_allow_list: [...allow].join(","),
     // Besökare får en anonym inloggning så att de kan öva utan konto.
     external_anonymous_users_enabled: true,
+    // E-postmallar kan bara ändras med egen e-posttjänst (SMTP). Sätt SUPABASE_CUSTOM_SMTP=1 när den är inställd.
+    ...(env.get("SUPABASE_CUSTOM_SMTP") === "1" ? {
+      mailer_subjects_magic_link: `Din inloggningslänk till ${brand.name}`,
+      mailer_templates_magic_link_content: loginEmail("Logga in", "Klicka på knappen för att logga in. Länken gäller i en timme och kan bara användas en gång."),
+      mailer_subjects_confirmation: `Logga in på ${brand.name}`,
+      mailer_templates_confirmation_content: loginEmail("Logga in", "Klicka på knappen för att logga in. Länken gäller i en timme och kan bara användas en gång."),
+    } : {}),
   });
   console.log(`✔ Inloggningen inställd (${siteUrl}).`);
 }

@@ -1,11 +1,17 @@
 import type { AnswerState } from "@/components/AnswerOption";
 import type { Question } from "@/lib/questions/schema";
 
+/** Förklaringen översatt till användarens språk. */
+export type ExplanationTranslation = { language: string; explanation: string; status: "machine" | "reviewed" };
+
 /** Det som behövs för att visa och rätta en fråga. */
 export type PracticeQuestion = Pick<
   Question,
   "id" | "chapter" | "section" | "question" | "options" | "correct_index" | "explanation" | "source_reference"
->;
+> & {
+  /** Förklaringen på användarens språk, om den finns. Frågan och alternativen översätts aldrig. */
+  translation?: ExplanationTranslation | null;
+};
 
 export type AnswerResult = { questionId: string; selected: number; isCorrect: boolean };
 

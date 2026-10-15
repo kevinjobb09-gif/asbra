@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { UnlockOffer } from "@/components/UnlockOffer";
+import { useI18n } from "@/i18n/client";
 import { freeQuestionsLeft, pickFreeQuestions } from "@/lib/practice/free";
 import type { PracticeQuestion } from "@/lib/practice/session";
 import { ensureUser, getBrowserClient } from "@/lib/supabase/client";
@@ -25,6 +26,7 @@ type State =
  * så att man fortsätter där man slutade och inte får samma gratisfrågor igen.
  */
 export function FreePractice({ pool, limit, preview = false }: Props) {
+  const { t } = useI18n();
   const [state, setState] = useState<State>({ status: "loading" });
 
   useEffect(() => {
@@ -44,41 +46,31 @@ export function FreePractice({ pool, limit, preview = false }: Props) {
   }, [pool, limit, preview]);
 
   if (state.status === "loading") {
-    return <p className="py-16 text-center text-muted">Laddar frågor …</p>;
+    return <p className="py-16 text-center text-muted">{t("common.loading")}</p>;
   }
 
   if (state.status === "empty") {
-    return <p className="py-16 text-center text-muted">Gratisfrågorna kommer snart. Titta in igen om några dagar!</p>;
+    return <p className="py-16 text-center text-muted">{t("free.empty")}</p>;
   }
 
   if (state.status === "used-up") {
-    return (
-      <UnlockOffer
-        title="Du har använt dina gratisfrågor"
-        intro="Bra jobbat! Fortsätt öva med alla frågor och gör ett riktigt provtest."
-      />
-    );
+    return <UnlockOffer title={t("free.usedUpTitle")} intro={t("free.usedUpIntro")} />;
   }
 
   return (
     <PracticeSession
       questions={state.questions}
-      chapterLabel="Gratisövning"
+      chapterLabel={t("free.label")}
       preview={preview}
       mode="free"
-      counter={{ offset: state.answeredBefore, total: Math.min(limit, state.answeredBefore + state.questions.length), label: "Fråga" }}
+      counter={{ offset: state.answeredBefore, total: Math.min(limit, state.answeredBefore + state.questions.length) }}
       renderFinished={({ correct, total }) => (
         <div className="space-y-6">
           <div className="text-center">
-            <p className="text-sm font-semibold text-muted">Gratisövning klar</p>
-            <p className="mt-1 text-3xl font-extrabold">
-              {correct} av {total} rätt
-            </p>
+            <p className="text-sm font-semibold text-muted">{t("free.done")}</p>
+            <p className="mt-1 text-3xl font-extrabold">{t("session.score", { c: correct, t: total })}</p>
           </div>
-          <UnlockOffer
-            title="Vill du klara provet?"
-            intro="Du har provat gratis. Lås upp alla frågor, provsimuleringen och förklaringar på ditt språk."
-          />
+          <UnlockOffer title={t("free.offerTitle")} intro={t("free.offerIntro")} />
         </div>
       )}
     />

@@ -1,49 +1,61 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BookOpen, Flame, RotateCcw, Target, Trophy } from "lucide-react";
-import { getCountry } from "@/config";
+import { getCountry, languages } from "@/config";
 import { getAccess } from "@/lib/access";
+import { getI18n } from "@/i18n/server";
 import { getMyProgress } from "@/lib/progress/load";
 import { formatClock } from "@/lib/exam/timer";
 import { ButtonLink } from "@/components/ButtonLink";
 
-export const metadata: Metadata = { title: "Mina resultat", robots: { index: false } };
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await getI18n();
+  return { title: t("results.title"), robots: { index: false } };
+}
 export const dynamic = "force-dynamic";
 
 const percent = (share: number | null) => (share === null ? "–" : `${Math.round(share * 100)} %`);
 
 export default async function ResultsPage() {
   const country = getCountry();
-  const [progress, access] = await Promise.all([getMyProgress(country), getAccess()]);
-  const chapterTitle = (n: number) => country.chapters.find((c) => c.number === n)?.title ?? `Kapitel ${n}`;
+  const [progress, access, { t, lang }] = await Promise.all([getMyProgress(country), getAccess(), getI18n()]);
+  const chapterLabel = (n: number) => {
+    const title = country.chapters.find((c) => c.number === n)?.title;
+    return !title || title.startsWith("Kapitel") ? t("practiceIndex.chapter", { n }) : title;
+  };
 
   if (!progress.hasData) {
     return (
       <div className="mx-auto max-w-xl px-4 py-16 text-center">
-        <h1 className="text-3xl font-extrabold">Mina resultat</h1>
-        <p className="mt-3 text-muted">Du har inte svarat på några frågor än. Dina resultat visas här när du har börjat öva.</p>
+        <h1 className="text-3xl font-extrabold">{t("results.title")}</h1>
+        <p className="mt-3 text-muted">{t("results.empty")}</p>
         <ButtonLink href={access.hasFullAccess ? "/ova" : "/ova/gratis"} size="lg" className="mt-8">
-          Börja öva
+          {t("results.start")}
         </ButtonLink>
       </div>
     );
   }
 
   const { overall, streak, stats, toStudy, review, mastered, totalQuestions, exams } = progress;
+  const dateFormat = new Intl.DateTimeFormat(languages[lang].htmlLang, {
+    timeZone: country.timeZone,
+    day: "numeric",
+    month: "short",
+  });
 
   return (
     <div className="mx-auto max-w-3xl space-y-8 px-4 py-8">
-      <h1 className="text-3xl font-extrabold">Mina resultat</h1>
+      <h1 className="text-3xl font-extrabold">{t("results.title")}</h1>
 
       {/* Översikt */}
       <section className="grid grid-cols-3 gap-2 sm:gap-3">
-        <Stat icon={<Flame />} value={String(streak.current)} label={streak.current === 1 ? "dag i rad" : "dagar i rad"} />
-        <Stat icon={<Target />} value={percent(overall.share)} label={`rätt av ${overall.total} svar`} />
-        <Stat icon={<Trophy />} value={`${mastered}`} label={`av ${totalQuestions} frågor klarade`} />
+        <Stat icon={<Flame />} value={String(streak.current)} label={t("results.daysInRow")} />
+        <Stat icon={<Target />} value={percent(overall.share)} label={t("results.correctOf", { n: overall.total })} />
+        <Stat icon={<Trophy />} value={String(mastered)} label={t("results.masteredOf", { n: totalQuestions })} />
       </section>
       {!streak.practicedToday && streak.current > 0 && (
         <p className="-mt-5 rounded-xl bg-cta-soft p-3 text-sm font-semibold text-cta-dark">
-          Öva en fråga i dag för att behålla din serie på {streak.current} {streak.current === 1 ? "dag" : "dagar"}!
+          {t("results.keepStreak", { n: streak.current })}
         </p>
       )}
 
@@ -55,10 +67,8 @@ export default async function ResultsPage() {
         >
           <RotateCcw className="shrink-0" aria-hidden />
           <span className="flex-1">
-            <span className="block font-bold">Repetera fel</span>
-            <span className="text-sm">
-              {review.length} {review.length === 1 ? "fråga" : "frågor"} att öva på igen
-            </span>
+            <span className="block font-bold">{t("results.reviewTitle")}</span>
+            <span className="text-sm">{t("results.reviewCount", { n: review.length })}</span>
           </span>
         </Link>
       )}
@@ -66,17 +76,19 @@ export default async function ResultsPage() {
       {/* Plugga mer på */}
       {toStudy.length > 0 && (
         <section className="rounded-2xl border-2 border-cta bg-cta-soft p-4">
-          <h2 className="font-bold">Plugga mer på</h2>
+          <h2 className="font-bold">{t("results.studyMore")}</h2>
           <ul className="mt-2 space-y-1">
             {toStudy.map((ch) => {
               const s = stats.find((x) => x.chapter === ch)!;
               return (
-                <li key={ch} className="flex items-center gap-2">
+                <li key={ch} className="flex flex-wrap items-center gap-x-2">
                   <BookOpen size={16} className="shrink-0 text-cta-dark" aria-hidden />
                   <Link href={`/ova/kapitel/${ch}`} className="font-semibold text-primary underline-offset-2 hover:underline">
-                    {chapterTitle(ch)}
+                    {chapterLabel(ch)}
                   </Link>
-                  <span className="text-sm text-cta-dark">{s.answers === 0 ? "– inte övat än" : `– ${percent(s.accuracy)} rätt`}</span>
+                  <span className="text-sm text-cta-dark">
+                    – {s.answers === 0 ? t("results.notPracticed") : t("results.percentCorrect", { p: percent(s.accuracy) })}
+                  </span>
                 </li>
               );
             })}
@@ -86,43 +98,43 @@ export default async function ResultsPage() {
 
       {/* Framsteg per kapitel */}
       <section>
-        <h2 className="text-xl font-extrabold">Framsteg per kapitel</h2>
-        <p className="text-sm text-muted">En fråga räknas som klarad när ditt senaste svar på den var rätt.</p>
+        <h2 className="text-xl font-extrabold">{t("results.progressTitle")}</h2>
+        <p className="text-sm text-muted">{t("results.progressNote")}</p>
         <ul className="mt-4 space-y-4">
-          {stats.filter((s) => s.totalQuestions > 0).map((s) => {
-            const share = s.totalQuestions ? Math.round((s.mastered / s.totalQuestions) * 100) : 0;
-            return (
-              <li key={s.chapter}>
-                <div className="flex items-baseline justify-between gap-2 text-sm">
-                  <span className="font-semibold">{chapterTitle(s.chapter)}</span>
-                  <span className="shrink-0 text-muted">
-                    {s.mastered}/{s.totalQuestions} klarade
-                    {s.accuracy !== null && ` · ${percent(s.accuracy)} rätt`}
-                  </span>
-                </div>
-                <div className="mt-1 h-3 overflow-hidden rounded-full bg-line" aria-hidden>
-                  <div className="h-full rounded-full bg-primary" style={{ width: `${share}%` }} />
-                </div>
-              </li>
-            );
-          })}
+          {stats
+            .filter((s) => s.totalQuestions > 0)
+            .map((s) => {
+              const share = Math.round((s.mastered / s.totalQuestions) * 100);
+              return (
+                <li key={s.chapter}>
+                  <div className="flex items-baseline justify-between gap-2 text-sm">
+                    <span className="font-semibold">{chapterLabel(s.chapter)}</span>
+                    <span className="shrink-0 text-muted">
+                      {t("results.mastered", { m: s.mastered, t: s.totalQuestions })}
+                      {s.accuracy !== null && ` · ${t("results.percentCorrect", { p: percent(s.accuracy) })}`}
+                    </span>
+                  </div>
+                  <div className="mt-1 h-3 overflow-hidden rounded-full bg-line" aria-hidden>
+                    <div className="h-full rounded-full bg-primary" style={{ width: `${share}%` }} />
+                  </div>
+                </li>
+              );
+            })}
         </ul>
       </section>
 
       {/* Senaste prov */}
       {exams.length > 0 && (
         <section>
-          <h2 className="text-xl font-extrabold">Senaste provtest</h2>
+          <h2 className="text-xl font-extrabold">{t("results.recentExams")}</h2>
           <ul className="mt-3 divide-y divide-line overflow-hidden rounded-2xl border border-line bg-surface">
             {exams.map((e) => (
               <li key={e.id} className="flex items-center justify-between gap-2 p-3 text-sm">
-                <span className="text-muted">
-                  {new Date(e.finished_at).toLocaleDateString("sv-SE", { timeZone: country.timeZone, day: "numeric", month: "short" })}
+                <span className="text-muted">{dateFormat.format(new Date(e.finished_at))}</span>
+                <span className="font-bold" dir="ltr">
+                  {e.correct_count}/{e.question_count} ({Math.round((e.correct_count / e.question_count) * 100)} %)
                 </span>
-                <span className="font-bold">
-                  {e.correct_count} av {e.question_count} ({Math.round((e.correct_count / e.question_count) * 100)} %)
-                </span>
-                <span className="text-muted">{e.timed_out ? "Tiden tog slut" : formatClock(e.duration_seconds * 1000)}</span>
+                <span className="text-muted">{e.timed_out ? t("results.timedOut") : formatClock(e.duration_seconds * 1000)}</span>
               </li>
             ))}
           </ul>
@@ -131,10 +143,10 @@ export default async function ResultsPage() {
 
       <div className="flex flex-col gap-2 sm:flex-row">
         <ButtonLink href="/prov" className="flex-1">
-          Gör ett provtest
+          {t("results.takeExam")}
         </ButtonLink>
         <ButtonLink href="/ova" variant="outline" className="flex-1">
-          Öva per kapitel
+          {t("results.practiceChapters")}
         </ButtonLink>
       </div>
     </div>
@@ -147,7 +159,9 @@ function Stat({ icon, value, label }: { icon: React.ReactNode; value: string; la
       <div className="mx-auto mb-1 flex size-8 items-center justify-center text-primary [&>svg]:size-6" aria-hidden>
         {icon}
       </div>
-      <p className="text-2xl font-extrabold">{value}</p>
+      <p className="text-2xl font-extrabold" dir="ltr">
+        {value}
+      </p>
       <p className="text-xs text-muted">{label}</p>
     </div>
   );

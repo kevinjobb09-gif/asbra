@@ -31,7 +31,8 @@
   --color-wrong-bg: #fee2e2;
   --color-wrong-line: #ef4444;
 
-  --font-sans: var(--font-noto-sans), ui-sans-serif, system-ui, sans-serif;
+  /* Webbläsaren väljer typsnitt per tecken: latin, arabisk, etiopisk, thailändsk skrift, sedan systemets (t.ex. kinesiska). */
+  --font-sans: var(--font-noto-sans), var(--font-arabic), var(--font-ethiopic), var(--font-thai), ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 
 :root {
@@ -49,4 +50,14 @@ body {
 :focus-visible {
   outline: 3px solid var(--color-primary);
   outline-offset: 2px;
+}
+
+/* Arabisk skrift behöver lite mer radavstånd för att vara lättläst. */
+:lang(ar),
+:lang(fa),
+:lang(fa-AF),
+:lang(ps),
+:lang(ckb),
+:lang(ur) {
+  line-height: 1.8;
 }

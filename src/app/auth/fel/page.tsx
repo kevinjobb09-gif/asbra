@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
-import { ComingSoon } from "@/components/ComingSoon";
+import { getI18n } from "@/i18n/server";
+import { ButtonLink } from "@/components/ButtonLink";
 
-export const metadata: Metadata = { title: "Inloggningen misslyckades", robots: { index: false } };
+export const metadata: Metadata = { robots: { index: false } };
 
-export default function AuthErrorPage() {
+export default async function AuthErrorPage() {
+  const { t } = await getI18n();
   return (
-    <ComingSoon
-      title="Inloggningen misslyckades"
-      text="Länken kan vara för gammal eller redan använd. Öppna den i samma webbläsare som du begärde den i, eller be om en ny länk."
-    />
+    <div className="mx-auto max-w-xl px-4 py-16 text-center">
+      <h1 className="text-3xl font-extrabold">{t("login.failedTitle")}</h1>
+      <p className="mt-3 text-muted">{t("login.failedText")}</p>
+      <ButtonLink href="/logga-in" className="mt-8">
+        {t("login.newLink")}
+      </ButtonLink>
+    </div>
   );
 }
