@@ -2,6 +2,8 @@
 
 Övningstjänst inför svenska medborgarskapsprovet (samhällskunskap). Ägare: Kevin (gymnasieelev, begränsad
 programmeringsvana) – förklara kort på svenska vad du gör och varför, och hur han testar varje delmål.
+Avsluta VARJE svar med numrerade steg-för-steg-instruktioner för allt Kevin själv ska göra: vilket program
+eller vilken sida han ska vara i, exakt vad han klickar på eller skriver, och vad han ska se när det fungerar.
 
 ## Next.js 16
 Det här är Next.js 16 (App Router). Läs dokumentationen i `node_modules/next/dist/docs/` innan du använder
@@ -23,4 +25,6 @@ API:er du är osäker på. `middleware` heter nu `proxy`, och `params`, `searchP
 - Senare: mobilappar för App Store / Google Play.
 
 ## Kommandon
+Kevins PowerShell blockerar npm.ps1 – skriv alltid `npm.cmd` i instruktioner till honom (t.ex. `npm.cmd run dev`). Ändra aldrig Execution Policy.
+Windows programkontroll blockerar osignerade .exe (t.ex. Supabase CLI) – använd webb-API:er.
 `npm run dev`, `npm test`, `npm run lint`, `npm run typecheck`, `npm run build`.

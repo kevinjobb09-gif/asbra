@@ -1,0 +1,77 @@
+"use server";
+
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
+import { z } from "zod";
+import { requireAdmin } from "@/lib/admin/auth";
+import { createAdminClient } from "@/lib/supabase/admin";
+import { createClient } from "@/lib/supabase/server";
+import { questionInputFromFormData, questionInputSchema, QUESTION_STATUSES } from "@/lib/questions/schema";
+
+export type SaveState = { ok: boolean; message?: string; fieldErrors?: Record<string, string> };
+
+/**
+ * Sparar en fråga (ny eller befintlig). Knappen som trycktes avgör status:
+ * "Spara som utkast" eller "Spara och markera som granskad".
+ */
+export async function saveQuestion(_prev: SaveState, formData: FormData): Promise<SaveState> {
+  await requireAdmin();
+
+  const status = z.enum(QUESTION_STATUSES).catch("draft").parse(formData.get("intent"));
+  const parsed = questionInputSchema.safeParse(questionInputFromFormData(formData, status));
+  if (!parsed.success) {
+    const fieldErrors: Record<string, string> = {};
+    for (const issue of parsed.error.issues) {
+      const key = String(issue.path[0] ?? "form");
+      fieldErrors[key] ??= issue.message;
+    }
+    return { ok: false, message: "Rätta felen nedan.", fieldErrors };
+  }
+
+  const id = formData.get("id");
+  const supabase = createAdminClient();
+  // En granskad fråga är inte längre en exempelfråga.
+  const row = { ...parsed.data, ...(status === "reviewed" ? { is_sample: false } : {}) };
+
+  const result =
+    typeof id === "string" && id
+      ? await supabase.from("questions").update(row).eq("id", id).select("id").single()
+      : await supabase.from("questions").insert(row).select("id").single();
+
+  if (result.error) {
+    console.error("Kunde inte spara frågan:", result.error.message);
+    return { ok: false, message: "Det gick inte att spara. Försök igen." };
+  }
+
+  revalidatePath("/admin");
+  revalidatePath(`/admin/fragor/${result.data.id}`);
+  if (!id) redirect(`/admin/fragor/${result.data.id}?sparad=1`);
+  return { ok: true, message: status === "reviewed" ? "Sparad och markerad som granskad." : "Sparad som utkast." };
+}
+
+export async function deleteQuestion(formData: FormData) {
+  await requireAdmin();
+  const id = z.uuid().parse(formData.get("id"));
+  const { error } = await createAdminClient().from("questions").delete().eq("id", id);
+  if (error) throw new Error(`Kunde inte ta bort frågan: ${error.message}`);
+  revalidatePath("/admin");
+  redirect("/admin?borttagen=1");
+}
+
+export async function setReportResolved(formData: FormData) {
+  await requireAdmin();
+  const id = z.uuid().parse(formData.get("id"));
+  const resolved = formData.get("resolved") === "true";
+  const { error } = await createAdminClient()
+    .from("question_reports")
+    .update({ resolved_at: resolved ? new Date().toISOString() : null })
+    .eq("id", id);
+  if (error) throw new Error(`Kunde inte uppdatera rapporten: ${error.message}`);
+  revalidatePath("/admin/rapporter");
+}
+
+export async function signOut() {
+  const supabase = await createClient();
+  await supabase.auth.signOut();
+  redirect("/admin/logga-in");
+}
