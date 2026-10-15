@@ -23,7 +23,7 @@ export default function HomePage() {
           Frågor på svenska, precis som på provet. Förklaringar på det språk du förstår bäst.
         </p>
         <div className="mt-7 flex flex-col items-center gap-3">
-          <ButtonLink href="/ova" size="lg" className="w-full max-w-sm">
+          <ButtonLink href="/ova/gratis" size="lg" className="w-full max-w-sm">
             Börja öva gratis
           </ButtonLink>
           <p className="text-sm text-muted">
@@ -99,7 +99,7 @@ export default function HomePage() {
         <p className="mt-2 text-white/85">
           Betala en gång och få tillgång till allt i {pricing.accessMonths} månader.
         </p>
-        <ButtonLink href="/ova" size="lg" className="mt-6 w-full max-w-sm">
+        <ButtonLink href="/ova/gratis" size="lg" className="mt-6 w-full max-w-sm">
           Prova gratis först
         </ButtonLink>
       </section>

@@ -1,38 +1,60 @@
 import "server-only";
-import { createClient } from "@supabase/supabase-js";
+import { createClient as createSupabaseClient } from "@supabase/supabase-js";
 import type { CountryCode } from "@/config";
 import { publicEnv } from "@/lib/env";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { createClient as createUserClient } from "@/lib/supabase/server";
 import type { PracticeQuestion } from "@/lib/practice/session";
 
 const PRACTICE_COLUMNS = "id, chapter, section, question, options, correct_index, explanation, source_reference";
 
 /**
  * Klient med den publika nyckeln och utan inloggning – samma behörighet som
- * en okänd besökare. Databasens regler (RLS) släpper bara igenom granskade frågor.
+ * en okänd besökare. Databasens regler (RLS) släpper bara igenom granskade gratisfrågor.
  */
 function publicClient() {
-  return createClient(publicEnv.supabaseUrl, publicEnv.supabasePublishableKey, {
+  return createSupabaseClient(publicEnv.supabaseUrl, publicEnv.supabasePublishableKey, {
     auth: { persistSession: false, autoRefreshToken: false },
   });
 }
 
-/** Granskade frågor i ett kapitel. */
-export async function getReviewedQuestions(country: CountryCode, chapter: number): Promise<PracticeQuestion[]> {
+/** Granskade gratisfrågor – det som visas i gratisläget. */
+export async function getFreeQuestionPool(country: CountryCode): Promise<PracticeQuestion[]> {
   const { data, error } = await publicClient()
     .from("questions")
     .select(PRACTICE_COLUMNS)
     .eq("country", country)
-    .eq("chapter", chapter)
     .eq("status", "reviewed") // Dubbel säkerhet utöver RLS.
+    .eq("is_free", true);
+  if (error) throw new Error(`Kunde inte hämta frågor: ${error.message}`);
+  return data as PracticeQuestion[];
+}
+
+/**
+ * Granskade frågor i ett kapitel för den inloggade användaren.
+ * Användarens egen inloggning används, så databasen (RLS) bestämmer vad hen får se.
+ * Admin hämtar med den hemliga nyckeln, men fortfarande bara granskade frågor.
+ */
+export async function getChapterQuestions(
+  country: CountryCode,
+  chapter: number,
+  { isAdmin }: { isAdmin: boolean },
+): Promise<PracticeQuestion[]> {
+  const supabase = isAdmin ? createAdminClient() : await createUserClient();
+  const { data, error } = await supabase
+    .from("questions")
+    .select(PRACTICE_COLUMNS)
+    .eq("country", country)
+    .eq("chapter", chapter)
+    .eq("status", "reviewed")
     .order("id");
   if (error) throw new Error(`Kunde inte hämta frågor: ${error.message}`);
   return data as PracticeQuestion[];
 }
 
-/** Antal granskade frågor per kapitel. */
+/** Antal granskade frågor per kapitel (bara siffror, inget innehåll). */
 export async function getReviewedCountsByChapter(country: CountryCode): Promise<Map<number, number>> {
-  const { data, error } = await publicClient()
+  const { data, error } = await createAdminClient()
     .from("questions")
     .select("chapter")
     .eq("country", country)
@@ -44,16 +66,13 @@ export async function getReviewedCountsByChapter(country: CountryCode): Promise<
 }
 
 /**
- * BARA FÖR ADMIN: alla frågor i ett kapitel, även utkast, för att förhandsgranska.
+ * BARA FÖR ADMIN: frågor inklusive utkast, för att förhandsgranska.
  * Anropa bara efter att admin-behörigheten kontrollerats.
  */
-export async function getAllQuestionsForPreview(country: CountryCode, chapter: number): Promise<PracticeQuestion[]> {
-  const { data, error } = await createAdminClient()
-    .from("questions")
-    .select(PRACTICE_COLUMNS)
-    .eq("country", country)
-    .eq("chapter", chapter)
-    .order("id");
+export async function getAllQuestionsForPreview(country: CountryCode, chapter?: number): Promise<PracticeQuestion[]> {
+  let query = createAdminClient().from("questions").select(PRACTICE_COLUMNS).eq("country", country).order("id");
+  if (chapter) query = query.eq("chapter", chapter);
+  const { data, error } = await query;
   if (error) throw new Error(`Kunde inte hämta frågor: ${error.message}`);
   return data as PracticeQuestion[];
 }

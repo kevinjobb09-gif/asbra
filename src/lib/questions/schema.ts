@@ -24,6 +24,7 @@ export type Question = {
   status: QuestionStatus;
   review_note: string | null;
   is_sample: boolean;
+  is_free: boolean;
   created_at: string;
   updated_at: string;
 };
@@ -49,6 +50,8 @@ export const questionInputSchema = z
     source_reference: z.string().trim().min(3, "Källhänvisning saknas.").max(300),
     difficulty: z.coerce.number().int().min(1).max(3).default(2),
     status: z.enum(QUESTION_STATUSES),
+    /** Gratisfrågor visas i gratisläget och kan delas. */
+    is_free: z.boolean().default(false),
     review_note: z
       .string()
       .trim()
@@ -89,6 +92,7 @@ export function questionInputFromFormData(formData: FormData, status: QuestionSt
     source_reference: formData.get("source_reference"),
     difficulty: formData.get("difficulty") ?? 2,
     status,
+    is_free: formData.get("is_free") === "on",
     review_note: formData.get("review_note"),
   };
 }

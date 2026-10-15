@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getCountry } from "@/config";
-import { isCurrentUserAdmin } from "@/lib/admin/auth";
+import { getAccess } from "@/lib/access";
 import { shuffle } from "@/lib/practice/session";
-import { getAllQuestionsForPreview, getReviewedQuestions } from "@/lib/questions/public";
+import { getAllQuestionsForPreview, getChapterQuestions } from "@/lib/questions/public";
 import { PracticeSession } from "@/components/practice/PracticeSession";
+import { UnlockOffer } from "@/components/UnlockOffer";
 
 type Props = {
   params: Promise<{ nr: string }>;
@@ -28,11 +29,25 @@ export default async function ChapterPracticePage({ params, searchParams }: Prop
   const chapter = findChapter(nr);
   if (!chapter) notFound();
 
+  const access = await getAccess();
   // Förhandsvisning av utkast – bara för admin.
-  const preview = utkast === "1" && (await isCurrentUserAdmin());
+  const preview = utkast === "1" && access.isAdmin;
+
+  if (!preview && !access.hasFullAccess) {
+    return (
+      <div className="mx-auto max-w-xl px-4 py-8">
+        <UnlockOffer
+          title={`Lås upp kapitel ${chapter.number}`}
+          intro="Övning per kapitel ingår när du låser upp allt."
+          showFreeLink
+        />
+      </div>
+    );
+  }
+
   const questions = preview
     ? await getAllQuestionsForPreview(country.code, chapter.number)
-    : await getReviewedQuestions(country.code, chapter.number);
+    : await getChapterQuestions(country.code, chapter.number, { isAdmin: access.isAdmin });
 
   // Platshållarnamn ("Kapitel 3") visas utan dubblering.
   const label = chapter.title.startsWith("Kapitel") ? chapter.title : `Kapitel ${chapter.number}: ${chapter.title}`;

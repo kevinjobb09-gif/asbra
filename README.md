@@ -105,6 +105,13 @@ besökare **aldrig** kan se utkast och inte kan ändra frågor.
      kontrollerat fakta mot *Sverige i fokus*.
 4. En fråga med källan "EXEMPEL …" kan inte markeras som granskad förrän du skrivit in den riktiga källan.
 
+**Gratisfrågor:** bocka i **Gratisfråga** på en granskad fråga för att den ska ingå i gratisläget
+(`/ova/gratis`). Varje besökare får 30 gratisfrågor (ändras i `freeQuestionLimit` i `se.ts`), spridda över kapitlen.
+Välj minst 30 gratisfrågor från olika kapitel. Översikten på `/admin` visar hur många du har.
+Övriga granskade frågor kan bara läsas av den som har köpt tillgång. Det skyddet ligger i databasen.
+
+**Förhandsvisa gratisläget:** öppna `/ova/gratis?utkast=1` när du är inloggad som admin.
+
 **Förhandsvisa som användare:** på en fråga i adminsidan, klicka **Förhandsvisa kapitlet som användare**.
 Då ser du kapitlet precis som användarna, inklusive utkast (bara du ser utkasten). Svar sparas inte.
 
@@ -145,7 +152,7 @@ tests/          Vitest-tester
 - [x] Delmål 1: Grundprojekt, design, konfiguration, PWA och startsida
 - [x] Delmål 2: Frågedatabas och adminsida
 - [x] Delmål 3: Övning per kapitel
-- [ ] Delmål 4: Gratisläge
+- [x] Delmål 4: Gratisläge
 - [ ] Delmål 5: Provsimulering
 - [ ] Delmål 6: Resultat, repetition och framsteg
 - [ ] Delmål 7: Betalning och konton

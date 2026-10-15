@@ -138,6 +138,16 @@ export function QuestionForm({ question, savedNotice }: Props) {
           <FieldError msg={err.source_reference} />
         </label>
 
+        <label className="flex items-start gap-3 rounded-xl border-2 border-line bg-surface p-3">
+          <input type="checkbox" name="is_free" defaultChecked={question?.is_free} className="mt-1 size-5 accent-primary" />
+          <span>
+            <span className="block text-sm font-semibold">Gratisfråga</span>
+            <span className="block text-xs text-muted">
+              Visas i gratisläget för alla och kan delas i sociala medier. Välj frågor från olika kapitel.
+            </span>
+          </span>
+        </label>
+
         <label className="block">
           <span className="text-sm font-semibold">Intern notering (visas inte för användare)</span>
           <textarea name="review_note" rows={2} defaultValue={question?.review_note ?? ""} className={inputClass} />

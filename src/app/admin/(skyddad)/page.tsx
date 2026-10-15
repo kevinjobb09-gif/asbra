@@ -15,7 +15,7 @@ export default async function AdminQuestionsPage({ searchParams }: Props) {
   const supabase = createAdminClient();
   let query = supabase
     .from("questions")
-    .select("id, chapter, section, question, status, is_sample, review_note, updated_at")
+    .select("id, chapter, section, question, status, is_sample, is_free, review_note, updated_at")
     .eq("country", country.code)
     .order("chapter")
     .order("updated_at", { ascending: false });
@@ -24,7 +24,8 @@ export default async function AdminQuestionsPage({ searchParams }: Props) {
   const { data, error } = await query;
 
   // Antal per kapitel och status, för översikten.
-  const { data: all } = await supabase.from("questions").select("chapter, status").eq("country", country.code);
+  const { data: all } = await supabase.from("questions").select("chapter, status, is_free").eq("country", country.code);
+  const freeReviewed = (all ?? []).filter((q) => q.is_free && q.status === "reviewed").length;
   const counts = new Map<number, { draft: number; reviewed: number }>();
   for (const row of all ?? []) {
     const c = counts.get(row.chapter) ?? { draft: 0, reviewed: 0 };
@@ -34,7 +35,7 @@ export default async function AdminQuestionsPage({ searchParams }: Props) {
 
   const questions = (data ?? []) as Pick<
     Question,
-    "id" | "chapter" | "section" | "question" | "status" | "is_sample" | "review_note" | "updated_at"
+    "id" | "chapter" | "section" | "question" | "status" | "is_sample" | "is_free" | "review_note" | "updated_at"
   >[];
 
   return (
@@ -45,6 +46,10 @@ export default async function AdminQuestionsPage({ searchParams }: Props) {
         <h1 className="text-2xl font-extrabold">Frågor</h1>
         <p className="text-sm text-muted">
           Bara granskade frågor visas för användarna. Klicka på ett kapitel för att filtrera.
+        </p>
+        <p className={`mt-2 rounded-xl p-3 text-sm ${freeReviewed >= country.freeQuestionLimit ? "bg-primary-soft" : "bg-cta-soft text-cta-dark"}`}>
+          <strong>Gratisläget:</strong> {freeReviewed} granskade gratisfrågor av {country.freeQuestionLimit} som behövs.
+          {freeReviewed < country.freeQuestionLimit && " Markera fler granskade frågor som gratis, gärna från olika kapitel."}
         </p>
         <div className="mt-3 grid grid-cols-3 gap-2 sm:grid-cols-7">
           {country.chapters.map((ch) => {
@@ -84,6 +89,7 @@ export default async function AdminQuestionsPage({ searchParams }: Props) {
             <Link href={`/admin/fragor/${q.id}`} className="flex flex-col gap-1 p-4 hover:bg-primary-soft/50">
               <div className="flex flex-wrap items-center gap-2 text-xs">
                 <StatusBadge status={q.status} />
+                {q.is_free && <span className="rounded-full bg-primary-soft px-2 py-0.5 font-semibold text-primary">Gratis</span>}
                 {q.is_sample && <span className="rounded-full bg-cta-soft px-2 py-0.5 font-semibold text-cta-dark">Exempelfråga</span>}
                 {q.review_note && <span className="rounded-full bg-cta-soft px-2 py-0.5 text-cta-dark">⚠️ Notering</span>}
                 <span className="text-muted">

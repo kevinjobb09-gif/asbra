@@ -21,11 +21,24 @@ type Props = {
   chapterLabel: string;
   /** Admin förhandsgranskar utkast: inga svar sparas. */
   preview?: boolean;
+  /** Sparas tillsammans med svaret. */
+  mode?: "chapter" | "free";
+  /** Räknare som fortsätter där man slutade, t.ex. "Gratisfråga 12 av 30". */
+  counter?: { offset: number; total: number; label: string };
+  /** Egen vy när passet är klart (t.ex. erbjudande efter gratisläget). */
+  renderFinished?: (summary: { correct: number; total: number }) => React.ReactNode;
 };
 
 const LETTERS = "ABCD";
 
-export function PracticeSession({ questions, chapterLabel, preview = false }: Props) {
+export function PracticeSession({
+  questions,
+  chapterLabel,
+  preview = false,
+  mode = "chapter",
+  counter,
+  renderFinished,
+}: Props) {
   const [state, dispatch] = useReducer(sessionReducer, questions, initSession);
   const feedbackRef = useRef<HTMLDivElement>(null);
 
@@ -39,13 +52,14 @@ export function PracticeSession({ questions, chapterLabel, preview = false }: Pr
   function answer(selected: number) {
     if (state.selected !== null) return;
     dispatch({ type: "answer", selected });
-    if (!preview) void saveAnswer(question, selected);
+    if (!preview) void saveAnswer(question, selected, mode);
     // Visa förklaringen på små skärmar.
     setTimeout(() => feedbackRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" }), 50);
   }
 
   if (state.finished) {
     const { correct, total } = summarize(state.results);
+    if (renderFinished) return <>{renderFinished({ correct, total })}</>;
     return (
       <div className="rounded-3xl border border-line bg-surface p-6 text-center">
         <p className="text-sm font-semibold text-muted">{chapterLabel}</p>
@@ -79,7 +93,10 @@ export function PracticeSession({ questions, chapterLabel, preview = false }: Pr
 
   const answered = state.selected !== null;
   const isCorrect = answered && state.selected === question.correct_index;
-  const progress = ((state.index + (answered ? 1 : 0)) / state.questions.length) * 100;
+  const done = state.index + (answered ? 1 : 0);
+  const progress = counter
+    ? ((counter.offset + done) / counter.total) * 100
+    : (done / state.questions.length) * 100;
 
   return (
     <div className="space-y-5 pb-24">
@@ -88,7 +105,9 @@ export function PracticeSession({ questions, chapterLabel, preview = false }: Pr
         <div className="flex items-center justify-between text-sm font-semibold text-muted">
           <span>{chapterLabel}</span>
           <span>
-            Fråga {state.index + 1} av {state.questions.length}
+            {counter
+              ? `${counter.label} ${counter.offset + state.index + 1} av ${counter.total}`
+              : `Fråga ${state.index + 1} av ${state.questions.length}`}
           </span>
         </div>
         <div className="mt-2 h-2 overflow-hidden rounded-full bg-line" aria-hidden>
@@ -151,7 +170,7 @@ export function PracticeSession({ questions, chapterLabel, preview = false }: Pr
         </div>
       )}
 
-      {!answered && (
+      {!answered && mode === "chapter" && (
         <p className="text-center text-sm text-muted">
           <Link href="/ova" className="underline-offset-2 hover:underline">
             Byt kapitel
@@ -163,7 +182,7 @@ export function PracticeSession({ questions, chapterLabel, preview = false }: Pr
 }
 
 /** Sparar svaret i databasen. Misslyckas det fortsätter övningen ändå. */
-async function saveAnswer(question: PracticeQuestion, selected: number) {
+async function saveAnswer(question: PracticeQuestion, selected: number, mode: "chapter" | "free") {
   const userId = await ensureUser();
   if (!userId) return;
   const { error } = await getBrowserClient()
@@ -172,7 +191,7 @@ async function saveAnswer(question: PracticeQuestion, selected: number) {
       question_id: question.id,
       selected_index: selected,
       is_correct: selected === question.correct_index,
-      mode: "chapter",
+      mode,
     });
   if (error) console.error("Kunde inte spara svaret:", error.message);
 }
