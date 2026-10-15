@@ -146,3 +146,25 @@ describe("dagar i rad", () => {
     expect(streak.current).toBe(3);
   });
 });
+
+import { dayNumber, pickDaily } from "@/lib/daily";
+
+describe("dagens fråga", () => {
+  const pool = ["c", "a", "b"].map((id) => ({ id }));
+
+  it("samma fråga hela dagen i svensk tid", () => {
+    const morning = pickDaily(pool, new Date("2026-10-15T00:30:00+02:00"), "Europe/Stockholm");
+    const night = pickDaily(pool, new Date("2026-10-15T23:30:00+02:00"), "Europe/Stockholm");
+    expect(morning).toEqual(night);
+  });
+
+  it("ny fråga nästa dag, och alla frågor kommer i tur och ordning", () => {
+    const days = [15, 16, 17].map((d) => pickDaily(pool, new Date(`2026-10-${d}T12:00:00+02:00`), "Europe/Stockholm")!.id);
+    expect(new Set(days).size).toBe(3);
+    expect(dayNumber(new Date("2026-10-16T12:00:00Z"), "Europe/Stockholm") - dayNumber(new Date("2026-10-15T12:00:00Z"), "Europe/Stockholm")).toBe(1);
+  });
+
+  it("ingen fråga om listan är tom", () => {
+    expect(pickDaily([], new Date(), "Europe/Stockholm")).toBeNull();
+  });
+});

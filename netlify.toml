@@ -1,0 +1,8 @@
+# Inställningar för Netlify. Netlify känner igen Next.js automatiskt.
+# Miljövariablerna (nycklarna) läggs in i Netlify: Site configuration → Environment variables.
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"

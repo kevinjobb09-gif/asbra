@@ -24,6 +24,9 @@ export default async function AdminLayout({ children }: { children: React.ReactN
             <span className="ms-1 rounded-full bg-cta px-2 py-0.5 text-xs text-white">{openReports}</span>
           )}
         </Link>
+        <Link href="/admin/partner" className="rounded-full px-3 py-2 hover:bg-primary-soft">Rabattkoder</Link>
+        <Link href="/admin/statistik" className="rounded-full px-3 py-2 hover:bg-primary-soft">Statistik</Link>
+        <Link href="/dagens-fraga" className="rounded-full px-3 py-2 hover:bg-primary-soft">Dagens fråga</Link>
         <Link href="/ova/gratis?utkast=1" className="rounded-full px-3 py-2 hover:bg-primary-soft">Testa gratisläget</Link>
         <Link href="/prov?utkast=1&minuter=2" className="rounded-full px-3 py-2 hover:bg-primary-soft">Testa provet (2 min)</Link>
         <span className="ms-auto hidden text-muted sm:inline">{email}</span>

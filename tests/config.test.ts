@@ -29,9 +29,17 @@ describe("konfiguration", () => {
     }
   });
 
-  it("arabiska, persiska och dari visas höger till vänster, övriga inte", () => {
+  it("språk med arabisk skrift visas höger till vänster, övriga inte", () => {
     const rtl = Object.values(languages).filter((l) => isRtl(l.code)).map((l) => l.code);
-    expect(rtl.sort()).toEqual(["ar", "fa", "prs"]);
+    expect(rtl.sort()).toEqual(["ar", "ckb", "fa", "prs", "ps", "ur"]);
+  });
+
+  it("varje språk har namn, lang-kod och skriftsystem", () => {
+    for (const l of Object.values(languages)) {
+      expect(l.nativeName.length).toBeGreaterThan(1);
+      expect(l.htmlLang.length).toBeGreaterThan(1);
+      expect(["latin", "arabic", "ethiopic", "thai", "cjk"]).toContain(l.script);
+    }
   });
 
   it("priset visas i kronor", () => {

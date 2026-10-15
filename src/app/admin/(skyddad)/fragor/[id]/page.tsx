@@ -35,6 +35,11 @@ export default async function EditQuestionPage({ params, searchParams }: Props) 
             Exempelfråga – byt ut eller granska mot källan
           </span>
         )}
+        {question.is_free && question.status === "reviewed" && (
+          <Link href={`/fraga/${question.id}`} className="text-sm font-semibold text-primary">
+            Delbar sida →
+          </Link>
+        )}
         <Link href={`/ova/kapitel/${question.chapter}?utkast=1`} className="text-sm font-semibold text-primary">
           Förhandsvisa kapitlet som användare →
         </Link>
