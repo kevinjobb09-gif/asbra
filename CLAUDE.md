@@ -18,6 +18,9 @@ API:er du är osäker på. `middleware` heter nu `proxy`, och `params`, `searchP
 - Varumärket finns bara i `src/config/brand.ts` (platshållare NAMN).
 - Grönt = rätt svar, rött = fel svar. Använd inte de färgerna till annat.
 - Claude API används bara i interna skript (`scripts/`), aldrig mot användare.
+- Alla texter i gränssnittet ligger i `src/i18n/messages/sv.ts` (källan) + en JSON per språk (24 språk).
+  Ny text: lägg till i sv.ts OCH i alla JSON-filer (testet i tests/i18n.test.ts kontrollerar det).
+  Frågor/svarsalternativ visas alltid på svenska med `lang="sv" dir="ltr"`. Adminsidan är bara på svenska.
 
 ## Drift
 - Hosting: Netlify (inte Vercel). Databas/inloggning: Supabase. Betalning: Stripe (befintligt konto).

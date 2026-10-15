@@ -45,7 +45,7 @@ describe("översättning", () => {
 describe("val av språk från webbläsaren", () => {
   it("väljer det språk användaren föredrar", () => {
     expect(pickFromAcceptLanguage("ar-SY,ar;q=0.9,en;q=0.8")).toBe("ar");
-    expect(pickFromAcceptLanguage("en-US,en;q=0.5,fa;q=0.9")).toBe("fa");
+    expect(pickFromAcceptLanguage("en-US;q=0.5,fa;q=0.9")).toBe("fa");
   });
 
   it("dari skickas som fa-AF", () => {

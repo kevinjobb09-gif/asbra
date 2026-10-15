@@ -44,6 +44,9 @@ I datorns webbläsare kan du också trycka **F12** och klicka på mobilikonen f�
 | `npm run build` | Bygger sajten som den blir i produktion |
 | `npm run databas` | Ställer in Supabase och uppdaterar databasen |
 | `npm run utkast -- ...` | Skapar frågeutkast med Claude (se nedan) |
+| `npm run oversatt-forklaringar` | Översätter förklaringarna till granskade frågor till alla språk |
+| `npm run oversatt-granssnitt` | Översätter nya eller ändrade texter i gränssnittet |
+| `npm run admin-lank` | Loggar in dig som admin utan mejl |
 | `npm start` | Kör den byggda sajten (efter `npm run build`) |
 
 ## Var ändrar jag vad?
@@ -52,9 +55,11 @@ I datorns webbläsare kan du också trycka **F12** och klicka på mobilikonen f�
 |---|---|
 | Varumärkesnamnet (NAMN), kontaktadress, företagsuppgifter | `src/config/brand.ts` |
 | Provformat, pris, antal gratisfrågor, kapitelnamn, rätt i rad för repetition | `src/config/countries/se.ts` |
-| Språk för förklaringar | `src/config/languages.ts` och `explanationLanguages` i `se.ts` |
+| Vilka språk som finns | `src/config/languages.ts` och `explanationLanguages` i `se.ts` |
+| Texterna i gränssnittet (svenska) | `src/i18n/messages/sv.ts` – övriga språk i samma mapp (`.json`) |
+| Användarvillkor, integritetspolicy, om oss | `src/app/villkor`, `src/app/integritet`, `src/app/om` |
 | Färger | `src/app/globals.css` (överst) och `colors` i `brand.ts` |
-| Startsidans text | `src/app/page.tsx` |
+| Startsidans text | `home` i `src/i18n/messages/sv.ts` |
 
 ## Nycklar och hemligheter
 
@@ -80,8 +85,8 @@ Skriptet skapar projektet **asbra** i Stockholm, sparar adress och nycklar i `.e
 databasen (filerna i `supabase/migrations`), lägger in exempelfrågorna och ställer in inloggningen.
 Det går att köra igen när som helst, till exempel när en ny databasfil har lagts till. Då körs bara de nya filerna.
 
-> Supabase inbyggda e-post kan bara skicka ett fåtal mejl i timmen. Det räcker för test,
-> men innan lansering behöver vi koppla en riktig e-posttjänst (delmål 7).
+> Supabase inbyggda e-post kan bara skicka ett fåtal mejl i timmen och är långsam. Det räcker för test,
+> men innan lansering behöver du en riktig e-posttjänst (se checklistan längst ner).
 
 ### Kontrollera säkerheten
 
@@ -143,6 +148,7 @@ src/
   app/          Sidorna. Mappnamnet blir adressen, t.ex. app/ova → /ova
   components/   Återanvändbara delar, t.ex. knappar och svarsalternativ
   config/       ALLA inställningar: varumärke, land, prov, pris och språk
+  i18n/         Översättningar av gränssnittet (sv.ts är källan)
   lib/          Hjälpfunktioner
 public/         Filer som serveras som de är (t.ex. sw.js för appläget)
 scripts/        Interna skript, t.ex. utkast med Claude (körs bara av dig)
@@ -150,17 +156,84 @@ supabase/       Databasens uppbyggnad (migrations) och exempelfrågor (seed)
 tests/          Vitest-tester
 ```
 
+## Språk
+
+- Gränssnittet finns på 24 språk. Användaren väljer språk med jordgloben i sidhuvudet. Första gången väljs
+  telefonens språk automatiskt.
+- **Frågor och svarsalternativ är alltid på svenska**, som på provet. Arabiska, persiska, dari, pashto,
+  sorani och urdu visas från höger till vänster, men frågan står alltid från vänster till höger.
+- Varje språk har en egen startsida att länka till, t.ex. `/ar`, `/fa`, `/prs`, `/ti`, `/so`.
+- Texterna i gränssnittet är översatta med AI. Det står diskret i sidfoten på andra språk än svenska.
+  Låt gärna någon som kan språket läsa igenom de viktigaste språken.
+- **Förklaringar:** när du har granskat frågor, kör `npm.cmd run oversatt-forklaringar`. Översättningarna
+  märks "Maskinöversatt" i appen tills du granskar dem på frågans sida i admin (rutan *Översättningar*).
+  Ändrar du den svenska förklaringen tas översättningarna bort automatiskt – kör skriptet igen.
+
+## Betalning (Stripe)
+
+Köp sker på `/kop`. Användaren måste kryssa i två rutor (ångerrätten och villkoren) – tidpunkten sparas i databasen.
+Betalningen sker hos Stripe och ger tillgång i 6 månader. Rabattkoder (`?ref=kod`) ger rabatt och provision.
+
+**Testa betalningen (inga riktiga pengar):**
+
+1. Logga in på [dashboard.stripe.com](https://dashboard.stripe.com) och slå på **Test mode** (uppe till höger).
+2. Gå till **Developers → API keys** och kopiera **Secret key** (`sk_test_...`) till `STRIPE_SECRET_KEY` i `.env.local`.
+3. Webhook lokalt: installera inget – använd i stället att tacksidan själv kontrollerar betalningen hos Stripe.
+   (På den riktiga sajten används webhooken, se nedan.)
+4. Köp med testkortet `4242 4242 4242 4242`, valfritt framtida datum och valfri CVC.
+
+**Webhook på den riktiga sajten:** Stripe → **Developers → Webhooks → Add endpoint**
+
+- URL: `https://DIN-DOMÄN/api/stripe/webhook`
+- Händelser: `checkout.session.completed`, `checkout.session.async_payment_succeeded`, `charge.refunded`
+- Kopiera **Signing secret** (`whsec_...`) till `STRIPE_WEBHOOK_SECRET` i Netlify.
+
+## Marknadsföring och statistik
+
+| Funktion | Var |
+|---|---|
+| Delbar sida per gratisfråga (med förhandsbild för TikTok/WhatsApp) | `/fraga/<id>` – länk finns på frågan i admin |
+| Dagens fråga som bild 9:16 (med och utan svar) | `/dagens-fraga` |
+| Rabatt-/partnerkoder, försäljning och provision per kod | `/admin/partner` – länka med `?ref=kod` |
+| Statistik: startade/avslutade gratisövning, öppnade betalning, betalade | `/admin/statistik` |
+| Startsidor per språk | `/ar`, `/fa`, `/en` … |
+
+Statistiken sparar inga personuppgifter och använder inga spårningscookies.
+
+## Publicera på Netlify
+
+1. Lägg upp projektet på GitHub (privat repo).
+2. På [netlify.com](https://app.netlify.com): **Add new site → Import an existing project → GitHub** och välj repot.
+   Netlify läser `netlify.toml` och känner igen Next.js automatiskt.
+3. **Site configuration → Environment variables**: lägg in alla variabler från `.env.local`, med
+   `NEXT_PUBLIC_SITE_URL` = din riktiga adress (t.ex. `https://dindoman.se`). `SUPABASE_ACCESS_TOKEN` behövs inte där.
+4. Kör `npm.cmd run databas` lokalt med `NEXT_PUBLIC_SITE_URL` satt till den riktiga adressen, så att Supabase
+   tillåter inloggningslänkar dit. Sätt sedan tillbaka `http://localhost:3000` lokalt.
+5. Lägg till Stripe-webhooken (se ovan) och byt till Stripes **live**-nycklar när allt fungerar.
+
+## Checklista före lansering
+
+- [ ] Kontrollera provformatet (antal frågor, tid, godkäntgräns) på uhr.se och uppdatera `se.ts` + `lastVerified`.
+- [ ] Skriv in de riktiga kapitelrubrikerna i `se.ts`.
+- [ ] Ta bort exempelfrågorna och lägg in egna, granskade frågor. Minst 30 gratisfrågor från olika kapitel.
+- [ ] Kör `npm.cmd run oversatt-forklaringar`.
+- [ ] Bestäm varumärkesnamnet och fyll i företagsnamn, organisationsnummer och adress i `brand.ts`.
+- [ ] Läs igenom villkor och integritetspolicy (gärna med jurist) och fyll i `[DATUM]` och `[E-POSTTJÄNST]`.
+- [ ] Koppla en egen e-posttjänst (t.ex. Resend) i Supabase: **Authentication → Emails → SMTP Settings**.
+      Sätt sedan `SUPABASE_CUSTOM_SMTP=1` och kör `npm.cmd run databas`, så får inloggningsmejlen länkar som
+      fungerar i alla webbläsare.
+- [ ] Stripe: verifiera företaget, lägg in webhook och byt till live-nycklar.
+- [ ] Gör ett riktigt köp med ett eget kort och återbetala det i Stripe.
+
 ## Status
 
-- [x] Delmål 1: Grundprojekt, design, konfiguration, PWA och startsida
-- [x] Delmål 2: Frågedatabas och adminsida
-- [x] Delmål 3: Övning per kapitel
-- [x] Delmål 4: Gratisläge
-- [x] Delmål 5: Provsimulering
-- [x] Delmål 6: Resultat, repetition och framsteg
-- [ ] Delmål 7: Betalning och konton
-- [ ] Delmål 8: Språk
-- [ ] Delmål 9: Marknadsföring och statistik
-- [ ] Delmål 10: Juridiska sidor och publicering på Netlify
-
-Instruktioner för att lägga till frågor och publicera på Netlify skrivs in här när de delarna är byggda.
+- [x] Grundprojekt, design, konfiguration, PWA och startsida
+- [x] Frågedatabas och adminsida
+- [x] Övning per kapitel
+- [x] Gratisläge
+- [x] Provsimulering
+- [x] Resultat, repetition och framsteg
+- [x] Betalning och konton (kvar för dig: Stripe-nycklar och webhook)
+- [x] Språk (24 språk, förklaringar översätts med skript)
+- [x] Marknadsföring och statistik
+- [x] Juridiska sidor (utkast) och Netlify-inställningar

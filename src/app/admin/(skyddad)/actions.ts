@@ -75,3 +75,30 @@ export async function signOut() {
   await supabase.auth.signOut();
   redirect("/admin/logga-in");
 }
+
+/** Sparar en översättning av förklaringen som granskad av människa. */
+export async function saveTranslation(formData: FormData) {
+  await requireAdmin();
+  const parsed = z
+    .object({
+      question_id: z.uuid(),
+      language: z.string().regex(/^[a-z]{2,3}$/),
+      explanation: z.string().trim().min(5).max(2000),
+    })
+    .safeParse(Object.fromEntries(formData));
+  if (!parsed.success) throw new Error("Ogiltig översättning.");
+  const { error } = await createAdminClient()
+    .from("question_translations")
+    .upsert({ ...parsed.data, status: "reviewed" }, { onConflict: "question_id,language" });
+  if (error) throw new Error(`Kunde inte spara översättningen: ${error.message}`);
+  revalidatePath(`/admin/fragor/${parsed.data.question_id}`);
+}
+
+/** Tar bort en översättning (den skapas på nytt av översättningsskriptet). */
+export async function deleteTranslation(formData: FormData) {
+  await requireAdmin();
+  const questionId = z.uuid().parse(formData.get("question_id"));
+  const language = z.string().regex(/^[a-z]{2,3}$/).parse(formData.get("language"));
+  await createAdminClient().from("question_translations").delete().eq("question_id", questionId).eq("language", language);
+  revalidatePath(`/admin/fragor/${questionId}`);
+}

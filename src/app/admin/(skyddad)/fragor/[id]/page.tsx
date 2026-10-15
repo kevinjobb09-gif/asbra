@@ -5,6 +5,7 @@ import { createAdminClient } from "@/lib/supabase/admin";
 import { QuestionForm } from "@/components/admin/QuestionForm";
 import { StatusBadge } from "@/components/admin/StatusBadge";
 import { DeleteQuestionButton } from "@/components/admin/DeleteQuestionButton";
+import { TranslationsEditor } from "@/components/admin/TranslationsEditor";
 import type { Question } from "@/lib/questions/schema";
 
 type Props = { params: Promise<{ id: string }>; searchParams: Promise<{ sparad?: string }> };
@@ -18,6 +19,11 @@ export default async function EditQuestionPage({ params, searchParams }: Props) 
   const { data } = await supabase.from("questions").select("*").eq("id", id).maybeSingle();
   if (!data) notFound();
   const question = data as Question;
+
+  const { data: translations } = await supabase
+    .from("question_translations")
+    .select("language, explanation, status")
+    .eq("question_id", id);
 
   const { data: reports } = await supabase
     .from("question_reports")
@@ -60,6 +66,8 @@ export default async function EditQuestionPage({ params, searchParams }: Props) 
       )}
 
       <QuestionForm question={question} savedNotice={!!sparad} />
+
+      <TranslationsEditor questionId={question.id} translations={translations ?? []} />
 
       <div className="border-t border-line pt-4">
         <DeleteQuestionButton id={question.id} />
