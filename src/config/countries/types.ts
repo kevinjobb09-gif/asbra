@@ -52,6 +52,12 @@ export type CountryConfig = {
   /** Antal frågor man får öva på gratis innan erbjudandet visas. */
   freeQuestionLimit: number;
 
+  /** Hur många gånger i rad man måste svara rätt för att en fråga ska lämna listan "Repetera fel". */
+  reviewCorrectStreak: number;
+
+  /** Tidszon för att räkna "dagar i rad" (t.ex. "Europe/Stockholm"). */
+  timeZone: string;
+
   /** Språk som förklaringar kan visas på, i den ordning de visas i väljaren. */
   explanationLanguages: LanguageCode[];
 

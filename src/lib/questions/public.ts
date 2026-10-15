@@ -91,3 +91,20 @@ export async function getAllReviewedQuestions(
   if (error) throw new Error(`Kunde inte hämta frågor: ${error.message}`);
   return data as PracticeQuestion[];
 }
+
+/** Granskade frågor med vissa id, i samma ordning som `ids`. Användarens behörighet gäller (RLS). */
+export async function getReviewedQuestionsByIds(
+  ids: string[],
+  { isAdmin }: { isAdmin: boolean },
+): Promise<PracticeQuestion[]> {
+  if (ids.length === 0) return [];
+  const supabase = isAdmin ? createAdminClient() : await createUserClient();
+  const { data, error } = await supabase
+    .from("questions")
+    .select(PRACTICE_COLUMNS)
+    .in("id", ids)
+    .eq("status", "reviewed");
+  if (error) throw new Error(`Kunde inte hämta frågor: ${error.message}`);
+  const byId = new Map((data as PracticeQuestion[]).map((q) => [q.id, q]));
+  return ids.flatMap((id) => byId.get(id) ?? []);
+}

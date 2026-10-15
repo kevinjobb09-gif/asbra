@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ChevronRight, Clock, Lock } from "lucide-react";
+import { BarChart3, ChevronRight, Clock, Lock, RotateCcw } from "lucide-react";
 import { getCountry } from "@/config";
 import { getReviewedCountsByChapter } from "@/lib/questions/public";
 import { getAccess } from "@/lib/access";
@@ -49,6 +49,24 @@ export default async function PracticeIndexPage() {
         </span>
         {locked ? <Lock size={18} aria-label="Låst" /> : <ChevronRight className="rtl:rotate-180" aria-hidden />}
       </Link>
+
+      <div className="mt-3 grid grid-cols-2 gap-3">
+        <Link
+          href="/repetera"
+          className="flex items-center gap-2 rounded-2xl border-2 border-line bg-surface p-3 font-bold transition-colors hover:border-primary"
+        >
+          <RotateCcw size={20} className="shrink-0 text-primary" aria-hidden />
+          <span className="flex-1">Repetera fel</span>
+          {locked && <Lock size={16} className="text-muted" aria-label="Låst" />}
+        </Link>
+        <Link
+          href="/resultat"
+          className="flex items-center gap-2 rounded-2xl border-2 border-line bg-surface p-3 font-bold transition-colors hover:border-primary"
+        >
+          <BarChart3 size={20} className="shrink-0 text-primary" aria-hidden />
+          <span className="flex-1">Mina resultat</span>
+        </Link>
+      </div>
 
       <h2 className="mt-8 text-xl font-extrabold">Kapitel</h2>
       <ul className="mt-3 space-y-2">

@@ -22,7 +22,7 @@ type Props = {
   /** Admin förhandsgranskar utkast: inga svar sparas. */
   preview?: boolean;
   /** Sparas tillsammans med svaret. */
-  mode?: "chapter" | "free";
+  mode?: "chapter" | "free" | "review";
   /** Räknare som fortsätter där man slutade, t.ex. "Gratisfråga 12 av 30". */
   counter?: { offset: number; total: number; label: string };
   /** Egen vy när passet är klart (t.ex. erbjudande efter gratisläget). */
@@ -85,6 +85,9 @@ export function PracticeSession({
           )}
           <ButtonLink href="/ova" variant="outline" className="w-full max-w-xs">
             Välj ett annat kapitel
+          </ButtonLink>
+          <ButtonLink href="/resultat" variant="outline" className="w-full max-w-xs">
+            Mina resultat
           </ButtonLink>
         </div>
       </div>
@@ -182,7 +185,7 @@ export function PracticeSession({
 }
 
 /** Sparar svaret i databasen. Misslyckas det fortsätter övningen ändå. */
-async function saveAnswer(question: PracticeQuestion, selected: number, mode: "chapter" | "free") {
+async function saveAnswer(question: PracticeQuestion, selected: number, mode: "chapter" | "free" | "review") {
   const userId = await ensureUser();
   if (!userId) return;
   const { error } = await getBrowserClient()

@@ -28,6 +28,27 @@ async function main() {
   const { data, error } = await supabase.auth.admin.generateLink({ type: "magiclink", email });
   if (error || !data.properties?.hashed_token) fail(`Kunde inte skapa länken: ${error?.message ?? "okänt fel"}`);
 
+  // Ge admin riktig tillgång i databasen, så att egna svar och prov sparas när du testar.
+  const userId = data.user?.id;
+  if (userId) {
+    const now = new Date();
+    const { data: active } = await supabase
+      .from("access_grants")
+      .select("id")
+      .eq("user_id", userId)
+      .gt("expires_at", now.toISOString())
+      .limit(1);
+    if (!active?.length) {
+      const expires = new Date(now);
+      expires.setFullYear(expires.getFullYear() + 1);
+      const grant = await supabase
+        .from("access_grants")
+        .insert({ user_id: userId, source: "admin", expires_at: expires.toISOString() });
+      if (grant.error) console.warn("Kunde inte ge admin tillgång:", grant.error.message);
+      else console.log("✔ Admin har fått tillgång i databasen i ett år.");
+    }
+  }
+
   const link = `${site}/auth/confirm?token_hash=${data.properties.hashed_token}&type=magiclink&next=/admin`;
 
   if (process.argv.includes("--visa")) {

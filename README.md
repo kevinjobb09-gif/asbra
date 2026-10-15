@@ -51,7 +51,7 @@ I datorns webbläsare kan du också trycka **F12** och klicka på mobilikonen f�
 | Vill du ändra … | Fil |
 |---|---|
 | Varumärkesnamnet (NAMN), kontaktadress, företagsuppgifter | `src/config/brand.ts` |
-| Provformat, pris, antal gratisfrågor, kapitelnamn | `src/config/countries/se.ts` |
+| Provformat, pris, antal gratisfrågor, kapitelnamn, rätt i rad för repetition | `src/config/countries/se.ts` |
 | Språk för förklaringar | `src/config/languages.ts` och `explanationLanguages` i `se.ts` |
 | Färger | `src/app/globals.css` (överst) och `colors` i `brand.ts` |
 | Startsidans text | `src/app/page.tsx` |
@@ -157,7 +157,7 @@ tests/          Vitest-tester
 - [x] Delmål 3: Övning per kapitel
 - [x] Delmål 4: Gratisläge
 - [x] Delmål 5: Provsimulering
-- [ ] Delmål 6: Resultat, repetition och framsteg
+- [x] Delmål 6: Resultat, repetition och framsteg
 - [ ] Delmål 7: Betalning och konton
 - [ ] Delmål 8: Språk
 - [ ] Delmål 9: Marknadsföring och statistik

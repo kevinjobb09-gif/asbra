@@ -36,6 +36,10 @@ export const se: CountryConfig = {
 
   freeQuestionLimit: 30,
 
+  reviewCorrectStreak: 2,
+
+  timeZone: "Europe/Stockholm",
+
   explanationLanguages: ["sv", "en", "ar", "fa", "prs", "so", "ti"],
 
   // TODO: Byt ut mot de riktiga kapitelrubrikerna i Sverige i fokus.

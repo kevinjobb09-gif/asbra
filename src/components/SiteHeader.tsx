@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BarChart3 } from "lucide-react";
 import { brand } from "@/config";
 import { ButtonLink } from "./ButtonLink";
 
@@ -12,9 +13,18 @@ export function SiteHeader() {
           </span>
           {brand.name}
         </Link>
-        <ButtonLink href="/ova" variant="cta" className="!px-4 !py-2 text-sm">
-          Börja öva
-        </ButtonLink>
+        <nav className="flex items-center gap-1">
+          <Link
+            href="/resultat"
+            className="flex items-center gap-1.5 rounded-full px-3 py-2 text-sm font-semibold text-ink hover:bg-primary-soft"
+          >
+            <BarChart3 size={18} aria-hidden />
+            <span className="max-[359px]:sr-only">Resultat</span>
+          </Link>
+          <ButtonLink href="/ova" variant="cta" className="!px-4 !py-2 text-sm">
+            Öva
+          </ButtonLink>
+        </nav>
       </div>
     </header>
   );
