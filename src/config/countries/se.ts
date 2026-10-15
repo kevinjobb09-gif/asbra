@@ -30,9 +30,10 @@ export const se: CountryConfig = {
     officialInfoUrl: "https://www.uhr.se",
   },
 
+  // Månadsprenumeration utan bindningstid. Ändra priset här.
   pricing: {
-    amount: 149,
-    accessMonths: 6,
+    amount: 129,
+    interval: "month",
   },
 
   freeQuestionLimit: 15,

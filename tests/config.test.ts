@@ -12,7 +12,7 @@ describe("konfiguration", () => {
         expect(c.exam.passThreshold).toBeLessThanOrEqual(1);
       }
       expect(c.pricing.amount).toBeGreaterThan(0);
-      expect(c.pricing.accessMonths).toBeGreaterThan(0);
+      expect(c.pricing.interval).toBe("month");
       expect(c.freeQuestionLimit).toBeGreaterThan(0);
     }
   });
@@ -43,7 +43,7 @@ describe("konfiguration", () => {
   });
 
   it("priset visas i kronor", () => {
-    expect(formatPrice(getCountry("se")).replace(/\s/g, " ")).toBe("149 kr");
+    expect(formatPrice(getCountry("se")).replace(/\s/g, " ")).toBe("129 kr");
   });
 
   it("varumärkesnamnet finns på ett ställe och är ifyllt", () => {

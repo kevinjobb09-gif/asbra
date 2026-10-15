@@ -47,8 +47,8 @@
     "featureLanguageText": "Read the explanation in your language, and in Swedish if you want.",
     "featureCheckedTitle": "Checked questions",
     "featureCheckedText": "Every question has a source and is checked before it is published.",
-    "priceTitle": "One price. No subscription.",
-    "priceText": "Pay once and get access to everything for {months} months.",
+    "priceTitle": "Low monthly price. No commitment.",
+    "priceText": "Access to everything. Cancel whenever you want – right away and at no extra cost.",
     "priceCta": "Try for free first",
     "faqTitle": "Common questions",
     "faqOfficialQ": "Is this the official test?",
@@ -58,7 +58,9 @@
     "faqAccountQ": "Do I need to create an account?",
     "faqAccountA": "No, you can start practicing right away. You only give your email when you buy. What you have practiced is saved.",
     "faqFormatQ": "How many questions does the test have?",
-    "faqFormatA": "According to our information: about {q} questions in {m} minutes. Always check the latest information from UHR."
+    "faqFormatA": "According to our information: about {q} questions in {m} minutes. Always check the latest information from UHR.",
+    "faqCancelQ": "Can I cancel whenever I want?",
+    "faqCancelA": "Yes. There is no commitment period. You cancel with one click under Account, right away and at no extra cost. You keep access until the end of the month you have paid for."
   },
   "practiceIndex": {
     "title": "Practice",
@@ -126,15 +128,16 @@
     "benefitReview": "Repeat the questions you answered wrong",
     "benefitProgress": "See which chapters you need to study more",
     "benefitLanguages": "Explanations in {n} languages",
-    "payOnce": "Pay once. Access for {months} months. No subscription.",
-    "cta": "Unlock everything – {price}",
+    "cta": "Unlock everything – {price} per month",
     "tryFree": "Try for free first",
     "chapterTitle": "Unlock chapter {n}",
     "chapterIntro": "Practice by chapter is included when you unlock everything.",
     "examTitle": "Take a real practice test",
     "examIntro": "The practice test is included when you unlock everything.",
     "reviewTitle": "Repeat your mistakes",
-    "reviewIntro": "Practice the questions you answered wrong until you know them."
+    "reviewIntro": "Practice the questions you answered wrong until you know them.",
+    "perMonth": "per month",
+    "noCommitment": "No commitment. Cancel whenever you want – right away and at no extra cost."
   },
   "exam": {
     "title": "Practice test",
@@ -222,25 +225,27 @@
     "consentTerms": "I accept the terms of use and have read the privacy policy.",
     "readTerms": "Read the terms of use",
     "readPrivacy": "Read the privacy policy",
-    "pay": "Go to payment – {price}",
+    "pay": "Start the subscription – {price} per month",
     "secure": "Secure payment with Stripe. Card, Apple Pay and Google Pay.",
-    "discount": "Discount code {code}: {percent} % off",
+    "discount": "Discount code {code}: {percent} % off the first month",
     "originalPrice": "Normal price {price}",
     "errorEmail": "Please write a valid email address.",
     "errorConsent": "You need to tick both boxes to continue.",
     "errorPayment": "The payment could not be started. Please try again in a moment.",
     "errorNotConfigured": "Payment is not open yet. Please try again later.",
-    "alreadyAccess": "You already have access until {date}. If you buy again, it is extended by {months} months.",
+    "alreadyAccess": "You already have an active subscription. You manage it under Account.",
     "thanksTitle": "Thank you for your purchase!",
-    "thanksText": "You now have access to everything until {date}.",
+    "thanksText": "Your subscription is active. You have access to everything.",
     "processing": "We are confirming the payment …",
     "processingSlow": "This is taking longer than usual. Reload the page in a moment. If you have received the receipt, everything is ready.",
     "startPracticing": "Start practicing",
     "otherDevice": "On another phone or computer, log in with the email address {email}.",
-    "canceled": "The payment was canceled. No money has been taken."
+    "canceled": "The payment was canceled. No money has been taken.",
+    "subscriptionInfo": "The subscription renews automatically every month until you cancel it. You cancel with one click under Account and keep access until the end of the month you have paid for.",
+    "thenPrice": "Then {price} per month"
   },
   "refBanner": {
-    "text": "Discount code {code} is active: {percent} % off when you unlock everything."
+    "text": "Discount code {code} is active: {percent} % off the first month."
   },
   "login": {
     "title": "Log in",
@@ -264,13 +269,20 @@
     "login": "Log in",
     "logout": "Log out",
     "deleteTitle": "Delete account and data",
-    "deleteText": "Your account and everything you have practiced will be deleted forever. This cannot be undone. If you have bought access, it will also disappear.",
+    "deleteText": "Your account and everything you have practiced will be deleted forever. This cannot be undone. If you have a subscription, it ends right away.",
     "deleteConfirmLabel": "Write DELETE to confirm",
     "deleteConfirmWord": "DELETE",
     "deleteButton": "Delete my account and all data",
     "deleted": "Your account and all your data have been deleted.",
     "deleteError": "The account could not be deleted. Contact us and we will help you.",
-    "anonymousNote": "You are practicing without an account. Your answers are saved in this browser. If you want to delete them, you can do it here."
+    "anonymousNote": "You are practicing without an account. Your answers are saved in this browser. If you want to delete them, you can do it here.",
+    "subscriptionActive": "Your subscription is active. Next payment: {date}.",
+    "subscriptionCanceled": "The subscription is cancelled. You have access until {date}. No more payments will be taken.",
+    "subscriptionPastDue": "The latest payment did not go through. Stripe will try again. Please check your card.",
+    "cancelButton": "Cancel the subscription",
+    "cancelConfirm": "Do you want to cancel the subscription? You keep access until {date}. No more payments will be taken.",
+    "resumeButton": "Undo the cancellation",
+    "cancelError": "That did not work right now. Try again or contact us."
   },
   "share": {
     "question": "Do you know the answer?",

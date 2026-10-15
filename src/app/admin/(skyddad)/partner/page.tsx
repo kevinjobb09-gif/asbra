@@ -17,21 +17,32 @@ type Code = {
 /** Rabatt- och partnerkoder med försäljning och provision per kod. */
 export default async function PartnerPage() {
   const db = createAdminClient();
-  const [{ data: codes }, { data: sales }] = await Promise.all([
+  const [{ data: codes }, { data: payments }, { data: subs }] = await Promise.all([
     db.from("partner_codes").select("*").order("created_at", { ascending: false }),
-    db.from("purchases").select("ref_code, amount_minor, commission_minor, paid_at").eq("status", "paid"),
+    db.from("payments").select("ref_code, amount_minor, commission_minor"),
+    db.from("subscriptions").select("ref_code, status"),
   ]);
 
-  const byCode = new Map<string, { count: number; revenue: number; commission: number }>();
-  let total = { count: 0, revenue: 0 };
-  for (const s of sales ?? []) {
-    total = { count: total.count + 1, revenue: total.revenue + s.amount_minor };
+  // Kunder (prenumerationer) och intäkter per kod. Provision räknas på varje betald månad.
+  const byCode = new Map<string, { count: number; active: number; revenue: number; commission: number }>();
+  const entry = (code: string) => byCode.get(code) ?? { count: 0, active: 0, revenue: 0, commission: 0 };
+  const total = { count: 0, active: 0, revenue: 0 };
+  for (const s of subs ?? []) {
+    total.count++;
+    if (s.status === "active") total.active++;
     if (!s.ref_code) continue;
-    const c = byCode.get(s.ref_code) ?? { count: 0, revenue: 0, commission: 0 };
+    const c = entry(s.ref_code);
     c.count++;
-    c.revenue += s.amount_minor;
-    c.commission += s.commission_minor;
+    if (s.status === "active") c.active++;
     byCode.set(s.ref_code, c);
+  }
+  for (const p of payments ?? []) {
+    total.revenue += p.amount_minor;
+    if (!p.ref_code) continue;
+    const c = entry(p.ref_code);
+    c.revenue += p.amount_minor;
+    c.commission += p.commission_minor;
+    byCode.set(p.ref_code, c);
   }
 
   return (
@@ -39,11 +50,12 @@ export default async function PartnerPage() {
       <h1 className="text-2xl font-extrabold">Rabatt- och partnerkoder</h1>
       <p className="text-sm text-muted">
         Dela länken <code>https://DIN-DOMÄN/?ref=KOD</code> (eller t.ex. <code>/ar?ref=KOD</code>). Koden sparas i 30 dagar
-        hos besökaren. Köparen får rabatten och köpet registreras på koden.
+        hos besökaren. Köparen får rabatten <strong>första månaden</strong>. Provisionen räknas på <strong>varje betald månad</strong>
+        från kunder som kom via koden.
       </p>
 
       <section className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-        <Box label="Betalda köp totalt" value={String(total.count)} />
+        <Box label="Aktiva prenumerationer" value={`${total.active} (av ${total.count} totalt)`} />
         <Box label="Intäkt totalt (inkl. moms)" value={kr(total.revenue)} />
         <Box label="Provision att betala ut" value={kr([...byCode.values()].reduce((s, c) => s + c.commission, 0))} />
       </section>
@@ -56,7 +68,7 @@ export default async function PartnerPage() {
               <th className="p-3 text-start">Partner</th>
               <th className="p-3 text-end">Rabatt</th>
               <th className="p-3 text-end">Provision</th>
-              <th className="p-3 text-end">Köp</th>
+              <th className="p-3 text-end">Kunder (aktiva)</th>
               <th className="p-3 text-end">Intäkt</th>
               <th className="p-3 text-end">Att betala</th>
               <th className="p-3" />
@@ -64,7 +76,7 @@ export default async function PartnerPage() {
           </thead>
           <tbody className="divide-y divide-line">
             {((codes ?? []) as Code[]).map((c) => {
-              const s = byCode.get(c.code) ?? { count: 0, revenue: 0, commission: 0 };
+              const s = byCode.get(c.code) ?? { count: 0, active: 0, revenue: 0, commission: 0 };
               return (
                 <tr key={c.code} className={c.active ? "" : "opacity-50"}>
                   <td className="p-3 font-mono font-bold">{c.code}</td>
@@ -74,7 +86,9 @@ export default async function PartnerPage() {
                   </td>
                   <td className="p-3 text-end">{c.discount_percent} %</td>
                   <td className="p-3 text-end">{c.commission_percent} %</td>
-                  <td className="p-3 text-end">{s.count}</td>
+                  <td className="p-3 text-end">
+                    {s.count} ({s.active})
+                  </td>
                   <td className="p-3 text-end">{kr(s.revenue)}</td>
                   <td className="p-3 text-end font-bold">{kr(s.commission)}</td>
                   <td className="p-3 text-end">

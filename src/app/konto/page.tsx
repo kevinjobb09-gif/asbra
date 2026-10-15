@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import { getCountry, languages } from "@/config";
 import { getI18n } from "@/i18n/server";
 import { getAccess } from "@/lib/access";
+import { getUserSubscription } from "@/lib/payments/server";
 import { createClient } from "@/lib/supabase/server";
 import { ButtonLink } from "@/components/ButtonLink";
 import { DeleteAccountForm } from "./DeleteAccountForm";
+import { SubscriptionControls } from "./SubscriptionControls";
 import { logout } from "./actions";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -21,7 +23,9 @@ export default async function AccountPage({ searchParams }: Props) {
   const [{ t, lang }, access] = await Promise.all([getI18n(), getAccess()]);
   const { data } = await (await createClient()).auth.getUser();
   const user = data.user;
+  const subscription = user ? await getUserSubscription(user.id) : null;
   const dateFormat = new Intl.DateTimeFormat(languages[lang].htmlLang, { dateStyle: "long", timeZone: country.timeZone });
+  const periodEndText = subscription?.periodEnd ? dateFormat.format(new Date(subscription.periodEnd)) : "";
 
   if (raderad) {
     return (
@@ -45,11 +49,25 @@ export default async function AccountPage({ searchParams }: Props) {
             <br />
             <strong dir="ltr">{user.email}</strong>
           </p>
-          <p>
-            {access.expiresAt
-              ? t("account.accessUntil", { date: dateFormat.format(new Date(access.expiresAt)) })
-              : t("account.noAccess")}
-          </p>
+
+          {subscription ? (
+            <div className="space-y-3 rounded-xl bg-primary-soft p-4">
+              <p className="font-semibold">
+                {subscription.status === "past_due"
+                  ? t("account.subscriptionPastDue")
+                  : subscription.cancelAtPeriodEnd
+                    ? t("account.subscriptionCanceled", { date: periodEndText })
+                    : t("account.subscriptionActive", { date: periodEndText })}
+              </p>
+              {!subscription.cancelAtPeriodEnd && <p className="text-sm">{t("offer.noCommitment")}</p>}
+              <SubscriptionControls canceled={subscription.cancelAtPeriodEnd} periodEndText={periodEndText} />
+            </div>
+          ) : access.expiresAt ? (
+            <p>{t("account.accessUntil", { date: dateFormat.format(new Date(access.expiresAt)) })}</p>
+          ) : (
+            <p>{t("account.noAccess")}</p>
+          )}
+
           {!access.hasFullAccess && <ButtonLink href="/kop">{t("account.buy")}</ButtonLink>}
           <form action={logout}>
             <button className="font-semibold text-primary underline-offset-2 hover:underline">{t("account.logout")}</button>

@@ -47,8 +47,8 @@
     "featureLanguageText": "Lisez l’explication dans votre langue, et en suédois si vous voulez.",
     "featureCheckedTitle": "Questions vérifiées",
     "featureCheckedText": "Chaque question a une source et est vérifiée avant d’être publiée.",
-    "priceTitle": "Un seul prix. Sans abonnement.",
-    "priceText": "Payez une fois et accédez à tout pendant {months} mois.",
+    "priceTitle": "Petit prix mensuel. Sans engagement.",
+    "priceText": "Accès à tout. Résiliez quand vous voulez – immédiatement et sans frais supplémentaires.",
     "priceCta": "Essayer gratuitement d’abord",
     "faqTitle": "Questions fréquentes",
     "faqOfficialQ": "Est-ce le test officiel ?",
@@ -58,7 +58,9 @@
     "faqAccountQ": "Dois-je créer un compte ?",
     "faqAccountA": "Non, vous pouvez commencer tout de suite. Vous donnez votre e-mail seulement au moment de l’achat. Vos progrès sont enregistrés.",
     "faqFormatQ": "Combien de questions compte le test ?",
-    "faqFormatA": "D’après nos informations : environ {q} questions en {m} minutes. Vérifiez toujours les dernières informations auprès de l’UHR."
+    "faqFormatA": "D’après nos informations : environ {q} questions en {m} minutes. Vérifiez toujours les dernières informations auprès de l’UHR.",
+    "faqCancelQ": "Puis-je résilier quand je veux ?",
+    "faqCancelA": "Oui. Il n’y a pas de durée d’engagement. Vous résiliez en un clic dans Compte, immédiatement et sans frais supplémentaires. Vous gardez l’accès jusqu’à la fin du mois payé."
   },
   "practiceIndex": {
     "title": "S’entraîner",
@@ -126,15 +128,16 @@
     "benefitReview": "Revoyez les questions ratées",
     "benefitProgress": "Voyez quels chapitres réviser",
     "benefitLanguages": "Explications en {n} langues",
-    "payOnce": "Un seul paiement. Accès pendant {months} mois. Sans abonnement.",
-    "cta": "Tout débloquer – {price}",
+    "cta": "Tout débloquer – {price} par mois",
     "tryFree": "Essayer gratuitement d’abord",
     "chapterTitle": "Débloquer le chapitre {n}",
     "chapterIntro": "L’entraînement par chapitre est inclus quand vous débloquez tout.",
     "examTitle": "Faites un vrai test blanc",
     "examIntro": "Le test blanc est inclus quand vous débloquez tout.",
     "reviewTitle": "Revoir vos erreurs",
-    "reviewIntro": "Entraînez-vous sur les questions ratées jusqu’à les savoir."
+    "reviewIntro": "Entraînez-vous sur les questions ratées jusqu’à les savoir.",
+    "perMonth": "par mois",
+    "noCommitment": "Sans engagement. Résiliez quand vous voulez – immédiatement et sans frais supplémentaires."
   },
   "exam": {
     "title": "Test blanc",
@@ -222,25 +225,27 @@
     "consentTerms": "J’accepte les conditions d’utilisation et j’ai lu la politique de confidentialité.",
     "readTerms": "Lire les conditions d’utilisation",
     "readPrivacy": "Lire la politique de confidentialité",
-    "pay": "Passer au paiement – {price}",
+    "pay": "Démarrer l’abonnement – {price} par mois",
     "secure": "Paiement sécurisé avec Stripe. Carte, Apple Pay et Google Pay.",
-    "discount": "Code promo {code} : {percent} % de réduction",
+    "discount": "Code promo {code} : {percent} % de réduction le premier mois",
     "originalPrice": "Prix normal {price}",
     "errorEmail": "Saisissez une adresse e-mail valide.",
     "errorConsent": "Vous devez cocher les deux cases pour continuer.",
     "errorPayment": "Le paiement n’a pas pu démarrer. Réessayez dans un instant.",
     "errorNotConfigured": "Le paiement n’est pas encore ouvert. Réessayez plus tard.",
-    "alreadyAccess": "Vous avez déjà accès jusqu’au {date}. Si vous achetez à nouveau, l’accès est prolongé de {months} mois.",
+    "alreadyAccess": "Vous avez déjà un abonnement actif. Vous le gérez dans Compte.",
     "thanksTitle": "Merci pour votre achat !",
-    "thanksText": "Vous avez maintenant accès à tout jusqu’au {date}.",
+    "thanksText": "Votre abonnement est actif. Vous avez accès à tout.",
     "processing": "Nous confirmons le paiement …",
     "processingSlow": "Cela prend plus de temps que d’habitude. Rechargez la page dans un instant. Si vous avez reçu le reçu, tout est prêt.",
     "startPracticing": "Commencer l’entraînement",
     "otherDevice": "Sur un autre téléphone ou ordinateur, connectez-vous avec l’adresse {email}.",
-    "canceled": "Le paiement a été annulé. Aucun argent n’a été prélevé."
+    "canceled": "Le paiement a été annulé. Aucun argent n’a été prélevé.",
+    "subscriptionInfo": "L’abonnement se renouvelle automatiquement chaque mois jusqu’à ce que vous le résiliiez. Vous résiliez en un clic dans Compte et gardez l’accès jusqu’à la fin du mois payé.",
+    "thenPrice": "Ensuite {price} par mois"
   },
   "refBanner": {
-    "text": "Le code promo {code} est actif : {percent} % de réduction pour tout débloquer."
+    "text": "Le code promo {code} est actif : {percent} % de réduction le premier mois."
   },
   "login": {
     "title": "Se connecter",
@@ -264,13 +269,20 @@
     "login": "Se connecter",
     "logout": "Se déconnecter",
     "deleteTitle": "Supprimer le compte et les données",
-    "deleteText": "Votre compte et tout votre entraînement seront supprimés définitivement. C’est irréversible. Un accès acheté disparaîtra aussi.",
+    "deleteText": "Votre compte et tout votre entraînement seront supprimés définitivement. C’est irréversible. Si vous avez un abonnement, il prend fin immédiatement.",
     "deleteConfirmLabel": "Tapez SUPPRIMER pour confirmer",
     "deleteConfirmWord": "SUPPRIMER",
     "deleteButton": "Supprimer mon compte et toutes les données",
     "deleted": "Votre compte et toutes vos données ont été supprimés.",
     "deleteError": "Le compte n’a pas pu être supprimé. Contactez-nous, nous vous aiderons.",
-    "anonymousNote": "Vous vous entraînez sans compte. Vos réponses sont enregistrées dans ce navigateur. Vous pouvez les supprimer ici."
+    "anonymousNote": "Vous vous entraînez sans compte. Vos réponses sont enregistrées dans ce navigateur. Vous pouvez les supprimer ici.",
+    "subscriptionActive": "Votre abonnement est actif. Prochain paiement : {date}.",
+    "subscriptionCanceled": "L’abonnement est résilié. Vous avez accès jusqu’au {date}. Aucun autre paiement ne sera prélevé.",
+    "subscriptionPastDue": "Le dernier paiement n’est pas passé. Stripe va réessayer. Vérifiez votre carte.",
+    "cancelButton": "Résilier l’abonnement",
+    "cancelConfirm": "Voulez-vous résilier l’abonnement ? Vous gardez l’accès jusqu’au {date}. Aucun autre paiement ne sera prélevé.",
+    "resumeButton": "Annuler la résiliation",
+    "cancelError": "Cela n’a pas fonctionné. Réessayez ou contactez-nous."
   },
   "share": {
     "question": "Connaissez-vous la réponse ?",

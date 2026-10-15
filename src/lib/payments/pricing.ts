@@ -1,5 +1,5 @@
 /**
- * PRIS, RABATT, PROVISION OCH TILLGÅNGSTID
+ * PRIS, RABATT OCH PROVISION
  * Rena funktioner som testas i tests/payments.test.ts.
  */
 
@@ -26,29 +26,6 @@ export function commissionMinor(amountMinor: number, commissionPercent: number):
 function clampPercent(value: number, max: number): number {
   if (!Number.isFinite(value)) return 0;
   return Math.min(max, Math.max(0, Math.round(value)));
-}
-
-/**
- * Lägger till månader. Om dagen inte finns i målmånaden blir det sista dagen
- * i månaden (31 jan + 1 månad = 28/29 feb).
- */
-export function addMonths(date: Date, months: number): Date {
-  const result = new Date(date);
-  const day = result.getUTCDate();
-  result.setUTCDate(1);
-  result.setUTCMonth(result.getUTCMonth() + months);
-  const lastDay = new Date(Date.UTC(result.getUTCFullYear(), result.getUTCMonth() + 1, 0)).getUTCDate();
-  result.setUTCDate(Math.min(day, lastDay));
-  return result;
-}
-
-/**
- * Ny sluttid för tillgången. Har man redan tillgång förlängs den från den
- * nuvarande sluttiden, så att man aldrig förlorar dagar på att köpa igen.
- */
-export function accessExpiry(now: Date, currentExpiry: Date | null, months: number): Date {
-  const start = currentExpiry && currentExpiry > now ? currentExpiry : now;
-  return addMonths(start, months);
 }
 
 /** Normaliserar en rabattkod från en länk: små bokstäver, bara tillåtna tecken. */

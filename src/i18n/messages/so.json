@@ -47,8 +47,8 @@
     "featureLanguageText": "Ku akhri sharaxaadda luqaddaada, iyo af-Iswiidhish haddii aad rabto.",
     "featureCheckedTitle": "Su'aalo la hubiyay",
     "featureCheckedText": "Su'aal kasta waxay leedahay il, waana la hubiyaa ka hor inta aan la daabicin.",
-    "priceTitle": "Hal qiimo. Rukummo ma jiro.",
-    "priceText": "Hal mar bixi oo hel wax kasta muddo {months} bilood ah.",
+    "priceTitle": "Qiimo bille ah oo jaban. Ballan qaad ma jiro.",
+    "priceText": "Helitaan wax kasta. Jooji goorta aad rabto – isla markiiba oo kharash dheeraad ah la'aan.",
     "priceCta": "Marka hore bilaash isku day",
     "faqTitle": "Su'aalaha caadiga ah",
     "faqOfficialQ": "Ma kani waa imtixaanka rasmiga ah?",
@@ -58,7 +58,9 @@
     "faqAccountQ": "Ma u baahanahay inaan akoon sameeyo?",
     "faqAccountA": "Maya, hadda ayaad bilaabi kartaa. Email-kaaga waxaad qortaa oo keliya marka aad iibsanayso. Waxa aad ku tababaratay waa la kaydiyaa.",
     "faqFormatQ": "Imtixaanku immisa su'aalood ayuu leeyahay?",
-    "faqFormatA": "Sida macluumaadkayagu sheegayo: ilaa {q} su'aalood {m} daqiiqo gudahood. Had iyo jeer ka hubi macluumaadka ugu dambeeyay UHR."
+    "faqFormatA": "Sida macluumaadkayagu sheegayo: ilaa {q} su'aalood {m} daqiiqo gudahood. Had iyo jeer ka hubi macluumaadka ugu dambeeyay UHR.",
+    "faqCancelQ": "Ma joojin karaa goorta aan rabo?",
+    "faqCancelA": "Haa. Ma jiro muddo ballan qaad ah. Waxaad ku joojinaysaa hal guji oo Akoonka ah, isla markiiba oo kharash dheeraad ah la'aan. Waxaad haysanaysaa helitaanka ilaa dhammaadka bisha aad bixisay."
   },
   "practiceIndex": {
     "title": "Tababar",
@@ -126,15 +128,16 @@
     "benefitReview": "Ku celi su'aalaha aad khaldantay",
     "benefitProgress": "Arag cutubyada aad u baahan tahay inaad wax badan ka akhrido",
     "benefitLanguages": "Sharaxaad {n} luqadood",
-    "payOnce": "Hal mar bixi. Helitaan {months} bilood. Rukummo ma jiro.",
-    "cta": "Fur wax kasta – {price}",
+    "cta": "Fur wax kasta – {price} bishii",
     "tryFree": "Marka hore bilaash isku day",
     "chapterTitle": "Fur cutubka {n}",
     "chapterIntro": "Tababarka cutub-cutub wuxuu ku jiraa marka aad wax kasta furto.",
     "examTitle": "Samee imtixaan tijaabo ah oo dhab ah",
     "examIntro": "Imtixaanka tijaabada wuxuu ku jiraa marka aad wax kasta furto.",
     "reviewTitle": "Ku celi khaladaadkaaga",
-    "reviewIntro": "Ku tababar su'aalaha aad khaldantay ilaa aad barato."
+    "reviewIntro": "Ku tababar su'aalaha aad khaldantay ilaa aad barato.",
+    "perMonth": "bishii",
+    "noCommitment": "Ballan qaad ma jiro. Jooji goorta aad rabto – isla markiiba oo kharash dheeraad ah la'aan."
   },
   "exam": {
     "title": "Imtixaan tijaabo",
@@ -222,25 +225,27 @@
     "consentTerms": "Waan aqbalay shuruudaha isticmaalka, waxaanan akhriyay siyaasadda asturnaanta.",
     "readTerms": "Akhri shuruudaha isticmaalka",
     "readPrivacy": "Akhri siyaasadda asturnaanta",
-    "pay": "U gudub lacag bixinta – {price}",
+    "pay": "Bilow rukummada – {price} bishii",
     "secure": "Lacag bixin ammaan ah oo Stripe ah. Kaar, Apple Pay iyo Google Pay.",
-    "discount": "Koodhka qiimo dhimista {code}: {percent} % qiimo dhimis",
+    "discount": "Koodhka qiimo dhimista {code}: {percent} % qiimo dhimis bisha koowaad",
     "originalPrice": "Qiimaha caadiga ah {price}",
     "errorEmail": "Qor email sax ah.",
     "errorConsent": "Waa inaad calaamadisaa labada sanduuq si aad u sii wadato.",
     "errorPayment": "Lacag bixintu ma bilaabmin. Mar kale isku day wax yar kadib.",
     "errorNotConfigured": "Lacag bixintu weli ma furna. Mar dambe isku day.",
-    "alreadyAccess": "Waxaad haysataa helitaan ilaa {date}. Haddii aad mar kale iibsato, waxaa lagu daraa {months} bilood.",
+    "alreadyAccess": "Horeba waxaad leedahay rukummo firfircoon. Waxaad ku maamushaa Akoonka.",
     "thanksTitle": "Waad ku mahadsan tahay iibsigaaga!",
-    "thanksText": "Hadda waxaad haysataa helitaan wax kasta ilaa {date}.",
+    "thanksText": "Rukummadaadu waa firfircoon tahay. Waxaad heli kartaa wax kasta.",
     "processing": "Waxaan xaqiijinaynaa lacag bixinta …",
     "processingSlow": "Tani waxay qaadanaysaa waqti ka badan sidii caadiga ahayd. Wax yar kadib dib u soo rar bogga. Haddii aad heshay rasiidka, wax walba waa diyaar.",
     "startPracticing": "Bilow tababarka",
     "otherDevice": "Taleefan ama kombiyuutar kale ku gal email-ka {email}.",
-    "canceled": "Lacag bixinta waa la joojiyay. Wax lacag ah lagama jarin."
+    "canceled": "Lacag bixinta waa la joojiyay. Wax lacag ah lagama jarin.",
+    "subscriptionInfo": "Rukummadu si toos ah ayay u cusboonaataa bil kasta ilaa aad joojiso. Waxaad ku joojinaysaa hal guji oo Akoonka ah, waxaadna haysanaysaa helitaanka ilaa dhammaadka bisha aad bixisay.",
+    "thenPrice": "Kadibna {price} bishii"
   },
   "refBanner": {
-    "text": "Koodhka qiimo dhimista {code} waa shaqaynayaa: {percent} % qiimo dhimis marka aad wax kasta furto."
+    "text": "Koodhka qiimo dhimista {code} waa shaqaynayaa: {percent} % qiimo dhimis bisha koowaad."
   },
   "login": {
     "title": "Gal",
@@ -264,13 +269,20 @@
     "login": "Gal",
     "logout": "Ka bax",
     "deleteTitle": "Tirtir akoonka iyo xogta",
-    "deleteText": "Akoonkaaga iyo wax kasta oo aad ku tababaratay ayaa weligood la tirtiri doonaa. Dib looma celin karo. Haddii aad iibsatay helitaan, isna wuu baabi'i doonaa.",
+    "deleteText": "Akoonkaaga iyo wax kasta oo aad ku tababaratay ayaa weligood la tirtiri doonaa. Dib looma celin karo. Haddii aad leedahay rukummo, isla markiiba way dhammaanaysaa.",
     "deleteConfirmLabel": "Qor RADERA si aad u xaqiijiso",
     "deleteConfirmWord": "RADERA",
     "deleteButton": "Tirtir akoonkayga iyo dhammaan xogta",
     "deleted": "Akoonkaaga iyo dhammaan xogtaada waa la tirtiray.",
     "deleteError": "Akoonka lama tirtiri karin. Nala soo xiriir, waan ku caawin doonnaa.",
-    "anonymousNote": "Waxaad ku tababaranaysaa akoon la'aan. Jawaabahaaga waxaa lagu kaydiyaa browser-kan. Haddii aad rabto inaad tirtirto, halkan ayaad ka samayn kartaa."
+    "anonymousNote": "Waxaad ku tababaranaysaa akoon la'aan. Jawaabahaaga waxaa lagu kaydiyaa browser-kan. Haddii aad rabto inaad tirtirto, halkan ayaad ka samayn kartaa.",
+    "subscriptionActive": "Rukummadaadu waa firfircoon tahay. Lacag bixinta xigta: {date}.",
+    "subscriptionCanceled": "Rukummada waa la joojiyay. Waxaad haysataa helitaan ilaa {date}. Lacag kale lagaa jari maayo.",
+    "subscriptionPastDue": "Lacag bixintii ugu dambeysay ma dhicin. Stripe ayaa mar kale isku dayi doona. Hubi kaarkaaga.",
+    "cancelButton": "Jooji rukummada",
+    "cancelConfirm": "Ma rabtaa inaad joojiso rukummada? Waxaad haysanaysaa helitaan ilaa {date}. Lacag kale lagaa jari maayo.",
+    "resumeButton": "Ka noqo joojinta",
+    "cancelError": "Hadda ma shaqayn. Mar kale isku day ama nala soo xiriir."
   },
   "share": {
     "question": "Ma taqaannaa jawaabta?",

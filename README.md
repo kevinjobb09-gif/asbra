@@ -173,7 +173,9 @@ tests/          Vitest-tester
 ## Betalning (Stripe)
 
 Köp sker på `/kop`. Användaren måste kryssa i två rutor (ångerrätten och villkoren) – tidpunkten sparas i databasen.
-Betalningen sker hos Stripe och ger tillgång i 6 månader. Rabattkoder (`?ref=kod`) ger rabatt och provision.
+Det är en **månadsprenumeration för 129 kr** (pris i `src/config/countries/se.ts`) utan bindningstid. Användaren säger upp
+med ett klick på `/konto` och behåller tillgången till slutet av den betalda månaden. Rabattkoder (`?ref=kod`) ger
+rabatt på **första månaden**, och provisionen räknas på **varje betald månad**.
 
 **Testa betalningen (inga riktiga pengar):**
 
@@ -182,12 +184,16 @@ Betalningen sker hos Stripe och ger tillgång i 6 månader. Rabattkoder (`?ref=k
 3. Webhook lokalt: installera inget – använd i stället att tacksidan själv kontrollerar betalningen hos Stripe.
    (På den riktiga sajten används webhooken, se nedan.)
 4. Köp med testkortet `4242 4242 4242 4242`, valfritt framtida datum och valfri CVC.
+5. Gå till `/konto` och tryck **Säg upp prenumerationen** för att testa uppsägningen.
 
 **Webhook på den riktiga sajten:** Stripe → **Developers → Webhooks → Add endpoint**
 
 - URL: `https://DIN-DOMÄN/api/stripe/webhook`
-- Händelser: `checkout.session.completed`, `checkout.session.async_payment_succeeded`, `charge.refunded`
+- Händelser: `checkout.session.completed`, `invoice.paid`, `customer.subscription.updated`, `customer.subscription.deleted`
 - Kopiera **Signing secret** (`whsec_...`) till `STRIPE_WEBHOOK_SECRET` i Netlify.
+
+**Återbetalning:** återbetala betalningen i Stripe och tryck **Cancel subscription → Immediately** på kunden.
+Då tas tillgången bort automatiskt via webhooken.
 
 ## Marknadsföring och statistik
 
@@ -224,7 +230,7 @@ Statistiken sparar inga personuppgifter och använder inga spårningscookies.
       Sätt sedan `SUPABASE_CUSTOM_SMTP=1` och kör `npm.cmd run databas`, så får inloggningsmejlen länkar som
       fungerar i alla webbläsare.
 - [ ] Stripe: verifiera företaget, lägg in webhook och byt till live-nycklar.
-- [ ] Gör ett riktigt köp med ett eget kort och återbetala det i Stripe.
+- [ ] Starta en riktig prenumeration med ett eget kort, säg upp den på `/konto` och återbetala i Stripe.
 
 ## Status
 
@@ -234,7 +240,7 @@ Statistiken sparar inga personuppgifter och använder inga spårningscookies.
 - [x] Gratisläge
 - [x] Provsimulering
 - [x] Resultat, repetition och framsteg
-- [x] Betalning och konton (kvar för dig: Stripe-nycklar och webhook)
+- [x] Prenumeration 129 kr/mån utan bindningstid, konton och uppsägning (kvar för dig: Stripe-nycklar och webhook)
 - [x] Språk (24 språk, förklaringar översätts med skript)
 - [x] Marknadsföring och statistik
 - [x] Juridiska sidor (utkast) och Netlify-inställningar

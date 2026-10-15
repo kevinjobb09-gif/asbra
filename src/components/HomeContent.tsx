@@ -12,7 +12,7 @@ const SHOWCASE: LanguageCode[] = ["ar", "fa", "prs", "ti", "so", "en", "ckb", "p
 export async function HomeContent({ lang: langOverride }: { lang?: LanguageCode }) {
   const { t, lang } = await getI18n(langOverride);
   const country = getCountry();
-  const { exam, pricing, freeQuestionLimit, chapters } = country;
+  const { exam, freeQuestionLimit, chapters } = country;
   const material = country.studyMaterial.title;
   const showcase = [lang, ...SHOWCASE.filter((c) => c !== lang)].filter((c) => c !== "sv").slice(0, 9);
 
@@ -92,10 +92,10 @@ export async function HomeContent({ lang: langOverride }: { lang?: LanguageCode 
 
       <section className="mt-12 rounded-3xl bg-primary p-6 text-center text-white sm:p-10">
         <h2 className="text-2xl font-extrabold">{t("home.priceTitle")}</h2>
-        <p className="mt-4 text-5xl font-extrabold" dir="ltr">
-          {formatPrice(country)}
+        <p className="mt-4 text-5xl font-extrabold">
+          <span dir="ltr">{formatPrice(country)}</span> <span className="text-xl font-bold text-white/85">{t("offer.perMonth")}</span>
         </p>
-        <p className="mt-2 text-white/85">{t("home.priceText", { months: pricing.accessMonths })}</p>
+        <p className="mt-2 text-white/85">{t("home.priceText")}</p>
         <ButtonLink href="/ova/gratis" size="lg" className="mt-6 w-full max-w-sm">
           {t("home.priceCta")}
         </ButtonLink>
@@ -107,6 +107,7 @@ export async function HomeContent({ lang: langOverride }: { lang?: LanguageCode 
           <Faq q={t("home.faqOfficialQ")}>{t("home.faqOfficialA", { brand: brand.name })}</Faq>
           <Faq q={t("home.faqLanguageQ")}>{t("home.faqLanguageA")}</Faq>
           <Faq q={t("home.faqAccountQ")}>{t("home.faqAccountA")}</Faq>
+          <Faq q={t("home.faqCancelQ")}>{t("home.faqCancelA")}</Faq>
           <Faq q={t("home.faqFormatQ")}>{t("home.faqFormatA", { q: exam.questionCount, m: exam.durationMinutes })}</Faq>
         </div>
       </section>

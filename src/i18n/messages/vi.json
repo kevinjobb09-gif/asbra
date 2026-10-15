@@ -47,8 +47,8 @@
     "featureLanguageText": "Đọc giải thích bằng ngôn ngữ của bạn, và bằng tiếng Thụy Điển nếu muốn.",
     "featureCheckedTitle": "Câu hỏi đã kiểm tra",
     "featureCheckedText": "Mỗi câu hỏi đều có nguồn và được kiểm tra trước khi đăng.",
-    "priceTitle": "Một giá. Không đăng ký định kỳ.",
-    "priceText": "Trả một lần và dùng tất cả trong {months} tháng.",
+    "priceTitle": "Giá hàng tháng thấp. Không ràng buộc.",
+    "priceText": "Dùng tất cả. Hủy bất cứ lúc nào – ngay lập tức và không mất thêm phí.",
     "priceCta": "Dùng thử miễn phí trước",
     "faqTitle": "Câu hỏi thường gặp",
     "faqOfficialQ": "Đây có phải bài thi chính thức không?",
@@ -58,7 +58,9 @@
     "faqAccountQ": "Tôi có cần tạo tài khoản không?",
     "faqAccountA": "Không, bạn có thể bắt đầu ngay. Bạn chỉ nhập email khi mua. Những gì bạn đã luyện tập sẽ được lưu.",
     "faqFormatQ": "Bài thi có bao nhiêu câu?",
-    "faqFormatA": "Theo thông tin của chúng tôi: khoảng {q} câu trong {m} phút. Luôn kiểm tra thông tin mới nhất tại UHR."
+    "faqFormatA": "Theo thông tin của chúng tôi: khoảng {q} câu trong {m} phút. Luôn kiểm tra thông tin mới nhất tại UHR.",
+    "faqCancelQ": "Tôi có thể hủy bất cứ lúc nào không?",
+    "faqCancelA": "Có. Không có thời gian ràng buộc. Bạn hủy chỉ với một lần bấm trong Tài khoản, ngay lập tức và không mất thêm phí. Bạn vẫn dùng được đến hết tháng đã trả tiền."
   },
   "practiceIndex": {
     "title": "Luyện tập",
@@ -126,15 +128,16 @@
     "benefitReview": "Ôn lại những câu bạn trả lời sai",
     "benefitProgress": "Xem chương nào cần học thêm",
     "benefitLanguages": "Giải thích bằng {n} ngôn ngữ",
-    "payOnce": "Trả một lần. Dùng {months} tháng. Không đăng ký định kỳ.",
-    "cta": "Mở khóa tất cả – {price}",
+    "cta": "Mở khóa tất cả – {price} mỗi tháng",
     "tryFree": "Dùng thử miễn phí trước",
     "chapterTitle": "Mở khóa chương {n}",
     "chapterIntro": "Luyện theo chương có sẵn khi bạn mở khóa tất cả.",
     "examTitle": "Làm bài thi thử thật",
     "examIntro": "Bài thi thử có sẵn khi bạn mở khóa tất cả.",
     "reviewTitle": "Ôn lại câu sai",
-    "reviewIntro": "Luyện những câu bạn trả lời sai cho đến khi thuộc."
+    "reviewIntro": "Luyện những câu bạn trả lời sai cho đến khi thuộc.",
+    "perMonth": "mỗi tháng",
+    "noCommitment": "Không ràng buộc. Hủy bất cứ lúc nào – ngay lập tức và không mất thêm phí."
   },
   "exam": {
     "title": "Thi thử",
@@ -222,25 +225,27 @@
     "consentTerms": "Tôi đồng ý với điều khoản sử dụng và đã đọc chính sách quyền riêng tư.",
     "readTerms": "Đọc điều khoản sử dụng",
     "readPrivacy": "Đọc chính sách quyền riêng tư",
-    "pay": "Đến trang thanh toán – {price}",
+    "pay": "Bắt đầu đăng ký – {price} mỗi tháng",
     "secure": "Thanh toán an toàn qua Stripe. Thẻ, Apple Pay và Google Pay.",
-    "discount": "Mã giảm giá {code}: giảm {percent} %",
+    "discount": "Mã giảm giá {code}: giảm {percent} % tháng đầu",
     "originalPrice": "Giá gốc {price}",
     "errorEmail": "Vui lòng nhập email hợp lệ.",
     "errorConsent": "Bạn cần đánh dấu cả hai ô để tiếp tục.",
     "errorPayment": "Không thể bắt đầu thanh toán. Hãy thử lại sau giây lát.",
     "errorNotConfigured": "Chưa mở thanh toán. Hãy thử lại sau.",
-    "alreadyAccess": "Bạn đã có quyền truy cập đến {date}. Nếu mua lại, thời hạn được kéo dài thêm {months} tháng.",
+    "alreadyAccess": "Bạn đã có gói đăng ký đang hoạt động. Bạn quản lý trong Tài khoản.",
     "thanksTitle": "Cảm ơn bạn đã mua!",
-    "thanksText": "Giờ bạn có thể dùng tất cả đến {date}.",
+    "thanksText": "Gói đăng ký của bạn đang hoạt động. Bạn có thể dùng tất cả.",
     "processing": "Đang xác nhận thanh toán …",
     "processingSlow": "Việc này lâu hơn bình thường. Hãy tải lại trang sau giây lát. Nếu đã nhận biên lai thì mọi thứ đã xong.",
     "startPracticing": "Bắt đầu luyện tập",
     "otherDevice": "Trên điện thoại hoặc máy tính khác, đăng nhập bằng email {email}.",
-    "canceled": "Đã hủy thanh toán. Không bị trừ tiền."
+    "canceled": "Đã hủy thanh toán. Không bị trừ tiền.",
+    "subscriptionInfo": "Gói đăng ký tự động gia hạn mỗi tháng cho đến khi bạn hủy. Bạn hủy chỉ với một lần bấm trong Tài khoản và vẫn dùng được đến hết tháng đã trả tiền.",
+    "thenPrice": "Sau đó {price} mỗi tháng"
   },
   "refBanner": {
-    "text": "Mã giảm giá {code} đang áp dụng: giảm {percent} % khi mở khóa tất cả."
+    "text": "Mã giảm giá {code} đang áp dụng: giảm {percent} % tháng đầu."
   },
   "login": {
     "title": "Đăng nhập",
@@ -264,13 +269,20 @@
     "login": "Đăng nhập",
     "logout": "Đăng xuất",
     "deleteTitle": "Xóa tài khoản và dữ liệu",
-    "deleteText": "Tài khoản và mọi thứ bạn đã luyện tập sẽ bị xóa vĩnh viễn. Không thể khôi phục. Quyền truy cập đã mua cũng sẽ mất.",
+    "deleteText": "Tài khoản và mọi thứ bạn đã luyện tập sẽ bị xóa vĩnh viễn. Không thể khôi phục. Nếu bạn có gói đăng ký, gói sẽ kết thúc ngay.",
     "deleteConfirmLabel": "Nhập XOA để xác nhận",
     "deleteConfirmWord": "XOA",
     "deleteButton": "Xóa tài khoản và toàn bộ dữ liệu",
     "deleted": "Tài khoản và toàn bộ dữ liệu của bạn đã bị xóa.",
     "deleteError": "Không thể xóa tài khoản. Hãy liên hệ, chúng tôi sẽ giúp bạn.",
-    "anonymousNote": "Bạn đang luyện tập không cần tài khoản. Câu trả lời được lưu trong trình duyệt này. Bạn có thể xóa chúng ở đây."
+    "anonymousNote": "Bạn đang luyện tập không cần tài khoản. Câu trả lời được lưu trong trình duyệt này. Bạn có thể xóa chúng ở đây.",
+    "subscriptionActive": "Gói đăng ký đang hoạt động. Lần thanh toán tiếp theo: {date}.",
+    "subscriptionCanceled": "Đã hủy gói đăng ký. Bạn dùng được đến {date}. Sẽ không trừ tiền thêm.",
+    "subscriptionPastDue": "Lần thanh toán gần nhất không thành công. Stripe sẽ thử lại. Hãy kiểm tra thẻ của bạn.",
+    "cancelButton": "Hủy gói đăng ký",
+    "cancelConfirm": "Bạn muốn hủy gói đăng ký? Bạn vẫn dùng được đến {date}. Sẽ không trừ tiền thêm.",
+    "resumeButton": "Hoàn tác việc hủy",
+    "cancelError": "Hiện chưa thực hiện được. Hãy thử lại hoặc liên hệ chúng tôi."
   },
   "share": {
     "question": "Bạn có biết đáp án không?",

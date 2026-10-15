@@ -43,10 +43,10 @@ export type CountryConfig = {
   };
 
   pricing: {
-    /** Pris i hela kronor/euro, inklusive moms. */
+    /** Pris per månad i hela kronor/euro, inklusive moms. */
     amount: number;
-    /** Hur många månader köpet ger tillgång. */
-    accessMonths: number;
+    /** Prenumerationen förnyas varje månad tills kunden säger upp den. Ingen bindningstid. */
+    interval: "month";
   };
 
   /** Antal frågor man får öva på gratis innan erbjudandet visas. */

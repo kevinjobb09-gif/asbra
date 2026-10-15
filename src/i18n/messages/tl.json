@@ -47,8 +47,8 @@
     "featureLanguageText": "Basahin ang paliwanag sa sarili mong wika, at sa Swedish kung gusto mo.",
     "featureCheckedTitle": "Mga sinuring tanong",
     "featureCheckedText": "May pinagmulan ang bawat tanong at sinusuri bago ilathala.",
-    "priceTitle": "Isang presyo. Walang subscription.",
-    "priceText": "Magbayad nang isang beses at magamit ang lahat sa loob ng {months} buwan.",
+    "priceTitle": "Mababang buwanang presyo. Walang lock-in.",
+    "priceText": "Access sa lahat. Mag-cancel kahit kailan – agad at walang dagdag na bayad.",
     "priceCta": "Subukan muna nang libre",
     "faqTitle": "Mga madalas itanong",
     "faqOfficialQ": "Ito ba ang opisyal na pagsusulit?",
@@ -58,7 +58,9 @@
     "faqAccountQ": "Kailangan ko bang gumawa ng account?",
     "faqAccountA": "Hindi, puwede kang magsimula agad. Ilalagay mo lang ang email mo kapag bumili ka. Nai-save ang iyong pagsasanay.",
     "faqFormatQ": "Ilang tanong ang pagsusulit?",
-    "faqFormatA": "Ayon sa aming impormasyon: mga {q} tanong sa loob ng {m} minuto. Laging tingnan ang pinakabagong impormasyon sa UHR."
+    "faqFormatA": "Ayon sa aming impormasyon: mga {q} tanong sa loob ng {m} minuto. Laging tingnan ang pinakabagong impormasyon sa UHR.",
+    "faqCancelQ": "Puwede ba akong mag-cancel kahit kailan?",
+    "faqCancelA": "Oo. Walang lock-in period. Mag-cancel sa isang click sa Account, agad at walang dagdag na bayad. May access ka hanggang sa katapusan ng buwang binayaran mo."
   },
   "practiceIndex": {
     "title": "Magsanay",
@@ -126,15 +128,16 @@
     "benefitReview": "Ulitin ang mga tanong na mali ang sagot mo",
     "benefitProgress": "Tingnan kung aling kabanata ang dapat pang aralin",
     "benefitLanguages": "Mga paliwanag sa {n} wika",
-    "payOnce": "Isang bayad. {months} buwang access. Walang subscription.",
-    "cta": "I-unlock ang lahat – {price}",
+    "cta": "I-unlock ang lahat – {price} kada buwan",
     "tryFree": "Subukan muna nang libre",
     "chapterTitle": "I-unlock ang kabanata {n}",
     "chapterIntro": "Kasama ang pagsasanay ayon sa kabanata kapag na-unlock mo ang lahat.",
     "examTitle": "Kumuha ng tunay na practice test",
     "examIntro": "Kasama ang practice test kapag na-unlock mo ang lahat.",
     "reviewTitle": "Ulitin ang mga mali",
-    "reviewIntro": "Sanayin ang mga tanong na mali ang sagot mo hanggang matutunan mo."
+    "reviewIntro": "Sanayin ang mga tanong na mali ang sagot mo hanggang matutunan mo.",
+    "perMonth": "kada buwan",
+    "noCommitment": "Walang lock-in. Mag-cancel kahit kailan – agad at walang dagdag na bayad."
   },
   "exam": {
     "title": "Practice test",
@@ -222,25 +225,27 @@
     "consentTerms": "Tinatanggap ko ang mga tuntunin ng paggamit at nabasa ko ang patakaran sa privacy.",
     "readTerms": "Basahin ang mga tuntunin ng paggamit",
     "readPrivacy": "Basahin ang patakaran sa privacy",
-    "pay": "Pumunta sa bayad – {price}",
+    "pay": "Simulan ang subscription – {price} kada buwan",
     "secure": "Ligtas na bayad gamit ang Stripe. Card, Apple Pay at Google Pay.",
-    "discount": "Discount code {code}: {percent} % diskwento",
+    "discount": "Discount code {code}: {percent} % diskwento sa unang buwan",
     "originalPrice": "Karaniwang presyo {price}",
     "errorEmail": "Maglagay ng tamang email.",
     "errorConsent": "Kailangan mong i-check ang dalawang kahon para magpatuloy.",
     "errorPayment": "Hindi nasimulan ang bayad. Subukan ulit pagkalipas ng ilang sandali.",
     "errorNotConfigured": "Hindi pa bukas ang pagbabayad. Subukan ulit mamaya.",
-    "alreadyAccess": "May access ka na hanggang {date}. Kapag bumili ka ulit, madadagdagan ito ng {months} buwan.",
+    "alreadyAccess": "May aktibong subscription ka na. Pinamamahalaan mo ito sa Account.",
     "thanksTitle": "Salamat sa iyong pagbili!",
-    "thanksText": "May access ka na sa lahat hanggang {date}.",
+    "thanksText": "Aktibo ang iyong subscription. May access ka sa lahat.",
     "processing": "Kinukumpirma namin ang bayad …",
     "processingSlow": "Mas matagal ito kaysa karaniwan. I-reload ang pahina pagkalipas ng ilang sandali. Kung natanggap mo na ang resibo, handa na ang lahat.",
     "startPracticing": "Magsimulang magsanay",
     "otherDevice": "Sa ibang telepono o computer, mag-log in gamit ang email na {email}.",
-    "canceled": "Kinansela ang bayad. Walang perang nakaltas."
+    "canceled": "Kinansela ang bayad. Walang perang nakaltas.",
+    "subscriptionInfo": "Awtomatikong nare-renew ang subscription buwan-buwan hanggang i-cancel mo. Mag-cancel sa isang click sa Account at may access ka hanggang sa katapusan ng buwang binayaran mo.",
+    "thenPrice": "Pagkatapos ay {price} kada buwan"
   },
   "refBanner": {
-    "text": "Aktibo ang discount code {code}: {percent} % diskwento kapag in-unlock mo ang lahat."
+    "text": "Aktibo ang discount code {code}: {percent} % diskwento sa unang buwan."
   },
   "login": {
     "title": "Mag-log in",
@@ -264,13 +269,20 @@
     "login": "Mag-log in",
     "logout": "Mag-log out",
     "deleteTitle": "Burahin ang account at data",
-    "deleteText": "Permanenteng mabubura ang account mo at lahat ng iyong pagsasanay. Hindi na ito maibabalik. Mawawala rin ang biniling access.",
+    "deleteText": "Permanenteng mabubura ang account mo at lahat ng iyong pagsasanay. Hindi na ito maibabalik. Kung may subscription ka, matatapos ito agad.",
     "deleteConfirmLabel": "I-type ang DELETE para kumpirmahin",
     "deleteConfirmWord": "DELETE",
     "deleteButton": "Burahin ang aking account at lahat ng data",
     "deleted": "Nabura na ang iyong account at lahat ng data.",
     "deleteError": "Hindi nabura ang account. Makipag-ugnayan sa amin at tutulungan ka namin.",
-    "anonymousNote": "Nagsasanay ka nang walang account. Naka-save ang mga sagot mo sa browser na ito. Kung gusto mo, mabubura mo ang mga ito dito."
+    "anonymousNote": "Nagsasanay ka nang walang account. Naka-save ang mga sagot mo sa browser na ito. Kung gusto mo, mabubura mo ang mga ito dito.",
+    "subscriptionActive": "Aktibo ang iyong subscription. Susunod na bayad: {date}.",
+    "subscriptionCanceled": "Na-cancel ang subscription. May access ka hanggang {date}. Wala nang ibabawas na bayad.",
+    "subscriptionPastDue": "Hindi pumasok ang huling bayad. Susubukan ulit ng Stripe. Tingnan ang iyong card.",
+    "cancelButton": "I-cancel ang subscription",
+    "cancelConfirm": "Gusto mo bang i-cancel ang subscription? May access ka pa hanggang {date}. Wala nang ibabawas na bayad.",
+    "resumeButton": "Bawiin ang pag-cancel",
+    "cancelError": "Hindi ito gumana ngayon. Subukan ulit o makipag-ugnayan sa amin."
   },
   "share": {
     "question": "Alam mo ba ang sagot?",

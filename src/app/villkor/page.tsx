@@ -24,30 +24,33 @@ export default function TermsPage() {
         från det riktiga provet. Vi lovar inte att du blir godkänd på provet.
       </p>
 
-      <h2>2. Gratis och betald tillgång</h2>
+      <h2>2. Gratis och prenumeration</h2>
       <p>
-        Du kan öva på ett begränsat antal frågor gratis utan konto. Genom en engångsbetalning på {formatPrice(country)}{" "}
-        (inklusive moms) får du tillgång till allt innehåll i {country.pricing.accessMonths} månader från köpet. Det är
-        ingen prenumeration och inget dras automatiskt efter perioden. Köper du igen medan du har tillgång förlängs den.
+        Du kan öva på ett begränsat antal frågor gratis utan konto. Allt innehåll får du med en månadsprenumeration för{" "}
+        {formatPrice(country)} i månaden (inklusive moms). Prenumerationen förnyas automatiskt varje månad tills du säger upp
+        den. Har du kommit via en rabattkod gäller rabatten den första månaden.
       </p>
 
-      <h2>3. Betalning</h2>
-      <p>
-        Betalningen hanteras av Stripe. Vi ser eller sparar aldrig dina kortuppgifter. Kvitto skickas till den
-        e-postadress du anger.
-      </p>
+      <h2>3. Ingen bindningstid – säg upp när du vill</h2>
+      <ul>
+        <li>Det finns ingen bindningstid och ingen uppsägningstid.</li>
+        <li>Du säger upp med ett klick under <strong>Konto</strong>, direkt och utan extra kostnad.</li>
+        <li>Efter uppsägningen dras inga fler betalningar. Du behåller tillgången till slutet av den månad du redan har betalat för.</li>
+        <li>Raderar du ditt konto avslutas prenumerationen direkt.</li>
+      </ul>
 
-      <h2>4. Ångerrätt</h2>
+      <h2>4. Betalning och ångerrätt</h2>
       <p>
-        Tjänsten är digitalt innehåll som levereras direkt. Innan du betalar ber vi dig uttryckligen godkänna att
+        Betalningen hanteras av Stripe. Vi ser eller sparar aldrig dina kortuppgifter. Kvitto skickas till den e-postadress du
+        anger. Tjänsten är digitalt innehåll som levereras direkt. Innan du betalar ber vi dig uttryckligen godkänna att
         leveransen börjar direkt och att du därmed inte har någon ångerrätt (2 kap. 11 § lagen om distansavtal och avtal
-        utanför affärslokaler). Har tjänsten fel eller fungerar den inte gäller dina rättigheter enligt konsumentlagstiftningen –
-        kontakta oss så löser vi det.
+        utanför affärslokaler). Du kan ändå alltid säga upp prenumerationen enligt punkt 3. Har tjänsten fel eller fungerar
+        den inte gäller dina rättigheter enligt konsumentlagstiftningen – kontakta oss så löser vi det.
       </p>
 
       <h2>5. Ditt konto</h2>
       <ul>
-        <li>Ditt konto skapas när du köper. Du loggar in med en länk som skickas till din e-post.</li>
+        <li>Ditt konto skapas när du startar prenumerationen. Du loggar in med en länk som skickas till din e-post.</li>
         <li>Tillgången är personlig och får inte delas eller säljas vidare.</li>
         <li>Du kan när som helst radera ditt konto och all din data på sidan Konto.</li>
       </ul>
@@ -63,14 +66,14 @@ export default function TermsPage() {
       <h2>7. Ansvar</h2>
       <p>
         Tjänsten är ett övningsverktyg. Vi ansvarar inte för resultatet på provet eller för beslut i ditt
-        medborgarskapsärende. Vårt ansvar är begränsat till det belopp du har betalat, utom vid grov vårdslöshet eller
+        medborgarskapsärende. Vårt ansvar är begränsat till det belopp du har betalat den senaste månaden, utom vid grov vårdslöshet eller
         där lag säger annat.
       </p>
 
       <h2>8. Ändringar</h2>
       <p>
         Vi kan uppdatera villkoren. Viktiga ändringar meddelar vi på webbplatsen. Ändringar påverkar inte en tillgång du
-        redan har betalat för.
+        redan har betalat för. Vid prisändring meddelar vi dig i förväg och du kan säga upp innan det nya priset gäller.
       </p>
 
       <h2>9. Tvister och lag</h2>

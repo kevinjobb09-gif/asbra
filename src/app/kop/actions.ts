@@ -8,18 +8,25 @@ import { publicEnv } from "@/lib/env";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { computePrice } from "@/lib/payments/pricing";
-import { getActiveRef, getStripe, isStripeConfigured, recordEvent } from "@/lib/payments/server";
+import {
+  getActiveRef,
+  getFirstMonthCoupon,
+  getStripe,
+  getUserSubscription,
+  isStripeConfigured,
+  recordEvent,
+} from "@/lib/payments/server";
 
 export type CheckoutState = { error?: string; email?: string };
 
-/** Stripe visar betalsidan på användarens språk när det finns, annars engelska. */
+/** Stripe visar betalsidan på användarens språk när det finns, annars automatiskt. */
 const STRIPE_LOCALES = new Set(["sv", "en", "fr", "es", "pl", "ru", "th", "tr", "vi", "fi", "zh"]);
 
 /**
- * Startar betalningen:
+ * Startar prenumerationen:
  * 1. kontrollerar e-post och att båda kryssrutorna är ikryssade,
  * 2. sparar köpet och tidpunkten för samtycket,
- * 3. skickar användaren till Stripe Checkout.
+ * 3. skickar användaren till Stripe Checkout (månadsprenumeration, ingen bindningstid).
  */
 export async function startCheckout(_prev: CheckoutState, formData: FormData): Promise<CheckoutState> {
   const { t, lang } = await getI18n();
@@ -32,7 +39,7 @@ export async function startCheckout(_prev: CheckoutState, formData: FormData): P
   if (!isStripeConfigured()) return { error: t("buy.errorNotConfigured"), email };
 
   // Se till att besökaren har en användare (anonym om hen inte övat än), så att
-  // framstegen och köpet hamnar på samma konto.
+  // framstegen och prenumerationen hamnar på samma konto.
   const supabase = await createClient();
   let { data: auth } = await supabase.auth.getUser();
   if (!auth.user) {
@@ -43,10 +50,12 @@ export async function startCheckout(_prev: CheckoutState, formData: FormData): P
     }
     auth = { user: data.user! };
   }
+  // Har man redan en prenumeration ska man inte kunna starta en till.
+  if (await getUserSubscription(auth.user!.id)) return { error: t("buy.alreadyAccess"), email };
 
   const country = getCountry();
   const ref = await getActiveRef();
-  const price = computePrice(country.pricing.amount, ref?.discountPercent ?? 0);
+  const firstMonth = computePrice(country.pricing.amount, ref?.discountPercent ?? 0);
   const consentAt = new Date().toISOString();
 
   const db = createAdminClient();
@@ -57,12 +66,11 @@ export async function startCheckout(_prev: CheckoutState, formData: FormData): P
       email,
       country: country.code,
       currency: country.currency,
-      list_price_minor: price.listPriceMinor,
-      amount_minor: price.amountMinor,
+      list_price_minor: firstMonth.listPriceMinor,
+      amount_minor: firstMonth.amountMinor,
       ref_code: ref?.code ?? null,
-      discount_percent: price.discountPercent,
+      discount_percent: firstMonth.discountPercent,
       commission_percent: ref?.commissionPercent ?? 0,
-      access_months: country.pricing.accessMonths,
       consent_digital_delivery_at: consentAt,
       consent_terms_at: consentAt,
       language: lang,
@@ -77,30 +85,34 @@ export async function startCheckout(_prev: CheckoutState, formData: FormData): P
   let url: string | null = null;
   try {
     const site = publicEnv.siteUrl.replace(/\/$/, "");
+    const metadata = { purchase_id: purchase.id, user_id: auth.user!.id, ref_code: ref?.code ?? "" };
     const session = await getStripe().checkout.sessions.create({
-      mode: "payment",
+      mode: "subscription",
       customer_email: email,
       client_reference_id: purchase.id,
-      metadata: { purchase_id: purchase.id, user_id: auth.user!.id, ref_code: ref?.code ?? "" },
-      payment_intent_data: { metadata: { purchase_id: purchase.id } },
+      metadata,
+      subscription_data: { metadata },
       line_items: [
         {
           quantity: 1,
           price_data: {
             currency: country.currency.toLowerCase(),
-            unit_amount: price.amountMinor,
+            unit_amount: firstMonth.listPriceMinor,
+            recurring: { interval: country.pricing.interval },
             product_data: {
-              name: `${brand.name} – ${country.pricing.accessMonths} månaders tillgång`,
-              description: "Övning inför medborgarskapsprovet i samhällskunskap. Engångsbetalning, ingen prenumeration.",
+              name: `${brand.name} – månadsprenumeration`,
+              description: "Övning inför medborgarskapsprovet. Ingen bindningstid – säg upp när du vill.",
             },
           },
         },
       ],
+      // Rabatt från en partnerkod gäller första månaden.
+      ...(firstMonth.discountPercent > 0 ? { discounts: [{ coupon: await getFirstMonthCoupon(firstMonth.discountPercent) }] } : {}),
       locale: (STRIPE_LOCALES.has(lang) ? lang : "auto") as "auto",
       custom_text: {
         submit: {
           message:
-            "Du får tillgång direkt efter betalningen. Du har samtyckt till att ångerrätten upphör när tillgången börjar.",
+            "Ingen bindningstid. Säg upp när du vill under Konto – direkt och utan extra kostnad. Du har samtyckt till att ångerrätten upphör när tillgången börjar.",
         },
       },
       success_url: `${site}/kop/klart?session_id={CHECKOUT_SESSION_ID}`,

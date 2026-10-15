@@ -47,8 +47,8 @@
     "featureLanguageText": "用你的语言阅读解释，也可以切换到瑞典语。",
     "featureCheckedTitle": "经过审核的题目",
     "featureCheckedText": "每道题都有出处，发布前经过审核。",
-    "priceTitle": "一次付费，无需订阅。",
-    "priceText": "付费一次，即可在 {months} 个月内使用全部内容。",
+    "priceTitle": "月费低廉，没有合约期。",
+    "priceText": "畅享全部内容。随时取消——立即生效，无额外费用。",
     "priceCta": "先免费试试",
     "faqTitle": "常见问题",
     "faqOfficialQ": "这是官方考试吗？",
@@ -58,7 +58,9 @@
     "faqAccountQ": "需要注册账户吗？",
     "faqAccountA": "不需要，可以马上开始。只有购买时才需要填写邮箱。你的练习记录会被保存。",
     "faqFormatQ": "考试有多少道题？",
-    "faqFormatA": "根据我们的信息：大约 {m} 分钟 {q} 道题。请始终以 UHR 的最新信息为准。"
+    "faqFormatA": "根据我们的信息：大约 {m} 分钟 {q} 道题。请始终以 UHR 的最新信息为准。",
+    "faqCancelQ": "我可以随时取消吗？",
+    "faqCancelA": "可以。没有合约期。在“账户”页面一键取消，立即生效，无额外费用。已付费的月份结束前仍可继续使用。"
   },
   "practiceIndex": {
     "title": "练习",
@@ -126,15 +128,16 @@
     "benefitReview": "复习答错的题",
     "benefitProgress": "了解哪些章节需要多复习",
     "benefitLanguages": "{n} 种语言的解释",
-    "payOnce": "一次付费，{months} 个月有效，无需订阅。",
-    "cta": "解锁全部 – {price}",
+    "cta": "解锁全部 – 每月 {price}",
     "tryFree": "先免费试试",
     "chapterTitle": "解锁第 {n} 章",
     "chapterIntro": "解锁全部内容后即可按章节练习。",
     "examTitle": "参加真正的模拟考试",
     "examIntro": "解锁全部内容后即可参加模拟考试。",
     "reviewTitle": "复习错题",
-    "reviewIntro": "反复练习答错的题，直到掌握为止。"
+    "reviewIntro": "反复练习答错的题，直到掌握为止。",
+    "perMonth": "每月",
+    "noCommitment": "没有合约期。随时取消——立即生效，无额外费用。"
   },
   "exam": {
     "title": "模拟考试",
@@ -222,25 +225,27 @@
     "consentTerms": "我接受使用条款，并已阅读隐私政策。",
     "readTerms": "阅读使用条款",
     "readPrivacy": "阅读隐私政策",
-    "pay": "去付款 – {price}",
+    "pay": "开始订阅 – 每月 {price}",
     "secure": "通过 Stripe 安全付款。支持银行卡、Apple Pay 和 Google Pay。",
-    "discount": "优惠码 {code}：优惠 {percent} %",
+    "discount": "优惠码 {code}：首月优惠 {percent} %",
     "originalPrice": "原价 {price}",
     "errorEmail": "请输入有效的邮箱地址。",
     "errorConsent": "请勾选两个选项后继续。",
     "errorPayment": "无法开始付款，请稍后再试。",
     "errorNotConfigured": "付款功能尚未开放，请稍后再试。",
-    "alreadyAccess": "你的使用权有效期至 {date}。再次购买将延长 {months} 个月。",
+    "alreadyAccess": "你已有有效的订阅，可在“账户”页面管理。",
     "thanksTitle": "感谢购买！",
-    "thanksText": "你现在可以使用全部内容，有效期至 {date}。",
+    "thanksText": "你的订阅已生效，可以使用全部内容。",
     "processing": "正在确认付款 …",
     "processingSlow": "比平时慢一些。请稍后刷新页面。如果已收到收据，一切就已完成。",
     "startPracticing": "开始练习",
     "otherDevice": "在其他手机或电脑上，请用邮箱 {email} 登录。",
-    "canceled": "付款已取消，没有扣款。"
+    "canceled": "付款已取消，没有扣款。",
+    "subscriptionInfo": "订阅每月自动续费，直到你取消为止。在“账户”页面一键取消，已付费的月份结束前仍可继续使用。",
+    "thenPrice": "之后每月 {price}"
   },
   "refBanner": {
-    "text": "优惠码 {code} 已生效：解锁全部可享 {percent} % 优惠。"
+    "text": "优惠码 {code} 已生效：首月优惠 {percent} %。"
   },
   "login": {
     "title": "登录",
@@ -264,13 +269,20 @@
     "login": "登录",
     "logout": "退出登录",
     "deleteTitle": "删除账户和数据",
-    "deleteText": "你的账户和所有练习记录将被永久删除，无法恢复。已购买的使用权也会一并失效。",
+    "deleteText": "你的账户和所有练习记录将被永久删除，无法恢复。如有订阅，将立即终止。",
     "deleteConfirmLabel": "输入 DELETE 确认",
     "deleteConfirmWord": "DELETE",
     "deleteButton": "删除我的账户和全部数据",
     "deleted": "你的账户和全部数据已删除。",
     "deleteError": "无法删除账户。请联系我们，我们会帮助你。",
-    "anonymousNote": "你正在未注册状态下练习。你的答案保存在此浏览器中。如需删除，可以在这里操作。"
+    "anonymousNote": "你正在未注册状态下练习。你的答案保存在此浏览器中。如需删除，可以在这里操作。",
+    "subscriptionActive": "你的订阅有效。下次扣款：{date}。",
+    "subscriptionCanceled": "订阅已取消。你可以使用到 {date}，之后不会再扣款。",
+    "subscriptionPastDue": "最近一次付款未成功。Stripe 会再次尝试，请检查你的银行卡。",
+    "cancelButton": "取消订阅",
+    "cancelConfirm": "确定要取消订阅吗？你可以使用到 {date}，之后不会再扣款。",
+    "resumeButton": "撤销取消",
+    "cancelError": "暂时无法完成，请重试或联系我们。"
   },
   "share": {
     "question": "你知道答案吗？",

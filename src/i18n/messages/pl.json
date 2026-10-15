@@ -47,8 +47,8 @@
     "featureLanguageText": "Czytaj wyjaśnienie w swoim języku, a jeśli chcesz, także po szwedzku.",
     "featureCheckedTitle": "Sprawdzone pytania",
     "featureCheckedText": "Każde pytanie ma źródło i jest sprawdzane przed publikacją.",
-    "priceTitle": "Jedna cena. Bez subskrypcji.",
-    "priceText": "Zapłać raz i miej dostęp do wszystkiego przez {months} miesięcy.",
+    "priceTitle": "Niska cena miesięczna. Bez zobowiązań.",
+    "priceText": "Dostęp do wszystkiego. Anuluj, kiedy chcesz – od razu i bez dodatkowych kosztów.",
     "priceCta": "Najpierw wypróbuj za darmo",
     "faqTitle": "Częste pytania",
     "faqOfficialQ": "Czy to oficjalny test?",
@@ -58,7 +58,9 @@
     "faqAccountQ": "Czy muszę założyć konto?",
     "faqAccountA": "Nie, możesz zacząć od razu. E-mail podajesz dopiero przy zakupie. Twoje postępy są zapisywane.",
     "faqFormatQ": "Ile pytań ma test?",
-    "faqFormatA": "Według naszych informacji: około {q} pytań w {m} minut. Zawsze sprawdzaj aktualne informacje w UHR."
+    "faqFormatA": "Według naszych informacji: około {q} pytań w {m} minut. Zawsze sprawdzaj aktualne informacje w UHR.",
+    "faqCancelQ": "Czy mogę zrezygnować w dowolnym momencie?",
+    "faqCancelA": "Tak. Nie ma okresu zobowiązania. Rezygnujesz jednym kliknięciem w zakładce Konto, od razu i bez dodatkowych kosztów. Dostęp masz do końca opłaconego miesiąca."
   },
   "practiceIndex": {
     "title": "Ćwicz",
@@ -126,15 +128,16 @@
     "benefitReview": "Powtarzaj pytania, na które odpowiedziałeś źle",
     "benefitProgress": "Zobacz, które rozdziały musisz powtórzyć",
     "benefitLanguages": "Wyjaśnienia w {n} językach",
-    "payOnce": "Płacisz raz. Dostęp na {months} miesięcy. Bez subskrypcji.",
-    "cta": "Odblokuj wszystko – {price}",
+    "cta": "Odblokuj wszystko – {price} miesięcznie",
     "tryFree": "Najpierw wypróbuj za darmo",
     "chapterTitle": "Odblokuj rozdział {n}",
     "chapterIntro": "Ćwiczenie rozdziałami jest w pełnym dostępie.",
     "examTitle": "Zrób prawdziwy test próbny",
     "examIntro": "Test próbny jest w pełnym dostępie.",
     "reviewTitle": "Powtarzaj błędy",
-    "reviewIntro": "Ćwicz pytania, na które odpowiedziałeś źle, aż je opanujesz."
+    "reviewIntro": "Ćwicz pytania, na które odpowiedziałeś źle, aż je opanujesz.",
+    "perMonth": "miesięcznie",
+    "noCommitment": "Bez zobowiązań. Anuluj, kiedy chcesz – od razu i bez dodatkowych kosztów."
   },
   "exam": {
     "title": "Test próbny",
@@ -222,25 +225,27 @@
     "consentTerms": "Akceptuję regulamin i przeczytałem politykę prywatności.",
     "readTerms": "Przeczytaj regulamin",
     "readPrivacy": "Przeczytaj politykę prywatności",
-    "pay": "Przejdź do płatności – {price}",
+    "pay": "Rozpocznij subskrypcję – {price} miesięcznie",
     "secure": "Bezpieczna płatność przez Stripe. Karta, Apple Pay i Google Pay.",
-    "discount": "Kod rabatowy {code}: {percent} % zniżki",
+    "discount": "Kod rabatowy {code}: {percent} % zniżki na pierwszy miesiąc",
     "originalPrice": "Cena normalna {price}",
     "errorEmail": "Wpisz poprawny adres e-mail.",
     "errorConsent": "Aby kontynuować, zaznacz oba pola.",
     "errorPayment": "Nie udało się rozpocząć płatności. Spróbuj ponownie za chwilę.",
     "errorNotConfigured": "Płatności nie są jeszcze otwarte. Spróbuj później.",
-    "alreadyAccess": "Masz już dostęp do {date}. Jeśli kupisz ponownie, przedłuży się o {months} miesięcy.",
+    "alreadyAccess": "Masz już aktywną subskrypcję. Zarządzasz nią w zakładce Konto.",
     "thanksTitle": "Dziękujemy za zakup!",
-    "thanksText": "Masz teraz dostęp do wszystkiego do {date}.",
+    "thanksText": "Twoja subskrypcja jest aktywna. Masz dostęp do wszystkiego.",
     "processing": "Potwierdzamy płatność …",
     "processingSlow": "Trwa to dłużej niż zwykle. Odśwież stronę za chwilę. Jeśli dostałeś paragon, wszystko jest gotowe.",
     "startPracticing": "Zacznij ćwiczyć",
     "otherDevice": "Na innym telefonie lub komputerze zaloguj się adresem {email}.",
-    "canceled": "Płatność została anulowana. Nie pobrano żadnych pieniędzy."
+    "canceled": "Płatność została anulowana. Nie pobrano żadnych pieniędzy.",
+    "subscriptionInfo": "Subskrypcja odnawia się automatycznie co miesiąc, dopóki jej nie anulujesz. Anulujesz jednym kliknięciem w zakładce Konto i masz dostęp do końca opłaconego miesiąca.",
+    "thenPrice": "Potem {price} miesięcznie"
   },
   "refBanner": {
-    "text": "Kod rabatowy {code} jest aktywny: {percent} % zniżki na pełny dostęp."
+    "text": "Kod rabatowy {code} jest aktywny: {percent} % zniżki na pierwszy miesiąc."
   },
   "login": {
     "title": "Zaloguj się",
@@ -264,13 +269,20 @@
     "login": "Zaloguj się",
     "logout": "Wyloguj się",
     "deleteTitle": "Usuń konto i dane",
-    "deleteText": "Twoje konto i wszystko, co ćwiczyłeś, zostanie usunięte na zawsze. Tego nie można cofnąć. Kupiony dostęp również zniknie.",
+    "deleteText": "Twoje konto i wszystko, co ćwiczyłeś, zostanie usunięte na zawsze. Tego nie można cofnąć. Jeśli masz subskrypcję, skończy się od razu.",
     "deleteConfirmLabel": "Wpisz USUŃ, aby potwierdzić",
     "deleteConfirmWord": "USUŃ",
     "deleteButton": "Usuń moje konto i wszystkie dane",
     "deleted": "Twoje konto i wszystkie dane zostały usunięte.",
     "deleteError": "Nie udało się usunąć konta. Skontaktuj się z nami, pomożemy.",
-    "anonymousNote": "Ćwiczysz bez konta. Twoje odpowiedzi są zapisane w tej przeglądarce. Możesz je tu usunąć."
+    "anonymousNote": "Ćwiczysz bez konta. Twoje odpowiedzi są zapisane w tej przeglądarce. Możesz je tu usunąć.",
+    "subscriptionActive": "Twoja subskrypcja jest aktywna. Następna płatność: {date}.",
+    "subscriptionCanceled": "Subskrypcja anulowana. Masz dostęp do {date}. Nie pobierzemy już żadnych płatności.",
+    "subscriptionPastDue": "Ostatnia płatność nie przeszła. Stripe spróbuje ponownie. Sprawdź swoją kartę.",
+    "cancelButton": "Anuluj subskrypcję",
+    "cancelConfirm": "Czy chcesz anulować subskrypcję? Dostęp zachowasz do {date}. Nie pobierzemy już żadnych płatności.",
+    "resumeButton": "Cofnij anulowanie",
+    "cancelError": "Teraz się nie udało. Spróbuj ponownie lub skontaktuj się z nami."
   },
   "share": {
     "question": "Znasz odpowiedź?",

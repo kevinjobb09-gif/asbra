@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Check } from "lucide-react";
-import { formatPrice, getCountry, languages } from "@/config";
+import { formatPrice, getCountry } from "@/config";
 import { getI18n } from "@/i18n/server";
 import { getAccess } from "@/lib/access";
 import { computePrice } from "@/lib/payments/pricing";
@@ -19,15 +19,14 @@ type Props = { searchParams: Promise<{ avbruten?: string }> };
 export default async function BuyPage({ searchParams }: Props) {
   const { avbruten } = await searchParams;
   const country = getCountry();
-  const [{ t, lang }, ref, access] = await Promise.all([getI18n(), getActiveRef(), getAccess()]);
+  const [{ t }, ref, access] = await Promise.all([getI18n(), getActiveRef(), getAccess()]);
   const price = computePrice(country.pricing.amount, ref?.discountPercent ?? 0);
-  const formatted = formatPrice({ ...country, pricing: { ...country.pricing, amount: price.amountMinor / 100 } });
-  const listPrice = formatPrice(country);
+  const firstMonth = formatPrice({ ...country, pricing: { ...country.pricing, amount: price.amountMinor / 100 } });
+  const monthly = formatPrice(country);
 
   // Föreslå e-postadressen om användaren redan har ett konto.
   const { data } = await (await createClient()).auth.getUser();
   const knownEmail = data.user?.email ?? undefined;
-  const dateFormat = new Intl.DateTimeFormat(languages[lang].htmlLang, { dateStyle: "long", timeZone: country.timeZone });
 
   const benefits = [
     t("offer.benefitChapters", { n: country.chapters.length }),
@@ -41,11 +40,7 @@ export default async function BuyPage({ searchParams }: Props) {
       <h1 className="text-3xl font-extrabold">{t("buy.title")}</h1>
 
       {avbruten && <p className="rounded-xl bg-cta-soft p-3 text-sm font-semibold text-cta-dark">{t("buy.canceled")}</p>}
-      {access.expiresAt && (
-        <p className="rounded-xl bg-primary-soft p-3 text-sm">
-          {t("buy.alreadyAccess", { date: dateFormat.format(new Date(access.expiresAt)), months: country.pricing.accessMonths })}
-        </p>
-      )}
+      {access.hasFullAccess && <p className="rounded-xl bg-primary-soft p-3 text-sm">{t("buy.alreadyAccess")}</p>}
 
       <section className="rounded-3xl border-2 border-primary bg-surface p-5">
         <ul className="space-y-2">
@@ -62,19 +57,16 @@ export default async function BuyPage({ searchParams }: Props) {
               {t("buy.discount", { code: ref.code, percent: price.discountPercent })}
             </p>
           )}
-          <p className="text-4xl font-extrabold" dir="ltr">
-            {formatted}
+          <p className="text-4xl font-extrabold">
+            <span dir="ltr">{firstMonth}</span> <span className="text-lg font-bold text-muted">{t("offer.perMonth")}</span>
           </p>
-          {ref && price.discountMinor > 0 && (
-            <p className="text-sm text-muted line-through" dir="ltr">
-              {t("buy.originalPrice", { price: listPrice })}
-            </p>
-          )}
-          <p className="text-sm text-muted">{t("offer.payOnce", { months: country.pricing.accessMonths })}</p>
+          {ref && price.discountMinor > 0 && <p className="text-sm text-muted">{t("buy.thenPrice", { price: monthly })}</p>}
+          <p className="mt-2 font-semibold text-primary">{t("offer.noCommitment")}</p>
+          <p className="mt-2 text-sm text-muted">{t("buy.subscriptionInfo")}</p>
         </div>
       </section>
 
-      <BuyForm price={formatted} defaultEmail={knownEmail} />
+      <BuyForm price={firstMonth} defaultEmail={knownEmail} />
     </div>
   );
 }

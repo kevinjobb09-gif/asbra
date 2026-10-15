@@ -17,7 +17,7 @@ type Props = {
 export function UnlockOffer({ title, intro, showFreeLink }: Props) {
   const { t } = useI18n();
   const country = getCountry();
-  const { exam, pricing, chapters } = country;
+  const { exam, chapters } = country;
   const price = formatPrice(country);
 
   const benefits = [
@@ -45,10 +45,10 @@ export function UnlockOffer({ title, intro, showFreeLink }: Props) {
           ))}
         </ul>
         <div className="text-center">
-          <p className="text-4xl font-extrabold" dir="ltr">
-            {price}
+          <p className="text-4xl font-extrabold">
+            <span dir="ltr">{price}</span> <span className="text-lg font-bold text-muted">{t("offer.perMonth")}</span>
           </p>
-          <p className="text-sm text-muted">{t("offer.payOnce", { months: pricing.accessMonths })}</p>
+          <p className="mt-1 text-sm font-semibold text-primary">{t("offer.noCommitment")}</p>
         </div>
         <ButtonLink href="/kop" size="lg" className="w-full">
           {t("offer.cta", { price })}

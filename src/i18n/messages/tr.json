@@ -47,8 +47,8 @@
     "featureLanguageText": "Açıklamayı kendi dilinde, istersen İsveççe de oku.",
     "featureCheckedTitle": "Kontrol edilmiş sorular",
     "featureCheckedText": "Her sorunun bir kaynağı vardır ve yayınlanmadan önce kontrol edilir.",
-    "priceTitle": "Tek fiyat. Abonelik yok.",
-    "priceText": "Bir kez öde, {months} ay boyunca her şeye eriş.",
+    "priceTitle": "Düşük aylık fiyat. Taahhüt yok.",
+    "priceText": "Her şeye erişim. İstediğin zaman iptal et – hemen ve ek ücret olmadan.",
     "priceCta": "Önce ücretsiz dene",
     "faqTitle": "Sık sorulan sorular",
     "faqOfficialQ": "Bu resmi sınav mı?",
@@ -58,7 +58,9 @@
     "faqAccountQ": "Hesap açmam gerekiyor mu?",
     "faqAccountA": "Hayır, hemen başlayabilirsin. E-postanı sadece satın alırken yazarsın. Çalıştıkların kaydedilir.",
     "faqFormatQ": "Sınavda kaç soru var?",
-    "faqFormatA": "Bildiğimiz kadarıyla: {m} dakikada yaklaşık {q} soru. En güncel bilgileri her zaman UHR'den kontrol et."
+    "faqFormatA": "Bildiğimiz kadarıyla: {m} dakikada yaklaşık {q} soru. En güncel bilgileri her zaman UHR'den kontrol et.",
+    "faqCancelQ": "İstediğim zaman iptal edebilir miyim?",
+    "faqCancelA": "Evet. Taahhüt süresi yok. Hesap sayfasından tek tıkla, hemen ve ek ücret olmadan iptal edersin. Ödediğin ayın sonuna kadar erişimin devam eder."
   },
   "practiceIndex": {
     "title": "Alıştırma",
@@ -126,15 +128,16 @@
     "benefitReview": "Yanlış cevapladığın soruları tekrar et",
     "benefitProgress": "Hangi bölümlere daha çok çalışman gerektiğini gör",
     "benefitLanguages": "{n} dilde açıklama",
-    "payOnce": "Bir kez öde. {months} ay erişim. Abonelik yok.",
-    "cta": "Her şeyin kilidini aç – {price}",
+    "cta": "Her şeyin kilidini aç – aylık {price}",
     "tryFree": "Önce ücretsiz dene",
     "chapterTitle": "Bölüm {n} kilidini aç",
     "chapterIntro": "Bölüm bölüm alıştırma, her şeyin kilidini açtığında dahildir.",
     "examTitle": "Gerçek bir deneme sınavı yap",
     "examIntro": "Deneme sınavı, her şeyin kilidini açtığında dahildir.",
     "reviewTitle": "Hatalarını tekrar et",
-    "reviewIntro": "Yanlış cevapladığın soruları öğrenene kadar çalış."
+    "reviewIntro": "Yanlış cevapladığın soruları öğrenene kadar çalış.",
+    "perMonth": "aylık",
+    "noCommitment": "Taahhüt yok. İstediğin zaman iptal et – hemen ve ek ücret olmadan."
   },
   "exam": {
     "title": "Deneme sınavı",
@@ -222,25 +225,27 @@
     "consentTerms": "Kullanım koşullarını kabul ediyorum ve gizlilik politikasını okudum.",
     "readTerms": "Kullanım koşullarını oku",
     "readPrivacy": "Gizlilik politikasını oku",
-    "pay": "Ödemeye geç – {price}",
+    "pay": "Aboneliği başlat – aylık {price}",
     "secure": "Stripe ile güvenli ödeme. Kart, Apple Pay ve Google Pay.",
-    "discount": "İndirim kodu {code}: %{percent} indirim",
+    "discount": "İndirim kodu {code}: ilk ay %{percent} indirim",
     "originalPrice": "Normal fiyat {price}",
     "errorEmail": "Geçerli bir e-posta adresi yaz.",
     "errorConsent": "Devam etmek için iki kutuyu da işaretlemelisin.",
     "errorPayment": "Ödeme başlatılamadı. Biraz sonra tekrar dene.",
     "errorNotConfigured": "Ödeme henüz açık değil. Daha sonra tekrar dene.",
-    "alreadyAccess": "{date} tarihine kadar erişimin var. Tekrar satın alırsan {months} ay uzar.",
+    "alreadyAccess": "Zaten aktif bir aboneliğin var. Hesap sayfasından yönetebilirsin.",
     "thanksTitle": "Satın aldığın için teşekkürler!",
-    "thanksText": "Artık {date} tarihine kadar her şeye erişimin var.",
+    "thanksText": "Aboneliğin aktif. Her şeye erişimin var.",
     "processing": "Ödemeyi onaylıyoruz …",
     "processingSlow": "Bu normalden uzun sürüyor. Biraz sonra sayfayı yenile. Makbuzu aldıysan her şey hazır.",
     "startPracticing": "Çalışmaya başla",
     "otherDevice": "Başka bir telefon veya bilgisayarda {email} e-posta adresiyle giriş yap.",
-    "canceled": "Ödeme iptal edildi. Hiç para çekilmedi."
+    "canceled": "Ödeme iptal edildi. Hiç para çekilmedi.",
+    "subscriptionInfo": "Abonelik sen iptal edene kadar her ay otomatik yenilenir. Hesap sayfasından tek tıkla iptal edersin ve ödediğin ayın sonuna kadar erişimin devam eder.",
+    "thenPrice": "Sonra aylık {price}"
   },
   "refBanner": {
-    "text": "İndirim kodu {code} aktif: Her şeyin kilidini açınca %{percent} indirim."
+    "text": "İndirim kodu {code} aktif: ilk ay %{percent} indirim."
   },
   "login": {
     "title": "Giriş yap",
@@ -264,13 +269,20 @@
     "login": "Giriş yap",
     "logout": "Çıkış yap",
     "deleteTitle": "Hesabı ve verileri sil",
-    "deleteText": "Hesabın ve çalıştığın her şey kalıcı olarak silinir. Bu geri alınamaz. Erişim satın aldıysan o da kaybolur.",
+    "deleteText": "Hesabın ve çalıştığın her şey kalıcı olarak silinir. Bu geri alınamaz. Aboneliğin varsa hemen sona erer.",
     "deleteConfirmLabel": "Onaylamak için SIL yaz",
     "deleteConfirmWord": "SIL",
     "deleteButton": "Hesabımı ve tüm verilerimi sil",
     "deleted": "Hesabın ve tüm verilerin silindi.",
     "deleteError": "Hesap silinemedi. Bize ulaş, sana yardım edelim.",
-    "anonymousNote": "Hesapsız çalışıyorsun. Cevapların bu tarayıcıda kaydedilir. Silmek istersen burada silebilirsin."
+    "anonymousNote": "Hesapsız çalışıyorsun. Cevapların bu tarayıcıda kaydedilir. Silmek istersen burada silebilirsin.",
+    "subscriptionActive": "Aboneliğin aktif. Sonraki ödeme: {date}.",
+    "subscriptionCanceled": "Abonelik iptal edildi. {date} tarihine kadar erişimin var. Başka ödeme alınmayacak.",
+    "subscriptionPastDue": "Son ödeme gerçekleşmedi. Stripe tekrar deneyecek. Kartını kontrol et.",
+    "cancelButton": "Aboneliği iptal et",
+    "cancelConfirm": "Aboneliği iptal etmek istiyor musun? {date} tarihine kadar erişimin devam eder. Başka ödeme alınmaz.",
+    "resumeButton": "İptali geri al",
+    "cancelError": "Şu anda olmadı. Tekrar dene veya bize ulaş."
   },
   "share": {
     "question": "Cevabı biliyor musun?",

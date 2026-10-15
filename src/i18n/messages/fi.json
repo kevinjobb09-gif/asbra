@@ -47,8 +47,8 @@
     "featureLanguageText": "Lue selitys omalla kielelläsi ja halutessasi ruotsiksi.",
     "featureCheckedTitle": "Tarkistetut kysymykset",
     "featureCheckedText": "Jokaisella kysymyksellä on lähde, ja se tarkistetaan ennen julkaisua.",
-    "priceTitle": "Yksi hinta. Ei tilausta.",
-    "priceText": "Maksa kerran ja käytä kaikkea {months} kuukauden ajan.",
+    "priceTitle": "Edullinen kuukausihinta. Ei sitoutumista.",
+    "priceText": "Pääsy kaikkeen. Peru milloin haluat – heti ja ilman lisämaksuja.",
     "priceCta": "Kokeile ensin ilmaiseksi",
     "faqTitle": "Usein kysyttyä",
     "faqOfficialQ": "Onko tämä virallinen koe?",
@@ -58,7 +58,9 @@
     "faqAccountQ": "Pitääkö minun luoda tili?",
     "faqAccountA": "Ei, voit aloittaa heti. Annat sähköpostisi vasta ostaessasi. Harjoittelusi tallentuu.",
     "faqFormatQ": "Montako kysymystä kokeessa on?",
-    "faqFormatA": "Tietojemme mukaan noin {q} kysymystä {m} minuutissa. Tarkista aina ajantasaiset tiedot UHR:ltä."
+    "faqFormatA": "Tietojemme mukaan noin {q} kysymystä {m} minuutissa. Tarkista aina ajantasaiset tiedot UHR:ltä.",
+    "faqCancelQ": "Voinko perua milloin tahansa?",
+    "faqCancelA": "Kyllä. Määräaikaa ei ole. Perut yhdellä klikkauksella kohdassa Tili, heti ja ilman lisämaksuja. Käyttöoikeus säilyy maksetun kuukauden loppuun."
   },
   "practiceIndex": {
     "title": "Harjoittele",
@@ -126,15 +128,16 @@
     "benefitReview": "Kertaa väärin vastatut kysymykset",
     "benefitProgress": "Näe, mitä lukuja pitää vielä opiskella",
     "benefitLanguages": "Selitykset {n} kielellä",
-    "payOnce": "Maksa kerran. Käyttöoikeus {months} kuukautta. Ei tilausta.",
-    "cta": "Avaa kaikki – {price}",
+    "cta": "Avaa kaikki – {price} kuukaudessa",
     "tryFree": "Kokeile ensin ilmaiseksi",
     "chapterTitle": "Avaa luku {n}",
     "chapterIntro": "Harjoittelu luvuittain sisältyy, kun avaat kaiken.",
     "examTitle": "Tee oikea harjoituskoe",
     "examIntro": "Harjoituskoe sisältyy, kun avaat kaiken.",
     "reviewTitle": "Kertaa virheesi",
-    "reviewIntro": "Harjoittele väärin vastattuja kysymyksiä, kunnes osaat ne."
+    "reviewIntro": "Harjoittele väärin vastattuja kysymyksiä, kunnes osaat ne.",
+    "perMonth": "kuukaudessa",
+    "noCommitment": "Ei sitoutumista. Peru milloin haluat – heti ja ilman lisämaksuja."
   },
   "exam": {
     "title": "Harjoituskoe",
@@ -222,25 +225,27 @@
     "consentTerms": "Hyväksyn käyttöehdot ja olen lukenut tietosuojakäytännön.",
     "readTerms": "Lue käyttöehdot",
     "readPrivacy": "Lue tietosuojakäytäntö",
-    "pay": "Siirry maksamaan – {price}",
+    "pay": "Aloita tilaus – {price} kuukaudessa",
     "secure": "Turvallinen maksu Stripen kautta. Kortti, Apple Pay ja Google Pay.",
-    "discount": "Alennuskoodi {code}: {percent} % alennus",
+    "discount": "Alennuskoodi {code}: {percent} % alennus ensimmäisestä kuukaudesta",
     "originalPrice": "Normaalihinta {price}",
     "errorEmail": "Kirjoita kelvollinen sähköpostiosoite.",
     "errorConsent": "Merkitse molemmat ruudut jatkaaksesi.",
     "errorPayment": "Maksua ei voitu aloittaa. Yritä hetken päästä uudelleen.",
     "errorNotConfigured": "Maksaminen ei ole vielä auki. Yritä myöhemmin.",
-    "alreadyAccess": "Sinulla on jo käyttöoikeus {date} asti. Jos ostat uudelleen, se jatkuu {months} kuukaudella.",
+    "alreadyAccess": "Sinulla on jo voimassa oleva tilaus. Hallitset sitä kohdassa Tili.",
     "thanksTitle": "Kiitos ostoksestasi!",
-    "thanksText": "Sinulla on nyt käyttöoikeus kaikkeen {date} asti.",
+    "thanksText": "Tilauksesi on voimassa. Sinulla on pääsy kaikkeen.",
     "processing": "Vahvistamme maksua …",
     "processingSlow": "Tämä kestää tavallista kauemmin. Lataa sivu hetken päästä uudelleen. Jos olet saanut kuitin, kaikki on valmista.",
     "startPracticing": "Aloita harjoittelu",
     "otherDevice": "Kirjaudu toisella puhelimella tai tietokoneella osoitteella {email}.",
-    "canceled": "Maksu peruttiin. Rahaa ei veloitettu."
+    "canceled": "Maksu peruttiin. Rahaa ei veloitettu.",
+    "subscriptionInfo": "Tilaus uusiutuu automaattisesti joka kuukausi, kunnes perut sen. Perut yhdellä klikkauksella kohdassa Tili, ja käyttöoikeus säilyy maksetun kuukauden loppuun.",
+    "thenPrice": "Sen jälkeen {price} kuukaudessa"
   },
   "refBanner": {
-    "text": "Alennuskoodi {code} on voimassa: {percent} % alennus, kun avaat kaiken."
+    "text": "Alennuskoodi {code} on voimassa: {percent} % alennus ensimmäisestä kuukaudesta."
   },
   "login": {
     "title": "Kirjaudu",
@@ -264,13 +269,20 @@
     "login": "Kirjaudu",
     "logout": "Kirjaudu ulos",
     "deleteTitle": "Poista tili ja tiedot",
-    "deleteText": "Tilisi ja kaikki harjoittelusi poistetaan pysyvästi. Tätä ei voi perua. Myös ostettu käyttöoikeus häviää.",
+    "deleteText": "Tilisi ja kaikki harjoittelusi poistetaan pysyvästi. Tätä ei voi perua. Jos sinulla on tilaus, se päättyy heti.",
     "deleteConfirmLabel": "Vahvista kirjoittamalla POISTA",
     "deleteConfirmWord": "POISTA",
     "deleteButton": "Poista tilini ja kaikki tiedot",
     "deleted": "Tilisi ja kaikki tietosi on poistettu.",
     "deleteError": "Tiliä ei voitu poistaa. Ota yhteyttä, niin autamme.",
-    "anonymousNote": "Harjoittelet ilman tiliä. Vastauksesi tallentuvat tähän selaimeen. Voit poistaa ne täällä."
+    "anonymousNote": "Harjoittelet ilman tiliä. Vastauksesi tallentuvat tähän selaimeen. Voit poistaa ne täällä.",
+    "subscriptionActive": "Tilauksesi on voimassa. Seuraava maksu: {date}.",
+    "subscriptionCanceled": "Tilaus on peruttu. Käyttöoikeus on voimassa {date} asti. Uusia maksuja ei veloiteta.",
+    "subscriptionPastDue": "Viimeisin maksu ei mennyt läpi. Stripe yrittää uudelleen. Tarkista korttisi.",
+    "cancelButton": "Peru tilaus",
+    "cancelConfirm": "Haluatko perua tilauksen? Käyttöoikeus säilyy {date} asti. Uusia maksuja ei veloiteta.",
+    "resumeButton": "Peru peruutus",
+    "cancelError": "Se ei onnistunut juuri nyt. Yritä uudelleen tai ota yhteyttä."
   },
   "share": {
     "question": "Tiedätkö vastauksen?",

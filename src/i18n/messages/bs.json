@@ -47,8 +47,8 @@
     "featureLanguageText": "Čitaj objašnjenje na svom jeziku, a ako želiš i na švedskom.",
     "featureCheckedTitle": "Provjerena pitanja",
     "featureCheckedText": "Svako pitanje ima izvor i provjerava se prije objave.",
-    "priceTitle": "Jedna cijena. Bez pretplate.",
-    "priceText": "Plati jednom i imaj pristup svemu {months} mjeseci.",
+    "priceTitle": "Niska mjesečna cijena. Bez obaveze.",
+    "priceText": "Pristup svemu. Otkaži kad god želiš – odmah i bez dodatnih troškova.",
     "priceCta": "Prvo probaj besplatno",
     "faqTitle": "Česta pitanja",
     "faqOfficialQ": "Je li ovo zvanični test?",
@@ -58,7 +58,9 @@
     "faqAccountQ": "Moram li napraviti račun?",
     "faqAccountA": "Ne, možeš odmah početi. E-mail upisuješ tek kad kupuješ. Tvoj napredak se čuva.",
     "faqFormatQ": "Koliko pitanja ima test?",
-    "faqFormatA": "Prema našim informacijama: oko {q} pitanja za {m} minuta. Uvijek provjeri najnovije informacije kod UHR."
+    "faqFormatA": "Prema našim informacijama: oko {q} pitanja za {m} minuta. Uvijek provjeri najnovije informacije kod UHR.",
+    "faqCancelQ": "Mogu li otkazati kad god želim?",
+    "faqCancelA": "Da. Nema perioda obaveze. Otkazuješ jednim klikom pod Račun, odmah i bez dodatnih troškova. Pristup imaš do kraja mjeseca koji si platio."
   },
   "practiceIndex": {
     "title": "Vježbaj",
@@ -126,15 +128,16 @@
     "benefitReview": "Ponavljaj pitanja na koja si pogrešno odgovorio",
     "benefitProgress": "Vidi koja poglavlja trebaš više učiti",
     "benefitLanguages": "Objašnjenja na {n} jezika",
-    "payOnce": "Plaćaš jednom. Pristup {months} mjeseci. Bez pretplate.",
-    "cta": "Otključaj sve – {price}",
+    "cta": "Otključaj sve – {price} mjesečno",
     "tryFree": "Prvo probaj besplatno",
     "chapterTitle": "Otključaj poglavlje {n}",
     "chapterIntro": "Vježbanje po poglavljima uključeno je kad otključaš sve.",
     "examTitle": "Uradi pravi probni test",
     "examIntro": "Probni test je uključen kad otključaš sve.",
     "reviewTitle": "Ponavljaj greške",
-    "reviewIntro": "Vježbaj pitanja na koja si pogrešno odgovorio dok ih ne naučiš."
+    "reviewIntro": "Vježbaj pitanja na koja si pogrešno odgovorio dok ih ne naučiš.",
+    "perMonth": "mjesečno",
+    "noCommitment": "Bez obaveze. Otkaži kad god želiš – odmah i bez dodatnih troškova."
   },
   "exam": {
     "title": "Probni test",
@@ -222,25 +225,27 @@
     "consentTerms": "Prihvatam uslove korištenja i pročitao sam politiku privatnosti.",
     "readTerms": "Pročitaj uslove korištenja",
     "readPrivacy": "Pročitaj politiku privatnosti",
-    "pay": "Idi na plaćanje – {price}",
+    "pay": "Pokreni pretplatu – {price} mjesečno",
     "secure": "Sigurno plaćanje preko Stripe. Kartica, Apple Pay i Google Pay.",
-    "discount": "Kod za popust {code}: {percent} % popusta",
+    "discount": "Kod za popust {code}: {percent} % popusta prvi mjesec",
     "originalPrice": "Redovna cijena {price}",
     "errorEmail": "Upiši ispravnu e-mail adresu.",
     "errorConsent": "Za nastavak moraš označiti oba polja.",
     "errorPayment": "Plaćanje nije pokrenuto. Pokušaj ponovo malo kasnije.",
     "errorNotConfigured": "Plaćanje još nije otvoreno. Pokušaj kasnije.",
-    "alreadyAccess": "Već imaš pristup do {date}. Ako ponovo kupiš, produžava se za {months} mjeseci.",
+    "alreadyAccess": "Već imaš aktivnu pretplatu. Upravljaš njome pod Račun.",
     "thanksTitle": "Hvala na kupovini!",
-    "thanksText": "Sada imaš pristup svemu do {date}.",
+    "thanksText": "Tvoja pretplata je aktivna. Imaš pristup svemu.",
     "processing": "Potvrđujemo plaćanje …",
     "processingSlow": "Ovo traje duže nego obično. Osvježi stranicu malo kasnije. Ako si dobio račun, sve je spremno.",
     "startPracticing": "Počni vježbati",
     "otherDevice": "Na drugom telefonu ili računaru prijavi se adresom {email}.",
-    "canceled": "Plaćanje je otkazano. Novac nije naplaćen."
+    "canceled": "Plaćanje je otkazano. Novac nije naplaćen.",
+    "subscriptionInfo": "Pretplata se automatski obnavlja svaki mjesec dok je ne otkažeš. Otkazuješ jednim klikom pod Račun i imaš pristup do kraja plaćenog mjeseca.",
+    "thenPrice": "Zatim {price} mjesečno"
   },
   "refBanner": {
-    "text": "Kod za popust {code} je aktivan: {percent} % popusta kad otključaš sve."
+    "text": "Kod za popust {code} je aktivan: {percent} % popusta prvi mjesec."
   },
   "login": {
     "title": "Prijava",
@@ -264,13 +269,20 @@
     "login": "Prijavi se",
     "logout": "Odjavi se",
     "deleteTitle": "Obriši račun i podatke",
-    "deleteText": "Tvoj račun i sve što si vježbao bit će trajno obrisani. To se ne može poništiti. Ako si kupio pristup, i on će nestati.",
+    "deleteText": "Tvoj račun i sve što si vježbao bit će trajno obrisani. To se ne može poništiti. Ako imaš pretplatu, odmah prestaje.",
     "deleteConfirmLabel": "Upiši OBRISI za potvrdu",
     "deleteConfirmWord": "OBRISI",
     "deleteButton": "Obriši moj račun i sve podatke",
     "deleted": "Tvoj račun i svi podaci su obrisani.",
     "deleteError": "Račun nije obrisan. Kontaktiraj nas i pomoći ćemo ti.",
-    "anonymousNote": "Vježbaš bez računa. Tvoji odgovori se čuvaju u ovom pregledniku. Ako želiš, možeš ih ovdje obrisati."
+    "anonymousNote": "Vježbaš bez računa. Tvoji odgovori se čuvaju u ovom pregledniku. Ako želiš, možeš ih ovdje obrisati.",
+    "subscriptionActive": "Tvoja pretplata je aktivna. Sljedeće plaćanje: {date}.",
+    "subscriptionCanceled": "Pretplata je otkazana. Imaš pristup do {date}. Više se ništa neće naplaćivati.",
+    "subscriptionPastDue": "Posljednje plaćanje nije prošlo. Stripe će pokušati ponovo. Provjeri svoju karticu.",
+    "cancelButton": "Otkaži pretplatu",
+    "cancelConfirm": "Želiš li otkazati pretplatu? Pristup zadržavaš do {date}. Više se ništa neće naplaćivati.",
+    "resumeButton": "Poništi otkazivanje",
+    "cancelError": "Trenutno nije uspjelo. Pokušaj ponovo ili nas kontaktiraj."
   },
   "share": {
     "question": "Znaš li odgovor?",

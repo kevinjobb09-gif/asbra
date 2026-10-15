@@ -1,22 +1,31 @@
 import { describe, expect, it, vi } from "vitest";
 import Stripe from "stripe";
-import { accessExpiry, addMonths, commissionMinor, computePrice, normalizeRefCode } from "@/lib/payments/pricing";
-import { fulfillPurchase, type FulfillDeps, type PurchaseRecord } from "@/lib/payments/fulfill";
+import { commissionMinor, computePrice, normalizeRefCode } from "@/lib/payments/pricing";
+import {
+  accessUntil,
+  handleCheckoutCompleted,
+  recordPayment,
+  RENEWAL_GRACE_MS,
+  syncSubscription,
+  type CheckoutDeps,
+  type CompletedCheckout,
+  type PurchaseRecord,
+} from "@/lib/payments/fulfill";
 
 describe("pris och rabatt", () => {
   it("fullpris utan rabatt, i öre", () => {
-    expect(computePrice(149, 0)).toEqual({ listPriceMinor: 14900, amountMinor: 14900, discountMinor: 0, discountPercent: 0 });
+    expect(computePrice(129, 0)).toEqual({ listPriceMinor: 12900, amountMinor: 12900, discountMinor: 0, discountPercent: 0 });
   });
 
   it("rabatt avrundas till hela kronor", () => {
-    expect(computePrice(149, 20).amountMinor).toBe(11900); // 119,20 → 119 kr
-    expect(computePrice(149, 25).amountMinor).toBe(11200); // 111,75 → 112 kr
+    expect(computePrice(129, 20).amountMinor).toBe(10300); // 103,20 → 103 kr
+    expect(computePrice(129, 50).amountMinor).toBe(6500); // 64,50 → 65 kr (avrundning)
   });
 
   it("rabatten kan aldrig bli över 90 % eller under 0", () => {
-    expect(computePrice(149, 150).discountPercent).toBe(90);
-    expect(computePrice(149, -10).amountMinor).toBe(14900);
-    expect(computePrice(149, Number.NaN).amountMinor).toBe(14900);
+    expect(computePrice(129, 150).discountPercent).toBe(90);
+    expect(computePrice(129, -10).amountMinor).toBe(12900);
+    expect(computePrice(129, Number.NaN).amountMinor).toBe(12900);
   });
 
   it("priset blir aldrig lägre än Stripes minimum på 3 kr", () => {
@@ -24,8 +33,8 @@ describe("pris och rabatt", () => {
   });
 
   it("provision räknas på betalt belopp", () => {
-    expect(commissionMinor(11900, 30)).toBe(3570);
-    expect(commissionMinor(14900, 0)).toBe(0);
+    expect(commissionMinor(12900, 30)).toBe(3870);
+    expect(commissionMinor(12900, 0)).toBe(0);
   });
 
   it("rabattkoder från länkar normaliseras och skräp avvisas", () => {
@@ -36,124 +45,180 @@ describe("pris och rabatt", () => {
   });
 });
 
-describe("tillgångstid", () => {
-  const d = (iso: string) => new Date(iso);
+describe("tillgång utifrån prenumerationens status", () => {
+  const now = new Date("2026-10-15T12:00:00Z");
+  const periodEnd = new Date("2026-11-15T12:00:00Z");
 
-  it("6 månader från köpet", () => {
-    expect(accessExpiry(d("2026-10-15T12:00:00Z"), null, 6).toISOString()).toBe("2027-04-15T12:00:00.000Z");
+  it("aktiv prenumeration: tillgång till periodens slut + ett dygns marginal", () => {
+    expect(accessUntil("active", periodEnd, now)).toEqual(new Date(periodEnd.getTime() + RENEWAL_GRACE_MS));
   });
 
-  it("förlängs från nuvarande sluttid om man redan har tillgång", () => {
-    expect(accessExpiry(d("2026-10-15T00:00:00Z"), d("2027-01-01T00:00:00Z"), 6).toISOString()).toBe("2027-07-01T00:00:00.000Z");
+  it("uppsagd men inte slut: fortfarande aktiv hos Stripe, alltså tillgång perioden ut", () => {
+    // Stripe behåller status "active" med cancel_at_period_end = true tills perioden är slut.
+    expect(accessUntil("active", periodEnd, now)).not.toBeNull();
   });
 
-  it("utgången tillgång räknas från i dag", () => {
-    expect(accessExpiry(d("2026-10-15T00:00:00Z"), d("2026-01-01T00:00:00Z"), 6).toISOString()).toBe("2027-04-15T00:00:00.000Z");
+  it("misslyckad betalning (Stripe försöker igen): tillgång till periodens slut, ingen marginal", () => {
+    expect(accessUntil("past_due", periodEnd, now)).toEqual(periodEnd);
+    expect(accessUntil("past_due", new Date("2026-10-01T00:00:00Z"), now)).toBeNull();
   });
 
-  it("månadsslut hanteras rätt", () => {
-    expect(addMonths(d("2026-08-31T00:00:00Z"), 6).toISOString()).toBe("2027-02-28T00:00:00.000Z");
-    expect(addMonths(d("2027-08-31T00:00:00Z"), 6).toISOString()).toBe("2028-02-29T00:00:00.000Z");
+  it("avslutad, obetald eller aldrig startad: ingen tillgång", () => {
+    for (const status of ["canceled", "unpaid", "incomplete", "incomplete_expired", "paused"]) {
+      expect(accessUntil(status, periodEnd, now)).toBeNull();
+    }
   });
 });
 
-// ---------- Leverans efter betalning ----------
+// ---------- Köpet är klart ----------
 
-function setup(overrides: Partial<PurchaseRecord> = {}, existingUser: string | null = null) {
+function setupCheckout(overrides: Partial<PurchaseRecord> = {}, existingUser: string | null = null) {
   const purchase: PurchaseRecord = {
     id: "p1",
     user_id: "anon-1",
     email: "kund@example.com",
     status: "pending",
-    amount_minor: 11900,
-    commission_percent: 30,
-    access_months: 6,
     ref_code: "anna",
+    commission_percent: 30,
     language: "ar",
     ...overrides,
   };
-  const grants = new Set<string>();
-  const deps: FulfillDeps = {
+  const deps: CheckoutDeps = {
     now: () => new Date("2026-10-15T12:00:00Z"),
     findPurchase: vi.fn(async () => purchase),
     findUserIdByEmail: vi.fn(async () => existingUser),
     moveUserData: vi.fn(async () => {}),
     setUserEmail: vi.fn(async () => {}),
     createUser: vi.fn(async () => "new-user"),
-    currentAccessExpiry: vi.fn(async () => null),
-    insertAccessGrant: vi.fn(async ({ sessionId }) => {
-      if (grants.has(sessionId)) return false;
-      grants.add(sessionId);
-      return true;
-    }),
-    markPaid: vi.fn(async () => {
+    saveSubscriptionOwner: vi.fn(async () => {}),
+    markPurchasePaid: vi.fn(async (_id, u) => {
       purchase.status = "paid";
+      purchase.user_id = u.userId;
     }),
     recordEvent: vi.fn(async () => {}),
   };
-  const session = { sessionId: "cs_1", paymentStatus: "paid", email: "Kund@Example.com", paymentIntent: "pi_1", purchaseId: "p1" };
-  return { purchase, deps, session };
+  const checkout: CompletedCheckout = {
+    sessionId: "cs_1",
+    status: "complete",
+    paymentStatus: "paid",
+    email: "Kund@Example.com",
+    purchaseId: "p1",
+    subscriptionId: "sub_1",
+    customerId: "cus_1",
+  };
+  return { purchase, deps, checkout };
 }
 
-describe("leverans efter betalning", () => {
-  it("ger den anonyma användaren e-post och 6 månaders tillgång", async () => {
-    const { deps, session } = setup();
-    const r = await fulfillPurchase(session, deps);
-    expect(r).toMatchObject({ status: "fulfilled", userId: "anon-1", mergedIntoExisting: false });
+describe("köpet är klart", () => {
+  it("ger den anonyma användaren e-post och kopplar prenumerationen med partnerkoden", async () => {
+    const { deps, checkout } = setupCheckout();
+    const r = await handleCheckoutCompleted(checkout, deps);
+    expect(r).toMatchObject({ status: "linked", userId: "anon-1", subscriptionId: "sub_1" });
     expect(deps.setUserEmail).toHaveBeenCalledWith("anon-1", "kund@example.com");
-    expect(deps.insertAccessGrant).toHaveBeenCalledWith(
-      expect.objectContaining({ userId: "anon-1", expiresAt: new Date("2027-04-15T12:00:00Z") }),
-    );
-    expect(deps.markPaid).toHaveBeenCalledWith("p1", expect.objectContaining({ commissionMinor: 3570, email: "kund@example.com" }));
+    expect(deps.saveSubscriptionOwner).toHaveBeenCalledWith({
+      subscriptionId: "sub_1",
+      customerId: "cus_1",
+      userId: "anon-1",
+      refCode: "anna",
+      commissionPercent: 30,
+    });
   });
 
-  it("ger inte tillgång två gånger om Stripe skickar samma händelse igen", async () => {
-    const { deps, session } = setup();
-    await fulfillPurchase(session, deps);
-    const second = await fulfillPurchase(session, deps);
-    expect(second.status).toBe("already-fulfilled");
-    expect(deps.insertAccessGrant).toHaveBeenCalledTimes(1);
-  });
-
-  it("två samtidiga anrop ger bara en tillgång", async () => {
-    const { deps, session } = setup();
-    const [a, b] = await Promise.all([fulfillPurchase(session, deps), fulfillPurchase(session, deps)]);
-    expect([a.status, b.status].sort()).toEqual(["already-fulfilled", "fulfilled"]);
-    expect(deps.markPaid).toHaveBeenCalledTimes(1);
+  it("samma händelse två gånger kopplar bara en gång", async () => {
+    const { deps, checkout } = setupCheckout();
+    await handleCheckoutCompleted(checkout, deps);
+    const second = await handleCheckoutCompleted(checkout, deps);
+    expect(second.status).toBe("already-linked");
+    expect(deps.saveSubscriptionOwner).toHaveBeenCalledTimes(1);
   });
 
   it("återkommande kund: framstegen flyttas till det befintliga kontot", async () => {
-    const { deps, session } = setup({}, "existing-user");
-    const r = await fulfillPurchase(session, deps);
-    expect(r).toMatchObject({ status: "fulfilled", userId: "existing-user", mergedIntoExisting: true });
+    const { deps, checkout } = setupCheckout({}, "existing-user");
+    const r = await handleCheckoutCompleted(checkout, deps);
+    expect(r).toMatchObject({ status: "linked", userId: "existing-user", mergedIntoExisting: true });
     expect(deps.moveUserData).toHaveBeenCalledWith("anon-1", "existing-user");
     expect(deps.setUserEmail).not.toHaveBeenCalled();
   });
 
   it("skapar ett konto om köpet saknar användare", async () => {
-    const { deps, session } = setup({ user_id: null });
-    const r = await fulfillPurchase(session, deps);
-    expect(r).toMatchObject({ status: "fulfilled", userId: "new-user" });
+    const { deps, checkout } = setupCheckout({ user_id: null });
+    expect(await handleCheckoutCompleted(checkout, deps)).toMatchObject({ status: "linked", userId: "new-user" });
   });
 
   it("gör ingenting om betalningen inte är klar", async () => {
-    const { deps, session } = setup();
-    const r = await fulfillPurchase({ ...session, paymentStatus: "unpaid" }, deps);
-    expect(r.status).toBe("not-paid");
-    expect(deps.insertAccessGrant).not.toHaveBeenCalled();
+    const { deps, checkout } = setupCheckout();
+    expect((await handleCheckoutCompleted({ ...checkout, paymentStatus: "unpaid" }, deps)).status).toBe("not-paid");
+    expect((await handleCheckoutCompleted({ ...checkout, status: "open" }, deps)).status).toBe("not-paid");
+    expect(deps.saveSubscriptionOwner).not.toHaveBeenCalled();
   });
 
-  it("okänt köp ger ingen tillgång", async () => {
-    const { deps, session } = setup();
+  it("okänt köp ger ingen koppling", async () => {
+    const { deps, checkout } = setupCheckout();
     deps.findPurchase = vi.fn(async () => null);
-    expect((await fulfillPurchase(session, deps)).status).toBe("unknown-purchase");
+    expect((await handleCheckoutCompleted(checkout, deps)).status).toBe("unknown-purchase");
+  });
+});
+
+describe("prenumerationen ändras", () => {
+  const base = {
+    id: "sub_1",
+    cancelAtPeriodEnd: false,
+    periodEnd: new Date("2026-11-15T12:00:00Z"),
+    startedAt: new Date("2026-10-15T12:00:00Z"),
+  };
+  const deps = () => ({
+    now: () => new Date("2026-10-20T12:00:00Z"),
+    findOwner: vi.fn(async (): Promise<string | null> => "user-1"),
+    updateSubscription: vi.fn(async () => {}),
+    setAccess: vi.fn(async () => {}),
+  });
+
+  it("förnyad prenumeration förlänger tillgången", async () => {
+    const d = deps();
+    await syncSubscription({ ...base, status: "active" }, d);
+    expect(d.setAccess).toHaveBeenCalledWith(expect.objectContaining({ userId: "user-1", expiresAt: new Date(base.periodEnd.getTime() + RENEWAL_GRACE_MS) }));
+  });
+
+  it("avslutad prenumeration stänger tillgången", async () => {
+    const d = deps();
+    await syncSubscription({ ...base, status: "canceled" }, d);
+    expect(d.setAccess).toHaveBeenCalledWith(expect.objectContaining({ expiresAt: null }));
+  });
+
+  it("okänd ägare (köpet inte kopplat än) ändrar ingenting", async () => {
+    const d = deps();
+    d.findOwner = vi.fn(async () => null);
+    expect((await syncSubscription({ ...base, status: "active" }, d)).status).toBe("no-owner");
+    expect(d.setAccess).not.toHaveBeenCalled();
+  });
+});
+
+describe("betald månad", () => {
+  const invoice = { invoiceId: "in_1", subscriptionId: "sub_1", amountMinor: 12900, currency: "SEK", paidAt: new Date() };
+
+  it("provision räknas för kunder som kom via en partnerkod", async () => {
+    const insertPayment = vi.fn(async () => {});
+    const r = await recordPayment(invoice, {
+      findSubscription: async () => ({ userId: "u1", refCode: "anna", commissionPercent: 30 }),
+      insertPayment,
+    });
+    expect(r.commissionMinor).toBe(3870);
+    expect(insertPayment).toHaveBeenCalledWith(expect.objectContaining({ refCode: "anna", commissionMinor: 3870, userId: "u1" }));
+  });
+
+  it("ingen provision utan partnerkod", async () => {
+    const r = await recordPayment(invoice, {
+      findSubscription: async () => ({ userId: "u1", refCode: null, commissionPercent: 30 }),
+      insertPayment: async () => {},
+    });
+    expect(r.commissionMinor).toBe(0);
   });
 });
 
 describe("Stripes signatur på webhooks", () => {
   const stripe = new Stripe("sk_test_dummy");
   const secret = "whsec_test_hemlighet";
-  const payload = JSON.stringify({ id: "evt_1", object: "event", type: "checkout.session.completed", data: { object: {} } });
+  const payload = JSON.stringify({ id: "evt_1", object: "event", type: "invoice.paid", data: { object: {} } });
 
   it("godkänner en korrekt signerad händelse", () => {
     const header = stripe.webhooks.generateTestHeaderString({ payload, secret });

@@ -47,8 +47,8 @@
     "featureLanguageText": "Lee la explicación en tu idioma y, si quieres, también en sueco.",
     "featureCheckedTitle": "Preguntas revisadas",
     "featureCheckedText": "Cada pregunta tiene una fuente y se revisa antes de publicarla.",
-    "priceTitle": "Un solo precio. Sin suscripción.",
-    "priceText": "Paga una vez y accede a todo durante {months} meses.",
+    "priceTitle": "Precio mensual bajo. Sin permanencia.",
+    "priceText": "Acceso a todo. Cancela cuando quieras – al instante y sin coste adicional.",
     "priceCta": "Prueba gratis primero",
     "faqTitle": "Preguntas frecuentes",
     "faqOfficialQ": "¿Es este el examen oficial?",
@@ -58,7 +58,9 @@
     "faqAccountQ": "¿Tengo que crear una cuenta?",
     "faqAccountA": "No, puedes empezar ahora mismo. Solo escribes tu correo cuando compras. Lo que has practicado se guarda.",
     "faqFormatQ": "¿Cuántas preguntas tiene el examen?",
-    "faqFormatA": "Según nuestra información: unas {q} preguntas en {m} minutos. Revisa siempre la información más reciente en UHR."
+    "faqFormatA": "Según nuestra información: unas {q} preguntas en {m} minutos. Revisa siempre la información más reciente en UHR.",
+    "faqCancelQ": "¿Puedo cancelar cuando quiera?",
+    "faqCancelA": "Sí. No hay permanencia. Cancelas con un clic en Cuenta, al instante y sin coste adicional. Mantienes el acceso hasta el final del mes que pagaste."
   },
   "practiceIndex": {
     "title": "Practicar",
@@ -126,15 +128,16 @@
     "benefitReview": "Repite las preguntas que fallaste",
     "benefitProgress": "Mira qué capítulos debes estudiar más",
     "benefitLanguages": "Explicaciones en {n} idiomas",
-    "payOnce": "Pagas una vez. Acceso durante {months} meses. Sin suscripción.",
-    "cta": "Desbloquear todo – {price}",
+    "cta": "Desbloquear todo – {price} al mes",
     "tryFree": "Prueba gratis primero",
     "chapterTitle": "Desbloquea el capítulo {n}",
     "chapterIntro": "La práctica por capítulos se incluye al desbloquear todo.",
     "examTitle": "Haz un examen de prueba real",
     "examIntro": "El examen de prueba se incluye al desbloquear todo.",
     "reviewTitle": "Repite tus errores",
-    "reviewIntro": "Practica las preguntas que fallaste hasta que las aprendas."
+    "reviewIntro": "Practica las preguntas que fallaste hasta que las aprendas.",
+    "perMonth": "al mes",
+    "noCommitment": "Sin permanencia. Cancela cuando quieras – al instante y sin coste adicional."
   },
   "exam": {
     "title": "Examen de prueba",
@@ -222,25 +225,27 @@
     "consentTerms": "Acepto las condiciones de uso y he leído la política de privacidad.",
     "readTerms": "Leer las condiciones de uso",
     "readPrivacy": "Leer la política de privacidad",
-    "pay": "Ir al pago – {price}",
+    "pay": "Empezar la suscripción – {price} al mes",
     "secure": "Pago seguro con Stripe. Tarjeta, Apple Pay y Google Pay.",
-    "discount": "Código de descuento {code}: {percent} % de descuento",
+    "discount": "Código de descuento {code}: {percent} % el primer mes",
     "originalPrice": "Precio normal {price}",
     "errorEmail": "Escribe un correo electrónico válido.",
     "errorConsent": "Tienes que marcar las dos casillas para continuar.",
     "errorPayment": "No se pudo iniciar el pago. Inténtalo de nuevo en un momento.",
     "errorNotConfigured": "El pago todavía no está abierto. Inténtalo más tarde.",
-    "alreadyAccess": "Ya tienes acceso hasta el {date}. Si compras de nuevo, se amplía {months} meses.",
+    "alreadyAccess": "Ya tienes una suscripción activa. La gestionas en Cuenta.",
     "thanksTitle": "¡Gracias por tu compra!",
-    "thanksText": "Ahora tienes acceso a todo hasta el {date}.",
+    "thanksText": "Tu suscripción está activa. Tienes acceso a todo.",
     "processing": "Estamos confirmando el pago …",
     "processingSlow": "Esto tarda más de lo normal. Recarga la página en un momento. Si recibiste el recibo, todo está listo.",
     "startPracticing": "Empezar a practicar",
     "otherDevice": "En otro móvil u ordenador, entra con el correo {email}.",
-    "canceled": "El pago se canceló. No se ha cobrado nada."
+    "canceled": "El pago se canceló. No se ha cobrado nada.",
+    "subscriptionInfo": "La suscripción se renueva automáticamente cada mes hasta que la canceles. Cancelas con un clic en Cuenta y mantienes el acceso hasta el final del mes que pagaste.",
+    "thenPrice": "Después {price} al mes"
   },
   "refBanner": {
-    "text": "El código de descuento {code} está activo: {percent} % de descuento al desbloquear todo."
+    "text": "El código de descuento {code} está activo: {percent} % de descuento el primer mes."
   },
   "login": {
     "title": "Entrar",
@@ -264,13 +269,20 @@
     "login": "Entrar",
     "logout": "Salir",
     "deleteTitle": "Borrar cuenta y datos",
-    "deleteText": "Tu cuenta y todo lo que has practicado se borrarán para siempre. No se puede deshacer. Si compraste acceso, también desaparecerá.",
+    "deleteText": "Tu cuenta y todo lo que has practicado se borrarán para siempre. No se puede deshacer. Si tienes una suscripción, termina al instante.",
     "deleteConfirmLabel": "Escribe BORRAR para confirmar",
     "deleteConfirmWord": "BORRAR",
     "deleteButton": "Borrar mi cuenta y todos los datos",
     "deleted": "Tu cuenta y todos tus datos se han borrado.",
     "deleteError": "No se pudo borrar la cuenta. Contáctanos y te ayudaremos.",
-    "anonymousNote": "Practicas sin cuenta. Tus respuestas se guardan en este navegador. Si quieres borrarlas, puedes hacerlo aquí."
+    "anonymousNote": "Practicas sin cuenta. Tus respuestas se guardan en este navegador. Si quieres borrarlas, puedes hacerlo aquí.",
+    "subscriptionActive": "Tu suscripción está activa. Próximo pago: {date}.",
+    "subscriptionCanceled": "La suscripción está cancelada. Tienes acceso hasta el {date}. No se cobrará nada más.",
+    "subscriptionPastDue": "El último pago no se pudo cobrar. Stripe lo intentará de nuevo. Revisa tu tarjeta.",
+    "cancelButton": "Cancelar la suscripción",
+    "cancelConfirm": "¿Quieres cancelar la suscripción? Mantienes el acceso hasta el {date}. No se cobrará nada más.",
+    "resumeButton": "Deshacer la cancelación",
+    "cancelError": "No funcionó ahora. Inténtalo de nuevo o contáctanos."
   },
   "share": {
     "question": "¿Sabes la respuesta?",

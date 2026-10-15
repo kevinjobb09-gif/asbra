@@ -47,8 +47,8 @@
     "featureLanguageText": "Ravekirinê bi zimanê xwe bixwîne, û heke bixwazî bi swêdî jî.",
     "featureCheckedTitle": "Pirsên kontrolkirî",
     "featureCheckedText": "Her pirs çavkaniyek heye û berî weşanê tê kontrolkirin.",
-    "priceTitle": "Yek biha. Bê abonetî.",
-    "priceText": "Carekê bide û {months} mehan bigihîje her tiştî.",
+    "priceTitle": "Bihayê mehane yê kêm. Bê girêdan.",
+    "priceText": "Gihîştina her tiştî. Kengê ku bixwazî betal bike – yekser û bê lêçûna zêde.",
     "priceCta": "Pêşî belaş biceribîne",
     "faqTitle": "Pirsên pir tên pirsîn",
     "faqOfficialQ": "Ma ev îmtîhana fermî ye?",
@@ -58,7 +58,9 @@
     "faqAccountQ": "Ma divê ez hesabekê çêkim?",
     "faqAccountA": "Na, tu dikarî yekser dest pê bikî. Tu tenê dema kirînê e-maila xwe dinivîsî. Perwerdeya te tê tomarkirin.",
     "faqFormatQ": "Îmtîhan çend pirs e?",
-    "faqFormatA": "Li gorî agahiyên me: nêzîkî {q} pirs di {m} deqeyan de. Her gav agahiyên herî nû li UHR kontrol bike."
+    "faqFormatA": "Li gorî agahiyên me: nêzîkî {q} pirs di {m} deqeyan de. Her gav agahiyên herî nû li UHR kontrol bike.",
+    "faqCancelQ": "Ma ez dikarim kengê ku bixwazim betal bikim?",
+    "faqCancelA": "Erê. Tu demê girêdanê tune. Tu bi yek klîkê di Hesab de betal dikî, yekser û bê lêçûna zêde. Heta dawiya meha ku te dayîne gihîştina te dimîne."
   },
   "practiceIndex": {
     "title": "Perwerde",
@@ -126,15 +128,16 @@
     "benefitReview": "Pirsên ku te şaş bersiv dane dubare bike",
     "benefitProgress": "Bibîne kîjan beşan divê tu bêtir bixwînî",
     "benefitLanguages": "Ravekirin bi {n} zimanan",
-    "payOnce": "Carekê bide. {months} meh gihîştin. Bê abonetî.",
-    "cta": "Her tiştî veke – {price}",
+    "cta": "Her tiştî veke – {price} mehane",
     "tryFree": "Pêşî belaş biceribîne",
     "chapterTitle": "Beşa {n} veke",
     "chapterIntro": "Perwerdeya li gorî beşan tê de ye dema ku tu her tiştî vekî.",
     "examTitle": "Îmtîhanek ceribandinê ya rastîn bike",
     "examIntro": "Îmtîhana ceribandinê tê de ye dema ku tu her tiştî vekî.",
     "reviewTitle": "Şaşiyên xwe dubare bike",
-    "reviewIntro": "Pirsên ku te şaş bersiv dane perwerde bike heta ku tu wan hîn bibî."
+    "reviewIntro": "Pirsên ku te şaş bersiv dane perwerde bike heta ku tu wan hîn bibî.",
+    "perMonth": "mehane",
+    "noCommitment": "Bê girêdan. Kengê ku bixwazî betal bike – yekser û bê lêçûna zêde."
   },
   "exam": {
     "title": "Îmtîhana ceribandinê",
@@ -222,25 +225,27 @@
     "consentTerms": "Ez mercên bikaranînê qebûl dikim û min polîtîkaya nepeniyê xwendiye.",
     "readTerms": "Mercên bikaranînê bixwîne",
     "readPrivacy": "Polîtîkaya nepeniyê bixwîne",
-    "pay": "Biçe dayînê – {price}",
+    "pay": "Abonetiyê dest pê bike – {price} mehane",
     "secure": "Dayîna ewle bi Stripe. Kart, Apple Pay û Google Pay.",
-    "discount": "Koda daxistinê {code}: {percent} % daxistin",
+    "discount": "Koda daxistinê {code}: {percent} % daxistin ji bo meha yekem",
     "originalPrice": "Bihaya asayî {price}",
     "errorEmail": "E-mailek derbasdar binivîse.",
     "errorConsent": "Ji bo berdewambûnê divê tu her du qutîkan nîşan bikî.",
     "errorPayment": "Dayîn dest pê nekir. Piştî demekê dîsa biceribîne.",
     "errorNotConfigured": "Dayîn hîn ne vekirî ye. Paşê biceribîne.",
-    "alreadyAccess": "Gihîştina te heta {date} heye. Heke tu dîsa bikirî, {months} meh dirêj dibe.",
+    "alreadyAccess": "Abonetiyeke te ya çalak berê heye. Tu wê di Hesab de birêve dibî.",
     "thanksTitle": "Spas ji bo kirîna te!",
-    "thanksText": "Niha gihîştina te bo her tiştî heta {date} heye.",
+    "thanksText": "Abonetiya te çalak e. Gihîştina te bo her tiştî heye.",
     "processing": "Em dayînê piştrast dikin …",
     "processingSlow": "Ev ji asayî dirêjtir dikişîne. Piştî demekê rûpelê nû bike. Heke fatûre gihîştibe te, her tişt amade ye.",
     "startPracticing": "Dest bi perwerdeyê bike",
     "otherDevice": "Li ser telefon an komputereke din bi e-maila {email} têkeve.",
-    "canceled": "Dayîn hate betalkirin. Tu pere nehat kişandin."
+    "canceled": "Dayîn hate betalkirin. Tu pere nehat kişandin.",
+    "subscriptionInfo": "Abonetî her meh bi xwe nû dibe heta ku tu betal bikî. Tu bi yek klîkê di Hesab de betal dikî û heta dawiya meha ku te dayîne gihîştina te dimîne.",
+    "thenPrice": "Paşê {price} mehane"
   },
   "refBanner": {
-    "text": "Koda daxistinê {code} çalak e: {percent} % daxistin dema ku tu her tiştî vekî."
+    "text": "Koda daxistinê {code} çalak e: {percent} % daxistin ji bo meha yekem."
   },
   "login": {
     "title": "Têketin",
@@ -264,13 +269,20 @@
     "login": "Têketin",
     "logout": "Derketin",
     "deleteTitle": "Hesab û daneyan jê bibe",
-    "deleteText": "Hesabê te û her tiştê ku te perwerde kiriye dê her û her bên jêbirin. Ev nayê vegerandin. Heke te gihîştin kirî be, ew jî dê winda bibe.",
+    "deleteText": "Hesabê te û her tiştê ku te perwerde kiriye dê her û her bên jêbirin. Ev nayê vegerandin. Heke abonetiyeke te hebe, ew yekser diqede.",
     "deleteConfirmLabel": "Ji bo piştrastkirinê RADERA binivîse",
     "deleteConfirmWord": "RADERA",
     "deleteButton": "Hesab û hemû daneyên min jê bibe",
     "deleted": "Hesab û hemû daneyên te hatin jêbirin.",
     "deleteError": "Hesab nehat jêbirin. Bi me re têkilî daynin û em ê alîkariya te bikin.",
-    "anonymousNote": "Tu bê hesab perwerde dibî. Bersivên te di vê gerokê de tên tomarkirin. Heke bixwazî tu dikarî wan li vir jê bibî."
+    "anonymousNote": "Tu bê hesab perwerde dibî. Bersivên te di vê gerokê de tên tomarkirin. Heke bixwazî tu dikarî wan li vir jê bibî.",
+    "subscriptionActive": "Abonetiya te çalak e. Dayîna din: {date}.",
+    "subscriptionCanceled": "Abonetî hate betalkirin. Gihîştina te heta {date} heye. Tu dayînên din nayên kişandin.",
+    "subscriptionPastDue": "Dayîna dawî bi ser neket. Stripe dê dîsa biceribîne. Karta xwe kontrol bike.",
+    "cancelButton": "Abonetiyê betal bike",
+    "cancelConfirm": "Tu dixwazî abonetiyê betal bikî? Gihîştina te heta {date} dimîne. Tu dayînên din nayên kişandin.",
+    "resumeButton": "Betalkirinê paşve bigire",
+    "cancelError": "Niha nebû. Dîsa biceribîne an bi me re têkilî dayne."
   },
   "share": {
     "question": "Tu bersivê dizanî?",

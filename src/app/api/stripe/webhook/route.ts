@@ -1,15 +1,16 @@
 import type Stripe from "stripe";
 import { NextResponse, type NextRequest } from "next/server";
-import { fulfill, getStripe, revokeRefundedPurchase, toPaidSession } from "@/lib/payments/server";
+import { getStripe, processCheckoutSession, processInvoicePaid, processSubscription } from "@/lib/payments/server";
 
 /**
  * STRIPE WEBHOOK
- * Stripe anropar den här adressen när något händer med en betalning.
+ * Stripe anropar den här adressen när något händer med en prenumeration.
  * Signaturen kontrolleras, så att ingen annan kan låtsas vara Stripe.
  *
  * Ställ in i Stripe: Developers → Webhooks → Add endpoint
  *   URL:       https://DIN-DOMÄN/api/stripe/webhook
- *   Händelser: checkout.session.completed, checkout.session.async_payment_succeeded, charge.refunded
+ *   Händelser: checkout.session.completed, invoice.paid,
+ *              customer.subscription.updated, customer.subscription.deleted
  */
 export async function POST(request: NextRequest) {
   const secret = process.env.STRIPE_WEBHOOK_SECRET;
@@ -27,16 +28,20 @@ export async function POST(request: NextRequest) {
 
   try {
     switch (event.type) {
-      case "checkout.session.completed":
-      case "checkout.session.async_payment_succeeded": {
-        const result = await fulfill(toPaidSession(event.data.object as Stripe.Checkout.Session));
+      case "checkout.session.completed": {
+        const result = await processCheckoutSession(event.data.object as Stripe.Checkout.Session);
         console.log(`Stripe ${event.type}: ${result.status}`);
         break;
       }
-      case "charge.refunded": {
-        const charge = event.data.object as Stripe.Charge;
-        const pi = typeof charge.payment_intent === "string" ? charge.payment_intent : charge.payment_intent?.id;
-        if (pi && charge.refunded) await revokeRefundedPurchase(pi);
+      case "invoice.paid": {
+        const result = await processInvoicePaid(event.data.object as Stripe.Invoice);
+        console.log(`Stripe ${event.type}: ${result.status}`);
+        break;
+      }
+      case "customer.subscription.updated":
+      case "customer.subscription.deleted": {
+        const result = await processSubscription(event.data.object as Stripe.Subscription);
+        console.log(`Stripe ${event.type}: ${result.status}`);
         break;
       }
     }
