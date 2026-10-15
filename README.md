@@ -110,6 +110,9 @@ besökare **aldrig** kan se utkast och inte kan ändra frågor.
 Välj minst 30 gratisfrågor från olika kapitel. Översikten på `/admin` visar hur många du har.
 Övriga granskade frågor kan bara läsas av den som har köpt tillgång. Det skyddet ligger i databasen.
 
+**Testa provsimuleringen:** öppna `/prov?utkast=1&minuter=2` som admin. Då blir provtiden 2 minuter, så att du
+kan se att provet lämnas in automatiskt. Vanliga användare får alltid tiden från `se.ts`.
+
 **Förhandsvisa gratisläget:** öppna `/ova/gratis?utkast=1` när du är inloggad som admin.
 
 **Förhandsvisa som användare:** på en fråga i adminsidan, klicka **Förhandsvisa kapitlet som användare**.
@@ -153,7 +156,7 @@ tests/          Vitest-tester
 - [x] Delmål 2: Frågedatabas och adminsida
 - [x] Delmål 3: Övning per kapitel
 - [x] Delmål 4: Gratisläge
-- [ ] Delmål 5: Provsimulering
+- [x] Delmål 5: Provsimulering
 - [ ] Delmål 6: Resultat, repetition och framsteg
 - [ ] Delmål 7: Betalning och konton
 - [ ] Delmål 8: Språk

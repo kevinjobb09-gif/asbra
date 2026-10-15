@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ChevronRight, Lock } from "lucide-react";
+import { ChevronRight, Clock, Lock } from "lucide-react";
 import { getCountry } from "@/config";
 import { getReviewedCountsByChapter } from "@/lib/questions/public";
 import { getAccess } from "@/lib/access";
@@ -36,7 +36,22 @@ export default async function PracticeIndexPage() {
         </div>
       )}
 
-      <ul className="mt-6 space-y-2">
+      <Link
+        href="/prov"
+        className="mt-6 flex items-center gap-3 rounded-2xl border-2 border-primary bg-primary-soft p-4 transition-colors hover:bg-primary hover:text-white"
+      >
+        <Clock className="shrink-0" aria-hidden />
+        <span className="flex-1">
+          <span className="block font-bold">Provsimulering</span>
+          <span className="text-sm">
+            {country.exam.questionCount} frågor på {country.exam.durationMinutes} minuter, som på riktigt
+          </span>
+        </span>
+        {locked ? <Lock size={18} aria-label="Låst" /> : <ChevronRight className="rtl:rotate-180" aria-hidden />}
+      </Link>
+
+      <h2 className="mt-8 text-xl font-extrabold">Kapitel</h2>
+      <ul className="mt-3 space-y-2">
         {country.chapters.map((ch) => {
           const count = counts.get(ch.number) ?? 0;
           const content = (

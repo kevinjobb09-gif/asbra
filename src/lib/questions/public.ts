@@ -76,3 +76,18 @@ export async function getAllQuestionsForPreview(country: CountryCode, chapter?: 
   if (error) throw new Error(`Kunde inte hämta frågor: ${error.message}`);
   return data as PracticeQuestion[];
 }
+
+/** Alla granskade frågor som användaren har tillgång till (till provsimuleringen). */
+export async function getAllReviewedQuestions(
+  country: CountryCode,
+  { isAdmin }: { isAdmin: boolean },
+): Promise<PracticeQuestion[]> {
+  const supabase = isAdmin ? createAdminClient() : await createUserClient();
+  const { data, error } = await supabase
+    .from("questions")
+    .select(PRACTICE_COLUMNS)
+    .eq("country", country)
+    .eq("status", "reviewed");
+  if (error) throw new Error(`Kunde inte hämta frågor: ${error.message}`);
+  return data as PracticeQuestion[];
+}
