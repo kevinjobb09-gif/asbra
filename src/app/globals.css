@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+/*
+ * DESIGNFÄRGER
+ * Varm bakgrund och lila huvudfärg ger ett vänligt och tryggt intryck.
+ * Orange används bara för köp- och startknappar så att de syns.
+ * Grönt betyder ALLTID "rätt svar" och rött "fel svar". Använd inte de
+ * färgerna till något annat, så blir det lätt att förstå utan att läsa.
+ * Blått och gult undviks medvetet så att sajten inte liknar en myndighet.
+ */
+@theme {
+  --color-bg: #fffaf3;
+  --color-surface: #ffffff;
+  --color-ink: #1d1b2e;
+  --color-muted: #5d5a73;
+  --color-line: #ebe4d8;
+
+  --color-primary: #4c2fc8;
+  --color-primary-dark: #3a21a3;
+  --color-primary-soft: #efebff;
+
+  --color-cta: #d9480f;
+  --color-cta-dark: #b93b0b;
+  --color-cta-soft: #fff0e8;
+
+  --color-correct: #15803d;
+  --color-correct-bg: #dcfce7;
+  --color-correct-line: #22c55e;
+
+  --color-wrong: #b91c1c;
+  --color-wrong-bg: #fee2e2;
+  --color-wrong-line: #ef4444;
+
+  --font-sans: var(--font-noto-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Tydlig fokusram för den som använder tangentbord. */
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
