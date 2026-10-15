@@ -7,13 +7,21 @@ import { createTranslator } from "./translate";
 export const LANG_COOKIE = "lang";
 
 /**
- * Väljer språk: 1) språket användaren har valt (cookie), 2) telefonens/webbläsarens
- * språk, 3) svenska.
+ * Väljer språk: språket användaren har valt (cookie), annars svenska.
+ * Sajten är alltid på svenska tills besökaren själv väljer ett annat språk.
  */
 export async function getLang(): Promise<LanguageCode> {
   const cookieLang = (await cookies()).get(LANG_COOKIE)?.value;
-  if (isLanguageCode(cookieLang)) return cookieLang;
-  return pickFromAcceptLanguage((await headers()).get("accept-language"));
+  return isLanguageCode(cookieLang) ? cookieLang : "sv";
+}
+
+/**
+ * Har besökaren valt språk än? Om inte visas språkrutan, med telefonens språk
+ * som förslag (t.ex. arabiska om telefonen är inställd på arabiska).
+ */
+export async function getLanguageChoice(): Promise<{ hasChosen: boolean; suggested: LanguageCode }> {
+  const hasChosen = isLanguageCode((await cookies()).get(LANG_COOKIE)?.value);
+  return { hasChosen, suggested: pickFromAcceptLanguage((await headers()).get("accept-language")) };
 }
 
 /** Hittar bästa språket i webbläsarens Accept-Language, t.ex. "ar-SY,ar;q=0.9,en;q=0.8". */

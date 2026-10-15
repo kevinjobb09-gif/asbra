@@ -1,12 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import { Noto_Sans, Noto_Sans_Arabic, Noto_Sans_Ethiopic, Noto_Sans_Thai } from "next/font/google";
 import { brand, getCountry, languages } from "@/config";
-import { getI18n } from "@/i18n/server";
+import { getI18n, getLanguageChoice } from "@/i18n/server";
 import { I18nProvider } from "@/i18n/client";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
 import { RefBanner } from "@/components/RefBanner";
+import { LanguageNotice } from "@/components/LanguagePicker";
 import "./globals.css";
 
 // Ett typsnitt per skriftsystem. Webbläsaren laddar bara de tecken som faktiskt
@@ -41,7 +42,7 @@ export const viewport: Viewport = {
 };
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  const { lang, dir, messages } = await getI18n();
+  const [{ lang, dir, messages }, choice] = await Promise.all([getI18n(), getLanguageChoice()]);
   const fonts = [notoSans, notoArabic, notoEthiopic, notoThai].map((f) => f.variable).join(" ");
 
   return (
@@ -52,6 +53,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
           <RefBanner />
           <main className="flex-1">{children}</main>
           <SiteFooter />
+          <LanguageNotice show={!choice.hasChosen} suggested={choice.suggested} />
         </I18nProvider>
         <ServiceWorkerRegister />
       </body>

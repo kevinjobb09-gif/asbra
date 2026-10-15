@@ -79,3 +79,24 @@ describe("översättningsfilerna", () => {
     });
   }
 });
+
+import { languagePageTarget } from "@/components/LanguagePicker";
+
+describe("byte av språk", () => {
+  it("på en språksida går man till det nya språkets startsida", () => {
+    expect(languagePageTarget("/ar", "sv")).toBe("/");
+    expect(languagePageTarget("/ar", "fa")).toBe("/fa");
+    expect(languagePageTarget("/ar/", "en")).toBe("/en");
+  });
+
+  it("på startsidan går man till språksidan", () => {
+    expect(languagePageTarget("/", "ar")).toBe("/ar");
+    expect(languagePageTarget("/", "sv")).toBe("/");
+  });
+
+  it("på andra sidor stannar man kvar", () => {
+    expect(languagePageTarget("/ova", "ar")).toBeNull();
+    expect(languagePageTarget("/om", "sv")).toBeNull();
+    expect(languagePageTarget("/ova/kapitel/1", "fa")).toBeNull();
+  });
+});

@@ -158,8 +158,9 @@ tests/          Vitest-tester
 
 ## Språk
 
-- Gränssnittet finns på 24 språk. Användaren väljer språk med jordgloben i sidhuvudet. Första gången väljs
-  telefonens språk automatiskt.
+- Sajten är på **svenska** som standard. Första gången man besöker den visas en ruta där man väljer språk
+  ("Välj språk" står på flera språk, och telefonens språk föreslås överst). Man kan alltid byta med
+  jordgloben i sidhuvudet. Gränssnittet finns på 24 språk.
 - **Frågor och svarsalternativ är alltid på svenska**, som på provet. Arabiska, persiska, dari, pashto,
   sorani och urdu visas från höger till vänster, men frågan står alltid från vänster till höger.
 - Varje språk har en egen startsida att länka till, t.ex. `/ar`, `/fa`, `/prs`, `/ti`, `/so`.
