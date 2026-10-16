@@ -242,7 +242,8 @@
     "otherDevice": "Taleefan ama kombiyuutar kale ku gal email-ka {email}.",
     "canceled": "Lacag bixinta waa la joojiyay. Wax lacag ah lagama jarin.",
     "subscriptionInfo": "Rukummadu si toos ah ayay u cusboonaataa bil kasta ilaa aad joojiso. Waxaad ku joojinaysaa hal guji oo Akoonka ah, waxaadna haysanaysaa helitaanka ilaa dhammaadka bisha aad bixisay.",
-    "thenPrice": "Kadibna {price} bishii"
+    "thenPrice": "Kadibna {price} bishii",
+    "loginToAccess": "Lacag bixintu way dhammaatay, rukummaduna waa firfircoon tahay. Horeba waxaad leedahay akoon {email} ah – ku gal ciwaankaas si aad wax walba u isticmaasho."
   },
   "refBanner": {
     "text": "Koodhka qiimo dhimista {code} waa shaqaynayaa: {percent} % qiimo dhimis bisha koowaad."

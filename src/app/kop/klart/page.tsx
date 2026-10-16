@@ -21,11 +21,15 @@ export default async function ThankYouPage({ searchParams }: Props) {
   const { t } = await getI18n();
 
   let email: string | null = null;
+  let paid = false;
   if (sessionId?.startsWith("cs_") && isStripeConfigured()) {
     try {
       const session = await getStripe().checkout.sessions.retrieve(sessionId);
       email = session.customer_details?.email ?? session.customer_email ?? null;
-      if (session.status === "complete" && session.payment_status === "paid") await processCheckoutSession(session);
+      if (session.status === "complete" && session.payment_status === "paid") {
+        const result = await processCheckoutSession(session);
+        paid = result.status === "linked" || result.status === "already-linked";
+      }
     } catch (e) {
       console.error("Kunde inte kontrollera betalningen:", e instanceof Error ? e.message : e);
     }
@@ -33,6 +37,21 @@ export default async function ThankYouPage({ searchParams }: Props) {
 
   const access = await getAccess();
   const attempt = Number(forsok ?? 0);
+
+  if (!access.hasFullAccess && paid && email) {
+    // Betalningen är klar men kopplades till ett befintligt konto med samma
+    // e-post. Den här webbläsaren är inte inloggad på det kontot.
+    return (
+      <div className="mx-auto max-w-lg px-4 py-16 text-center">
+        <CheckCircle2 className="mx-auto size-16 text-primary" aria-hidden />
+        <h1 className="mt-4 text-3xl font-extrabold">{t("buy.thanksTitle")}</h1>
+        <p className="mt-3 text-lg">{t("buy.loginToAccess", { email })}</p>
+        <ButtonLink href="/logga-in" size="lg" className="mt-8 w-full max-w-xs">
+          {t("login.title")}
+        </ButtonLink>
+      </div>
+    );
+  }
 
   if (!access.hasFullAccess) {
     // Betalningen bekräftas fortfarande, eller köpet hamnade på ett befintligt

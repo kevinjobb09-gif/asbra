@@ -242,7 +242,8 @@
     "otherDevice": "在其他手机或电脑上，请用邮箱 {email} 登录。",
     "canceled": "付款已取消，没有扣款。",
     "subscriptionInfo": "订阅每月自动续费，直到你取消为止。在“账户”页面一键取消，已付费的月份结束前仍可继续使用。",
-    "thenPrice": "之后每月 {price}"
+    "thenPrice": "之后每月 {price}",
+    "loginToAccess": "付款已完成，订阅已生效。你已有使用 {email} 的账户——请用该邮箱登录以使用全部内容。"
   },
   "refBanner": {
     "text": "优惠码 {code} 已生效：首月优惠 {percent} %。"

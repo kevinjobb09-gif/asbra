@@ -242,7 +242,8 @@
     "otherDevice": "Li ser telefon an komputereke din bi e-maila {email} têkeve.",
     "canceled": "Dayîn hate betalkirin. Tu pere nehat kişandin.",
     "subscriptionInfo": "Abonetî her meh bi xwe nû dibe heta ku tu betal bikî. Tu bi yek klîkê di Hesab de betal dikî û heta dawiya meha ku te dayîne gihîştina te dimîne.",
-    "thenPrice": "Paşê {price} mehane"
+    "thenPrice": "Paşê {price} mehane",
+    "loginToAccess": "Dayîn temam bû û abonetî çalak e. Hesabekî te bi {email} berê heye – bi wê navnîşana e-nameyê têkeve da ku her tiştî bikar bînî."
   },
   "refBanner": {
     "text": "Koda daxistinê {code} çalak e: {percent} % daxistin ji bo meha yekem."

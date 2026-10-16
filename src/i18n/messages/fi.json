@@ -242,7 +242,8 @@
     "otherDevice": "Kirjaudu toisella puhelimella tai tietokoneella osoitteella {email}.",
     "canceled": "Maksu peruttiin. Rahaa ei veloitettu.",
     "subscriptionInfo": "Tilaus uusiutuu automaattisesti joka kuukausi, kunnes perut sen. Perut yhdellä klikkauksella kohdassa Tili, ja käyttöoikeus säilyy maksetun kuukauden loppuun.",
-    "thenPrice": "Sen jälkeen {price} kuukaudessa"
+    "thenPrice": "Sen jälkeen {price} kuukaudessa",
+    "loginToAccess": "Maksu on valmis ja tilaus on voimassa. Sinulla on jo tili osoitteella {email} – kirjaudu sillä sähköpostiosoitteella käyttääksesi kaikkea."
   },
   "refBanner": {
     "text": "Alennuskoodi {code} on voimassa: {percent} % alennus ensimmäisestä kuukaudesta."

@@ -242,7 +242,8 @@
     "otherDevice": "On another phone or computer, log in with the email address {email}.",
     "canceled": "The payment was canceled. No money has been taken.",
     "subscriptionInfo": "The subscription renews automatically every month until you cancel it. You cancel with one click under Account and keep access until the end of the month you have paid for.",
-    "thenPrice": "Then {price} per month"
+    "thenPrice": "Then {price} per month",
+    "loginToAccess": "The payment is complete and the subscription is active. You already have an account with {email} – log in with that email address to use everything."
   },
   "refBanner": {
     "text": "Discount code {code} is active: {percent} % off the first month."

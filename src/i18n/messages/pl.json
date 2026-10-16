@@ -242,7 +242,8 @@
     "otherDevice": "Na innym telefonie lub komputerze zaloguj się adresem {email}.",
     "canceled": "Płatność została anulowana. Nie pobrano żadnych pieniędzy.",
     "subscriptionInfo": "Subskrypcja odnawia się automatycznie co miesiąc, dopóki jej nie anulujesz. Anulujesz jednym kliknięciem w zakładce Konto i masz dostęp do końca opłaconego miesiąca.",
-    "thenPrice": "Potem {price} miesięcznie"
+    "thenPrice": "Potem {price} miesięcznie",
+    "loginToAccess": "Płatność zakończona, subskrypcja jest aktywna. Masz już konto z adresem {email} – zaloguj się tym adresem, aby korzystać ze wszystkiego."
   },
   "refBanner": {
     "text": "Kod rabatowy {code} jest aktywny: {percent} % zniżki na pierwszy miesiąc."

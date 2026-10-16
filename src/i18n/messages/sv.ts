@@ -252,6 +252,7 @@ export const sv = {
     processingSlow: "Det tar längre tid än vanligt. Ladda om sidan om en stund. Har du fått kvittot är allt klart.",
     startPracticing: "Börja öva",
     otherDevice: "På en annan mobil eller dator loggar du in med e-postadressen {email}.",
+    loginToAccess: "Betalningen är klar och prenumerationen är aktiv. Du har redan ett konto med {email} – logga in med den e-postadressen för att använda allt.",
     canceled: "Betalningen avbröts. Inga pengar har dragits.",
   },
   refBanner: {

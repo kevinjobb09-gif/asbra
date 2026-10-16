@@ -242,7 +242,8 @@
     "otherDevice": "Trên điện thoại hoặc máy tính khác, đăng nhập bằng email {email}.",
     "canceled": "Đã hủy thanh toán. Không bị trừ tiền.",
     "subscriptionInfo": "Gói đăng ký tự động gia hạn mỗi tháng cho đến khi bạn hủy. Bạn hủy chỉ với một lần bấm trong Tài khoản và vẫn dùng được đến hết tháng đã trả tiền.",
-    "thenPrice": "Sau đó {price} mỗi tháng"
+    "thenPrice": "Sau đó {price} mỗi tháng",
+    "loginToAccess": "Thanh toán đã hoàn tất và gói đăng ký đang hoạt động. Bạn đã có tài khoản với {email} – hãy đăng nhập bằng email đó để dùng tất cả."
   },
   "refBanner": {
     "text": "Mã giảm giá {code} đang áp dụng: giảm {percent} % tháng đầu."

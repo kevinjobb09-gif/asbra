@@ -242,7 +242,8 @@
     "otherDevice": "En otro móvil u ordenador, entra con el correo {email}.",
     "canceled": "El pago se canceló. No se ha cobrado nada.",
     "subscriptionInfo": "La suscripción se renueva automáticamente cada mes hasta que la canceles. Cancelas con un clic en Cuenta y mantienes el acceso hasta el final del mes que pagaste.",
-    "thenPrice": "Después {price} al mes"
+    "thenPrice": "Después {price} al mes",
+    "loginToAccess": "El pago se ha completado y la suscripción está activa. Ya tienes una cuenta con {email}: inicia sesión con ese correo para usarlo todo."
   },
   "refBanner": {
     "text": "El código de descuento {code} está activo: {percent} % de descuento el primer mes."

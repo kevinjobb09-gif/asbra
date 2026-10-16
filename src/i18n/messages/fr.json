@@ -242,7 +242,8 @@
     "otherDevice": "Sur un autre téléphone ou ordinateur, connectez-vous avec l’adresse {email}.",
     "canceled": "Le paiement a été annulé. Aucun argent n’a été prélevé.",
     "subscriptionInfo": "L’abonnement se renouvelle automatiquement chaque mois jusqu’à ce que vous le résiliiez. Vous résiliez en un clic dans Compte et gardez l’accès jusqu’à la fin du mois payé.",
-    "thenPrice": "Ensuite {price} par mois"
+    "thenPrice": "Ensuite {price} par mois",
+    "loginToAccess": "Le paiement est terminé et l’abonnement est actif. Vous avez déjà un compte avec {email} – connectez-vous avec cette adresse pour tout utiliser."
   },
   "refBanner": {
     "text": "Le code promo {code} est actif : {percent} % de réduction le premier mois."

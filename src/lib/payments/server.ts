@@ -202,7 +202,11 @@ async function sync(sub: Stripe.Subscription) {
 export async function processCheckoutSession(session: Stripe.Checkout.Session) {
   const result = await handleCheckoutCompleted(toCompletedCheckout(session), checkoutDeps());
   if (result.status === "linked" || result.status === "already-linked") {
-    await sync(await getStripe().subscriptions.retrieve(result.subscriptionId));
+    const sub = await getStripe().subscriptions.retrieve(result.subscriptionId, { expand: ["latest_invoice"] });
+    await sync(sub);
+    // Spara första betalningen direkt om webhooken inte hunnit (görs aldrig två gånger).
+    const invoice = sub.latest_invoice;
+    if (invoice && typeof invoice !== "string" && invoice.status === "paid") await processInvoicePaid(invoice);
   }
   return result;
 }

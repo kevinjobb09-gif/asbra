@@ -242,7 +242,8 @@
     "otherDevice": "Na drugom telefonu ili računaru prijavi se adresom {email}.",
     "canceled": "Plaćanje je otkazano. Novac nije naplaćen.",
     "subscriptionInfo": "Pretplata se automatski obnavlja svaki mjesec dok je ne otkažeš. Otkazuješ jednim klikom pod Račun i imaš pristup do kraja plaćenog mjeseca.",
-    "thenPrice": "Zatim {price} mjesečno"
+    "thenPrice": "Zatim {price} mjesečno",
+    "loginToAccess": "Plaćanje je završeno i pretplata je aktivna. Već imaš račun s {email} – prijavi se tom e-adresom da koristiš sve."
   },
   "refBanner": {
     "text": "Kod za popust {code} je aktivan: {percent} % popusta prvi mjesec."

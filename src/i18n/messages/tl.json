@@ -242,7 +242,8 @@
     "otherDevice": "Sa ibang telepono o computer, mag-log in gamit ang email na {email}.",
     "canceled": "Kinansela ang bayad. Walang perang nakaltas.",
     "subscriptionInfo": "Awtomatikong nare-renew ang subscription buwan-buwan hanggang i-cancel mo. Mag-cancel sa isang click sa Account at may access ka hanggang sa katapusan ng buwang binayaran mo.",
-    "thenPrice": "Pagkatapos ay {price} kada buwan"
+    "thenPrice": "Pagkatapos ay {price} kada buwan",
+    "loginToAccess": "Tapos na ang bayad at aktibo na ang subscription. May account ka na gamit ang {email} – mag-log in gamit ang email na iyon para magamit ang lahat."
   },
   "refBanner": {
     "text": "Aktibo ang discount code {code}: {percent} % diskwento sa unang buwan."
