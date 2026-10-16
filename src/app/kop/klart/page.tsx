@@ -36,7 +36,8 @@ export default async function ThankYouPage({ searchParams }: Props) {
   }
 
   const access = await getAccess();
-  const attempt = Number(forsok ?? 0);
+  // Utan giltigt köpnummer finns inget att vänta på: visa inloggningen direkt.
+  const attempt = sessionId?.startsWith("cs_") ? Number(forsok ?? 0) : 10;
 
   if (!access.hasFullAccess && paid && email) {
     // Betalningen är klar men kopplades till ett befintligt konto med samma
