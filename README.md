@@ -209,6 +209,9 @@ Statistiken sparar inga personuppgifter och använder inga spårningscookies.
 
 ## Publicera på Netlify
 
+**Publicerad (testläge):** <https://asbra-prov.netlify.app> – byggs om automatiskt vid varje push till `main` på GitHub.
+Stripe-webhooken (testläge) pekar på `/api/stripe/webhook` där. Byt till live-nycklar och skapa en ny webhook i live-läget före lansering.
+
 1. Lägg upp projektet på GitHub (privat repo).
 2. På [netlify.com](https://app.netlify.com): **Add new site → Import an existing project → GitHub** och välj repot.
    Netlify läser `netlify.toml` och känner igen Next.js automatiskt.
@@ -244,3 +247,4 @@ Statistiken sparar inga personuppgifter och använder inga spårningscookies.
 - [x] Språk (24 språk, förklaringar översätts med skript)
 - [x] Marknadsföring och statistik
 - [x] Juridiska sidor (utkast) och Netlify-inställningar
+- [x] Publicerad på Netlify med Stripe-webhook i testläge
