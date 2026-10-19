@@ -4,8 +4,11 @@ import type { CountryConfig } from "./types";
 /**
  * SVERIGE – inställningar för provet och tjänsten.
  *
- * ⚠️ Provformatet nedan bygger på osäkra uppgifter. Kontrollera aktuella
- * uppgifter på UHR:s webbplats (uhr.se) och uppdatera `lastVerified`.
+ * Provformatet kontrollerat på uhr.se 2026-10-19: provet är på svenska, på papper,
+ * med flervalsfrågor (fyra alternativ, ett rätt). UHR har ännu inte publicerat
+ * provtid och antal frågor för nästa provtillfälle, och gränsen för godkänt sätts
+ * i efterhand. 60 frågor / 90 minuter nedan är därför vår övningsmodell –
+ * uppdatera när UHR publicerar uppgifterna.
  */
 export const se: CountryConfig = {
   code: "se",
@@ -26,8 +29,8 @@ export const se: CountryConfig = {
     durationMinutes: 90,
     optionsPerQuestion: 4,
     passThreshold: null, // Inte officiellt fastställd enligt de uppgifter vi har.
-    lastVerified: "EJ KONTROLLERAT",
-    officialInfoUrl: "https://www.uhr.se",
+    lastVerified: "2026-10-19",
+    officialInfoUrl: "https://www.uhr.se/medborgarskapsprovet/",
   },
 
   // Månadsprenumeration utan bindningstid. Ändra priset här.

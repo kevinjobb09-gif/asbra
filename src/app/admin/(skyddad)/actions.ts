@@ -6,7 +6,12 @@ import { z } from "zod";
 import { requireAdmin } from "@/lib/admin/auth";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
-import { questionInputFromFormData, questionInputSchema, QUESTION_STATUSES } from "@/lib/questions/schema";
+import {
+  PLACEHOLDER_SOURCE_PREFIX,
+  questionInputFromFormData,
+  questionInputSchema,
+  QUESTION_STATUSES,
+} from "@/lib/questions/schema";
 
 export type SaveState = { ok: boolean; message?: string; fieldErrors?: Record<string, string> };
 
@@ -101,4 +106,35 @@ export async function deleteTranslation(formData: FormData) {
   const language = z.string().regex(/^[a-z]{2,3}$/).parse(formData.get("language"));
   await createAdminClient().from("question_translations").delete().eq("question_id", questionId).eq("language", language);
   revalidatePath(`/admin/fragor/${questionId}`);
+}
+
+/** Snabbgranskning: markerar ett utkast som granskat och går vidare till nästa. */
+export async function approveQuestion(formData: FormData) {
+  await requireAdmin();
+  const id = z.uuid().parse(formData.get("id"));
+  const next = String(formData.get("next") ?? "/admin/granska");
+  const supabase = createAdminClient();
+  const { data } = await supabase.from("questions").select("source_reference").eq("id", id).single();
+  if (data?.source_reference.toUpperCase().startsWith(PLACEHOLDER_SOURCE_PREFIX)) {
+    throw new Error("Frågan saknar riktig källhänvisning. Öppna den och skriv in källan först.");
+  }
+  const { error } = await supabase
+    .from("questions")
+    .update({ status: "reviewed", is_sample: false, review_note: null })
+    .eq("id", id)
+    .eq("status", "draft");
+  if (error) throw new Error(`Kunde inte godkänna frågan: ${error.message}`);
+  revalidatePath("/admin");
+  redirect(next.startsWith("/admin/granska") ? next : "/admin/granska");
+}
+
+/** Snabbgranskning: tar bort ett utkast som inte håller och går vidare till nästa. */
+export async function rejectQuestion(formData: FormData) {
+  await requireAdmin();
+  const id = z.uuid().parse(formData.get("id"));
+  const next = String(formData.get("next") ?? "/admin/granska");
+  const { error } = await createAdminClient().from("questions").delete().eq("id", id).eq("status", "draft");
+  if (error) throw new Error(`Kunde inte ta bort frågan: ${error.message}`);
+  revalidatePath("/admin");
+  redirect(next.startsWith("/admin/granska") ? next : "/admin/granska");
 }

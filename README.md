@@ -223,7 +223,7 @@ Stripe-webhooken (testläge) pekar på `/api/stripe/webhook` där. Byt till live
 
 ## Checklista före lansering
 
-- [ ] Kontrollera provformatet (antal frågor, tid, godkäntgräns) på uhr.se och uppdatera `se.ts` + `lastVerified`.
+- [x] Kontrollera provformatet på uhr.se (2026-10-19: tid och antal frågor ej publicerade än – kolla igen före lansering).
 - [x] Skriv in de riktiga kapitelrubrikerna i `se.ts`.
 - [ ] Ta bort exempelfrågorna och lägg in egna, granskade frågor. Gärna minst 30 gratisfrågor från olika kapitel.
 - [ ] Kör `npm.cmd run oversatt-forklaringar`.

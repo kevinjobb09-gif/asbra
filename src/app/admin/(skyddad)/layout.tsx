@@ -17,6 +17,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
     <div className="mx-auto max-w-6xl px-4 py-6">
       <nav className="mb-6 flex flex-wrap items-center gap-2 rounded-2xl border border-line bg-surface p-2 text-sm font-semibold">
         <Link href="/admin" className="rounded-full px-3 py-2 hover:bg-primary-soft">Frågor</Link>
+        <Link href="/admin/granska" className="rounded-full bg-primary px-3 py-2 text-white">Granska utkast</Link>
         <Link href="/admin/fragor/ny" className="rounded-full px-3 py-2 hover:bg-primary-soft">+ Ny fråga</Link>
         <Link href="/admin/rapporter" className="rounded-full px-3 py-2 hover:bg-primary-soft">
           Felrapporter
