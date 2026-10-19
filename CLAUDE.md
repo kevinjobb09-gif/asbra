@@ -15,7 +15,7 @@ API:er du är osäker på. `middleware` heter nu `proxy`, och `params`, `searchP
 - Kopiera aldrig text från studiematerialet "Sverige i fokus" eller konkurrenter.
 - Tjänsten får aldrig se officiell ut: inga myndighetslogotyper, inga blå/gula myndighetsfärger, friskrivning synlig.
 - Land är en parameter (`src/config/countries/`). Bara Sverige visas utåt.
-- Varumärket finns bara i `src/config/brand.ts` (platshållare NAMN).
+- Varumärket finns bara i `src/config/brand.ts` (Medborgarhjälpen).
 - Grönt = rätt svar, rött = fel svar. Använd inte de färgerna till annat.
 - Claude API används bara i interna skript (`scripts/`), aldrig mot användare.
 - Alla texter i gränssnittet ligger i `src/i18n/messages/sv.ts` (källan) + en JSON per språk (24 språk).

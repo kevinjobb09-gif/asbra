@@ -1,16 +1,16 @@
 /**
  * ALLT SOM RÖR VARUMÄRKET FINNS HÄR.
  *
- * När namnet är bestämt: ändra `name` (och gärna `shortName` och `initial`)
- * nedan. Resten av sajten, ikonerna och förhandsbilderna hämtar namnet härifrån.
+ * Byter du namn: ändra `name`, `shortName` och `initial` nedan. Resten av sajten,
+ * ikonerna och förhandsbilderna hämtar namnet härifrån. Domän: medborgarhjalpen.se
  */
 export const brand = {
-  /** Varumärkesnamnet. Platshållare tills namnet är bestämt. */
-  name: "NAMN",
+  /** Varumärkesnamnet. */
+  name: "Medborgarhjälpen",
   /** Kort namn som visas under ikonen på hemskärmen (max ~12 tecken). */
-  shortName: "NAMN",
+  shortName: "Medborgarhjälpen",
   /** Bokstaven som visas i appikonen. */
-  initial: "N",
+  initial: "M",
   /** Kort slogan på svenska. */
   tagline: "Öva inför medborgarskapsprovet",
 

@@ -1,4 +1,4 @@
-# NAMN – övning inför medborgarskapsprovet
+# Medborgarhjälpen – övning inför medborgarskapsprovet
 
 En webbtjänst där man övar inför delprovet i samhällskunskap för svenskt medborgarskap.
 Frågorna visas på svenska och förklaringarna på användarens eget språk.
@@ -53,7 +53,7 @@ I datorns webbläsare kan du också trycka **F12** och klicka på mobilikonen f�
 
 | Vill du ändra … | Fil |
 |---|---|
-| Varumärkesnamnet (NAMN), kontaktadress, företagsuppgifter | `src/config/brand.ts` |
+| Varumärkesnamnet (Medborgarhjälpen), kontaktadress, företagsuppgifter | `src/config/brand.ts` |
 | Provformat, pris, antal gratisfrågor, kapitelnamn, rätt i rad för repetition | `src/config/countries/se.ts` |
 | Vilka språk som finns | `src/config/languages.ts` och `explanationLanguages` i `se.ts` |
 | Texterna i gränssnittet (svenska) | `src/i18n/messages/sv.ts` – övriga språk i samma mapp (`.json`) |
@@ -244,7 +244,8 @@ Gratisfrågorna visas först.
 - [x] Ta bort exempelfrågorna och lägg in egna frågor (336 utkast inlagda 2026-10-19).
 - [ ] Granska utkasten på `/admin/granska` – minst de 17 gratisfrågorna och gärna alla.
 - [ ] Kör `npm.cmd run oversatt-forklaringar`.
-- [ ] Bestäm varumärkesnamnet och fyll i företagsnamn, organisationsnummer och adress i `brand.ts`.
+- [x] Varumärkesnamn: Medborgarhjälpen (medborgarhjalpen.se).
+- [ ] Fyll i företagsnamn, organisationsnummer och adress i `brand.ts`.
 - [ ] Läs igenom villkor och integritetspolicy (gärna med jurist) och fyll i `[DATUM]` och `[E-POSTTJÄNST]`.
 - [ ] Koppla en egen e-posttjänst (t.ex. Resend) i Supabase: **Authentication → Emails → SMTP Settings**.
       Sätt sedan `SUPABASE_CUSTOM_SMTP=1` och kör `npm.cmd run databas`, så får inloggningsmejlen länkar som
