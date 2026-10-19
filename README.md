@@ -221,11 +221,28 @@ Stripe-webhooken (testläge) pekar på `/api/stripe/webhook` där. Byt till live
    tillåter inloggningslänkar dit. Sätt sedan tillbaka `http://localhost:3000` lokalt.
 5. Lägg till Stripe-webhooken (se ovan) och byt till Stripes **live**-nycklar när allt fungerar.
 
+## Lansera på egen domän
+
+1. Köp domänen (t.ex. hos Loopia, One.com eller Namecheap).
+2. Fyll i `LANSERING_DOMAN` i `.env.local` (och `STRIPE_LIVE_SECRET_KEY` när Stripe-kontot är verifierat).
+3. Kör `npm.cmd run lansera`. Skriptet kopplar domänen på Netlify, skapar Stripe-webhooken, lägger in alla
+   nycklar på Netlify, tillåter inloggning i Supabase och bygger om sajten.
+4. Lägg in DNS-raderna som skriptet skriver ut hos domänleverantören.
+
+Skriptet kan köras flera gånger – först i testläge, sedan igen med live-nyckeln.
+
+## Granska frågor
+
+Utkasten granskas på `/admin/granska` (fungerar bra på mobilen): ett utkast i taget med rätt svar markerat.
+Kontrollera mot sidan i *Sverige i fokus* och tryck **Godkänn**, **Redigera** eller **Ta bort**.
+Gratisfrågorna visas först.
+
 ## Checklista före lansering
 
 - [x] Kontrollera provformatet på uhr.se (2026-10-19: tid och antal frågor ej publicerade än – kolla igen före lansering).
 - [x] Skriv in de riktiga kapitelrubrikerna i `se.ts`.
-- [ ] Ta bort exempelfrågorna och lägg in egna, granskade frågor. Gärna minst 30 gratisfrågor från olika kapitel.
+- [x] Ta bort exempelfrågorna och lägg in egna frågor (336 utkast inlagda 2026-10-19).
+- [ ] Granska utkasten på `/admin/granska` – minst de 17 gratisfrågorna och gärna alla.
 - [ ] Kör `npm.cmd run oversatt-forklaringar`.
 - [ ] Bestäm varumärkesnamnet och fyll i företagsnamn, organisationsnummer och adress i `brand.ts`.
 - [ ] Läs igenom villkor och integritetspolicy (gärna med jurist) och fyll i `[DATUM]` och `[E-POSTTJÄNST]`.

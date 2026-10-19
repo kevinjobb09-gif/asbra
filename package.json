@@ -14,7 +14,8 @@
     "databas": "tsx scripts/setup-supabase.ts",
     "admin-lank": "tsx --env-file-if-exists=.env.local scripts/admin-lank.ts",
     "oversatt-forklaringar": "tsx --env-file-if-exists=.env.local scripts/oversatt-forklaringar.ts",
-    "oversatt-granssnitt": "tsx --env-file-if-exists=.env.local scripts/oversatt-granssnitt.ts"
+    "oversatt-granssnitt": "tsx --env-file-if-exists=.env.local scripts/oversatt-granssnitt.ts",
+    "lansera": "tsx --env-file-if-exists=.env.local scripts/lansera.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",
