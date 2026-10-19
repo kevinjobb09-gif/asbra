@@ -16,7 +16,7 @@ export const se: CountryConfig = {
   studyMaterial: {
     title: "Sverige i fokus",
     publisher: "UHR",
-    url: "https://www.uhr.se",
+    url: "https://www.uhr.se/medborgarskapsprovet/utbildningsmaterial/",
   },
 
   unaffiliatedAuthorities: ["UHR", "Migrationsverket"],
@@ -45,9 +45,20 @@ export const se: CountryConfig = {
   // Alla språk i src/config/languages.ts. Ta bort ett språk här för att dölja det.
   explanationLanguages: [...LANGUAGE_CODES],
 
-  // TODO: Byt ut mot de riktiga kapitelrubrikerna i Sverige i fokus.
-  chapters: Array.from({ length: 13 }, (_, i) => ({
-    number: i + 1,
-    title: `Kapitel ${i + 1}`,
-  })),
+  // Kapitlen i Sverige i fokus (1:a upplagan, korrigerad version 2026-08-10).
+  chapters: [
+    { number: 1, title: "Landet Sverige" },
+    { number: 2, title: "Sveriges demokratiska system" },
+    { number: 3, title: "Så här styrs Sverige" },
+    { number: 4, title: "Politiska val och partier" },
+    { number: 5, title: "Lag och rätt" },
+    { number: 6, title: "Mediernas roll" },
+    { number: 7, title: "Mänskliga rättigheter" },
+    { number: 8, title: "Arbetsmarknad och privatekonomi" },
+    { number: 9, title: "Välfärdssamhället" },
+    { number: 10, title: "Sveriges moderna historia" },
+    { number: 11, title: "Sverige och omvärlden" },
+    { number: 12, title: "En sekulär stat och ett mångreligiöst land" },
+    { number: 13, title: "Traditioner och högtider" },
+  ],
 };
