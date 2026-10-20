@@ -44,3 +44,6 @@ next-env.d.ts
 
 # egna anteckningar till utkastskriptet
 /anteckningar/
+
+# Reklamvideor (stora filer, skapas med marknadsforing/videogenerator)
+/marknadsforing/videor/

@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<title>Videogenerator – Medborgarhjälpen</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500;700;800&family=Noto+Sans+Arabic:wght@500;700;800&family=Noto+Sans+Ethiopic:wght@500;700;800&display=block">
+<style>
+  html, body { margin: 0; background: #222; }
+  canvas { display: block; width: 360px; height: 640px; }
+</style>
+</head>
+<body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="texts.js"></script>
+<script src="mp4-muxer.js"></script>
+<script>
+// Ritar och spelar in en 9:16-video (1080×1920) per uppdrag från servern.
+const W = 1080, H = 1920, FPS = 30;
+const C = {
+  bg: "#fffaf3", ink: "#1d1b2e", muted: "#5d5a73", line: "#ebe4d8",
+  primary: "#4c2fc8", primarySoft: "#efebff", cta: "#d9480f",
+  correct: "#15803d", correctBg: "#dcfce7", correctLine: "#22c55e", white: "#ffffff",
+};
+const FONT = '"Noto Sans", "Noto Sans Arabic", "Noto Sans Ethiopic", sans-serif';
+const DOMAIN = "medborgarhjalpen.se";
+const BRAND = "Medborgarhjälpen";
+
+const canvas = document.getElementById("c");
+const ctx = canvas.getContext("2d");
+
+const clamp = (x) => Math.max(0, Math.min(1, x));
+const ease = (x) => 1 - Math.pow(1 - clamp(x), 3);
+const fade = (t, start, dur = 0.35) => ease((t - start) / dur);
+const fadeOut = (t, end, dur = 0.3) => 1 - ease((t - (end - dur)) / dur);
+
+function font(size, weight = 700) { return `${weight} ${size}px ${FONT}`; }
+
+function wrap(text, maxWidth) {
+  const words = text.split(" ");
+  const lines = [];
+  let line = "";
+  for (const w of words) {
+    const test = line ? line + " " + w : w;
+    if (ctx.measureText(test).width > maxWidth && line) { lines.push(line); line = w; }
+    else line = test;
+  }
+  if (line) lines.push(line);
+  return lines;
+}
+
+/** Centrerad text med radbrytning. Returnerar höjden. */
+function text(str, y, size, { weight = 700, color = C.ink, dir = "ltr", maxWidth = 900, lineHeight = 1.25, alpha = 1, dy = 0 } = {}) {
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.font = font(size, weight);
+  ctx.fillStyle = color;
+  ctx.direction = dir;
+  ctx.textAlign = "center";
+  ctx.textBaseline = "top";
+  const lines = wrap(str, maxWidth);
+  lines.forEach((l, i) => ctx.fillText(l, W / 2, y + dy + i * size * lineHeight));
+  ctx.restore();
+  return lines.length * size * lineHeight;
+}
+
+function roundRect(x, y, w, h, r, fill, stroke, lw = 6) {
+  ctx.beginPath();
+  ctx.roundRect(x, y, w, h, r);
+  if (fill) { ctx.fillStyle = fill; ctx.fill(); }
+  if (stroke) { ctx.lineWidth = lw; ctx.strokeStyle = stroke; ctx.stroke(); }
+}
+
+function background(t) {
+  ctx.fillStyle = C.bg;
+  ctx.fillRect(0, 0, W, H);
+  // Mjuka former som rör sig lite.
+  ctx.save();
+  ctx.globalAlpha = 0.9;
+  ctx.fillStyle = C.primarySoft;
+  ctx.beginPath(); ctx.arc(920 + Math.sin(t * 0.6) * 30, 260, 300, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.arc(120 + Math.cos(t * 0.5) * 30, 1650, 340, 0, Math.PI * 2); ctx.fill();
+  ctx.restore();
+}
+
+function logo(alpha = 1) {
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.font = font(52, 800);
+  const label = BRAND;
+  const tw = ctx.measureText(label).width;
+  const total = 96 + 24 + tw;
+  const x = (W - total) / 2, y = 150;
+  roundRect(x, y, 96, 96, 24, C.primary);
+  ctx.fillStyle = C.white; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.direction = "ltr";
+  ctx.font = font(60, 800); ctx.fillText("M", x + 48, y + 52);
+  ctx.fillStyle = C.primary; ctx.textAlign = "left"; ctx.font = font(52, 800);
+  ctx.fillText(label, x + 120, y + 50);
+  ctx.restore();
+}
+
+function questionCard(q, t, start, revealAt) {
+  const a = fade(t, start);
+  const y0 = 560 + (1 - a) * 60;
+  ctx.save();
+  ctx.globalAlpha = a;
+  roundRect(70, y0, 940, 840, 44, C.white, C.line, 4);
+  ctx.restore();
+  text(q.question, y0 + 60, 58, { weight: 800, alpha: a, maxWidth: 820 });
+  const letters = "ABCD";
+  q.options.forEach((opt, i) => {
+    const oa = fade(t, start + 0.35 + i * 0.18);
+    const oy = y0 + 270 + i * 135;
+    const revealed = t >= revealAt;
+    const isCorrect = i === q.correct;
+    const dim = revealed && !isCorrect ? 0.35 : 1;
+    ctx.save();
+    ctx.globalAlpha = oa * dim;
+    const pop = revealed && isCorrect ? 1 + 0.04 * Math.sin(Math.min(1, (t - revealAt) / 0.4) * Math.PI) : 1;
+    ctx.translate(W / 2, oy + 55); ctx.scale(pop, pop); ctx.translate(-W / 2, -(oy + 55));
+    roundRect(130, oy, 820, 110, 28,
+      revealed && isCorrect ? C.correctBg : C.bg,
+      revealed && isCorrect ? C.correctLine : C.line, revealed && isCorrect ? 8 : 4);
+    roundRect(160, oy + 20, 70, 70, 35, revealed && isCorrect ? C.correct : C.primarySoft);
+    ctx.fillStyle = revealed && isCorrect ? C.white : C.primary;
+    ctx.font = font(40, 800); ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.direction = "ltr";
+    ctx.fillText(revealed && isCorrect ? "✓" : letters[i], 195, oy + 57);
+    ctx.fillStyle = revealed && isCorrect ? C.correct : C.ink;
+    ctx.textAlign = "left"; ctx.font = font(48, 700);
+    ctx.fillText(opt, 260, oy + 57);
+    ctx.restore();
+  });
+}
+
+function countdown(t, start) {
+  const n = 3 - Math.floor(t - start);
+  if (t < start || n < 1) return;
+  const p = (t - start) % 1;
+  ctx.save();
+  ctx.globalAlpha = 1 - p * 0.6;
+  const r = 70 + p * 10;
+  ctx.fillStyle = C.cta;
+  ctx.beginPath(); ctx.arc(W / 2, 1490, r, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = C.white; ctx.font = font(84, 800); ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.direction = "ltr";
+  ctx.fillText(String(n), W / 2, 1494);
+  ctx.restore();
+}
+
+function ctaScene(L, t, start, headline) {
+  const a = fade(t, start);
+  if (headline) text(headline, 430, 66, { weight: 800, dir: L.dir, alpha: a, maxWidth: 900 });
+  text(L.cta, 700, 56, { weight: 700, dir: L.dir, color: C.muted, alpha: fade(t, start + 0.2) });
+  const b = fade(t, start + 0.4);
+  ctx.save();
+  ctx.globalAlpha = b;
+  const pulse = 1 + 0.025 * Math.sin((t - start) * 5);
+  ctx.translate(W / 2, 860); ctx.scale(pulse, pulse); ctx.translate(-W / 2, -860);
+  roundRect(70, 790, 940, 140, 70, C.cta);
+  ctx.fillStyle = C.white; ctx.font = font(72, 800); ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.direction = "ltr";
+  ctx.fillText(DOMAIN, W / 2, 864);
+  ctx.restore();
+  text(L.ctaLang, 990, 54, { weight: 700, dir: L.dir, color: C.primary, alpha: fade(t, start + 0.7) });
+  text(L.disc, 1250, 34, { weight: 500, dir: L.dir, color: C.muted, alpha: fade(t, start + 0.9), maxWidth: 860 });
+}
+
+const SCENES = {
+  // Fråga med nedräkning och svar. Ungefär 15 sekunder.
+  fraga(L, key, t) {
+    const q = window.QUESTIONS[key];
+    const reveal = 8.6;
+    if (t < 2.6) {
+      const out = fadeOut(t, 2.6);
+      text(L.hook, 560, 82, { weight: 800, dir: L.dir, alpha: fade(t, 0.1) * out, maxWidth: 920 });
+      text(L.hook2, 980, 72, { weight: 800, dir: L.dir, color: C.cta, alpha: fade(t, 1.0) * out });
+    } else if (t < 12) {
+      const out = fadeOut(t, 12);
+      ctx.save(); ctx.globalAlpha = out;
+      text(L.sub, 380, 44, { weight: 700, dir: L.dir, color: C.primary, alpha: fade(t, 2.7), maxWidth: 900 });
+      questionCard(q, t, 2.8, reveal);
+      if (t < reveal) {
+        text(L.think, 1640, 48, { weight: 700, dir: L.dir, color: C.muted, alpha: fade(t, 5.2) });
+        countdown(t, 5.6);
+      } else {
+        text(L[key], 1450, 46, { weight: 700, dir: L.dir, color: C.correct, alpha: fade(t, reveal + 0.3), maxWidth: 900 });
+      }
+      ctx.restore();
+    } else {
+      ctaScene(L, t, 12.1, null);
+    }
+  },
+  // Vad tjänsten erbjuder. Ungefär 15 sekunder.
+  funktioner(L, _key, t) {
+    if (t < 2.6) {
+      const out = fadeOut(t, 2.6);
+      text(L.fHook, 600, 84, { weight: 800, dir: L.dir, alpha: fade(t, 0.1) * out, maxWidth: 920 });
+      text(L.fSub, 1000, 60, { weight: 700, dir: L.dir, color: C.cta, alpha: fade(t, 0.9) * out });
+    } else if (t < 11) {
+      const out = fadeOut(t, 11);
+      L.f.forEach((item, i) => {
+        const s = 2.7 + i * 1.4;
+        const a = fade(t, s) * out;
+        const y = 420 + i * 230;
+        ctx.save();
+        ctx.globalAlpha = a;
+        const dx = (1 - ease((t - s) / 0.35)) * (L.dir === "rtl" ? -80 : 80);
+        ctx.translate(dx, 0);
+        roundRect(70, y, 940, 190, 40, C.white, C.line, 4);
+        roundRect(L.dir === "rtl" ? 880 : 110, y + 55, 80, 80, 40, C.primary);
+        ctx.fillStyle = C.white; ctx.font = font(48, 800); ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.direction = "ltr";
+        ctx.fillText("✓", L.dir === "rtl" ? 920 : 150, y + 97);
+        ctx.font = font(item.length > 30 ? 42 : 48, 700); ctx.fillStyle = C.ink; ctx.direction = L.dir;
+        ctx.textAlign = L.dir === "rtl" ? "right" : "left";
+        const lines = wrap(item, 680);
+        const lh = (item.length > 30 ? 42 : 48) * 1.2;
+        const top = y + 95 - ((lines.length - 1) * lh) / 2;
+        lines.forEach((l, j) => ctx.fillText(l, L.dir === "rtl" ? 840 : 230, top + j * lh));
+        ctx.restore();
+      });
+    } else {
+      ctaScene(L, t, 11.1, L.fCta);
+    }
+  },
+};
+const DURATION = { fraga: 16, funktioner: 15.5 };
+
+// Ljud: tick vid nedräkningen och ett "pling" vid rätt svar.
+function scheduleSound(audio, dest, kind) {
+  const beep = (at, freq, len, vol, type = "sine") => {
+    const o = audio.createOscillator(), g = audio.createGain();
+    o.type = type; o.frequency.value = freq;
+    g.gain.setValueAtTime(0, audio.currentTime + at);
+    g.gain.linearRampToValueAtTime(vol, audio.currentTime + at + 0.01);
+    g.gain.exponentialRampToValueAtTime(0.0001, audio.currentTime + at + len);
+    o.connect(g); g.connect(dest);
+    o.start(audio.currentTime + at); o.stop(audio.currentTime + at + len + 0.05);
+  };
+  if (kind === "fraga") {
+    [5.6, 6.6, 7.6].forEach((s) => beep(s, 880, 0.12, 0.25, "square"));
+    beep(8.6, 988, 0.5, 0.35); beep(8.72, 1319, 0.8, 0.35);
+    beep(12.1, 660, 0.25, 0.2); beep(12.25, 880, 0.4, 0.2);
+  } else {
+    [2.7, 4.1, 5.5, 6.9, 8.3].forEach((s) => beep(s, 740, 0.15, 0.18, "triangle"));
+    beep(11.1, 660, 0.25, 0.2); beep(11.25, 880, 0.4, 0.2);
+  }
+}
+
+// Kodar varje bildruta exakt med WebCodecs och packar en vanlig MP4 (H.264 + AAC) med längduppgift.
+const SR = 48000;
+async function renderAudio(kind, duration) {
+  const off = new OfflineAudioContext(2, Math.ceil(SR * duration), SR);
+  scheduleSound(off, off.destination, kind);
+  return off.startRendering();
+}
+
+async function record(job) {
+  const L = window.TEXTS[job.lang];
+  const scene = SCENES[job.scene];
+  const duration = DURATION[job.scene];
+  const frames = Math.round(duration * FPS);
+
+  const aac = await AudioEncoder.isConfigSupported({ codec: "mp4a.40.2", sampleRate: SR, numberOfChannels: 2, bitrate: 128000 });
+  const audioCodec = aac.supported ? "aac" : "opus";
+  const { Muxer, ArrayBufferTarget } = window.Mp4Muxer;
+  const target = new ArrayBufferTarget();
+  const muxer = new Muxer({
+    target,
+    video: { codec: "avc", width: W, height: H, frameRate: FPS },
+    audio: { codec: audioCodec, numberOfChannels: 2, sampleRate: SR },
+    fastStart: "in-memory",
+  });
+
+  let error = null;
+  const venc = new VideoEncoder({ output: (c, m) => muxer.addVideoChunk(c, m), error: (e) => (error = e) });
+  venc.configure({ codec: "avc1.640028", width: W, height: H, bitrate: 8_000_000, framerate: FPS });
+  const draw = (t) => { background(t); logo(); scene(L, job.key, t); };
+  for (let i = 0; i < frames; i++) {
+    draw(i / FPS);
+    const frame = new VideoFrame(canvas, { timestamp: Math.round((i * 1e6) / FPS), duration: Math.round(1e6 / FPS) });
+    venc.encode(frame, { keyFrame: i % (FPS * 2) === 0 });
+    frame.close();
+    if (venc.encodeQueueSize > 8) await new Promise((r) => setTimeout(r, 5));
+    if (error) throw error;
+  }
+  await venc.flush();
+
+  const buffer = await renderAudio(job.scene, duration);
+  const aenc = new AudioEncoder({ output: (c, m) => muxer.addAudioChunk(c, m), error: (e) => (error = e) });
+  aenc.configure({ codec: audioCodec === "aac" ? "mp4a.40.2" : "opus", sampleRate: SR, numberOfChannels: 2, bitrate: 128000 });
+  const left = buffer.getChannelData(0), right = buffer.getChannelData(1);
+  const CH = 1024;
+  for (let i = 0; i < buffer.length; i += CH) {
+    const n = Math.min(CH, buffer.length - i);
+    const data = new Float32Array(n * 2);
+    data.set(left.subarray(i, i + n), 0);
+    data.set(right.subarray(i, i + n), n);
+    const ad = new AudioData({ format: "f32-planar", sampleRate: SR, numberOfFrames: n, numberOfChannels: 2, timestamp: Math.round((i * 1e6) / SR), data });
+    aenc.encode(ad);
+    ad.close();
+  }
+  await aenc.flush();
+  if (error) throw error;
+
+  muxer.finalize();
+  await fetch(`/save?name=${encodeURIComponent(job.name)}.mp4`, { method: "POST", body: target.buffer });
+  return audioCodec;
+}
+
+async function main() {
+  const families = ["Noto Sans", "Noto Sans Arabic", "Noto Sans Ethiopic"];
+  await Promise.all(families.flatMap((f) => [500, 700, 800].map((w) => document.fonts.load(`${w} 40px "${f}"`, "Aاሽ"))));
+  const params = new URLSearchParams(location.search);
+  if (params.get("preview")) {
+    canvas.style.width = "1080px"; canvas.style.height = "1920px";
+    // Förhandsvisning: ?preview=1&lang=ar&scene=fraga&key=fraga1&t=9
+    const L = window.TEXTS[params.get("lang") || "sv"];
+    const t = Number(params.get("t") || 9);
+    background(t); logo(); SCENES[params.get("scene") || "fraga"](L, params.get("key") || "fraga1", t);
+    document.title = "klar";
+    return;
+  }
+  if (params.get("stills")) {
+    // Stillbilder för kontroll: servern skickar en lista med lang:scene:key:t.
+    for (const shot of await (await fetch("/stills")).json()) {
+      const [lang, scene, key, t] = shot.split(":");
+      background(+t); logo(); SCENES[scene](window.TEXTS[lang], key, +t);
+      const blob = await new Promise((r) => canvas.toBlob(r, "image/png"));
+      await fetch("/save?name=" + encodeURIComponent(shot.replaceAll(":", "_") + ".png"), { method: "POST", body: blob });
+    }
+    await fetch("/done", { method: "POST", body: "stillbilder" });
+    return;
+  }
+  const jobs = await (await fetch("/jobs")).json();
+  let codec = "";
+  for (const job of jobs) codec = await record(job);
+  await fetch("/done", { method: "POST", body: "MP4 H.264 + " + codec });
+}
+main().catch((e) => fetch("/done", { method: "POST", body: "FEL: " + e.message }));
+</script>
+</body>
+</html>
