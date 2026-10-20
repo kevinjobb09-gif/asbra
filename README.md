@@ -209,8 +209,8 @@ Statistiken sparar inga personuppgifter och använder inga spårningscookies.
 
 ## Publicera på Netlify
 
-**Publicerad (testläge):** <https://asbra-prov.netlify.app> – byggs om automatiskt vid varje push till `main` på GitHub.
-Stripe-webhooken (testläge) pekar på `/api/stripe/webhook` där. Byt till live-nycklar och skapa en ny webhook i live-läget före lansering.
+**Publicerad (Stripe i testläge):** <https://medborgarhjalpen.se> (även <https://asbra-prov.netlify.app>) – byggs om automatiskt vid varje push till `main` på GitHub.
+Stripe-webhooken (testläge) pekar på `https://medborgarhjalpen.se/api/stripe/webhook`. Byt till live-nycklar och skapa en ny webhook i live-läget före lansering.
 
 1. Lägg upp projektet på GitHub (privat repo).
 2. På [netlify.com](https://app.netlify.com): **Add new site → Import an existing project → GitHub** och välj repot.
