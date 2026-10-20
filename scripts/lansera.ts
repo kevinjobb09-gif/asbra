@@ -9,7 +9,7 @@
  *   STRIPE_LIVE_SECRET_KEY=sk_live_.. (frivillig – utan den används testnyckeln och inga riktiga pengar dras)
  *
  * Skriptet:
- *   1. kopplar domänen till sajten på Netlify (med www som omdirigering och gratis https),
+ *   1. kopplar domänen till sajten på Netlify (med www som omdirigering; Netlify ordnar gratis https när DNS fungerar),
  *   2. skapar Stripe-webhooken för domänen (live om live-nyckeln finns, annars test),
  *   3. lägger in alla nycklar på Netlify,
  *   4. tillåter inloggningslänkar till domänen i Supabase,
@@ -80,7 +80,7 @@ async function main() {
   const sites = await netlify<Site[]>("GET", "sites?filter=all&per_page=100");
   const site = sites.find((s) => s.name === siteName);
   if (!site) fail(`Hittar inget Netlify-projekt som heter ${siteName}. Ändra NETLIFY_SITE_NAME.`);
-  await netlify("PATCH", `sites/${site.id}`, { custom_domain: domain, domain_aliases: [`www.${domain}`], force_ssl: true });
+  await netlify("PATCH", `sites/${site.id}`, { custom_domain: domain, domain_aliases: [`www.${domain}`] });
   console.log(`✅ Domänen ${domain} (och www.${domain}) är kopplad till ${site.name}.`);
 
   // 2. Stripe-webhooken (en ny hemlighet varje gång – den gamla för samma adress tas bort).
