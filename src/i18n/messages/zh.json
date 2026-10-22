@@ -60,7 +60,7 @@
     "faqFormatQ": "考试有多少道题？",
     "faqFormatA": "根据我们的信息：大约 {m} 分钟 {q} 道题。请始终以 UHR 的最新信息为准。",
     "faqCancelQ": "我可以随时取消吗？",
-    "faqCancelA": "可以。没有合约期。在“账户”页面一键取消，立即生效，无额外费用。已付费的月份结束前仍可继续使用。"
+    "faqCancelA": "可以。没有合约期。在“账户”页面一键取消，无额外费用。取消立即生效：你的使用权限会马上结束，之后不会再扣款。已支付的时间不予退款。"
   },
   "practiceIndex": {
     "title": "练习",
@@ -241,7 +241,7 @@
     "startPracticing": "开始练习",
     "otherDevice": "在其他手机或电脑上，请用邮箱 {email} 登录。",
     "canceled": "付款已取消，没有扣款。",
-    "subscriptionInfo": "订阅每月自动续费，直到你取消为止。在“账户”页面一键取消，已付费的月份结束前仍可继续使用。",
+    "subscriptionInfo": "订阅每月自动续费，直到你取消为止。在“账户”页面一键取消。取消后使用权限立即结束，已支付的时间不予退款。",
     "thenPrice": "之后每月 {price}",
     "loginToAccess": "付款已完成，订阅已生效。你已有使用 {email} 的账户——请用该邮箱登录以使用全部内容。"
   },
@@ -281,9 +281,9 @@
     "subscriptionCanceled": "订阅已取消。你可以使用到 {date}，之后不会再扣款。",
     "subscriptionPastDue": "最近一次付款未成功。Stripe 会再次尝试，请检查你的银行卡。",
     "cancelButton": "取消订阅",
-    "cancelConfirm": "确定要取消订阅吗？你可以使用到 {date}，之后不会再扣款。",
-    "resumeButton": "撤销取消",
-    "cancelError": "暂时无法完成，请重试或联系我们。"
+    "cancelConfirm": "确定要取消订阅吗？使用权限将立即结束，已支付的时间不予退款。之后不会再扣款。",
+    "cancelError": "暂时无法完成，请重试或联系我们。",
+    "cancelInfo": "取消后，使用权限立即结束。已支付的时间不予退款。"
   },
   "share": {
     "question": "你知道答案吗？",

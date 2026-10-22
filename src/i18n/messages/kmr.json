@@ -60,7 +60,7 @@
     "faqFormatQ": "Îmtîhan çend pirs e?",
     "faqFormatA": "Li gorî agahiyên me: nêzîkî {q} pirs di {m} deqeyan de. Her gav agahiyên herî nû li UHR kontrol bike.",
     "faqCancelQ": "Ma ez dikarim kengê ku bixwazim betal bikim?",
-    "faqCancelA": "Erê. Tu demê girêdanê tune. Tu bi yek klîkê di Hesab de betal dikî, yekser û bê lêçûna zêde. Heta dawiya meha ku te dayîne gihîştina te dimîne."
+    "faqCancelA": "Erê. Tu demê girêdanê tune. Tu bi yek klîkê di Hesab de, bê lêçûna zêde, betal dikî. Betalkirin yekser derbasdar e: gihîştina te di cih de diqede û tu dayînên din nayên kişandin. Pereyê dema ku berê hatiye dayîn nayê vegerandin."
   },
   "practiceIndex": {
     "title": "Perwerde",
@@ -241,7 +241,7 @@
     "startPracticing": "Dest bi perwerdeyê bike",
     "otherDevice": "Li ser telefon an komputereke din bi e-maila {email} têkeve.",
     "canceled": "Dayîn hate betalkirin. Tu pere nehat kişandin.",
-    "subscriptionInfo": "Abonetî her meh bi xwe nû dibe heta ku tu betal bikî. Tu bi yek klîkê di Hesab de betal dikî û heta dawiya meha ku te dayîne gihîştina te dimîne.",
+    "subscriptionInfo": "Abonetî her meh bi xwe nû dibe heta ku tu betal bikî. Tu bi yek klîkê di Hesab de betal dikî. Wê demê gihîştin yekser diqede, û pereyê dema ku berê hatiye dayîn nayê vegerandin.",
     "thenPrice": "Paşê {price} mehane",
     "loginToAccess": "Dayîn temam bû û abonetî çalak e. Hesabekî te bi {email} berê heye – bi wê navnîşana e-nameyê têkeve da ku her tiştî bikar bînî."
   },
@@ -281,9 +281,9 @@
     "subscriptionCanceled": "Abonetî hate betalkirin. Gihîştina te heta {date} heye. Tu dayînên din nayên kişandin.",
     "subscriptionPastDue": "Dayîna dawî bi ser neket. Stripe dê dîsa biceribîne. Karta xwe kontrol bike.",
     "cancelButton": "Abonetiyê betal bike",
-    "cancelConfirm": "Tu dixwazî abonetiyê betal bikî? Gihîştina te heta {date} dimîne. Tu dayînên din nayên kişandin.",
-    "resumeButton": "Betalkirinê paşve bigire",
-    "cancelError": "Niha nebû. Dîsa biceribîne an bi me re têkilî dayne."
+    "cancelConfirm": "Tu dixwazî abonetiyê betal bikî? Gihîştin yekser diqede û pereyê dema ku berê hatiye dayîn nayê vegerandin. Tu dayînên din nayên kişandin.",
+    "cancelError": "Niha nebû. Dîsa biceribîne an bi me re têkilî dayne.",
+    "cancelInfo": "Heke tu betal bikî, gihîştin yekser diqede. Pereyê dema ku berê hatiye dayîn nayê vegerandin."
   },
   "share": {
     "question": "Tu bersivê dizanî?",

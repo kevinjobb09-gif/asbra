@@ -60,7 +60,7 @@
     "faqFormatQ": "Combien de questions compte le test ?",
     "faqFormatA": "D’après nos informations : environ {q} questions en {m} minutes. Vérifiez toujours les dernières informations auprès de l’UHR.",
     "faqCancelQ": "Puis-je résilier quand je veux ?",
-    "faqCancelA": "Oui. Il n’y a pas de durée d’engagement. Vous résiliez en un clic dans Compte, immédiatement et sans frais supplémentaires. Vous gardez l’accès jusqu’à la fin du mois payé."
+    "faqCancelA": "Oui. Il n’y a pas de durée d’engagement. Vous résiliez en un clic dans Compte, sans frais supplémentaires. La résiliation est immédiate : l’accès prend fin aussitôt et aucun autre paiement n’est prélevé. Le temps déjà payé n’est pas remboursé."
   },
   "practiceIndex": {
     "title": "S’entraîner",
@@ -241,7 +241,7 @@
     "startPracticing": "Commencer l’entraînement",
     "otherDevice": "Sur un autre téléphone ou ordinateur, connectez-vous avec l’adresse {email}.",
     "canceled": "Le paiement a été annulé. Aucun argent n’a été prélevé.",
-    "subscriptionInfo": "L’abonnement se renouvelle automatiquement chaque mois jusqu’à ce que vous le résiliiez. Vous résiliez en un clic dans Compte et gardez l’accès jusqu’à la fin du mois payé.",
+    "subscriptionInfo": "L’abonnement se renouvelle automatiquement chaque mois jusqu’à ce que vous le résiliiez. Vous résiliez en un clic dans Compte. L’accès prend alors fin immédiatement et le temps déjà payé n’est pas remboursé.",
     "thenPrice": "Ensuite {price} par mois",
     "loginToAccess": "Le paiement est terminé et l’abonnement est actif. Vous avez déjà un compte avec {email} – connectez-vous avec cette adresse pour tout utiliser."
   },
@@ -281,9 +281,9 @@
     "subscriptionCanceled": "L’abonnement est résilié. Vous avez accès jusqu’au {date}. Aucun autre paiement ne sera prélevé.",
     "subscriptionPastDue": "Le dernier paiement n’est pas passé. Stripe va réessayer. Vérifiez votre carte.",
     "cancelButton": "Résilier l’abonnement",
-    "cancelConfirm": "Voulez-vous résilier l’abonnement ? Vous gardez l’accès jusqu’au {date}. Aucun autre paiement ne sera prélevé.",
-    "resumeButton": "Annuler la résiliation",
-    "cancelError": "Cela n’a pas fonctionné. Réessayez ou contactez-nous."
+    "cancelConfirm": "Voulez-vous résilier l’abonnement ? L’accès prend fin immédiatement et le temps déjà payé n’est pas remboursé. Aucun autre paiement ne sera prélevé.",
+    "cancelError": "Cela n’a pas fonctionné. Réessayez ou contactez-nous.",
+    "cancelInfo": "Si vous résiliez, l’accès prend fin immédiatement. Le temps déjà payé n’est pas remboursé."
   },
   "share": {
     "question": "Connaissez-vous la réponse ?",

@@ -60,7 +60,7 @@
     "faqFormatQ": "Ile pytań ma test?",
     "faqFormatA": "Według naszych informacji: około {q} pytań w {m} minut. Zawsze sprawdzaj aktualne informacje w UHR.",
     "faqCancelQ": "Czy mogę zrezygnować w dowolnym momencie?",
-    "faqCancelA": "Tak. Nie ma okresu zobowiązania. Rezygnujesz jednym kliknięciem w zakładce Konto, od razu i bez dodatkowych kosztów. Dostęp masz do końca opłaconego miesiąca."
+    "faqCancelA": "Tak. Nie ma okresu zobowiązania. Rezygnujesz jednym kliknięciem w zakładce Konto, bez dodatkowych kosztów. Rezygnacja działa od razu: dostęp kończy się natychmiast i nie pobierzemy już żadnych płatności. Za już opłacony czas nie zwracamy pieniędzy."
   },
   "practiceIndex": {
     "title": "Ćwicz",
@@ -241,7 +241,7 @@
     "startPracticing": "Zacznij ćwiczyć",
     "otherDevice": "Na innym telefonie lub komputerze zaloguj się adresem {email}.",
     "canceled": "Płatność została anulowana. Nie pobrano żadnych pieniędzy.",
-    "subscriptionInfo": "Subskrypcja odnawia się automatycznie co miesiąc, dopóki jej nie anulujesz. Anulujesz jednym kliknięciem w zakładce Konto i masz dostęp do końca opłaconego miesiąca.",
+    "subscriptionInfo": "Subskrypcja odnawia się automatycznie co miesiąc, dopóki jej nie anulujesz. Anulujesz jednym kliknięciem w zakładce Konto. Dostęp kończy się wtedy od razu, a za już opłacony czas nie zwracamy pieniędzy.",
     "thenPrice": "Potem {price} miesięcznie",
     "loginToAccess": "Płatność zakończona, subskrypcja jest aktywna. Masz już konto z adresem {email} – zaloguj się tym adresem, aby korzystać ze wszystkiego."
   },
@@ -281,9 +281,9 @@
     "subscriptionCanceled": "Subskrypcja anulowana. Masz dostęp do {date}. Nie pobierzemy już żadnych płatności.",
     "subscriptionPastDue": "Ostatnia płatność nie przeszła. Stripe spróbuje ponownie. Sprawdź swoją kartę.",
     "cancelButton": "Anuluj subskrypcję",
-    "cancelConfirm": "Czy chcesz anulować subskrypcję? Dostęp zachowasz do {date}. Nie pobierzemy już żadnych płatności.",
-    "resumeButton": "Cofnij anulowanie",
-    "cancelError": "Teraz się nie udało. Spróbuj ponownie lub skontaktuj się z nami."
+    "cancelConfirm": "Czy chcesz anulować subskrypcję? Dostęp skończy się od razu, a za już opłacony czas nie zwracamy pieniędzy. Nie pobierzemy już żadnych płatności.",
+    "cancelError": "Teraz się nie udało. Spróbuj ponownie lub skontaktuj się z nami.",
+    "cancelInfo": "Po anulowaniu dostęp kończy się od razu. Za już opłacony czas nie zwracamy pieniędzy."
   },
   "share": {
     "question": "Znasz odpowiedź?",

@@ -35,7 +35,10 @@ export default function TermsPage() {
       <ul>
         <li>Det finns ingen bindningstid och ingen uppsägningstid.</li>
         <li>Du säger upp med ett klick under <strong>Konto</strong>, direkt och utan extra kostnad.</li>
-        <li>Efter uppsägningen dras inga fler betalningar. Du behåller tillgången till slutet av den månad du redan har betalat för.</li>
+        <li>
+          <strong>Uppsägningen gäller direkt.</strong> Tillgången till betalinnehållet upphör i samma stund som du säger upp,
+          och inga fler betalningar dras. Redan betald tid återbetalas inte.
+        </li>
         <li>Raderar du ditt konto avslutas prenumerationen direkt.</li>
       </ul>
 

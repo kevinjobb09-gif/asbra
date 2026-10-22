@@ -60,7 +60,7 @@
     "faqFormatQ": "¿Cuántas preguntas tiene el examen?",
     "faqFormatA": "Según nuestra información: unas {q} preguntas en {m} minutos. Revisa siempre la información más reciente en UHR.",
     "faqCancelQ": "¿Puedo cancelar cuando quiera?",
-    "faqCancelA": "Sí. No hay permanencia. Cancelas con un clic en Cuenta, al instante y sin coste adicional. Mantienes el acceso hasta el final del mes que pagaste."
+    "faqCancelA": "Sí. No hay permanencia. Cancelas con un clic en Cuenta, sin coste adicional. La cancelación es inmediata: el acceso termina al instante y no se cobra nada más. El tiempo ya pagado no se reembolsa."
   },
   "practiceIndex": {
     "title": "Practicar",
@@ -241,7 +241,7 @@
     "startPracticing": "Empezar a practicar",
     "otherDevice": "En otro móvil u ordenador, entra con el correo {email}.",
     "canceled": "El pago se canceló. No se ha cobrado nada.",
-    "subscriptionInfo": "La suscripción se renueva automáticamente cada mes hasta que la canceles. Cancelas con un clic en Cuenta y mantienes el acceso hasta el final del mes que pagaste.",
+    "subscriptionInfo": "La suscripción se renueva automáticamente cada mes hasta que la canceles. Cancelas con un clic en Cuenta. El acceso termina entonces al instante y el tiempo ya pagado no se reembolsa.",
     "thenPrice": "Después {price} al mes",
     "loginToAccess": "El pago se ha completado y la suscripción está activa. Ya tienes una cuenta con {email}: inicia sesión con ese correo para usarlo todo."
   },
@@ -281,9 +281,9 @@
     "subscriptionCanceled": "La suscripción está cancelada. Tienes acceso hasta el {date}. No se cobrará nada más.",
     "subscriptionPastDue": "El último pago no se pudo cobrar. Stripe lo intentará de nuevo. Revisa tu tarjeta.",
     "cancelButton": "Cancelar la suscripción",
-    "cancelConfirm": "¿Quieres cancelar la suscripción? Mantienes el acceso hasta el {date}. No se cobrará nada más.",
-    "resumeButton": "Deshacer la cancelación",
-    "cancelError": "No funcionó ahora. Inténtalo de nuevo o contáctanos."
+    "cancelConfirm": "¿Quieres cancelar la suscripción? El acceso termina al instante y el tiempo ya pagado no se reembolsa. No se cobrará nada más.",
+    "cancelError": "No funcionó ahora. Inténtalo de nuevo o contáctanos.",
+    "cancelInfo": "Si cancelas, el acceso termina al instante. El tiempo ya pagado no se reembolsa."
   },
   "share": {
     "question": "¿Sabes la respuesta?",

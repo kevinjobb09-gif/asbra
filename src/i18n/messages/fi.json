@@ -60,7 +60,7 @@
     "faqFormatQ": "Montako kysymystä kokeessa on?",
     "faqFormatA": "Tietojemme mukaan noin {q} kysymystä {m} minuutissa. Tarkista aina ajantasaiset tiedot UHR:ltä.",
     "faqCancelQ": "Voinko perua milloin tahansa?",
-    "faqCancelA": "Kyllä. Määräaikaa ei ole. Perut yhdellä klikkauksella kohdassa Tili, heti ja ilman lisämaksuja. Käyttöoikeus säilyy maksetun kuukauden loppuun."
+    "faqCancelA": "Kyllä. Määräaikaa ei ole. Perut yhdellä klikkauksella kohdassa Tili, ilman lisämaksuja. Peruutus tulee voimaan heti: käyttöoikeus päättyy välittömästi eikä uusia maksuja veloiteta. Jo maksettua aikaa ei hyvitetä."
   },
   "practiceIndex": {
     "title": "Harjoittele",
@@ -241,7 +241,7 @@
     "startPracticing": "Aloita harjoittelu",
     "otherDevice": "Kirjaudu toisella puhelimella tai tietokoneella osoitteella {email}.",
     "canceled": "Maksu peruttiin. Rahaa ei veloitettu.",
-    "subscriptionInfo": "Tilaus uusiutuu automaattisesti joka kuukausi, kunnes perut sen. Perut yhdellä klikkauksella kohdassa Tili, ja käyttöoikeus säilyy maksetun kuukauden loppuun.",
+    "subscriptionInfo": "Tilaus uusiutuu automaattisesti joka kuukausi, kunnes perut sen. Perut yhdellä klikkauksella kohdassa Tili. Käyttöoikeus päättyy silloin heti, eikä jo maksettua aikaa hyvitetä.",
     "thenPrice": "Sen jälkeen {price} kuukaudessa",
     "loginToAccess": "Maksu on valmis ja tilaus on voimassa. Sinulla on jo tili osoitteella {email} – kirjaudu sillä sähköpostiosoitteella käyttääksesi kaikkea."
   },
@@ -281,9 +281,9 @@
     "subscriptionCanceled": "Tilaus on peruttu. Käyttöoikeus on voimassa {date} asti. Uusia maksuja ei veloiteta.",
     "subscriptionPastDue": "Viimeisin maksu ei mennyt läpi. Stripe yrittää uudelleen. Tarkista korttisi.",
     "cancelButton": "Peru tilaus",
-    "cancelConfirm": "Haluatko perua tilauksen? Käyttöoikeus säilyy {date} asti. Uusia maksuja ei veloiteta.",
-    "resumeButton": "Peru peruutus",
-    "cancelError": "Se ei onnistunut juuri nyt. Yritä uudelleen tai ota yhteyttä."
+    "cancelConfirm": "Haluatko perua tilauksen? Käyttöoikeus päättyy heti eikä jo maksettua aikaa hyvitetä. Uusia maksuja ei veloiteta.",
+    "cancelError": "Se ei onnistunut juuri nyt. Yritä uudelleen tai ota yhteyttä.",
+    "cancelInfo": "Jos perut, käyttöoikeus päättyy heti. Jo maksettua aikaa ei hyvitetä."
   },
   "share": {
     "question": "Tiedätkö vastauksen?",

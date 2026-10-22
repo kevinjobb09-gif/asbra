@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { getI18n } from "@/i18n/server";
-import { cancelAllSubscriptionsNow, setCancelAtPeriodEnd } from "@/lib/payments/server";
+import { cancelAllSubscriptionsNow, cancelSubscriptionNow } from "@/lib/payments/server";
 
 export type DeleteState = { error?: string };
 export type CancelState = { error?: string };
@@ -38,15 +38,15 @@ export async function deleteAccount(_prev: DeleteState, formData: FormData): Pro
 }
 
 /** Säger upp prenumerationen (cancel = true) eller ångrar uppsägningen (cancel = false). */
-export async function changeSubscription(_prev: CancelState, formData: FormData): Promise<CancelState> {
+export async function cancelSubscription(): Promise<CancelState> {
   const { t } = await getI18n();
   const supabase = await createClient();
   const { data } = await supabase.auth.getUser();
   if (!data.user) redirect("/konto");
   try {
-    await setCancelAtPeriodEnd(data.user.id, formData.get("cancel") === "true");
+    await cancelSubscriptionNow(data.user.id);
   } catch (e) {
-    console.error("Kunde inte ändra prenumerationen:", e instanceof Error ? e.message : e);
+    console.error("Kunde inte säga upp prenumerationen:", e instanceof Error ? e.message : e);
     return { error: t("account.cancelError") };
   }
   revalidatePath("/konto");

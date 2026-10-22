@@ -60,7 +60,7 @@
     "faqFormatQ": "Sınavda kaç soru var?",
     "faqFormatA": "Bildiğimiz kadarıyla: {m} dakikada yaklaşık {q} soru. En güncel bilgileri her zaman UHR'den kontrol et.",
     "faqCancelQ": "İstediğim zaman iptal edebilir miyim?",
-    "faqCancelA": "Evet. Taahhüt süresi yok. Hesap sayfasından tek tıkla, hemen ve ek ücret olmadan iptal edersin. Ödediğin ayın sonuna kadar erişimin devam eder."
+    "faqCancelA": "Evet. Taahhüt süresi yok. Hesap sayfasından tek tıkla, ek ücret olmadan iptal edersin. İptal hemen geçerli olur: erişimin anında sona erer ve başka ödeme alınmaz. Önceden ödenmiş süre iade edilmez."
   },
   "practiceIndex": {
     "title": "Alıştırma",
@@ -241,7 +241,7 @@
     "startPracticing": "Çalışmaya başla",
     "otherDevice": "Başka bir telefon veya bilgisayarda {email} e-posta adresiyle giriş yap.",
     "canceled": "Ödeme iptal edildi. Hiç para çekilmedi.",
-    "subscriptionInfo": "Abonelik sen iptal edene kadar her ay otomatik yenilenir. Hesap sayfasından tek tıkla iptal edersin ve ödediğin ayın sonuna kadar erişimin devam eder.",
+    "subscriptionInfo": "Abonelik sen iptal edene kadar her ay otomatik yenilenir. Hesap sayfasından tek tıkla iptal edersin. Erişimin o anda sona erer ve önceden ödenmiş süre iade edilmez.",
     "thenPrice": "Sonra aylık {price}",
     "loginToAccess": "Ödeme tamamlandı ve abonelik aktif. {email} ile zaten bir hesabın var – her şeyi kullanmak için bu e-posta adresiyle giriş yap."
   },
@@ -281,9 +281,9 @@
     "subscriptionCanceled": "Abonelik iptal edildi. {date} tarihine kadar erişimin var. Başka ödeme alınmayacak.",
     "subscriptionPastDue": "Son ödeme gerçekleşmedi. Stripe tekrar deneyecek. Kartını kontrol et.",
     "cancelButton": "Aboneliği iptal et",
-    "cancelConfirm": "Aboneliği iptal etmek istiyor musun? {date} tarihine kadar erişimin devam eder. Başka ödeme alınmaz.",
-    "resumeButton": "İptali geri al",
-    "cancelError": "Şu anda olmadı. Tekrar dene veya bize ulaş."
+    "cancelConfirm": "Aboneliği iptal etmek istiyor musun? Erişimin hemen sona erer ve önceden ödenmiş süre iade edilmez. Başka ödeme alınmaz.",
+    "cancelError": "Şu anda olmadı. Tekrar dene veya bize ulaş.",
+    "cancelInfo": "İptal edersen erişimin hemen sona erer. Önceden ödenmiş süre iade edilmez."
   },
   "share": {
     "question": "Cevabı biliyor musun?",

@@ -307,12 +307,17 @@ export async function getUserSubscription(userId: string): Promise<UserSubscript
 }
 
 /** Säg upp (eller ångra uppsägningen). Tillgången gäller till periodens slut. Inget mer dras. */
-export async function setCancelAtPeriodEnd(userId: string, cancel: boolean) {
+/**
+ * Säger upp prenumerationen direkt: inga fler betalningar dras och tillgången
+ * upphör på en gång. Redan betald tid återbetalas inte (står i villkoren).
+ */
+export async function cancelSubscriptionNow(userId: string) {
   const sub = await getUserSubscription(userId);
   if (!sub) throw new Error("Ingen aktiv prenumeration.");
-  const updated = await getStripe().subscriptions.update(sub.id, { cancel_at_period_end: cancel });
-  await sync(updated);
-  return toSubscriptionState(updated);
+  const canceled = await getStripe().subscriptions.cancel(sub.id, { prorate: false, invoice_now: false });
+  // Webhooken gör samma sak, men vi väntar inte på den.
+  await sync(canceled);
+  return toSubscriptionState(canceled);
 }
 
 /** Avslutar alla prenumerationer direkt (när kontot raderas). */

@@ -174,7 +174,7 @@ tests/          Vitest-tester
 
 Köp sker på `/kop`. Användaren måste kryssa i två rutor (ångerrätten och villkoren) – tidpunkten sparas i databasen.
 Det är en **månadsprenumeration för 129 kr** (pris i `src/config/countries/se.ts`) utan bindningstid. Användaren säger upp
-med ett klick på `/konto` och behåller tillgången till slutet av den betalda månaden. Rabattkoder (`?ref=kod`) ger
+med ett klick på `/konto`. Tillgången upphör direkt och redan betald tid återbetalas inte. Rabattkoder (`?ref=kod`) ger
 rabatt på **första månaden**, och provisionen räknas på **varje betald månad**.
 
 **Testa betalningen (inga riktiga pengar):**

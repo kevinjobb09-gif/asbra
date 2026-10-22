@@ -60,7 +60,7 @@
     "faqFormatQ": "How many questions does the test have?",
     "faqFormatA": "According to our information: about {q} questions in {m} minutes. Always check the latest information from UHR.",
     "faqCancelQ": "Can I cancel whenever I want?",
-    "faqCancelA": "Yes. There is no commitment period. You cancel with one click under Account, right away and at no extra cost. You keep access until the end of the month you have paid for."
+    "faqCancelA": "Yes. There is no commitment period. You cancel with one click under Account, at no extra cost. The cancellation takes effect immediately: your access ends at once and no more payments are taken. Time already paid for is not refunded."
   },
   "practiceIndex": {
     "title": "Practice",
@@ -241,7 +241,7 @@
     "startPracticing": "Start practicing",
     "otherDevice": "On another phone or computer, log in with the email address {email}.",
     "canceled": "The payment was canceled. No money has been taken.",
-    "subscriptionInfo": "The subscription renews automatically every month until you cancel it. You cancel with one click under Account and keep access until the end of the month you have paid for.",
+    "subscriptionInfo": "The subscription renews automatically every month until you cancel it. You cancel with one click under Account. Your access then ends immediately, and time already paid for is not refunded.",
     "thenPrice": "Then {price} per month",
     "loginToAccess": "The payment is complete and the subscription is active. You already have an account with {email} – log in with that email address to use everything."
   },
@@ -281,9 +281,9 @@
     "subscriptionCanceled": "The subscription is cancelled. You have access until {date}. No more payments will be taken.",
     "subscriptionPastDue": "The latest payment did not go through. Stripe will try again. Please check your card.",
     "cancelButton": "Cancel the subscription",
-    "cancelConfirm": "Do you want to cancel the subscription? You keep access until {date}. No more payments will be taken.",
-    "resumeButton": "Undo the cancellation",
-    "cancelError": "That did not work right now. Try again or contact us."
+    "cancelConfirm": "Do you want to cancel the subscription? Your access ends immediately and time already paid for is not refunded. No more payments will be taken.",
+    "cancelError": "That did not work right now. Try again or contact us.",
+    "cancelInfo": "If you cancel, your access ends immediately. Time already paid for is not refunded."
   },
   "share": {
     "question": "Do you know the answer?",

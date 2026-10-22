@@ -60,7 +60,7 @@
     "faqFormatQ": "Ilang tanong ang pagsusulit?",
     "faqFormatA": "Ayon sa aming impormasyon: mga {q} tanong sa loob ng {m} minuto. Laging tingnan ang pinakabagong impormasyon sa UHR.",
     "faqCancelQ": "Puwede ba akong mag-cancel kahit kailan?",
-    "faqCancelA": "Oo. Walang lock-in period. Mag-cancel sa isang click sa Account, agad at walang dagdag na bayad. May access ka hanggang sa katapusan ng buwang binayaran mo."
+    "faqCancelA": "Oo. Walang lock-in period. Mag-cancel sa isang click sa Account, walang dagdag na bayad. Agad na magkakabisa ang pag-cancel: matatapos agad ang access mo at wala nang ibabawas na bayad. Hindi ibinabalik ang perang naibayad na para sa natitirang panahon."
   },
   "practiceIndex": {
     "title": "Magsanay",
@@ -241,7 +241,7 @@
     "startPracticing": "Magsimulang magsanay",
     "otherDevice": "Sa ibang telepono o computer, mag-log in gamit ang email na {email}.",
     "canceled": "Kinansela ang bayad. Walang perang nakaltas.",
-    "subscriptionInfo": "Awtomatikong nare-renew ang subscription buwan-buwan hanggang i-cancel mo. Mag-cancel sa isang click sa Account at may access ka hanggang sa katapusan ng buwang binayaran mo.",
+    "subscriptionInfo": "Awtomatikong nare-renew ang subscription buwan-buwan hanggang i-cancel mo. Mag-cancel sa isang click sa Account. Matatapos agad ang access mo, at hindi ibinabalik ang perang naibayad na para sa natitirang panahon.",
     "thenPrice": "Pagkatapos ay {price} kada buwan",
     "loginToAccess": "Tapos na ang bayad at aktibo na ang subscription. May account ka na gamit ang {email} – mag-log in gamit ang email na iyon para magamit ang lahat."
   },
@@ -281,9 +281,9 @@
     "subscriptionCanceled": "Na-cancel ang subscription. May access ka hanggang {date}. Wala nang ibabawas na bayad.",
     "subscriptionPastDue": "Hindi pumasok ang huling bayad. Susubukan ulit ng Stripe. Tingnan ang iyong card.",
     "cancelButton": "I-cancel ang subscription",
-    "cancelConfirm": "Gusto mo bang i-cancel ang subscription? May access ka pa hanggang {date}. Wala nang ibabawas na bayad.",
-    "resumeButton": "Bawiin ang pag-cancel",
-    "cancelError": "Hindi ito gumana ngayon. Subukan ulit o makipag-ugnayan sa amin."
+    "cancelConfirm": "Gusto mo bang i-cancel ang subscription? Matatapos agad ang access mo at hindi ibinabalik ang perang naibayad na. Wala nang ibabawas na bayad.",
+    "cancelError": "Hindi ito gumana ngayon. Subukan ulit o makipag-ugnayan sa amin.",
+    "cancelInfo": "Kapag nag-cancel ka, matatapos agad ang access mo. Hindi ibinabalik ang perang naibayad na."
   },
   "share": {
     "question": "Alam mo ba ang sagot?",

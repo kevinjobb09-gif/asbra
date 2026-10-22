@@ -60,7 +60,7 @@
     "faqFormatQ": "Bài thi có bao nhiêu câu?",
     "faqFormatA": "Theo thông tin của chúng tôi: khoảng {q} câu trong {m} phút. Luôn kiểm tra thông tin mới nhất tại UHR.",
     "faqCancelQ": "Tôi có thể hủy bất cứ lúc nào không?",
-    "faqCancelA": "Có. Không có thời gian ràng buộc. Bạn hủy chỉ với một lần bấm trong Tài khoản, ngay lập tức và không mất thêm phí. Bạn vẫn dùng được đến hết tháng đã trả tiền."
+    "faqCancelA": "Có. Không có thời gian ràng buộc. Bạn hủy chỉ với một lần bấm trong Tài khoản, không mất thêm phí. Việc hủy có hiệu lực ngay: quyền truy cập kết thúc lập tức và sẽ không trừ tiền thêm. Thời gian đã trả trước sẽ không được hoàn tiền."
   },
   "practiceIndex": {
     "title": "Luyện tập",
@@ -241,7 +241,7 @@
     "startPracticing": "Bắt đầu luyện tập",
     "otherDevice": "Trên điện thoại hoặc máy tính khác, đăng nhập bằng email {email}.",
     "canceled": "Đã hủy thanh toán. Không bị trừ tiền.",
-    "subscriptionInfo": "Gói đăng ký tự động gia hạn mỗi tháng cho đến khi bạn hủy. Bạn hủy chỉ với một lần bấm trong Tài khoản và vẫn dùng được đến hết tháng đã trả tiền.",
+    "subscriptionInfo": "Gói đăng ký tự động gia hạn mỗi tháng cho đến khi bạn hủy. Bạn hủy chỉ với một lần bấm trong Tài khoản. Khi đó quyền truy cập kết thúc ngay và thời gian đã trả trước sẽ không được hoàn tiền.",
     "thenPrice": "Sau đó {price} mỗi tháng",
     "loginToAccess": "Thanh toán đã hoàn tất và gói đăng ký đang hoạt động. Bạn đã có tài khoản với {email} – hãy đăng nhập bằng email đó để dùng tất cả."
   },
@@ -281,9 +281,9 @@
     "subscriptionCanceled": "Đã hủy gói đăng ký. Bạn dùng được đến {date}. Sẽ không trừ tiền thêm.",
     "subscriptionPastDue": "Lần thanh toán gần nhất không thành công. Stripe sẽ thử lại. Hãy kiểm tra thẻ của bạn.",
     "cancelButton": "Hủy gói đăng ký",
-    "cancelConfirm": "Bạn muốn hủy gói đăng ký? Bạn vẫn dùng được đến {date}. Sẽ không trừ tiền thêm.",
-    "resumeButton": "Hoàn tác việc hủy",
-    "cancelError": "Hiện chưa thực hiện được. Hãy thử lại hoặc liên hệ chúng tôi."
+    "cancelConfirm": "Bạn muốn hủy gói đăng ký? Quyền truy cập sẽ kết thúc ngay và thời gian đã trả trước sẽ không được hoàn tiền. Sẽ không trừ tiền thêm.",
+    "cancelError": "Hiện chưa thực hiện được. Hãy thử lại hoặc liên hệ chúng tôi.",
+    "cancelInfo": "Nếu bạn hủy, quyền truy cập kết thúc ngay. Thời gian đã trả trước sẽ không được hoàn tiền."
   },
   "share": {
     "question": "Bạn có biết đáp án không?",

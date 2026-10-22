@@ -2,33 +2,30 @@
 
 import { useActionState } from "react";
 import { useI18n } from "@/i18n/client";
-import { changeSubscription, type CancelState } from "./actions";
+import { cancelSubscription, type CancelState } from "./actions";
 
 /**
- * Säg upp med ett klick (plus en bekräftelse), eller ångra uppsägningen.
+ * Säg upp med ett klick (plus en bekräftelse). Tillgången upphör direkt.
  * Det ska vara lika enkelt att säga upp som att köpa.
  */
-export function SubscriptionControls({ canceled, periodEndText }: { canceled: boolean; periodEndText: string }) {
+export function SubscriptionControls() {
   const { t } = useI18n();
-  const [state, action, pending] = useActionState<CancelState, FormData>(changeSubscription, {});
+  const [state, action, pending] = useActionState<CancelState>(cancelSubscription, {});
 
   return (
     <form
       action={action}
       onSubmit={(e) => {
-        if (!canceled && !window.confirm(t("account.cancelConfirm", { date: periodEndText }))) e.preventDefault();
+        if (!window.confirm(t("account.cancelConfirm"))) e.preventDefault();
       }}
       className="space-y-2"
     >
-      <input type="hidden" name="cancel" value={canceled ? "false" : "true"} />
       {state.error && <p className="text-sm text-wrong">{state.error}</p>}
       <button
         disabled={pending}
-        className={`w-full rounded-full px-5 py-3 font-bold disabled:opacity-60 ${
-          canceled ? "bg-primary text-white" : "border-2 border-line bg-surface text-ink hover:border-primary"
-        }`}
+        className="w-full rounded-full border-2 border-line bg-surface px-5 py-3 font-bold text-ink hover:border-primary disabled:opacity-60"
       >
-        {canceled ? t("account.resumeButton") : t("account.cancelButton")}
+        {t("account.cancelButton")}
       </button>
     </form>
   );

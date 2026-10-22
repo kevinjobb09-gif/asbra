@@ -60,7 +60,7 @@
     "faqFormatQ": "Imtixaanku immisa su'aalood ayuu leeyahay?",
     "faqFormatA": "Sida macluumaadkayagu sheegayo: ilaa {q} su'aalood {m} daqiiqo gudahood. Had iyo jeer ka hubi macluumaadka ugu dambeeyay UHR.",
     "faqCancelQ": "Ma joojin karaa goorta aan rabo?",
-    "faqCancelA": "Haa. Ma jiro muddo ballan qaad ah. Waxaad ku joojinaysaa hal guji oo Akoonka ah, isla markiiba oo kharash dheeraad ah la'aan. Waxaad haysanaysaa helitaanka ilaa dhammaadka bisha aad bixisay."
+    "faqCancelA": "Haa. Ma jiro muddo ballan qaad ah. Waxaad ku joojinaysaa hal guji oo Akoonka ah, kharash dheeraad ah la'aan. Joojintu isla markiiba way dhaqan gashaa: helitaankaagu wuu dhammaanayaa isla markiiba, lacag kalena lagaa jari maayo. Waqtiga horay loo bixiyay lacagtiisa lagu celin maayo."
   },
   "practiceIndex": {
     "title": "Tababar",
@@ -241,7 +241,7 @@
     "startPracticing": "Bilow tababarka",
     "otherDevice": "Taleefan ama kombiyuutar kale ku gal email-ka {email}.",
     "canceled": "Lacag bixinta waa la joojiyay. Wax lacag ah lagama jarin.",
-    "subscriptionInfo": "Rukummadu si toos ah ayay u cusboonaataa bil kasta ilaa aad joojiso. Waxaad ku joojinaysaa hal guji oo Akoonka ah, waxaadna haysanaysaa helitaanka ilaa dhammaadka bisha aad bixisay.",
+    "subscriptionInfo": "Rukummadu si toos ah ayay u cusboonaataa bil kasta ilaa aad joojiso. Waxaad ku joojinaysaa hal guji oo Akoonka ah. Markaas helitaanku isla markiiba wuu dhammaanayaa, waqtiga horay loo bixiyayna lacagtiisa lagu celin maayo.",
     "thenPrice": "Kadibna {price} bishii",
     "loginToAccess": "Lacag bixintu way dhammaatay, rukummaduna waa firfircoon tahay. Horeba waxaad leedahay akoon {email} ah – ku gal ciwaankaas si aad wax walba u isticmaasho."
   },
@@ -281,9 +281,9 @@
     "subscriptionCanceled": "Rukummada waa la joojiyay. Waxaad haysataa helitaan ilaa {date}. Lacag kale lagaa jari maayo.",
     "subscriptionPastDue": "Lacag bixintii ugu dambeysay ma dhicin. Stripe ayaa mar kale isku dayi doona. Hubi kaarkaaga.",
     "cancelButton": "Jooji rukummada",
-    "cancelConfirm": "Ma rabtaa inaad joojiso rukummada? Waxaad haysanaysaa helitaan ilaa {date}. Lacag kale lagaa jari maayo.",
-    "resumeButton": "Ka noqo joojinta",
-    "cancelError": "Hadda ma shaqayn. Mar kale isku day ama nala soo xiriir."
+    "cancelConfirm": "Ma rabtaa inaad joojiso rukummada? Helitaanku isla markiiba wuu dhammaanayaa, waqtiga horay loo bixiyayna lacagtiisa lagu celin maayo. Lacag kale lagaa jari maayo.",
+    "cancelError": "Hadda ma shaqayn. Mar kale isku day ama nala soo xiriir.",
+    "cancelInfo": "Haddii aad joojiso, helitaanku isla markiiba wuu dhammaanayaa. Waqtiga horay loo bixiyay lacagtiisa lagu celin maayo."
   },
   "share": {
     "question": "Ma taqaannaa jawaabta?",

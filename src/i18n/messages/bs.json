@@ -60,7 +60,7 @@
     "faqFormatQ": "Koliko pitanja ima test?",
     "faqFormatA": "Prema našim informacijama: oko {q} pitanja za {m} minuta. Uvijek provjeri najnovije informacije kod UHR.",
     "faqCancelQ": "Mogu li otkazati kad god želim?",
-    "faqCancelA": "Da. Nema perioda obaveze. Otkazuješ jednim klikom pod Račun, odmah i bez dodatnih troškova. Pristup imaš do kraja mjeseca koji si platio."
+    "faqCancelA": "Da. Nema perioda obaveze. Otkazuješ jednim klikom pod Račun, bez dodatnih troškova. Otkazivanje važi odmah: pristup prestaje istog trena i više se ništa ne naplaćuje. Novac za već plaćeno vrijeme se ne vraća."
   },
   "practiceIndex": {
     "title": "Vježbaj",
@@ -241,7 +241,7 @@
     "startPracticing": "Počni vježbati",
     "otherDevice": "Na drugom telefonu ili računaru prijavi se adresom {email}.",
     "canceled": "Plaćanje je otkazano. Novac nije naplaćen.",
-    "subscriptionInfo": "Pretplata se automatski obnavlja svaki mjesec dok je ne otkažeš. Otkazuješ jednim klikom pod Račun i imaš pristup do kraja plaćenog mjeseca.",
+    "subscriptionInfo": "Pretplata se automatski obnavlja svaki mjesec dok je ne otkažeš. Otkazuješ jednim klikom pod Račun. Pristup tada odmah prestaje, a novac za već plaćeno vrijeme se ne vraća.",
     "thenPrice": "Zatim {price} mjesečno",
     "loginToAccess": "Plaćanje je završeno i pretplata je aktivna. Već imaš račun s {email} – prijavi se tom e-adresom da koristiš sve."
   },
@@ -281,9 +281,9 @@
     "subscriptionCanceled": "Pretplata je otkazana. Imaš pristup do {date}. Više se ništa neće naplaćivati.",
     "subscriptionPastDue": "Posljednje plaćanje nije prošlo. Stripe će pokušati ponovo. Provjeri svoju karticu.",
     "cancelButton": "Otkaži pretplatu",
-    "cancelConfirm": "Želiš li otkazati pretplatu? Pristup zadržavaš do {date}. Više se ništa neće naplaćivati.",
-    "resumeButton": "Poništi otkazivanje",
-    "cancelError": "Trenutno nije uspjelo. Pokušaj ponovo ili nas kontaktiraj."
+    "cancelConfirm": "Želiš li otkazati pretplatu? Pristup prestaje odmah, a novac za već plaćeno vrijeme se ne vraća. Više se ništa neće naplaćivati.",
+    "cancelError": "Trenutno nije uspjelo. Pokušaj ponovo ili nas kontaktiraj.",
+    "cancelInfo": "Ako otkažeš, pristup odmah prestaje. Novac za već plaćeno vrijeme se ne vraća."
   },
   "share": {
     "question": "Znaš li odgovor?",

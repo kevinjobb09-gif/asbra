@@ -60,8 +60,13 @@ export default async function AccountPage({ searchParams }: Props) {
                     ? t("account.subscriptionCanceled", { date: periodEndText })
                     : t("account.subscriptionActive", { date: periodEndText })}
               </p>
-              {!subscription.cancelAtPeriodEnd && <p className="text-sm">{t("offer.noCommitment")}</p>}
-              <SubscriptionControls canceled={subscription.cancelAtPeriodEnd} periodEndText={periodEndText} />
+              {/* Äldre prenumerationer kan vara uppsagda till periodens slut – då finns inget mer att göra här. */}
+              {!subscription.cancelAtPeriodEnd && (
+                <>
+                  <p className="text-sm">{t("account.cancelInfo")}</p>
+                  <SubscriptionControls />
+                </>
+              )}
             </div>
           ) : access.expiresAt ? (
             <p>{t("account.accessUntil", { date: dateFormat.format(new Date(access.expiresAt)) })}</p>
