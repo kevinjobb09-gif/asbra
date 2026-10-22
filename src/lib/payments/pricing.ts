@@ -7,14 +7,14 @@
 export const MIN_AMOUNT_MINOR = 300;
 
 /**
- * Pris efter rabatt, avrundat till hela kronor. Belopp anges i öre ("minor units"),
+ * Pris efter rabatt, exakt på öret. Belopp anges i öre ("minor units"),
  * som Stripe vill ha dem.
  */
 export function computePrice(listPriceKr: number, discountPercent: number) {
   const discount = clampPercent(discountPercent, 90);
   const listPriceMinor = Math.round(listPriceKr * 100);
-  const amountKr = Math.round(listPriceKr * (1 - discount / 100));
-  const amountMinor = Math.max(MIN_AMOUNT_MINOR, amountKr * 100);
+  // Exakt på öret – samma belopp som Stripe drar med procentkupongen.
+  const amountMinor = Math.max(MIN_AMOUNT_MINOR, Math.round(listPriceMinor * (1 - discount / 100)));
   return { listPriceMinor, amountMinor, discountMinor: listPriceMinor - amountMinor, discountPercent: discount };
 }
 

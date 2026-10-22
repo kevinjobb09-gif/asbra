@@ -18,9 +18,12 @@ export function getCountry(code: CountryCode = ACTIVE_COUNTRY): CountryConfig {
 
 /** Formaterar ett pris, t.ex. "149 kr". */
 export function formatPrice(country: CountryConfig = getCountry()): string {
+  // Visar ören bara när beloppet inte är jämnt, t.ex. "12,90 kr" men "129 kr".
+  const whole = Number.isInteger(country.pricing.amount);
   return new Intl.NumberFormat("sv-SE", {
     style: "currency",
     currency: country.currency,
-    maximumFractionDigits: 0,
+    minimumFractionDigits: whole ? 0 : 2,
+    maximumFractionDigits: whole ? 0 : 2,
   }).format(country.pricing.amount);
 }

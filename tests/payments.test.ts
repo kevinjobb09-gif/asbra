@@ -17,9 +17,10 @@ describe("pris och rabatt", () => {
     expect(computePrice(129, 0)).toEqual({ listPriceMinor: 12900, amountMinor: 12900, discountMinor: 0, discountPercent: 0 });
   });
 
-  it("rabatt avrundas till hela kronor", () => {
-    expect(computePrice(129, 20).amountMinor).toBe(10300); // 103,20 → 103 kr
-    expect(computePrice(129, 50).amountMinor).toBe(6500); // 64,50 → 65 kr (avrundning)
+  it("rabatten räknas exakt på öret, som Stripes procentkupong", () => {
+    expect(computePrice(129, 20).amountMinor).toBe(10320); // 103,20 kr
+    expect(computePrice(129, 50).amountMinor).toBe(6450); // 64,50 kr
+    expect(computePrice(129, 90).amountMinor).toBe(1290); // 12,90 kr
   });
 
   it("rabatten kan aldrig bli över 90 % eller under 0", () => {
