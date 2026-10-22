@@ -61,3 +61,9 @@ body {
 :lang(ur) {
   line-height: 1.8;
 }
+
+/* Laddningsraden högst upp vid klick på länkar (NavigationProgress). */
+@keyframes nav-progress {
+  from { transform: scaleX(0.08); }
+  to { transform: scaleX(0.9); }
+}

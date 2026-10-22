@@ -8,6 +8,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
 import { RefBanner } from "@/components/RefBanner";
 import { LanguageNotice } from "@/components/LanguagePicker";
+import { NavigationProgress } from "@/components/NavigationProgress";
 import "./globals.css";
 
 // Ett typsnitt per skriftsystem. Webbläsaren laddar bara de tecken som faktiskt
@@ -49,6 +50,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
     <html lang={languages[lang].htmlLang} dir={dir}>
       <body className={`${fonts} flex min-h-dvh flex-col antialiased`}>
         <I18nProvider lang={lang} messages={messages}>
+          <NavigationProgress />
           <SiteHeader />
           <RefBanner />
           <main className="flex-1">{children}</main>

@@ -27,6 +27,7 @@ export function SiteHeader() {
           <LanguagePicker />
           <Link
             href="/resultat"
+            prefetch
             aria-label={t("common.results")}
             className="flex items-center gap-1.5 rounded-full px-2.5 py-2 text-sm font-semibold hover:bg-primary-soft"
           >
@@ -35,12 +36,13 @@ export function SiteHeader() {
           </Link>
           <Link
             href="/konto"
+            prefetch
             aria-label={t("common.account")}
             className="flex items-center rounded-full px-2.5 py-2 text-sm font-semibold hover:bg-primary-soft"
           >
             <UserRound size={18} aria-hidden />
           </Link>
-          <ButtonLink href="/ova" variant="cta" className="ms-1 !px-4 !py-2 text-sm">
+          <ButtonLink href="/ova" prefetch variant="cta" className="ms-1 !px-4 !py-2 text-sm">
             {t("common.practice")}
           </ButtonLink>
         </nav>
