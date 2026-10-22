@@ -1,5 +1,7 @@
 import "server-only";
+import { cache } from "react";
 import { createClient } from "@/lib/supabase/server";
+import { getCurrentUser } from "@/lib/supabase/user";
 import { serverEnv } from "@/lib/env";
 import { isAdminEmail } from "@/lib/admin/isAdminEmail";
 
@@ -11,15 +13,14 @@ export type Access = {
   expiresAt: string | null;
 };
 
-/** Vem är inloggad och vad får hen göra? */
-export async function getAccess(): Promise<Access> {
-  const supabase = await createClient();
-  const { data } = await supabase.auth.getUser();
-  const user = data.user;
+/** Vem är inloggad och vad får hen göra? Återanvänds inom samma sidvisning. */
+export const getAccess = cache(async (): Promise<Access> => {
+  const user = await getCurrentUser();
   if (!user) return { userId: null, isAdmin: false, hasFullAccess: false, expiresAt: null };
 
   const isAdmin = isAdminEmail(user.email, serverEnv.adminEmails);
   const now = new Date().toISOString();
+  const supabase = await createClient();
   // RLS gör att man bara ser sina egna rader.
   const { data: grants } = await supabase
     .from("access_grants")
@@ -31,4 +32,4 @@ export async function getAccess(): Promise<Access> {
   const expiresAt = grants?.[0]?.expires_at ?? null;
 
   return { userId: user.id, isAdmin, hasFullAccess: isAdmin || expiresAt !== null, expiresAt };
-}
+});

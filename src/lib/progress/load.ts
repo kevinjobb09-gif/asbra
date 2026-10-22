@@ -1,6 +1,7 @@
 import "server-only";
 import type { CountryConfig } from "@/config";
 import { createClient } from "@/lib/supabase/server";
+import { getCurrentUser } from "@/lib/supabase/user";
 import { getReviewedCountsByChapter } from "@/lib/questions/public";
 import {
   buildHistories,
@@ -24,14 +25,13 @@ export type ExamAttemptRow = {
 /** Hämtar den inloggade användarens svar och räknar ut resultat och framsteg. */
 export async function getMyProgress(country: CountryConfig, now = new Date()) {
   const supabase = await createClient();
-  const { data: auth } = await supabase.auth.getUser();
-  const totals = await getReviewedCountsByChapter(country.code);
+  const [user, totals] = await Promise.all([getCurrentUser(), getReviewedCountsByChapter(country.code)]);
   const chapterTotals = new Map(country.chapters.map((c) => [c.number, totals.get(c.number) ?? 0]));
 
   let rows: AnswerRow[] = [];
   let exams: ExamAttemptRow[] = [];
 
-  if (auth.user) {
+  if (user) {
     // RLS: man får bara sina egna svar. Frågan kopplas med för att få kapitlet.
     const [answersRes, examsRes] = await Promise.all([
       supabase

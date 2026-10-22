@@ -20,8 +20,9 @@ type Props = { searchParams: Promise<{ raderad?: string }> };
 export default async function AccountPage({ searchParams }: Props) {
   const { raderad } = await searchParams;
   const country = getCountry();
-  const [{ t, lang }, access] = await Promise.all([getI18n(), getAccess()]);
-  const { data } = await (await createClient()).auth.getUser();
+  // Exakt kontroll här (inte bara signaturen), så att e-post och status alltid är aktuella.
+  const supabase = await createClient();
+  const [{ t, lang }, access, { data }] = await Promise.all([getI18n(), getAccess(), supabase.auth.getUser()]);
   const user = data.user;
   const subscription = user ? await getUserSubscription(user.id) : null;
   const dateFormat = new Intl.DateTimeFormat(languages[lang].htmlLang, { dateStyle: "long", timeZone: country.timeZone });

@@ -5,7 +5,7 @@ import { getI18n } from "@/i18n/server";
 import { getAccess } from "@/lib/access";
 import { computePrice } from "@/lib/payments/pricing";
 import { getActiveRef } from "@/lib/payments/server";
-import { createClient } from "@/lib/supabase/server";
+import { getCurrentUser } from "@/lib/supabase/user";
 import { BuyForm } from "./BuyForm";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -19,14 +19,13 @@ type Props = { searchParams: Promise<{ avbruten?: string }> };
 export default async function BuyPage({ searchParams }: Props) {
   const { avbruten } = await searchParams;
   const country = getCountry();
-  const [{ t }, ref, access] = await Promise.all([getI18n(), getActiveRef(), getAccess()]);
+  const [{ t }, ref, access, user] = await Promise.all([getI18n(), getActiveRef(), getAccess(), getCurrentUser()]);
   const price = computePrice(country.pricing.amount, ref?.discountPercent ?? 0);
   const firstMonth = formatPrice({ ...country, pricing: { ...country.pricing, amount: price.amountMinor / 100 } });
   const monthly = formatPrice(country);
 
   // Föreslå e-postadressen om användaren redan har ett konto.
-  const { data } = await (await createClient()).auth.getUser();
-  const knownEmail = data.user?.email ?? undefined;
+  const knownEmail = user?.email ?? undefined;
 
   const benefits = [
     t("offer.benefitChapters", { n: country.chapters.length }),
