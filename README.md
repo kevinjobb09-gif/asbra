@@ -209,8 +209,8 @@ Statistiken sparar inga personuppgifter och använder inga spårningscookies.
 
 ## Publicera på Netlify
 
-**Publicerad (Stripe i testläge):** <https://medborgarhjalpen.se> (även <https://asbra-prov.netlify.app>) – byggs om automatiskt vid varje push till `main` på GitHub.
-Stripe-webhooken (testläge) pekar på `https://medborgarhjalpen.se/api/stripe/webhook`. Byt till live-nycklar och skapa en ny webhook i live-läget före lansering.
+**Publicerad (Stripe LIVE sedan 2026-10-22):** <https://medborgarhjalpen.se> (även <https://asbra-prov.netlify.app>) – byggs om automatiskt vid varje push till `main` på GitHub.
+Stripe-webhooken (live, kontot "asbra") pekar på `https://medborgarhjalpen.se/api/stripe/webhook`.
 
 1. Lägg upp projektet på GitHub (privat repo).
 2. På [netlify.com](https://app.netlify.com): **Add new site → Import an existing project → GitHub** och välj repot.
@@ -250,7 +250,7 @@ Gratisfrågorna visas först.
 - [ ] Koppla en egen e-posttjänst (t.ex. Resend) i Supabase: **Authentication → Emails → SMTP Settings**.
       Sätt sedan `SUPABASE_CUSTOM_SMTP=1` och kör `npm.cmd run databas`, så får inloggningsmejlen länkar som
       fungerar i alla webbläsare.
-- [ ] Stripe: verifiera företaget, lägg in webhook och byt till live-nycklar.
+- [x] Stripe: live-nycklar och live-webhook (2026-10-22).
 - [ ] Starta en riktig prenumeration med ett eget kort, säg upp den på `/konto` och återbetala i Stripe.
 
 ## Status
