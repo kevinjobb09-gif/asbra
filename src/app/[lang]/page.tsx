@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { isLanguageCode, LANGUAGE_CODES } from "@/config";
+import { isLanguageCode } from "@/config";
+import { homePath, languageAlternates } from "@/lib/seo";
 import { getI18n } from "@/i18n/server";
 import { HomeContent } from "@/components/HomeContent";
 
@@ -19,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: t("home.subtitle"),
     alternates: {
       canonical: `/${lang}`,
-      languages: { sv: "/", ...Object.fromEntries(LANGUAGE_CODES.filter((c) => c !== "sv").map((c) => [c, `/${c}`])) },
+      languages: languageAlternates(homePath),
     },
   };
 }

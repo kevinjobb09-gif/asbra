@@ -237,6 +237,15 @@ Utkasten granskas på `/admin/granska` (fungerar bra på mobilen): ett utkast i 
 Kontrollera mot sidan i *Sverige i fokus* och tryck **Godkänn**, **Redigera** eller **Ta bort**.
 Gratisfrågorna visas först.
 
+## Guide och SEO
+
+- Guiden om medborgarskapsprovet finns på `/guide` (svenska) och `/en/guide`, `/ar/guide`, `/fa/guide`, `/so/guide`,
+  `/ti/guide`, `/ckb/guide`. Texterna ligger i `src/content/guide.ts`. **Uppdatera texterna och `GUIDE_CHECKED` när UHR
+  publicerar nya uppgifter** (datum, avgift, provtid, antal frågor).
+- Startsidorna har hreflang (med x-default) och strukturerade data (organisation, webbplats, FAQ). Guiden har Article.
+- Sitemapen innehåller guiderna, kapitelsidorna och gratisfrågorna.
+- Lägg till sajten i Google Search Console och Bing Webmaster Tools och skicka in `sitemap.xml`.
+
 ## Checklista före lansering
 
 - [x] Kontrollera provformatet på uhr.se (2026-10-19: tid och antal frågor ej publicerade än – kolla igen före lansering).

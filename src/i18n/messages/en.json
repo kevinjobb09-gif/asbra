@@ -18,7 +18,8 @@
     "terms": "Terms of use",
     "privacy": "Privacy policy",
     "about": "About us",
-    "contact": "Contact"
+    "contact": "Contact",
+    "guide": "Guide: the citizenship test"
   },
   "home": {
     "badge": "The citizenship test in civics",
@@ -58,9 +59,12 @@
     "faqAccountQ": "Do I need to create an account?",
     "faqAccountA": "No, you can start practicing right away. You only give your email when you buy. What you have practiced is saved.",
     "faqFormatQ": "How many questions does the test have?",
-    "faqFormatA": "According to our information: about {q} questions in {m} minutes. Always check the latest information from UHR.",
+    "faqFormatA": "The test is in Swedish and has multiple-choice questions with four options. UHR has not yet published the test time and number of questions for the next test. Our practice test has {q} questions in {m} minutes.",
     "faqCancelQ": "Can I cancel whenever I want?",
-    "faqCancelA": "Yes. There is no commitment period. You cancel with one click under Account, at no extra cost. The cancellation takes effect immediately: your access ends at once and no more payments are taken. Time already paid for is not refunded."
+    "faqCancelA": "Yes. There is no commitment period. You cancel with one click under Account, at no extra cost. The cancellation takes effect immediately: your access ends at once and no more payments are taken. Time already paid for is not refunded.",
+    "guideTitle": "Everything about the citizenship test",
+    "guideText": "Who has to take the test, when the next test is and how to prepare.",
+    "guideCta": "Read the guide"
   },
   "practiceIndex": {
     "title": "Practice",
@@ -325,5 +329,15 @@
     "mailSubject": "Your discount code: {percent} % off",
     "mailBody": "Hi!\nThanks for signing up. Your personal discount code is: {code}\nIt gives {percent} % off your first month and can be used once.\nUse it here: {link}",
     "mailFooter": "You are receiving this email because you signed up with {brand}. Don't want more emails? Reply to this email and we'll remove you."
+  },
+  "seo": {
+    "ovaTitle": "Practice questions for the Swedish citizenship test – all chapters",
+    "ovaDescription": "Practise chapter by chapter with questions about Swedish society for the citizenship test. Questions in Swedish like the real test, explanations in your language.",
+    "freeTitle": "Free practice questions for the Swedish citizenship test",
+    "freeDescription": "Try {n} questions for free without an account. Questions in Swedish like the citizenship test, with the right answer and explanation straight away.",
+    "examTitle": "Timed practice test for the Swedish citizenship test",
+    "examDescription": "Take a full timed practice test, just like the real one. See your result per chapter and what you need to study more.",
+    "chapterDescription": "Practice questions about {chapter} for the Swedish citizenship test. Questions in Swedish with explanations in your language.",
+    "dailyDescription": "A new question about Swedish society every day. Do you know the answer?"
   }
 }

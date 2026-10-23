@@ -18,7 +18,8 @@
     "terms": "Conditions d’utilisation",
     "privacy": "Politique de confidentialité",
     "about": "Qui sommes-nous",
-    "contact": "Contact"
+    "contact": "Contact",
+    "guide": "Guide : l’examen de citoyenneté"
   },
   "home": {
     "badge": "Le test de citoyenneté en éducation civique",
@@ -58,9 +59,12 @@
     "faqAccountQ": "Dois-je créer un compte ?",
     "faqAccountA": "Non, vous pouvez commencer tout de suite. Vous donnez votre e-mail seulement au moment de l’achat. Vos progrès sont enregistrés.",
     "faqFormatQ": "Combien de questions compte le test ?",
-    "faqFormatA": "D’après nos informations : environ {q} questions en {m} minutes. Vérifiez toujours les dernières informations auprès de l’UHR.",
+    "faqFormatA": "L’examen est en suédois et comporte des questions à choix multiples avec quatre réponses. UHR n’a pas encore publié la durée ni le nombre de questions du prochain examen. Notre examen blanc comporte {q} questions en {m} minutes.",
     "faqCancelQ": "Puis-je résilier quand je veux ?",
-    "faqCancelA": "Oui. Il n’y a pas de durée d’engagement. Vous résiliez en un clic dans Compte, sans frais supplémentaires. La résiliation est immédiate : l’accès prend fin aussitôt et aucun autre paiement n’est prélevé. Le temps déjà payé n’est pas remboursé."
+    "faqCancelA": "Oui. Il n’y a pas de durée d’engagement. Vous résiliez en un clic dans Compte, sans frais supplémentaires. La résiliation est immédiate : l’accès prend fin aussitôt et aucun autre paiement n’est prélevé. Le temps déjà payé n’est pas remboursé.",
+    "guideTitle": "Tout sur l’examen de citoyenneté",
+    "guideText": "Qui doit passer l’examen, quand a lieu le prochain et comment se préparer.",
+    "guideCta": "Lire le guide"
   },
   "practiceIndex": {
     "title": "S’entraîner",
@@ -325,5 +329,15 @@
     "mailSubject": "Votre code promo : {percent} % de réduction",
     "mailBody": "Bonjour !\nMerci pour votre inscription. Votre code promo personnel : {code}\nIl donne {percent} % de réduction sur le premier mois et s’utilise une fois.\nUtilisez-le ici : {link}",
     "mailFooter": "Vous recevez cet e-mail car vous vous êtes inscrit sur {brand}. Vous ne voulez plus d’e-mails ? Répondez à cet e-mail et nous vous retirerons."
+  },
+  "seo": {
+    "ovaTitle": "Questions d’entraînement pour l’examen de citoyenneté suédoise – tous les chapitres",
+    "ovaDescription": "Entraînez-vous chapitre par chapitre sur la société suédoise pour l’examen de citoyenneté. Questions en suédois comme à l’examen, explications dans votre langue.",
+    "freeTitle": "Questions gratuites pour l’examen de citoyenneté suédoise",
+    "freeDescription": "Essayez {n} questions gratuitement sans compte. Questions en suédois comme à l’examen de citoyenneté, avec la bonne réponse et l’explication tout de suite.",
+    "examTitle": "Examen blanc chronométré pour l’examen de citoyenneté suédoise",
+    "examDescription": "Passez un examen blanc complet et chronométré, comme le vrai. Voyez votre résultat par chapitre et ce qu’il faut réviser.",
+    "chapterDescription": "Questions d’entraînement sur {chapter} pour l’examen de citoyenneté suédoise. Questions en suédois avec explications dans votre langue.",
+    "dailyDescription": "Une nouvelle question sur la société suédoise chaque jour. Connaissez-vous la réponse ?"
   }
 }

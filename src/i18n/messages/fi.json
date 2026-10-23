@@ -18,7 +18,8 @@
     "terms": "Käyttöehdot",
     "privacy": "Tietosuojakäytäntö",
     "about": "Tietoa meistä",
-    "contact": "Yhteystiedot"
+    "contact": "Yhteystiedot",
+    "guide": "Opas: kansalaisuuskoe"
   },
   "home": {
     "badge": "Kansalaisuuskoe yhteiskuntatiedossa",
@@ -58,9 +59,12 @@
     "faqAccountQ": "Pitääkö minun luoda tili?",
     "faqAccountA": "Ei, voit aloittaa heti. Annat sähköpostisi vasta ostaessasi. Harjoittelusi tallentuu.",
     "faqFormatQ": "Montako kysymystä kokeessa on?",
-    "faqFormatA": "Tietojemme mukaan noin {q} kysymystä {m} minuutissa. Tarkista aina ajantasaiset tiedot UHR:ltä.",
+    "faqFormatA": "Koe on ruotsiksi, ja siinä on monivalintakysymyksiä, joissa on neljä vaihtoehtoa. UHR ei ole vielä julkaissut seuraavan kokeen kestoa ja kysymysten määrää. Harjoituskokeessamme on {q} kysymystä {m} minuutissa.",
     "faqCancelQ": "Voinko perua milloin tahansa?",
-    "faqCancelA": "Kyllä. Määräaikaa ei ole. Perut yhdellä klikkauksella kohdassa Tili, ilman lisämaksuja. Peruutus tulee voimaan heti: käyttöoikeus päättyy välittömästi eikä uusia maksuja veloiteta. Jo maksettua aikaa ei hyvitetä."
+    "faqCancelA": "Kyllä. Määräaikaa ei ole. Perut yhdellä klikkauksella kohdassa Tili, ilman lisämaksuja. Peruutus tulee voimaan heti: käyttöoikeus päättyy välittömästi eikä uusia maksuja veloiteta. Jo maksettua aikaa ei hyvitetä.",
+    "guideTitle": "Kaikki kansalaisuuskokeesta",
+    "guideText": "Kenen pitää tehdä koe, milloin on seuraava koe ja miten valmistautua.",
+    "guideCta": "Lue opas"
   },
   "practiceIndex": {
     "title": "Harjoittele",
@@ -325,5 +329,15 @@
     "mailSubject": "Alennuskoodisi: {percent} % alennus",
     "mailBody": "Hei!\nKiitos, että liityit. Henkilökohtainen alennuskoodisi on: {code}\nSe antaa {percent} % alennuksen ensimmäisestä kuukaudesta ja sen voi käyttää kerran.\nKäytä sitä täällä: {link}",
     "mailFooter": "Saat tämän viestin, koska liityit palveluun {brand}. Etkö halua enempää viestejä? Vastaa tähän viestiin, niin poistamme sinut listalta."
+  },
+  "seo": {
+    "ovaTitle": "Harjoituskysymyksiä Ruotsin kansalaisuuskokeeseen – kaikki luvut",
+    "ovaDescription": "Harjoittele luku kerrallaan kysymyksiä Ruotsin yhteiskunnasta kansalaisuuskoetta varten. Kysymykset ruotsiksi kuten kokeessa, selitykset omalla kielelläsi.",
+    "freeTitle": "Ilmaisia kysymyksiä Ruotsin kansalaisuuskokeeseen",
+    "freeDescription": "Kokeile {n} kysymystä ilmaiseksi ilman tiliä. Kysymykset ruotsiksi kuten kansalaisuuskokeessa, oikea vastaus ja selitys heti.",
+    "examTitle": "Ajastettu harjoituskoe Ruotsin kansalaisuuskokeeseen",
+    "examDescription": "Tee koko harjoituskoe ajastettuna, kuin oikea. Näet tuloksen luvuittain ja mitä pitää opiskella lisää.",
+    "chapterDescription": "Harjoituskysymyksiä aiheesta {chapter} Ruotsin kansalaisuuskokeeseen. Kysymykset ruotsiksi, selitykset omalla kielelläsi.",
+    "dailyDescription": "Joka päivä uusi kysymys Ruotsin yhteiskunnasta. Tiedätkö vastauksen?"
   }
 }

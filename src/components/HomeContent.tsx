@@ -3,6 +3,10 @@ import { brand, formatPrice, getCountry, languages, type LanguageCode } from "@/
 import { getI18n } from "@/i18n/server";
 import { WELCOME_DISCOUNT_PERCENT } from "@/lib/welcome";
 import { ButtonLink } from "./ButtonLink";
+import { JsonLd } from "./JsonLd";
+import { publicEnv } from "@/lib/env";
+import { hasGuide } from "@/content/guideLanguages";
+import { homePath } from "@/lib/seo";
 import { AnswerOption } from "./AnswerOption";
 import { Disclaimer } from "./Disclaimer";
 
@@ -15,6 +19,14 @@ export async function HomeContent({ lang: langOverride }: { lang?: LanguageCode 
   const country = getCountry();
   const { exam, freeQuestionLimit, chapters } = country;
   const material = country.studyMaterial.title;
+  const site = publicEnv.siteUrl.replace(/\/$/, "");
+  const faq: [string, string][] = [
+    [t("home.faqOfficialQ"), t("home.faqOfficialA", { brand: brand.name })],
+    [t("home.faqLanguageQ"), t("home.faqLanguageA")],
+    [t("home.faqAccountQ"), t("home.faqAccountA")],
+    [t("home.faqCancelQ"), t("home.faqCancelA")],
+    [t("home.faqFormatQ"), t("home.faqFormatA", { q: exam.questionCount, m: exam.durationMinutes })],
+  ];
   const showcase = [lang, ...SHOWCASE.filter((c) => c !== lang)].filter((c) => c !== "sv").slice(0, 9);
 
   return (
@@ -113,16 +125,56 @@ export async function HomeContent({ lang: langOverride }: { lang?: LanguageCode 
         </ButtonLink>
       </section>
 
+      {hasGuide(lang) && (
+        <section className="mt-12 rounded-3xl border border-line bg-surface p-6">
+          <h2 className="text-xl font-extrabold">{t("home.guideTitle")}</h2>
+          <p className="mt-1 text-muted">{t("home.guideText")}</p>
+          <ButtonLink href={lang === "sv" ? "/guide" : `/${lang}/guide`} variant="outline" className="mt-4">
+            {t("home.guideCta")}
+          </ButtonLink>
+        </section>
+      )}
+
       <section className="mt-12">
         <h2 className="text-2xl font-extrabold">{t("home.faqTitle")}</h2>
         <div className="mt-4 space-y-2">
-          <Faq q={t("home.faqOfficialQ")}>{t("home.faqOfficialA", { brand: brand.name })}</Faq>
-          <Faq q={t("home.faqLanguageQ")}>{t("home.faqLanguageA")}</Faq>
-          <Faq q={t("home.faqAccountQ")}>{t("home.faqAccountA")}</Faq>
-          <Faq q={t("home.faqCancelQ")}>{t("home.faqCancelA")}</Faq>
-          <Faq q={t("home.faqFormatQ")}>{t("home.faqFormatA", { q: exam.questionCount, m: exam.durationMinutes })}</Faq>
+          {faq.map(([q, a]) => (
+            <Faq key={q} q={q}>
+              {a}
+            </Faq>
+          ))}
         </div>
       </section>
+
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": `${site}/#organization`,
+              name: brand.name,
+              url: site,
+              logo: `${site}/icon/512`,
+              email: brand.contactEmail,
+            },
+            {
+              "@type": "WebSite",
+              "@id": `${site}/#website`,
+              name: brand.name,
+              url: site,
+              inLanguage: languages[lang].htmlLang,
+              publisher: { "@id": `${site}/#organization` },
+            },
+            {
+              "@type": "FAQPage",
+              url: `${site}${homePath(lang) === "/" ? "" : homePath(lang)}`,
+              inLanguage: languages[lang].htmlLang,
+              mainEntity: faq.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
+            },
+          ],
+        }}
+      />
 
       <Disclaimer className="mt-10 text-center" />
     </div>

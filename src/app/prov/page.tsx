@@ -8,7 +8,7 @@ import { UnlockOffer } from "@/components/UnlockOffer";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getI18n();
-  return { title: t("exam.title"), description: t("offer.examIntro") };
+  return { title: t("seo.examTitle"), description: t("seo.examDescription"), alternates: { canonical: "/prov" } };
 }
 
 export const dynamic = "force-dynamic";

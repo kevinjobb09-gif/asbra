@@ -18,7 +18,8 @@
     "terms": "Regulamin",
     "privacy": "Polityka prywatności",
     "about": "O nas",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "guide": "Przewodnik: egzamin na obywatelstwo"
   },
   "home": {
     "badge": "Test na obywatelstwo z wiedzy o społeczeństwie",
@@ -58,9 +59,12 @@
     "faqAccountQ": "Czy muszę założyć konto?",
     "faqAccountA": "Nie, możesz zacząć od razu. E-mail podajesz dopiero przy zakupie. Twoje postępy są zapisywane.",
     "faqFormatQ": "Ile pytań ma test?",
-    "faqFormatA": "Według naszych informacji: około {q} pytań w {m} minut. Zawsze sprawdzaj aktualne informacje w UHR.",
+    "faqFormatA": "Egzamin jest po szwedzku i składa się z pytań wielokrotnego wyboru z czterema odpowiedziami. UHR nie opublikował jeszcze czasu i liczby pytań na następnym egzaminie. Nasz egzamin próbny ma {q} pytań w {m} minut.",
     "faqCancelQ": "Czy mogę zrezygnować w dowolnym momencie?",
-    "faqCancelA": "Tak. Nie ma okresu zobowiązania. Rezygnujesz jednym kliknięciem w zakładce Konto, bez dodatkowych kosztów. Rezygnacja działa od razu: dostęp kończy się natychmiast i nie pobierzemy już żadnych płatności. Za już opłacony czas nie zwracamy pieniędzy."
+    "faqCancelA": "Tak. Nie ma okresu zobowiązania. Rezygnujesz jednym kliknięciem w zakładce Konto, bez dodatkowych kosztów. Rezygnacja działa od razu: dostęp kończy się natychmiast i nie pobierzemy już żadnych płatności. Za już opłacony czas nie zwracamy pieniędzy.",
+    "guideTitle": "Wszystko o egzaminie na obywatelstwo",
+    "guideText": "Kto musi zdawać egzamin, kiedy jest następny i jak się przygotować.",
+    "guideCta": "Przeczytaj przewodnik"
   },
   "practiceIndex": {
     "title": "Ćwicz",
@@ -325,5 +329,15 @@
     "mailSubject": "Twój kod rabatowy: {percent} % zniżki",
     "mailBody": "Cześć!\nDziękujemy za zapisanie się. Twój osobisty kod rabatowy: {code}\nDaje {percent} % zniżki na pierwszy miesiąc i można go użyć raz.\nUżyj go tutaj: {link}",
     "mailFooter": "Otrzymujesz tę wiadomość, ponieważ zapisałeś się w {brand}. Nie chcesz więcej wiadomości? Odpowiedz na tę wiadomość, a usuniemy Cię z listy."
+  },
+  "seo": {
+    "ovaTitle": "Pytania ćwiczeniowe do egzaminu na szwedzkie obywatelstwo – wszystkie rozdziały",
+    "ovaDescription": "Ćwicz rozdział po rozdziale pytania o szwedzkie społeczeństwo do egzaminu na obywatelstwo. Pytania po szwedzku jak na egzaminie, wyjaśnienia w Twoim języku.",
+    "freeTitle": "Darmowe pytania do egzaminu na szwedzkie obywatelstwo",
+    "freeDescription": "Wypróbuj {n} pytań za darmo bez konta. Pytania po szwedzku jak na egzaminie na obywatelstwo, z poprawną odpowiedzią i wyjaśnieniem od razu.",
+    "examTitle": "Egzamin próbny z zegarem do egzaminu na szwedzkie obywatelstwo",
+    "examDescription": "Zrób pełny egzamin próbny z zegarem, jak prawdziwy. Zobacz wynik dla każdego rozdziału i czego musisz się jeszcze nauczyć.",
+    "chapterDescription": "Pytania ćwiczeniowe o temacie {chapter} do egzaminu na szwedzkie obywatelstwo. Pytania po szwedzku z wyjaśnieniami w Twoim języku.",
+    "dailyDescription": "Codziennie nowe pytanie o szwedzkie społeczeństwo. Znasz odpowiedź?"
   }
 }

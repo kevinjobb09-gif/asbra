@@ -21,7 +21,12 @@ function findChapter(nr: string) {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const chapter = findChapter((await params).nr);
   const { t } = await getI18n();
-  return { title: chapter ? `${t("practiceIndex.title")}: ${chapter.title}` : t("practiceIndex.title") };
+  if (!chapter) return { title: t("practiceIndex.title") };
+  return {
+    title: `${chapter.title} – ${t("practiceIndex.chapter", { n: chapter.number })}`,
+    description: t("seo.chapterDescription", { chapter: chapter.title }),
+    alternates: { canonical: `/ova/kapitel/${chapter.number}` },
+  };
 }
 
 export default async function ChapterPracticePage({ params, searchParams }: Props) {

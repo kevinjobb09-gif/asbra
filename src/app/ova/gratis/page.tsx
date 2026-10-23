@@ -7,7 +7,8 @@ import { FreePractice } from "@/components/practice/FreePractice";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getI18n();
-  return { title: t("free.label"), description: t("home.subtitle") };
+  const n = getCountry().freeQuestionLimit;
+  return { title: t("seo.freeTitle"), description: t("seo.freeDescription", { n }), alternates: { canonical: "/ova/gratis" } };
 }
 
 export const dynamic = "force-dynamic";

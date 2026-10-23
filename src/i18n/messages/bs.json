@@ -18,7 +18,8 @@
     "terms": "Uslovi korištenja",
     "privacy": "Politika privatnosti",
     "about": "O nama",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "guide": "Vodič: test za državljanstvo"
   },
   "home": {
     "badge": "Test za državljanstvo iz poznavanja društva",
@@ -58,9 +59,12 @@
     "faqAccountQ": "Moram li napraviti račun?",
     "faqAccountA": "Ne, možeš odmah početi. E-mail upisuješ tek kad kupuješ. Tvoj napredak se čuva.",
     "faqFormatQ": "Koliko pitanja ima test?",
-    "faqFormatA": "Prema našim informacijama: oko {q} pitanja za {m} minuta. Uvijek provjeri najnovije informacije kod UHR.",
+    "faqFormatA": "Test je na švedskom i ima pitanja s četiri ponuđena odgovora. UHR još nije objavio trajanje i broj pitanja za sljedeći test. Naš probni test ima {q} pitanja za {m} minuta.",
     "faqCancelQ": "Mogu li otkazati kad god želim?",
-    "faqCancelA": "Da. Nema perioda obaveze. Otkazuješ jednim klikom pod Račun, bez dodatnih troškova. Otkazivanje važi odmah: pristup prestaje istog trena i više se ništa ne naplaćuje. Novac za već plaćeno vrijeme se ne vraća."
+    "faqCancelA": "Da. Nema perioda obaveze. Otkazuješ jednim klikom pod Račun, bez dodatnih troškova. Otkazivanje važi odmah: pristup prestaje istog trena i više se ništa ne naplaćuje. Novac za već plaćeno vrijeme se ne vraća.",
+    "guideTitle": "Sve o testu za državljanstvo",
+    "guideText": "Ko treba polagati test, kada je sljedeći test i kako se pripremiti.",
+    "guideCta": "Pročitaj vodič"
   },
   "practiceIndex": {
     "title": "Vježbaj",
@@ -325,5 +329,15 @@
     "mailSubject": "Tvoj kod za popust: {percent} % popusta",
     "mailBody": "Zdravo!\nHvala što si se prijavio. Tvoj lični kod za popust: {code}\nDaje {percent} % popusta na prvi mjesec i može se iskoristiti jednom.\nIskoristi ga ovdje: {link}",
     "mailFooter": "Ovaj e-mail dobijaš jer si se prijavio na {brand}. Ne želiš više e-mailova? Odgovori na ovaj e-mail i uklonit ćemo te."
+  },
+  "seo": {
+    "ovaTitle": "Pitanja za vježbu za test za švedsko državljanstvo – sva poglavlja",
+    "ovaDescription": "Vježbaj poglavlje po poglavlje pitanja o švedskom društvu za test za državljanstvo. Pitanja na švedskom kao na testu, objašnjenja na tvom jeziku.",
+    "freeTitle": "Besplatna pitanja za test za švedsko državljanstvo",
+    "freeDescription": "Isprobaj {n} pitanja besplatno bez računa. Pitanja na švedskom kao na testu za državljanstvo, s tačnim odgovorom i objašnjenjem odmah.",
+    "examTitle": "Probni test sa satom za test za švedsko državljanstvo",
+    "examDescription": "Uradi cijeli probni test sa satom, kao pravi. Pogledaj rezultat po poglavljima i šta trebaš više učiti.",
+    "chapterDescription": "Pitanja za vježbu o temi {chapter} za test za švedsko državljanstvo. Pitanja na švedskom s objašnjenjima na tvom jeziku.",
+    "dailyDescription": "Svaki dan novo pitanje o švedskom društvu. Znaš li odgovor?"
   }
 }

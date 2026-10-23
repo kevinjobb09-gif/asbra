@@ -18,7 +18,8 @@
     "terms": "Mga tuntunin ng paggamit",
     "privacy": "Patakaran sa privacy",
     "about": "Tungkol sa amin",
-    "contact": "Makipag-ugnayan"
+    "contact": "Makipag-ugnayan",
+    "guide": "Gabay: citizenship test"
   },
   "home": {
     "badge": "Pagsusulit sa pagkamamamayan tungkol sa lipunan",
@@ -58,9 +59,12 @@
     "faqAccountQ": "Kailangan ko bang gumawa ng account?",
     "faqAccountA": "Hindi, puwede kang magsimula agad. Ilalagay mo lang ang email mo kapag bumili ka. Nai-save ang iyong pagsasanay.",
     "faqFormatQ": "Ilang tanong ang pagsusulit?",
-    "faqFormatA": "Ayon sa aming impormasyon: mga {q} tanong sa loob ng {m} minuto. Laging tingnan ang pinakabagong impormasyon sa UHR.",
+    "faqFormatA": "Ang test ay nasa Swedish at may mga multiple-choice na tanong na may apat na pagpipilian. Hindi pa inilalabas ng UHR ang oras at bilang ng tanong sa susunod na test. Ang practice test namin ay may {q} tanong sa loob ng {m} minuto.",
     "faqCancelQ": "Puwede ba akong mag-cancel kahit kailan?",
-    "faqCancelA": "Oo. Walang lock-in period. Mag-cancel sa isang click sa Account, walang dagdag na bayad. Agad na magkakabisa ang pag-cancel: matatapos agad ang access mo at wala nang ibabawas na bayad. Hindi ibinabalik ang perang naibayad na para sa natitirang panahon."
+    "faqCancelA": "Oo. Walang lock-in period. Mag-cancel sa isang click sa Account, walang dagdag na bayad. Agad na magkakabisa ang pag-cancel: matatapos agad ang access mo at wala nang ibabawas na bayad. Hindi ibinabalik ang perang naibayad na para sa natitirang panahon.",
+    "guideTitle": "Lahat tungkol sa citizenship test",
+    "guideText": "Sino ang dapat kumuha ng test, kailan ang susunod at paano maghanda.",
+    "guideCta": "Basahin ang gabay"
   },
   "practiceIndex": {
     "title": "Magsanay",
@@ -325,5 +329,15 @@
     "mailSubject": "Ang discount code mo: {percent} % diskwento",
     "mailBody": "Kumusta!\nSalamat sa pag-sign up. Ang personal na discount code mo ay: {code}\nNagbibigay ito ng {percent} % diskwento sa unang buwan at isang beses lang magagamit.\nGamitin ito dito: {link}",
     "mailFooter": "Natanggap mo ang email na ito dahil nag-sign up ka sa {brand}. Ayaw mo na ng email? Sagutin ang email na ito at aalisin ka namin."
+  },
+  "seo": {
+    "ovaTitle": "Mga practice question para sa Swedish citizenship test – lahat ng kabanata",
+    "ovaDescription": "Mag-practice kada kabanata ng mga tanong tungkol sa lipunan ng Sweden para sa citizenship test. Mga tanong sa Swedish gaya ng test, paliwanag sa wika mo.",
+    "freeTitle": "Libreng tanong para sa Swedish citizenship test",
+    "freeDescription": "Subukan ang {n} tanong nang libre nang walang account. Mga tanong sa Swedish gaya ng citizenship test, may tamang sagot at paliwanag agad.",
+    "examTitle": "Practice test na may timer para sa Swedish citizenship test",
+    "examDescription": "Kumuha ng buong practice test na may timer, gaya ng totoo. Tingnan ang resulta kada kabanata at kung ano ang kailangan mo pang pag-aralan.",
+    "chapterDescription": "Mga practice question tungkol sa {chapter} para sa Swedish citizenship test. Mga tanong sa Swedish na may paliwanag sa wika mo.",
+    "dailyDescription": "Bagong tanong tungkol sa lipunan ng Sweden araw-araw. Alam mo ba ang sagot?"
   }
 }

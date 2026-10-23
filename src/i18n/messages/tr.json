@@ -18,7 +18,8 @@
     "terms": "Kullanım koşulları",
     "privacy": "Gizlilik politikası",
     "about": "Hakkımızda",
-    "contact": "İletişim"
+    "contact": "İletişim",
+    "guide": "Rehber: vatandaşlık sınavı"
   },
   "home": {
     "badge": "Toplum bilgisi vatandaşlık sınavı",
@@ -58,9 +59,12 @@
     "faqAccountQ": "Hesap açmam gerekiyor mu?",
     "faqAccountA": "Hayır, hemen başlayabilirsin. E-postanı sadece satın alırken yazarsın. Çalıştıkların kaydedilir.",
     "faqFormatQ": "Sınavda kaç soru var?",
-    "faqFormatA": "Bildiğimiz kadarıyla: {m} dakikada yaklaşık {q} soru. En güncel bilgileri her zaman UHR'den kontrol et.",
+    "faqFormatA": "Sınav İsveççedir ve dört seçenekli çoktan seçmeli sorulardan oluşur. UHR bir sonraki sınavın süresini ve soru sayısını henüz açıklamadı. Deneme sınavımız {m} dakikada {q} sorudan oluşur.",
     "faqCancelQ": "İstediğim zaman iptal edebilir miyim?",
-    "faqCancelA": "Evet. Taahhüt süresi yok. Hesap sayfasından tek tıkla, ek ücret olmadan iptal edersin. İptal hemen geçerli olur: erişimin anında sona erer ve başka ödeme alınmaz. Önceden ödenmiş süre iade edilmez."
+    "faqCancelA": "Evet. Taahhüt süresi yok. Hesap sayfasından tek tıkla, ek ücret olmadan iptal edersin. İptal hemen geçerli olur: erişimin anında sona erer ve başka ödeme alınmaz. Önceden ödenmiş süre iade edilmez.",
+    "guideTitle": "Vatandaşlık sınavı hakkında her şey",
+    "guideText": "Sınava kimin gireceği, bir sonraki sınavın ne zaman olduğu ve nasıl hazırlanacağın.",
+    "guideCta": "Rehberi oku"
   },
   "practiceIndex": {
     "title": "Alıştırma",
@@ -325,5 +329,15 @@
     "mailSubject": "İndirim kodun: %{percent} indirim",
     "mailBody": "Merhaba!\nKaydolduğun için teşekkürler. Kişisel indirim kodun: {code}\nİlk ayda %{percent} indirim sağlar ve bir kez kullanılabilir.\nBuradan kullan: {link}",
     "mailFooter": "Bu e-postayı {brand} sitesine kaydolduğun için alıyorsun. Başka e-posta istemiyor musun? Bu e-postayı yanıtla, seni listeden çıkaralım."
+  },
+  "seo": {
+    "ovaTitle": "İsveç vatandaşlık sınavı için alıştırma soruları – tüm bölümler",
+    "ovaDescription": "Vatandaşlık sınavı için İsveç toplumu hakkındaki soruları bölüm bölüm çalış. Sorular sınavdaki gibi İsveççe, açıklamalar kendi dilinde.",
+    "freeTitle": "İsveç vatandaşlık sınavı için ücretsiz sorular",
+    "freeDescription": "Hesap açmadan {n} soruyu ücretsiz dene. Vatandaşlık sınavındaki gibi İsveççe sorular, doğru cevap ve açıklama hemen.",
+    "examTitle": "İsveç vatandaşlık sınavı için süreli deneme sınavı",
+    "examDescription": "Gerçeği gibi süreli, tam bir deneme sınavı yap. Her bölümdeki sonucunu ve daha çok çalışman gereken yerleri gör.",
+    "chapterDescription": "İsveç vatandaşlık sınavı için {chapter} hakkında alıştırma soruları. İsveççe sorular, kendi dilinde açıklamalar.",
+    "dailyDescription": "Her gün İsveç toplumu hakkında yeni bir soru. Cevabı biliyor musun?"
   }
 }

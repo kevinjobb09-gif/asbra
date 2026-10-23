@@ -18,7 +18,8 @@
     "terms": "Điều khoản sử dụng",
     "privacy": "Chính sách quyền riêng tư",
     "about": "Về chúng tôi",
-    "contact": "Liên hệ"
+    "contact": "Liên hệ",
+    "guide": "Hướng dẫn: kỳ thi quốc tịch"
   },
   "home": {
     "badge": "Bài kiểm tra quốc tịch môn hiểu biết xã hội",
@@ -58,9 +59,12 @@
     "faqAccountQ": "Tôi có cần tạo tài khoản không?",
     "faqAccountA": "Không, bạn có thể bắt đầu ngay. Bạn chỉ nhập email khi mua. Những gì bạn đã luyện tập sẽ được lưu.",
     "faqFormatQ": "Bài thi có bao nhiêu câu?",
-    "faqFormatA": "Theo thông tin của chúng tôi: khoảng {q} câu trong {m} phút. Luôn kiểm tra thông tin mới nhất tại UHR.",
+    "faqFormatA": "Bài thi bằng tiếng Thụy Điển, gồm các câu hỏi trắc nghiệm với bốn lựa chọn. UHR chưa công bố thời gian và số câu hỏi của kỳ thi tới. Bài thi thử của chúng tôi có {q} câu trong {m} phút.",
     "faqCancelQ": "Tôi có thể hủy bất cứ lúc nào không?",
-    "faqCancelA": "Có. Không có thời gian ràng buộc. Bạn hủy chỉ với một lần bấm trong Tài khoản, không mất thêm phí. Việc hủy có hiệu lực ngay: quyền truy cập kết thúc lập tức và sẽ không trừ tiền thêm. Thời gian đã trả trước sẽ không được hoàn tiền."
+    "faqCancelA": "Có. Không có thời gian ràng buộc. Bạn hủy chỉ với một lần bấm trong Tài khoản, không mất thêm phí. Việc hủy có hiệu lực ngay: quyền truy cập kết thúc lập tức và sẽ không trừ tiền thêm. Thời gian đã trả trước sẽ không được hoàn tiền.",
+    "guideTitle": "Mọi điều về kỳ thi quốc tịch",
+    "guideText": "Ai phải thi, kỳ thi tới là khi nào và cách chuẩn bị.",
+    "guideCta": "Đọc hướng dẫn"
   },
   "practiceIndex": {
     "title": "Luyện tập",
@@ -325,5 +329,15 @@
     "mailSubject": "Mã giảm giá của bạn: giảm {percent} %",
     "mailBody": "Xin chào!\nCảm ơn bạn đã đăng ký. Mã giảm giá riêng của bạn là: {code}\nMã giảm {percent} % tháng đầu và chỉ dùng được một lần.\nDùng mã tại đây: {link}",
     "mailFooter": "Bạn nhận email này vì đã đăng ký tại {brand}. Không muốn nhận thêm email? Hãy trả lời email này, chúng tôi sẽ xóa bạn khỏi danh sách."
+  },
+  "seo": {
+    "ovaTitle": "Câu hỏi luyện thi quốc tịch Thụy Điển – tất cả các chương",
+    "ovaDescription": "Luyện từng chương câu hỏi về xã hội Thụy Điển cho kỳ thi quốc tịch. Câu hỏi bằng tiếng Thụy Điển như bài thi, giải thích bằng ngôn ngữ của bạn.",
+    "freeTitle": "Câu hỏi miễn phí cho kỳ thi quốc tịch Thụy Điển",
+    "freeDescription": "Làm thử {n} câu miễn phí, không cần tài khoản. Câu hỏi bằng tiếng Thụy Điển như kỳ thi quốc tịch, có đáp án và giải thích ngay.",
+    "examTitle": "Bài thi thử có tính giờ cho kỳ thi quốc tịch Thụy Điển",
+    "examDescription": "Làm một bài thi thử đầy đủ có tính giờ, như thật. Xem kết quả theo từng chương và biết cần ôn thêm gì.",
+    "chapterDescription": "Câu hỏi luyện thi về {chapter} cho kỳ thi quốc tịch Thụy Điển. Câu hỏi bằng tiếng Thụy Điển, giải thích bằng ngôn ngữ của bạn.",
+    "dailyDescription": "Mỗi ngày một câu hỏi mới về xã hội Thụy Điển. Bạn có biết câu trả lời?"
   }
 }

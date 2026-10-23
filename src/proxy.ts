@@ -18,7 +18,8 @@ export async function proxy(request: NextRequest) {
   const ref = normalizeRefCode(request.nextUrl.searchParams.get("ref"));
   if (ref) cookiesToSet.push({ name: "ref", value: ref, maxAge: REF_DAYS * 24 * 60 * 60 });
 
-  const langMatch = request.nextUrl.pathname.match(/^\/([a-z]{2,3})\/?$/);
+  // Språksidor (/ar) och guiden på språk (/ar/guide) sparar språket, så att hela sidan visas på det språket.
+  const langMatch = request.nextUrl.pathname.match(/^\/([a-z]{2,3})(?:\/guide)?\/?$/);
   if (langMatch && isLanguageCode(langMatch[1])) cookiesToSet.push({ name: "lang", value: langMatch[1], maxAge: YEAR });
 
   // Låt sidan som renderas nu se de nya värdena direkt.

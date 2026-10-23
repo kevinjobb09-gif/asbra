@@ -7,7 +7,7 @@ import { getFreeQuestionPool } from "@/lib/questions/public";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getI18n();
-  return { title: t("share.dailyTitle") };
+  return { title: t("share.dailyTitle"), description: t("seo.dailyDescription"), alternates: { canonical: "/dagens-fraga" } };
 }
 export const dynamic = "force-dynamic";
 

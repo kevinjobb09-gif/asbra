@@ -9,7 +9,7 @@ import { ButtonLink } from "@/components/ButtonLink";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getI18n();
-  return { title: t("practiceIndex.title"), description: t("practiceIndex.intro") };
+  return { title: t("seo.ovaTitle"), description: t("seo.ovaDescription"), alternates: { canonical: "/ova" } };
 }
 
 // Hämtas på nytt vid varje besök så att nygranskade frågor syns direkt.

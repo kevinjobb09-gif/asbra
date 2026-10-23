@@ -18,7 +18,8 @@
     "terms": "Mercên bikaranînê",
     "privacy": "Polîtîkaya nepeniyê",
     "about": "Derbarê me",
-    "contact": "Têkilî"
+    "contact": "Têkilî",
+    "guide": "Rêber: azmûna hemwelatîbûnê"
   },
   "home": {
     "badge": "Îmtîhana hemwelatîbûnê di zanista civakî de",
@@ -58,9 +59,12 @@
     "faqAccountQ": "Ma divê ez hesabekê çêkim?",
     "faqAccountA": "Na, tu dikarî yekser dest pê bikî. Tu tenê dema kirînê e-maila xwe dinivîsî. Perwerdeya te tê tomarkirin.",
     "faqFormatQ": "Îmtîhan çend pirs e?",
-    "faqFormatA": "Li gorî agahiyên me: nêzîkî {q} pirs di {m} deqeyan de. Her gav agahiyên herî nû li UHR kontrol bike.",
+    "faqFormatA": "Azmûn bi swêdî ye û pirsên bi çar bijartinan hene. UHR hê dem û hejmara pirsên azmûna din belav nekiriye. Azmûna me ya perwerdeyê {q} pirs di {m} deqeyan de ye.",
     "faqCancelQ": "Ma ez dikarim kengê ku bixwazim betal bikim?",
-    "faqCancelA": "Erê. Tu demê girêdanê tune. Tu bi yek klîkê di Hesab de, bê lêçûna zêde, betal dikî. Betalkirin yekser derbasdar e: gihîştina te di cih de diqede û tu dayînên din nayên kişandin. Pereyê dema ku berê hatiye dayîn nayê vegerandin."
+    "faqCancelA": "Erê. Tu demê girêdanê tune. Tu bi yek klîkê di Hesab de, bê lêçûna zêde, betal dikî. Betalkirin yekser derbasdar e: gihîştina te di cih de diqede û tu dayînên din nayên kişandin. Pereyê dema ku berê hatiye dayîn nayê vegerandin.",
+    "guideTitle": "Her tişt li ser azmûna hemwelatîbûnê",
+    "guideText": "Kî divê azmûnê bike, azmûna din kengê ye û tu çawa amade dibî.",
+    "guideCta": "Rêberê bixwîne"
   },
   "practiceIndex": {
     "title": "Perwerde",
@@ -325,5 +329,15 @@
     "mailSubject": "Koda te ya daxistinê: {percent} % daxistin",
     "mailBody": "Silav!\nSpas ku te xwe tomar kir. Koda te ya kesane: {code}\nJi bo meha yekem {percent} % daxistin dide û carekê tê bikaranîn.\nLi vir bikar bîne: {link}",
     "mailFooter": "Ev e-name ji te re hat ji ber ku te xwe li {brand} tomar kir. E-nameyên din naxwazî? Bersiva vê e-nameyê bide û em ê te rakin."
+  },
+  "seo": {
+    "ovaTitle": "Pirsên perwerdeyê ji bo azmûna hemwelatîbûna Swêdê – hemû beş",
+    "ovaDescription": "Beş bi beş pirsên li ser civaka Swêdê ji bo azmûna hemwelatîbûnê perwerde bike. Pirs bi swêdî wek azmûnê, şirove bi zimanê te.",
+    "freeTitle": "Pirsên belaş ji bo azmûna hemwelatîbûna Swêdê",
+    "freeDescription": "{n} pirsan belaş û bê hesab biceribîne. Pirs bi swêdî wek azmûna hemwelatîbûnê, bi bersiva rast û şiroveyê yekser.",
+    "examTitle": "Azmûna perwerdeyê bi demjimêr ji bo azmûna hemwelatîbûna Swêdê",
+    "examDescription": "Azmûnek perwerdeyê ya temam bi demjimêr bike, wek ya rastîn. Encama xwe ji bo her beşê bibîne û bizane çi divê zêdetir bixwînî.",
+    "chapterDescription": "Pirsên perwerdeyê li ser {chapter} ji bo azmûna hemwelatîbûna Swêdê. Pirs bi swêdî bi şiroveyê bi zimanê te.",
+    "dailyDescription": "Her roj pirsek nû li ser civaka Swêdê. Tu bersivê dizanî?"
   }
 }

@@ -18,7 +18,8 @@
     "terms": "Shuruudaha isticmaalka",
     "privacy": "Siyaasadda asturnaanta",
     "about": "Nagu saabsan",
-    "contact": "La xiriir"
+    "contact": "La xiriir",
+    "guide": "Hage: imtixaanka dhalashada"
   },
   "home": {
     "badge": "Imtixaanka dhalashada ee cilmiga bulshada",
@@ -58,9 +59,12 @@
     "faqAccountQ": "Ma u baahanahay inaan akoon sameeyo?",
     "faqAccountA": "Maya, hadda ayaad bilaabi kartaa. Email-kaaga waxaad qortaa oo keliya marka aad iibsanayso. Waxa aad ku tababaratay waa la kaydiyaa.",
     "faqFormatQ": "Imtixaanku immisa su'aalood ayuu leeyahay?",
-    "faqFormatA": "Sida macluumaadkayagu sheegayo: ilaa {q} su'aalood {m} daqiiqo gudahood. Had iyo jeer ka hubi macluumaadka ugu dambeeyay UHR.",
+    "faqFormatA": "Imtixaanku waa Iswiidhish, wuxuuna leeyahay su'aalo doorasho badan oo afar jawaab ah. UHR weli ma daabicin waqtiga iyo tirada su'aalaha imtixaanka xiga. Imtixaankayaga tijaabada ah wuxuu leeyahay {q} su'aalood {m} daqiiqo gudahood.",
     "faqCancelQ": "Ma joojin karaa goorta aan rabo?",
-    "faqCancelA": "Haa. Ma jiro muddo ballan qaad ah. Waxaad ku joojinaysaa hal guji oo Akoonka ah, kharash dheeraad ah la'aan. Joojintu isla markiiba way dhaqan gashaa: helitaankaagu wuu dhammaanayaa isla markiiba, lacag kalena lagaa jari maayo. Waqtiga horay loo bixiyay lacagtiisa lagu celin maayo."
+    "faqCancelA": "Haa. Ma jiro muddo ballan qaad ah. Waxaad ku joojinaysaa hal guji oo Akoonka ah, kharash dheeraad ah la'aan. Joojintu isla markiiba way dhaqan gashaa: helitaankaagu wuu dhammaanayaa isla markiiba, lacag kalena lagaa jari maayo. Waqtiga horay loo bixiyay lacagtiisa lagu celin maayo.",
+    "guideTitle": "Wax kasta oo ku saabsan imtixaanka dhalashada",
+    "guideText": "Yaa gali doona imtixaanka, goorma ayuu yahay kan xiga iyo sida loogu diyaargaroobo.",
+    "guideCta": "Akhri hagaha"
   },
   "practiceIndex": {
     "title": "Tababar",
@@ -325,5 +329,15 @@
     "mailSubject": "Koodhkaaga qiimo dhimista: {percent} % qiimo dhimis",
     "mailBody": "Salaan!\nWaad ku mahadsan tahay is-diiwaangelinta. Koodhkaaga gaarka ah: {code}\nWuxuu ku siinayaa {percent} % qiimo dhimis bisha koowaad, hal mar ayaana la isticmaali karaa.\nHalkan ka isticmaal: {link}",
     "mailFooter": "Iimaylkan waxaad u heshay sababtoo ah waxaad isku diiwaangelisay {brand}. Ma rabtid iimaylo kale? Ka jawaab iimaylkan, waana ku saari doonnaa."
+  },
+  "seo": {
+    "ovaTitle": "Su'aalo tababar oo loogu talagalay imtixaanka dhalashada Iswiidhan – dhammaan cutubyada",
+    "ovaDescription": "Cutub cutub ugu tababaro su'aalaha bulshada Iswiidhan imtixaanka dhalashada. Su'aalo Iswiidhish ah sida imtixaanka, sharaxaadna afkaaga.",
+    "freeTitle": "Su'aalo bilaash ah oo loogu talagalay imtixaanka dhalashada Iswiidhan",
+    "freeDescription": "Isku day {n} su'aalood bilaash, akoon la'aan. Su'aalo Iswiidhish ah sida imtixaanka dhalashada, jawaabta saxda ah iyo sharaxaadda isla markiiba.",
+    "examTitle": "Imtixaan tijaabo ah oo saacad leh oo loogu talagalay imtixaanka dhalashada Iswiidhan",
+    "examDescription": "Samee imtixaan tijaabo ah oo dhammaystiran oo saacad leh, sida kan dhabta ah. Arag natiijadaada cutub kasta iyo waxa aad u baahan tahay inaad wax badan ka barato.",
+    "chapterDescription": "Su'aalo tababar oo ku saabsan {chapter} oo loogu talagalay imtixaanka dhalashada Iswiidhan. Su'aalo Iswiidhish ah oo sharaxaad afkaaga leh.",
+    "dailyDescription": "Maalin kasta su'aal cusub oo ku saabsan bulshada Iswiidhan. Ma garanaysaa jawaabta?"
   }
 }

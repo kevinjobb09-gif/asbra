@@ -18,7 +18,8 @@
     "terms": "Condiciones de uso",
     "privacy": "Política de privacidad",
     "about": "Quiénes somos",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "guide": "Guía: el examen de ciudadanía"
   },
   "home": {
     "badge": "El examen de ciudadanía de educación cívica",
@@ -58,9 +59,12 @@
     "faqAccountQ": "¿Tengo que crear una cuenta?",
     "faqAccountA": "No, puedes empezar ahora mismo. Solo escribes tu correo cuando compras. Lo que has practicado se guarda.",
     "faqFormatQ": "¿Cuántas preguntas tiene el examen?",
-    "faqFormatA": "Según nuestra información: unas {q} preguntas en {m} minutos. Revisa siempre la información más reciente en UHR.",
+    "faqFormatA": "El examen es en sueco y tiene preguntas de opción múltiple con cuatro respuestas. UHR aún no ha publicado la duración ni el número de preguntas del próximo examen. Nuestro examen de práctica tiene {q} preguntas en {m} minutos.",
     "faqCancelQ": "¿Puedo cancelar cuando quiera?",
-    "faqCancelA": "Sí. No hay permanencia. Cancelas con un clic en Cuenta, sin coste adicional. La cancelación es inmediata: el acceso termina al instante y no se cobra nada más. El tiempo ya pagado no se reembolsa."
+    "faqCancelA": "Sí. No hay permanencia. Cancelas con un clic en Cuenta, sin coste adicional. La cancelación es inmediata: el acceso termina al instante y no se cobra nada más. El tiempo ya pagado no se reembolsa.",
+    "guideTitle": "Todo sobre el examen de ciudadanía",
+    "guideText": "Quién debe hacer el examen, cuándo es el próximo y cómo prepararse.",
+    "guideCta": "Leer la guía"
   },
   "practiceIndex": {
     "title": "Practicar",
@@ -325,5 +329,15 @@
     "mailSubject": "Tu código de descuento: {percent} % de descuento",
     "mailBody": "¡Hola!\nGracias por registrarte. Tu código de descuento personal es: {code}\nDa un {percent} % de descuento el primer mes y se puede usar una vez.\nÚsalo aquí: {link}",
     "mailFooter": "Recibes este correo porque te registraste en {brand}. ¿No quieres más correos? Responde a este correo y te daremos de baja."
+  },
+  "seo": {
+    "ovaTitle": "Preguntas de práctica para el examen de ciudadanía sueca – todos los capítulos",
+    "ovaDescription": "Practica capítulo a capítulo preguntas sobre la sociedad sueca para el examen de ciudadanía. Preguntas en sueco como en el examen, explicaciones en tu idioma.",
+    "freeTitle": "Preguntas gratis para el examen de ciudadanía sueca",
+    "freeDescription": "Prueba {n} preguntas gratis sin cuenta. Preguntas en sueco como en el examen de ciudadanía, con la respuesta correcta y la explicación al instante.",
+    "examTitle": "Examen de práctica con reloj para el examen de ciudadanía sueca",
+    "examDescription": "Haz un examen de práctica completo con reloj, como el real. Mira tu resultado por capítulo y qué debes estudiar más.",
+    "chapterDescription": "Preguntas de práctica sobre {chapter} para el examen de ciudadanía sueca. Preguntas en sueco con explicaciones en tu idioma.",
+    "dailyDescription": "Una pregunta nueva sobre la sociedad sueca cada día. ¿Sabes la respuesta?"
   }
 }

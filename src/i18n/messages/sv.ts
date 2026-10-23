@@ -29,6 +29,7 @@ export const sv = {
     privacy: "Integritetspolicy",
     about: "Om oss",
     contact: "Kontakt",
+    guide: "Guide: medborgarskapsprovet",
   },
   home: {
     badge: "Medborgarskapsprovet i samhällskunskap",
@@ -70,7 +71,10 @@ export const sv = {
     faqCancelQ: "Kan jag säga upp när jag vill?",
     faqCancelA: "Ja. Det finns ingen bindningstid. Du säger upp med ett klick under Konto, utan extra kostnad. Uppsägningen gäller direkt: tillgången upphör på en gång och inga fler betalningar dras. Redan betald tid återbetalas inte.",
     faqFormatQ: "Hur många frågor har provet?",
-    faqFormatA: "Enligt de uppgifter vi har: cirka {q} frågor på {m} minuter. Kontrollera alltid aktuella uppgifter hos UHR.",
+    faqFormatA: "Provet är på svenska och har flervalsfrågor med fyra svarsalternativ. UHR har ännu inte publicerat provtid och antal frågor för nästa prov. Vår provsimulering har {q} frågor på {m} minuter.",
+    guideTitle: "Allt om medborgarskapsprovet",
+    guideText: "Vem som ska skriva provet, när nästa prov är och hur du förbereder dig.",
+    guideCta: "Läs guiden",
   },
   practiceIndex: {
     title: "Öva",
@@ -335,6 +339,16 @@ export const sv = {
     mailSubject: "Din rabattkod: {percent} % rabatt",
     mailBody: "Hej!\nTack för att du skrev upp dig. Din personliga rabattkod är: {code}\nDen ger {percent} % rabatt på första månaden och kan användas en gång.\nAnvänd den här: {link}",
     mailFooter: "Du får det här mejlet för att du skrev upp dig hos {brand}. Vill du inte få fler mejl? Svara på det här mejlet så tar vi bort dig.",
+  },
+  seo: {
+    ovaTitle: "Övningsfrågor till medborgarskapsprovet – alla kapitel",
+    ovaDescription: "Öva kapitel för kapitel på frågor om det svenska samhället inför medborgarskapsprovet. Frågor på svenska som på provet, förklaringar på ditt språk.",
+    freeTitle: "Gratis provfrågor till medborgarskapsprovet",
+    freeDescription: "Testa {n} frågor gratis utan konto. Frågor på svenska som på medborgarskapsprovet, med rätt svar och förklaring direkt.",
+    examTitle: "Övningsprov med klocka inför medborgarskapsprovet",
+    examDescription: "Gör ett helt övningsprov med klocka, som på riktigt. Se resultatet per kapitel och vad du behöver plugga mer på.",
+    chapterDescription: "Övningsfrågor om {chapter} inför medborgarskapsprovet. Frågor på svenska med förklaringar på ditt språk.",
+    dailyDescription: "En ny fråga om det svenska samhället varje dag. Kan du svaret?",
   },
 } as const;
 
