@@ -19,6 +19,17 @@ function newCode() {
   return `valkommen-${randomBytes(4).toString("hex")}`;
 }
 
+/**
+ * Samma inkorg kan skrivas på flera sätt: "namn+rabatt@gmail.com" och "n.amn@gmail.com"
+ * hamnar hos "namn@gmail.com". Används för att avgöra om koden används av rätt person.
+ */
+export function mailboxKey(email: string): string {
+  const [local = "", domain = ""] = email.trim().toLowerCase().split("@");
+  const base = local.split("+")[0];
+  const gmail = domain === "gmail.com" || domain === "googlemail.com";
+  return `${gmail ? base.replace(/\./g, "") : base}@${gmail ? "gmail.com" : domain}`;
+}
+
 export function normalizeWelcomeCode(raw: string | null | undefined): string | null {
   const code = (raw ?? "").trim().toLowerCase();
   return /^[a-z0-9-]{4,40}$/.test(code) ? code : null;

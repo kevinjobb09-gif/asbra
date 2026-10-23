@@ -8,7 +8,7 @@ import { publicEnv } from "@/lib/env";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { computePrice } from "@/lib/payments/pricing";
-import { getWelcomeCode, normalizeWelcomeCode } from "@/lib/welcome";
+import { getWelcomeCode, mailboxKey, normalizeWelcomeCode } from "@/lib/welcome";
 import {
   getActiveRef,
   getFirstMonthCoupon,
@@ -63,7 +63,7 @@ export async function startCheckout(_prev: CheckoutState, formData: FormData): P
   if (welcomeCode) {
     welcome = await getWelcomeCode(welcomeCode);
     if (!welcome || welcome.used) return { error: t("buy.codeInvalid"), email };
-    if (welcome.email !== email) return { error: t("buy.codeWrongEmail"), email };
+    if (mailboxKey(welcome.email) !== mailboxKey(email)) return { error: t("buy.codeWrongEmail"), email };
   }
   const useWelcome = !!welcome && welcome.discountPercent > (ref?.discountPercent ?? 0);
   const firstMonth = computePrice(country.pricing.amount, useWelcome ? welcome!.discountPercent : (ref?.discountPercent ?? 0));

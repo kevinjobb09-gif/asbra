@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 import Stripe from "stripe";
 import { commissionMinor, computePrice, normalizeRefCode } from "@/lib/payments/pricing";
-import { normalizeWelcomeCode } from "@/lib/welcome";
+import { mailboxKey, normalizeWelcomeCode } from "@/lib/welcome";
 import {
   accessUntil,
   handleCheckoutCompleted,
@@ -32,6 +32,14 @@ describe("pris och rabatt", () => {
 
   it("priset blir aldrig lägre än Stripes minimum på 3 kr", () => {
     expect(computePrice(5, 90).amountMinor).toBe(300);
+  });
+
+  it("varianter av samma inkorg räknas som samma person", () => {
+    expect(mailboxKey("kevin+rabatt1@gmail.com")).toBe(mailboxKey("Kevin@gmail.com"));
+    expect(mailboxKey("k.e.vin@googlemail.com")).toBe(mailboxKey("kevin@gmail.com"));
+    expect(mailboxKey("anna+x@hotmail.com")).toBe("anna@hotmail.com");
+    expect(mailboxKey("a.nna@hotmail.com")).not.toBe(mailboxKey("anna@hotmail.com"));
+    expect(mailboxKey("kevin@gmail.com")).not.toBe(mailboxKey("kevin2@gmail.com"));
   });
 
   it("välkomstkoder normaliseras och ogiltiga koder avvisas", () => {
