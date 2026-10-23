@@ -34,6 +34,8 @@ export const metadata: Metadata = {
   applicationName: brand.name,
   appleWebApp: { capable: true, title: brand.shortName, statusBarStyle: "default" },
   formatDetection: { telephone: false },
+  // Verifieringskod från Google Search Console (sätts som miljövariabel i Netlify).
+  verification: { google: process.env.GOOGLE_SITE_VERIFICATION || undefined },
 };
 
 export const viewport: Viewport = {
