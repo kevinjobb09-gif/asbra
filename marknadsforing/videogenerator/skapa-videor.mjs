@@ -22,10 +22,18 @@ fs.mkdirSync(outDir, { recursive: true });
 const ALL = ["sv", "en", "ar", "fa", "so", "ti", "ckb"];
 const stills = process.env.STILLS ? process.env.STILLS.split(",") : null;
 const langs = process.argv.slice(2).length ? process.argv.slice(2) : ALL;
+// Röstklipp från skapa-roster.mjs används automatiskt när de finns (marknadsforing/roster/<språk>/<video>/<rad>.mp3).
+const rosterDir = path.join(dir, "..", "roster");
+function voiceFor(lang, video) {
+  const folder = path.join(rosterDir, lang, video);
+  if (!fs.existsSync(folder)) return undefined;
+  const files = fs.readdirSync(folder).filter((f) => /^\d+\.mp3$/.test(f)).sort((a, b) => parseInt(a) - parseInt(b));
+  return files.length ? files.map((f) => `/roster/${lang}/${video}/${f}`) : undefined;
+}
 const jobs = langs.flatMap((lang) => [
-  { lang, scene: "fraga", key: "fraga1", name: `medborgarhjalpen_${lang}_fraga-riksdagen` },
-  { lang, scene: "fraga", key: "fraga2", name: `medborgarhjalpen_${lang}_fraga-nationaldagen` },
-  { lang, scene: "funktioner", key: "", name: `medborgarhjalpen_${lang}_funktioner` },
+  { lang, scene: "fraga", key: "fraga1", name: `medborgarhjalpen_${lang}_fraga-riksdagen`, voice: voiceFor(lang, "fraga1") },
+  { lang, scene: "fraga", key: "fraga2", name: `medborgarhjalpen_${lang}_fraga-nationaldagen`, voice: voiceFor(lang, "fraga2") },
+  { lang, scene: "funktioner", key: "", name: `medborgarhjalpen_${lang}_funktioner`, voice: voiceFor(lang, "funktioner") },
 ]);
 
 const CHROME = [
@@ -61,6 +69,12 @@ const server = http.createServer((req, res) => {
     });
     return;
   }
+  if (url.pathname.startsWith("/roster/")) {
+    const rel = url.pathname.slice("/roster/".length).split("/").map((p) => path.basename(decodeURIComponent(p)));
+    const audio = path.join(rosterDir, ...rel);
+    if (!fs.existsSync(audio)) return res.writeHead(404).end();
+    return res.writeHead(200, { "Content-Type": "audio/mpeg" }).end(fs.readFileSync(audio));
+  }
   const file = url.pathname === "/mp4-muxer.js"
     ? path.join(dir, "..", "..", "node_modules", "mp4-muxer", "build", "mp4-muxer.js")
     : path.join(dir, url.pathname === "/" ? "index.html" : path.basename(url.pathname));
@@ -71,7 +85,7 @@ const server = http.createServer((req, res) => {
 
 server.listen(0, "127.0.0.1", () => {
   const { port } = server.address();
-  if (!stills) console.log(`Spelar in ${jobs.length} videor (ungefär ${Math.ceil(jobs.length * 17 / 60)} minuter)…`);
+  if (!stills) console.log(`Skapar ${jobs.length} videor (${jobs.filter((j) => j.voice).length} med röst)…`);
   const profile = fs.mkdtempSync(path.join(os.tmpdir(), "videogen-"));
   chrome = spawn(CHROME, [
     "--headless=new",

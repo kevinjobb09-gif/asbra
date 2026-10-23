@@ -129,3 +129,155 @@ window.TEXTS = {
     fCta: "بەخۆڕایی دەست پێبکە",
   },
 };
+
+// Röstmanus per språk och video (en rad = ett röstklipp). Används av skapa-roster.mjs och videogeneratorn.
+// Tigrinja (ti) saknas i ElevenLabs – den videon blir utan röst tills någon spelar in den.
+window.VOICE = {
+  "sv": {
+    "fraga1": [
+      "Ska du söka svenskt medborgarskap? Kan du svaret?",
+      "Hur många ledamöter har riksdagen?",
+      "Tre … två … ett …",
+      "Rätt svar är B – 349. De väljs vart fjärde år.",
+      "Öva gratis på medborgarhjalpen punkt se."
+    ],
+    "fraga2": [
+      "Ska du söka svenskt medborgarskap? Kan du svaret?",
+      "Vilket datum är Sveriges nationaldag?",
+      "Tre … två … ett …",
+      "Rätt svar är C – den sjätte juni.",
+      "Öva gratis på medborgarhjalpen punkt se."
+    ],
+    "funktioner": [
+      "Ska du göra medborgarskapsprovet? Så här övar du smart.",
+      "Femton gratisfrågor. Alla tretton kapitel. Provsimulering med klocka. Förklaringar på tjugofyra språk. Ingen bindningstid.",
+      "Börja öva gratis på medborgarhjalpen punkt se."
+    ]
+  },
+  "en": {
+    "fraga1": [
+      "Applying for Swedish citizenship? Do you know the answer?",
+      "How many members does the Swedish parliament, the Riksdag, have?",
+      "Three … two … one …",
+      "The answer is B – 349. They are elected every four years.",
+      "Practise for free at medborgarhjalpen dot se."
+    ],
+    "fraga2": [
+      "Applying for Swedish citizenship? Do you know the answer?",
+      "What date is Sweden's National Day?",
+      "Three … two … one …",
+      "The answer is C – the sixth of June.",
+      "Practise for free at medborgarhjalpen dot se."
+    ],
+    "funktioner": [
+      "Taking the Swedish citizenship test? Here's how to practise smart.",
+      "Fifteen free questions. All thirteen chapters. A timed practice test. Explanations in twenty-four languages. Cancel anytime.",
+      "Start practising for free at medborgarhjalpen dot se."
+    ]
+  },
+  "ar": {
+    "fraga1": [
+      "هل ستتقدم بطلب الجنسية السويدية؟ هل تعرف الإجابة؟",
+      "كم عدد أعضاء البرلمان السويدي، الريكسداغ؟",
+      "ثلاثة … اثنان … واحد …",
+      "الإجابة الصحيحة هي B: ثلاثمئة وتسعة وأربعون عضوًا، يُنتخبون كل أربع سنوات.",
+      "تدرّب مجانًا على medborgarhjalpen نقطة se."
+    ],
+    "fraga2": [
+      "هل ستتقدم بطلب الجنسية السويدية؟ هل تعرف الإجابة؟",
+      "ما هو تاريخ اليوم الوطني للسويد؟",
+      "ثلاثة … اثنان … واحد …",
+      "الإجابة الصحيحة هي C: السادس من يونيو.",
+      "تدرّب مجانًا على medborgarhjalpen نقطة se."
+    ],
+    "funktioner": [
+      "هل ستخوض اختبار الجنسية السويدية؟ إليك كيف تتدرب بذكاء.",
+      "خمسة عشر سؤالًا مجانًا. جميع الفصول الثلاثة عشر. اختبار تجريبي مع مؤقت. شرح بأربع وعشرين لغة. بدون التزام.",
+      "ابدأ التدريب مجانًا على medborgarhjalpen نقطة se."
+    ]
+  },
+  "fa": {
+    "fraga1": [
+      "می‌خواهید تابعیت سوئد بگیرید؟ جواب را می‌دانید؟",
+      "پارلمان سوئد، ریکسداگ، چند نماینده دارد؟",
+      "سه … دو … یک …",
+      "جواب درست B است: سیصد و چهل و نه نماینده که هر چهار سال یک بار انتخاب می‌شوند.",
+      "رایگان تمرین کنید در medborgarhjalpen نقطه se."
+    ],
+    "fraga2": [
+      "می‌خواهید تابعیت سوئد بگیرید؟ جواب را می‌دانید؟",
+      "روز ملی سوئد چه تاریخی است؟",
+      "سه … دو … یک …",
+      "جواب درست C است: ششم ژوئن.",
+      "رایگان تمرین کنید در medborgarhjalpen نقطه se."
+    ],
+    "funktioner": [
+      "آزمون تابعیت سوئد را می‌دهید؟ این‌طوری هوشمندانه تمرین کنید.",
+      "پانزده سؤال رایگان. همهٔ سیزده فصل. آزمون آزمایشی با زمان‌سنج. توضیحات به بیست و چهار زبان. بدون تعهد.",
+      "رایگان شروع کنید در medborgarhjalpen نقطه se."
+    ]
+  },
+  "so": {
+    "fraga1": [
+      "Ma codsanaysaa dhalashada Iswiidhan? Ma garanaysaa jawaabta?",
+      "Immisa xubnood ayuu leeyahay baarlamaanka Iswiidhan, Riksdag?",
+      "Saddex … laba … kow …",
+      "Jawaabta saxda ah waa B: saddex boqol iyo sagaal iyo afartan xubnood, oo la doorto afartii sanaba mar.",
+      "Bilaash ku tababaro medborgarhjalpen dhibic se."
+    ],
+    "fraga2": [
+      "Ma codsanaysaa dhalashada Iswiidhan? Ma garanaysaa jawaabta?",
+      "Waa maxay taariikhda maalinta qaranka Iswiidhan?",
+      "Saddex … laba … kow …",
+      "Jawaabta saxda ah waa C: lix Juun.",
+      "Bilaash ku tababaro medborgarhjalpen dhibic se."
+    ],
+    "funktioner": [
+      "Ma galaysaa imtixaanka dhalashada Iswiidhan? Sidan si caqli ah ugu tababaro.",
+      "Shan iyo toban su'aalood oo bilaash ah. Dhammaan saddex iyo tobanka cutub. Imtixaan tijaabo ah oo saacad leh. Sharaxaad afar iyo labaatan luqadood ah. Ballan qaad la'aan.",
+      "Bilaash ku bilow medborgarhjalpen dhibic se."
+    ]
+  },
+  "ti": {
+    "fraga1": [
+      "ናይ ሽወደን ዜግነት ክትሓትት ዲኻ? መልሱ ትፈልጦ ዲኻ?",
+      "ፓርላማ ሽወደን፣ ሪክስዳግ፣ ክንደይ ኣባላት ኣለዉዎ?",
+      "ሰለስተ … ክልተ … ሓደ …",
+      "ቅኑዕ መልሲ B እዩ፦ ሰለስተ ሚእትን ኣርብዓን ትሽዓተን ኣባላት፣ ኣብ ነፍሲ ወከፍ ኣርባዕተ ዓመት ዝምረጹ።",
+      "ብነጻ ተለማመድ ኣብ medborgarhjalpen ነጥቢ se።"
+    ],
+    "fraga2": [
+      "ናይ ሽወደን ዜግነት ክትሓትት ዲኻ? መልሱ ትፈልጦ ዲኻ?",
+      "ሃገራዊ መዓልቲ ሽወደን ኣብ ክንደይ ዕለት እዩ?",
+      "ሰለስተ … ክልተ … ሓደ …",
+      "ቅኑዕ መልሲ C እዩ፦ 6 ጁን።",
+      "ብነጻ ተለማመድ ኣብ medborgarhjalpen ነጥቢ se።"
+    ],
+    "funktioner": [
+      "ፈተና ዜግነት ሽወደን ክትወስድ ዲኻ? ብብልሓት ከምዚ ተለማመድ።",
+      "ዓሰርተ ሓሙሽተ ናጻ ሕቶታት። ኩሉ ዓሰርተ ሰለስተ ምዕራፋት። ናይ ፈተና ልምምድ ምስ ሰዓት። መብርሂ ብዕስራን ኣርባዕተን ቋንቋታት። ብዘይ ውዕል።",
+      "ብነጻ ጀምር ኣብ medborgarhjalpen ነጥቢ se።"
+    ]
+  },
+  "ckb": {
+    "fraga1": [
+      "داوای ڕەگەزنامەی سویدی دەکەیت؟ وەڵامەکە دەزانیت؟",
+      "پەرلەمانی سوید، ریکسداگ، چەند ئەندامی هەیە؟",
+      "سێ … دوو … یەک …",
+      "وەڵامی ڕاست B یە: سێسەد و چل و نۆ ئەندام، کە هەر چوار ساڵ جارێک هەڵدەبژێردرێن.",
+      "بەخۆڕایی ڕاهێنان بکە لە medborgarhjalpen خاڵ se."
+    ],
+    "fraga2": [
+      "داوای ڕەگەزنامەی سویدی دەکەیت؟ وەڵامەکە دەزانیت؟",
+      "ڕۆژی نیشتمانیی سوید کامە بەروارە؟",
+      "سێ … دوو … یەک …",
+      "وەڵامی ڕاست C یە: شەشی حوزەیران.",
+      "بەخۆڕایی ڕاهێنان بکە لە medborgarhjalpen خاڵ se."
+    ],
+    "funktioner": [
+      "تاقیکردنەوەی ڕەگەزنامەی سویدی دەکەیت؟ ئاوا بە زیرەکی ڕاهێنان بکە.",
+      "پازدە پرسیاری بەخۆڕایی. هەموو سیانزە بەش. تاقیکردنەوەی تاقیکاری لەگەڵ کاتژمێر. ڕوونکردنەوە بە بیست و چوار زمان. بێ پابەندی.",
+      "بەخۆڕایی دەست پێبکە لە medborgarhjalpen خاڵ se."
+    ]
+  }
+};

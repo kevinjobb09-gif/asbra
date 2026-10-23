@@ -82,6 +82,25 @@ function background(t) {
   ctx.restore();
 }
 
+/** Logotypen (samma som på sajten): vitt M med orange bock på lila. Ritas i en 100×100-ruta. */
+function drawLogoMark(x, y, size) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.scale(size / 100, size / 100);
+  ctx.beginPath(); ctx.roundRect(0, 0, 100, 100, 24); ctx.clip();
+  const g = ctx.createLinearGradient(0, 0, 100, 100);
+  g.addColorStop(0, "#5b3ee0"); g.addColorStop(1, "#3a21a3");
+  ctx.fillStyle = g; ctx.fillRect(0, 0, 100, 100);
+  ctx.lineCap = "round"; ctx.lineJoin = "round"; ctx.strokeStyle = "#ffffff";
+  ctx.lineWidth = 11;
+  ctx.beginPath(); ctx.moveTo(25, 69); ctx.lineTo(25, 31); ctx.lineTo(48, 55); ctx.lineTo(71, 31); ctx.lineTo(71, 51); ctx.stroke();
+  ctx.beginPath(); ctx.arc(68, 67, 15.5, 0, Math.PI * 2); ctx.fillStyle = "#d9480f"; ctx.fill();
+  ctx.lineWidth = 4; ctx.stroke();
+  ctx.lineWidth = 5;
+  ctx.beginPath(); ctx.moveTo(60.8, 67.5); ctx.lineTo(66, 72.7); ctx.lineTo(75.5, 61.8); ctx.stroke();
+  ctx.restore();
+}
+
 function logo(alpha = 1) {
   ctx.save();
   ctx.globalAlpha = alpha;
@@ -90,9 +109,8 @@ function logo(alpha = 1) {
   const tw = ctx.measureText(label).width;
   const total = 96 + 24 + tw;
   const x = (W - total) / 2, y = 150;
-  roundRect(x, y, 96, 96, 24, C.primary);
-  ctx.fillStyle = C.white; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.direction = "ltr";
-  ctx.font = font(60, 800); ctx.fillText("M", x + 48, y + 52);
+  drawLogoMark(x, y, 96);
+  ctx.direction = "ltr"; ctx.textBaseline = "middle";
   ctx.fillStyle = C.primary; ctx.textAlign = "left"; ctx.font = font(52, 800);
   ctx.fillText(label, x + 120, y + 50);
   ctx.restore();
@@ -131,10 +149,10 @@ function questionCard(q, t, start, revealAt) {
   });
 }
 
-function countdown(t, start) {
-  const n = 3 - Math.floor(t - start);
+function countdown(t, start, step = 1) {
+  const n = 3 - Math.floor((t - start) / step);
   if (t < start || n < 1) return;
-  const p = (t - start) % 1;
+  const p = ((t - start) % step) / step;
   ctx.save();
   ctx.globalAlpha = 1 - p * 0.6;
   const r = 70 + p * 10;
@@ -162,41 +180,72 @@ function ctaScene(L, t, start, headline) {
   text(L.disc, 1250, 34, { weight: 500, dir: L.dir, color: C.muted, alpha: fade(t, start + 0.9), maxWidth: 860 });
 }
 
+// Tidslinjer: när varje del börjar. Utan röst används de fasta tiderna; med röst
+// räknas de fram ur hur länge varje röstklipp är (se timelineFromVoice).
+const DEFAULT_TL = {
+  fraga: { hookEnd: 2.6, cardStart: 2.8, countStart: 5.6, countStep: 1, reveal: 8.6, ctaStart: 12.1, end: 16, voiceAt: [] },
+  funktioner: { hookEnd: 2.6, listStart: 2.7, itemStep: 1.4, listEnd: 11, ctaStart: 11.1, end: 15.5, voiceAt: [] },
+};
+
+function timelineFromVoice(kind, d) {
+  if (kind === "fraga") {
+    const v0 = 0.3;
+    const hookEnd = Math.max(2.6, v0 + d[0] + 0.35);
+    const cardStart = hookEnd + 0.1;
+    const v1 = cardStart + 0.6;
+    const countStart = v1 + d[1] + 0.35;
+    const countStep = Math.max(0.8, d[2] / 3);
+    const reveal = countStart + 3 * countStep + 0.1;
+    const v3 = reveal + 0.35;
+    const ctaStart = v3 + d[3] + 0.5;
+    const v4 = ctaStart + 0.4;
+    return { hookEnd, cardStart, countStart, countStep, reveal, ctaStart, end: Math.max(v4 + d[4] + 1.3, ctaStart + 3), voiceAt: [v0, v1, countStart, v3, v4] };
+  }
+  const v0 = 0.3;
+  const hookEnd = Math.max(2.6, v0 + d[0] + 0.35);
+  const listStart = hookEnd + 0.1;
+  const v1 = listStart + 0.2;
+  const itemStep = Math.max(0.9, d[1] / 5);
+  const listEnd = Math.max(v1 + d[1] + 0.8, listStart + 4 * itemStep + 1.5);
+  const ctaStart = listEnd + 0.1;
+  const v2 = ctaStart + 0.4;
+  return { hookEnd, listStart, itemStep, listEnd, ctaStart, end: Math.max(v2 + d[2] + 1.3, ctaStart + 3), voiceAt: [v0, v1, v2] };
+}
+
 const SCENES = {
-  // Fråga med nedräkning och svar. Ungefär 15 sekunder.
-  fraga(L, key, t) {
+  // Fråga med nedräkning och svar.
+  fraga(L, key, t, tl) {
     const q = window.QUESTIONS[key];
-    const reveal = 8.6;
-    if (t < 2.6) {
-      const out = fadeOut(t, 2.6);
+    if (t < tl.hookEnd) {
+      const out = fadeOut(t, tl.hookEnd);
       text(L.hook, 560, 82, { weight: 800, dir: L.dir, alpha: fade(t, 0.1) * out, maxWidth: 920 });
-      text(L.hook2, 980, 72, { weight: 800, dir: L.dir, color: C.cta, alpha: fade(t, 1.0) * out });
-    } else if (t < 12) {
-      const out = fadeOut(t, 12);
+      text(L.hook2, 980, 72, { weight: 800, dir: L.dir, color: C.cta, alpha: fade(t, Math.min(1.0, tl.hookEnd * 0.4)) * out });
+    } else if (t < tl.ctaStart - 0.1) {
+      const out = fadeOut(t, tl.ctaStart - 0.1);
       ctx.save(); ctx.globalAlpha = out;
-      text(L.sub, 380, 44, { weight: 700, dir: L.dir, color: C.primary, alpha: fade(t, 2.7), maxWidth: 900 });
-      questionCard(q, t, 2.8, reveal);
-      if (t < reveal) {
-        text(L.think, 1640, 48, { weight: 700, dir: L.dir, color: C.muted, alpha: fade(t, 5.2) });
-        countdown(t, 5.6);
+      text(L.sub, 380, 44, { weight: 700, dir: L.dir, color: C.primary, alpha: fade(t, tl.hookEnd + 0.1), maxWidth: 900 });
+      questionCard(q, t, tl.cardStart, tl.reveal);
+      if (t < tl.reveal) {
+        text(L.think, 1640, 48, { weight: 700, dir: L.dir, color: C.muted, alpha: fade(t, tl.countStart - 0.4) });
+        countdown(t, tl.countStart, tl.countStep);
       } else {
-        text(L[key], 1450, 46, { weight: 700, dir: L.dir, color: C.correct, alpha: fade(t, reveal + 0.3), maxWidth: 900 });
+        text(L[key], 1450, 46, { weight: 700, dir: L.dir, color: C.correct, alpha: fade(t, tl.reveal + 0.3), maxWidth: 900 });
       }
       ctx.restore();
     } else {
-      ctaScene(L, t, 12.1, null);
+      ctaScene(L, t, tl.ctaStart, null);
     }
   },
-  // Vad tjänsten erbjuder. Ungefär 15 sekunder.
-  funktioner(L, _key, t) {
-    if (t < 2.6) {
-      const out = fadeOut(t, 2.6);
+  // Vad tjänsten erbjuder.
+  funktioner(L, _key, t, tl) {
+    if (t < tl.hookEnd) {
+      const out = fadeOut(t, tl.hookEnd);
       text(L.fHook, 600, 84, { weight: 800, dir: L.dir, alpha: fade(t, 0.1) * out, maxWidth: 920 });
-      text(L.fSub, 1000, 60, { weight: 700, dir: L.dir, color: C.cta, alpha: fade(t, 0.9) * out });
-    } else if (t < 11) {
-      const out = fadeOut(t, 11);
+      text(L.fSub, 1000, 60, { weight: 700, dir: L.dir, color: C.cta, alpha: fade(t, Math.min(0.9, tl.hookEnd * 0.35)) * out });
+    } else if (t < tl.listEnd) {
+      const out = fadeOut(t, tl.listEnd);
       L.f.forEach((item, i) => {
-        const s = 2.7 + i * 1.4;
+        const s = tl.listStart + i * tl.itemStep;
         const a = fade(t, s) * out;
         const y = 420 + i * 230;
         ctx.save();
@@ -216,45 +265,60 @@ const SCENES = {
         ctx.restore();
       });
     } else {
-      ctaScene(L, t, 11.1, L.fCta);
+      ctaScene(L, t, tl.ctaStart, L.fCta);
     }
   },
 };
-const DURATION = { fraga: 16, funktioner: 15.5 };
 
-// Ljud: tick vid nedräkningen och ett "pling" vid rätt svar.
-function scheduleSound(audio, dest, kind) {
+// Ljud: röstklipp (om de finns), tick vid nedräkningen, "pling" vid rätt svar.
+// Med röst sänks effektljuden så att rösten hörs tydligt.
+function scheduleSound(audio, dest, kind, tl, voices) {
+  const fx = voices ? 0.45 : 1;
   const beep = (at, freq, len, vol, type = "sine") => {
     const o = audio.createOscillator(), g = audio.createGain();
     o.type = type; o.frequency.value = freq;
-    g.gain.setValueAtTime(0, audio.currentTime + at);
-    g.gain.linearRampToValueAtTime(vol, audio.currentTime + at + 0.01);
-    g.gain.exponentialRampToValueAtTime(0.0001, audio.currentTime + at + len);
+    g.gain.setValueAtTime(0, at);
+    g.gain.linearRampToValueAtTime(vol * fx, at + 0.01);
+    g.gain.exponentialRampToValueAtTime(0.0001, at + len);
     o.connect(g); g.connect(dest);
-    o.start(audio.currentTime + at); o.stop(audio.currentTime + at + len + 0.05);
+    o.start(at); o.stop(at + len + 0.05);
   };
   if (kind === "fraga") {
-    [5.6, 6.6, 7.6].forEach((s) => beep(s, 880, 0.12, 0.25, "square"));
-    beep(8.6, 988, 0.5, 0.35); beep(8.72, 1319, 0.8, 0.35);
-    beep(12.1, 660, 0.25, 0.2); beep(12.25, 880, 0.4, 0.2);
+    [0, 1, 2].forEach((i) => beep(tl.countStart + i * tl.countStep, 880, 0.12, 0.25, "square"));
+    beep(tl.reveal, 988, 0.5, 0.35); beep(tl.reveal + 0.12, 1319, 0.8, 0.35);
+    beep(tl.ctaStart, 660, 0.25, 0.2); beep(tl.ctaStart + 0.15, 880, 0.4, 0.2);
   } else {
-    [2.7, 4.1, 5.5, 6.9, 8.3].forEach((s) => beep(s, 740, 0.15, 0.18, "triangle"));
-    beep(11.1, 660, 0.25, 0.2); beep(11.25, 880, 0.4, 0.2);
+    [0, 1, 2, 3, 4].forEach((i) => beep(tl.listStart + i * tl.itemStep, 740, 0.15, 0.18, "triangle"));
+    beep(tl.ctaStart, 660, 0.25, 0.2); beep(tl.ctaStart + 0.15, 880, 0.4, 0.2);
   }
+  (voices ?? []).forEach((buffer, i) => {
+    const src = audio.createBufferSource(), g = audio.createGain();
+    src.buffer = buffer; g.gain.value = 1;
+    src.connect(g); g.connect(dest);
+    src.start(tl.voiceAt[i]);
+  });
 }
 
 // Kodar varje bildruta exakt med WebCodecs och packar en vanlig MP4 (H.264 + AAC) med längduppgift.
 const SR = 48000;
-async function renderAudio(kind, duration) {
-  const off = new OfflineAudioContext(2, Math.ceil(SR * duration), SR);
-  scheduleSound(off, off.destination, kind);
+async function renderAudio(kind, tl, voices) {
+  const off = new OfflineAudioContext(2, Math.ceil(SR * tl.end), SR);
+  scheduleSound(off, off.destination, kind, tl, voices);
   return off.startRendering();
+}
+
+async function loadVoices(urls) {
+  if (!urls?.length) return null;
+  const decoder = new OfflineAudioContext(2, 1, SR);
+  return Promise.all(urls.map(async (u) => decoder.decodeAudioData(await (await fetch(u)).arrayBuffer())));
 }
 
 async function record(job) {
   const L = window.TEXTS[job.lang];
   const scene = SCENES[job.scene];
-  const duration = DURATION[job.scene];
+  const voices = await loadVoices(job.voice);
+  const tl = voices ? timelineFromVoice(job.scene, voices.map((v) => v.duration)) : DEFAULT_TL[job.scene];
+  const duration = tl.end;
   const frames = Math.round(duration * FPS);
 
   const aac = await AudioEncoder.isConfigSupported({ codec: "mp4a.40.2", sampleRate: SR, numberOfChannels: 2, bitrate: 128000 });
@@ -271,7 +335,7 @@ async function record(job) {
   let error = null;
   const venc = new VideoEncoder({ output: (c, m) => muxer.addVideoChunk(c, m), error: (e) => (error = e) });
   venc.configure({ codec: "avc1.640028", width: W, height: H, bitrate: 8_000_000, framerate: FPS });
-  const draw = (t) => { background(t); logo(); scene(L, job.key, t); };
+  const draw = (t) => { background(t); logo(); scene(L, job.key, t, tl); };
   for (let i = 0; i < frames; i++) {
     draw(i / FPS);
     const frame = new VideoFrame(canvas, { timestamp: Math.round((i * 1e6) / FPS), duration: Math.round(1e6 / FPS) });
@@ -282,7 +346,7 @@ async function record(job) {
   }
   await venc.flush();
 
-  const buffer = await renderAudio(job.scene, duration);
+  const buffer = await renderAudio(job.scene, tl, voices);
   const aenc = new AudioEncoder({ output: (c, m) => muxer.addAudioChunk(c, m), error: (e) => (error = e) });
   aenc.configure({ codec: audioCodec === "aac" ? "mp4a.40.2" : "opus", sampleRate: SR, numberOfChannels: 2, bitrate: 128000 });
   const left = buffer.getChannelData(0), right = buffer.getChannelData(1);
@@ -313,7 +377,8 @@ async function main() {
     // Förhandsvisning: ?preview=1&lang=ar&scene=fraga&key=fraga1&t=9
     const L = window.TEXTS[params.get("lang") || "sv"];
     const t = Number(params.get("t") || 9);
-    background(t); logo(); SCENES[params.get("scene") || "fraga"](L, params.get("key") || "fraga1", t);
+    background(t); logo(); const sc = params.get("scene") || "fraga";
+    SCENES[sc](L, params.get("key") || "fraga1", t, DEFAULT_TL[sc]);
     document.title = "klar";
     return;
   }
@@ -321,7 +386,7 @@ async function main() {
     // Stillbilder för kontroll: servern skickar en lista med lang:scene:key:t.
     for (const shot of await (await fetch("/stills")).json()) {
       const [lang, scene, key, t] = shot.split(":");
-      background(+t); logo(); SCENES[scene](window.TEXTS[lang], key, +t);
+      background(+t); logo(); SCENES[scene](window.TEXTS[lang], key, +t, DEFAULT_TL[scene]);
       const blob = await new Promise((r) => canvas.toBlob(r, "image/png"));
       await fetch("/save?name=" + encodeURIComponent(shot.replaceAll(":", "_") + ".png"), { method: "POST", body: blob });
     }
