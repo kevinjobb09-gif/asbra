@@ -9,7 +9,10 @@
  * Exempel:
  *   npm run oversatt-forklaringar                 (alla språk som saknas)
  *   npm run oversatt-forklaringar -- --sprak ar,fa
- *   npm run oversatt-forklaringar -- --test       (visa bara, spara inget)
+ *   npm run oversatt-forklaringar -- --test       (3 frågor, visa bara, spara inget)
+ *   npm run oversatt-forklaringar -- --antal 20   (bara de 20 första frågorna)
+ *
+ * Skriptet skriver ut hur många tokens som gick åt och ungefär vad det kostade.
  */
 import { parseArgs } from "node:util";
 import Anthropic from "@anthropic-ai/sdk";
@@ -19,14 +22,19 @@ import { z } from "zod";
 import { getCountry, languages, LANGUAGE_CODES, type LanguageCode } from "../src/config";
 
 const MODEL = "claude-opus-5-5";
+// Pris i dollar per miljon tokens för modellen ovan (in, ut). Används bara för kostnadsutskriften.
+const PRICE = { input: 4, output: 20 };
 
 const { values } = parseArgs({
   options: {
     sprak: { type: "string" },
     land: { type: "string", default: "se" },
     test: { type: "boolean", default: false },
+    antal: { type: "string" },
   },
 });
+const limit = Number(values.antal ?? (values.test ? 3 : Infinity));
+if (!(limit > 0)) fail("--antal ska vara ett tal större än 0.");
 
 function fail(message: string): never {
   console.error(`\n❌ ${message}\n`);
@@ -72,7 +80,8 @@ async function main() {
       const have = new Set((q.question_translations as { language: string }[]).map((t) => t.language));
       return { ...q, missing: targets.filter((l) => !have.has(l)) };
     })
-    .filter((q) => q.missing.length > 0);
+    .filter((q) => q.missing.length > 0)
+    .slice(0, limit);
 
   if (work.length === 0) {
     console.log("\n✅ Alla granskade frågor har redan förklaringar på de valda språken.\n");
@@ -82,6 +91,7 @@ async function main() {
 
   const client = new Anthropic();
   let saved = 0;
+  const used = { input: 0, output: 0 };
   for (const [n, q] of work.entries()) {
     const list = q.missing.map((c) => `${c} = ${languages[c].swedishName}`).join(", ");
     let response;
@@ -108,6 +118,8 @@ async function main() {
       }
       throw e;
     }
+    used.input += response.usage.input_tokens;
+    used.output += response.usage.output_tokens;
     if (response.stop_reason === "refusal" || !response.parsed_output) {
       console.warn(`⚠️  Fråga ${n + 1}: ingen översättning. Hoppar över.`);
       continue;
@@ -134,6 +146,8 @@ async function main() {
   }
 
   console.log(values.test ? "\n🧪 Testläge: inget sparades.\n" : `\n✅ ${saved} översättningar sparade som maskinöversatta.\n`);
+  const dollars = (used.input * PRICE.input + used.output * PRICE.output) / 1e6;
+  console.log(`💰 ${used.input} tokens in, ${used.output} tokens ut ≈ $${dollars.toFixed(2)} för ${work.length} frågor.\n`);
 }
 
 main();
