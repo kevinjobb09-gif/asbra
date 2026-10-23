@@ -225,7 +225,9 @@ function loginEmail(button: string, text: string): string {
 }
 
 async function configureAuth(ref: string) {
-  const siteUrl = env.get("NEXT_PUBLIC_SITE_URL") || "http://localhost:3000";
+  // Den riktiga domänen (LANSERING_DOMAN) vinner, så att lokala körningar inte pekar om inloggningen till localhost.
+  const domain = env.get("LANSERING_DOMAN");
+  const siteUrl = domain ? `https://${domain.replace(/^https?:\/\//, "")}` : env.get("NEXT_PUBLIC_SITE_URL") || "http://localhost:3000";
   const current = await api<{ uri_allow_list: string | null }>("GET", `/v1/projects/${ref}/config/auth`);
   const allow = new Set((current.uri_allow_list ?? "").split(",").map((s) => s.trim()).filter(Boolean));
   allow.add("http://localhost:3000/**");
