@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { brand } from "@/config";
+import { LogoMark } from "@/components/LogoMark";
 import type { PracticeQuestion } from "@/lib/practice/session";
 
 const LETTERS = "ABCD";
@@ -34,21 +35,8 @@ export function renderQuestionImage(
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: 64 * scale,
-              height: 64 * scale,
-              borderRadius: 16 * scale,
-              background: brand.colors.primary,
-              color: "white",
-              fontSize: 36 * scale,
-              fontWeight: 800,
-            }}
-          >
-            {brand.initial}
+          <div style={{ display: "flex", borderRadius: 16 * scale, overflow: "hidden" }}>
+            <LogoMark size={64 * scale} />
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ fontSize: 30 * scale, fontWeight: 800, color: brand.colors.primary }}>{brand.name}</div>

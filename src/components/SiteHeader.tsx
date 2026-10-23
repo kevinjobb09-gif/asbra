@@ -6,6 +6,7 @@ import { BarChart3, UserRound } from "lucide-react";
 import { brand } from "@/config";
 import { useI18n } from "@/i18n/client";
 import { ButtonLink } from "./ButtonLink";
+import { LogoMark } from "./LogoMark";
 import { LanguagePicker } from "./LanguagePicker";
 
 export function SiteHeader() {
@@ -18,9 +19,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-20 border-b border-line bg-bg/90 backdrop-blur">
       <div className="mx-auto flex h-14 max-w-3xl items-center justify-between gap-1 px-3 sm:px-4">
         <Link href="/" className="flex min-w-0 items-center gap-2 text-lg font-extrabold text-primary" dir="ltr">
-          <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-primary text-white">
-            {brand.initial}
-          </span>
+          <LogoMark size={32} rounded={8} id="header-logo" />
           <span className="truncate">{brand.name}</span>
         </Link>
         <nav className="flex items-center gap-0.5">
