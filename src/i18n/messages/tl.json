@@ -243,7 +243,9 @@
     "canceled": "Kinansela ang bayad. Walang perang nakaltas.",
     "subscriptionInfo": "Awtomatikong nare-renew ang subscription buwan-buwan hanggang i-cancel mo. Mag-cancel sa isang click sa Account. Matatapos agad ang access mo, at hindi ibinabalik ang perang naibayad na para sa natitirang panahon.",
     "thenPrice": "Pagkatapos ay {price} kada buwan",
-    "loginToAccess": "Tapos na ang bayad at aktibo na ang subscription. May account ka na gamit ang {email} – mag-log in gamit ang email na iyon para magamit ang lahat."
+    "loginToAccess": "Tapos na ang bayad at aktibo na ang subscription. May account ka na gamit ang {email} – mag-log in gamit ang email na iyon para magamit ang lahat.",
+    "codeInvalid": "Walang ganitong discount code o nagamit na ito.",
+    "codeWrongEmail": "Gumagana lang ang discount code sa email address kung saan ito ipinadala."
   },
   "refBanner": {
     "text": "Aktibo ang discount code {code}: {percent} % diskwento sa unang buwan."
@@ -301,5 +303,27 @@
   "notFound": {
     "title": "Walang ganitong pahina",
     "text": "Ang pahinang hinahanap mo ay wala o nailipat na."
+  },
+  "welcome": {
+    "nav": "{percent} % diskwento",
+    "title": "Makakuha ng {percent} % diskwento sa unang buwan",
+    "intro": "Ilagay ang email mo at makakuha ng personal na discount code. Magpapadala rin kami ng tips para sa test at balita, halimbawa kapag may bagong petsa ng test. Puwede kang mag-unsubscribe kahit kailan.",
+    "emailLabel": "Ang email address mo",
+    "consent": "Oo, gusto kong makatanggap ng tips at alok sa email. Puwede akong mag-unsubscribe kahit kailan.",
+    "button": "Ibigay ang discount code ko",
+    "sending": "Ipinapadala …",
+    "successTitle": "Ito ang discount code mo",
+    "successText": "Nagbibigay ang code ng {percent} % diskwento sa unang buwan. Isang beses lang ito magagamit, gamit ang email na {email}.",
+    "emailed": "Ipinadala rin namin ang code sa email mo.",
+    "useNow": "Gamitin ang code ngayon",
+    "alreadyUsed": "Nagamit na ng email address na ito ang discount code nito.",
+    "errorConsent": "Lagyan ng tsek ang kahon para makuha ang discount code.",
+    "error": "Hindi ito gumana ngayon. Subukan ulit mamaya.",
+    "homeTitle": "{percent} % diskwento sa unang buwan",
+    "homeText": "Mag-sign up gamit ang email mo at makakuha ng personal na discount code.",
+    "homeCta": "Kunin ang discount code",
+    "mailSubject": "Ang discount code mo: {percent} % diskwento",
+    "mailBody": "Kumusta!\nSalamat sa pag-sign up. Ang personal na discount code mo ay: {code}\nNagbibigay ito ng {percent} % diskwento sa unang buwan at isang beses lang magagamit.\nGamitin ito dito: {link}",
+    "mailFooter": "Natanggap mo ang email na ito dahil nag-sign up ka sa {brand}. Ayaw mo na ng email? Sagutin ang email na ito at aalisin ka namin."
   }
 }

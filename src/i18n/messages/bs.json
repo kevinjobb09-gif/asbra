@@ -243,7 +243,9 @@
     "canceled": "Plaćanje je otkazano. Novac nije naplaćen.",
     "subscriptionInfo": "Pretplata se automatski obnavlja svaki mjesec dok je ne otkažeš. Otkazuješ jednim klikom pod Račun. Pristup tada odmah prestaje, a novac za već plaćeno vrijeme se ne vraća.",
     "thenPrice": "Zatim {price} mjesečno",
-    "loginToAccess": "Plaćanje je završeno i pretplata je aktivna. Već imaš račun s {email} – prijavi se tom e-adresom da koristiš sve."
+    "loginToAccess": "Plaćanje je završeno i pretplata je aktivna. Već imaš račun s {email} – prijavi se tom e-adresom da koristiš sve.",
+    "codeInvalid": "Kod za popust ne postoji ili je već iskorišten.",
+    "codeWrongEmail": "Kod za popust važi samo s e-adresom na koju je poslan."
   },
   "refBanner": {
     "text": "Kod za popust {code} je aktivan: {percent} % popusta prvi mjesec."
@@ -301,5 +303,27 @@
   "notFound": {
     "title": "Stranica ne postoji",
     "text": "Stranica koju tražiš ne postoji ili je premještena."
+  },
+  "welcome": {
+    "nav": "{percent} % popusta",
+    "title": "Dobij {percent} % popusta na prvi mjesec",
+    "intro": "Upiši svoj e-mail i dobij lični kod za popust. Slat ćemo ti i savjete za test i novosti, npr. kada se objave novi datumi testa. Možeš se odjaviti kad god želiš.",
+    "emailLabel": "Tvoja e-adresa",
+    "consent": "Da, želim primati savjete i ponude e-mailom. Mogu se odjaviti kad god želim.",
+    "button": "Daj mi kod za popust",
+    "sending": "Šalje se …",
+    "successTitle": "Evo tvog koda za popust",
+    "successText": "Kod daje {percent} % popusta na prvi mjesec. Može se iskoristiti jednom, s e-adresom {email}.",
+    "emailed": "Kod smo poslali i na tvoj e-mail.",
+    "useNow": "Iskoristi kod sada",
+    "alreadyUsed": "Ova e-adresa je već iskoristila svoj kod za popust.",
+    "errorConsent": "Označi polje da dobiješ kod za popust.",
+    "error": "Trenutno nije uspjelo. Pokušaj ponovo za trenutak.",
+    "homeTitle": "{percent} % popusta na prvi mjesec",
+    "homeText": "Prijavi se e-mailom i dobij lični kod za popust.",
+    "homeCta": "Dobij kod za popust",
+    "mailSubject": "Tvoj kod za popust: {percent} % popusta",
+    "mailBody": "Zdravo!\nHvala što si se prijavio. Tvoj lični kod za popust: {code}\nDaje {percent} % popusta na prvi mjesec i može se iskoristiti jednom.\nIskoristi ga ovdje: {link}",
+    "mailFooter": "Ovaj e-mail dobijaš jer si se prijavio na {brand}. Ne želiš više e-mailova? Odgovori na ovaj e-mail i uklonit ćemo te."
   }
 }

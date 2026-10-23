@@ -8,6 +8,7 @@ import { publicEnv } from "@/lib/env";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { computePrice } from "@/lib/payments/pricing";
+import { getWelcomeCode, normalizeWelcomeCode } from "@/lib/welcome";
 import {
   getActiveRef,
   getFirstMonthCoupon,
@@ -55,7 +56,17 @@ export async function startCheckout(_prev: CheckoutState, formData: FormData): P
 
   const country = getCountry();
   const ref = await getActiveRef();
-  const firstMonth = computePrice(country.pricing.amount, ref?.discountPercent ?? 0);
+
+  // Personlig välkomstkod: gäller bara med samma e-post och bara en gång.
+  const welcomeCode = normalizeWelcomeCode(String(formData.get("code") ?? ""));
+  let welcome: Awaited<ReturnType<typeof getWelcomeCode>> = null;
+  if (welcomeCode) {
+    welcome = await getWelcomeCode(welcomeCode);
+    if (!welcome || welcome.used) return { error: t("buy.codeInvalid"), email };
+    if (welcome.email !== email) return { error: t("buy.codeWrongEmail"), email };
+  }
+  const useWelcome = !!welcome && welcome.discountPercent > (ref?.discountPercent ?? 0);
+  const firstMonth = computePrice(country.pricing.amount, useWelcome ? welcome!.discountPercent : (ref?.discountPercent ?? 0));
   const consentAt = new Date().toISOString();
 
   const db = createAdminClient();
@@ -69,6 +80,7 @@ export async function startCheckout(_prev: CheckoutState, formData: FormData): P
       list_price_minor: firstMonth.listPriceMinor,
       amount_minor: firstMonth.amountMinor,
       ref_code: ref?.code ?? null,
+      ...(useWelcome ? { welcome_code: welcome!.code } : {}),
       discount_percent: firstMonth.discountPercent,
       commission_percent: ref?.commissionPercent ?? 0,
       consent_digital_delivery_at: consentAt,

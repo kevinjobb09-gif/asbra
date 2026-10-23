@@ -243,7 +243,9 @@
     "canceled": "Dayîn hate betalkirin. Tu pere nehat kişandin.",
     "subscriptionInfo": "Abonetî her meh bi xwe nû dibe heta ku tu betal bikî. Tu bi yek klîkê di Hesab de betal dikî. Wê demê gihîştin yekser diqede, û pereyê dema ku berê hatiye dayîn nayê vegerandin.",
     "thenPrice": "Paşê {price} mehane",
-    "loginToAccess": "Dayîn temam bû û abonetî çalak e. Hesabekî te bi {email} berê heye – bi wê navnîşana e-nameyê têkeve da ku her tiştî bikar bînî."
+    "loginToAccess": "Dayîn temam bû û abonetî çalak e. Hesabekî te bi {email} berê heye – bi wê navnîşana e-nameyê têkeve da ku her tiştî bikar bînî.",
+    "codeInvalid": "Koda daxistinê tune ye an jî berê hatiye bikaranîn.",
+    "codeWrongEmail": "Koda daxistinê tenê bi navnîşana e-nameyê ya ku jê re hatiye şandin dixebite."
   },
   "refBanner": {
     "text": "Koda daxistinê {code} çalak e: {percent} % daxistin ji bo meha yekem."
@@ -301,5 +303,27 @@
   "notFound": {
     "title": "Ev rûpel tune",
     "text": "Rûpela ku tu lê digerî tune an hatiye guhestin."
+  },
+  "welcome": {
+    "nav": "{percent} % daxistin",
+    "title": "Ji bo meha yekem {percent} % daxistin bistîne",
+    "intro": "E-nameya xwe binivîse û kodek daxistinê ya kesane bistîne. Em ê ji te re şîretên ji bo azmûnê û nûçeyan jî bişînin, wek mînak dema ku dîrokên nû yên azmûnê têne ragihandin. Tu dikarî her dem abonetiyê betal bikî.",
+    "emailLabel": "Navnîşana e-nameya te",
+    "consent": "Erê, ez dixwazim şîret û pêşniyaran bi e-nameyê bistînim. Ez dikarim her dem betal bikim.",
+    "button": "Koda min a daxistinê bide",
+    "sending": "Tê şandin …",
+    "successTitle": "Va ye koda te ya daxistinê",
+    "successText": "Kod ji bo meha yekem {percent} % daxistin dide. Ew carekê, bi navnîşana e-nameyê {email} tê bikaranîn.",
+    "emailed": "Me kod ji e-nameya te re jî şand.",
+    "useNow": "Niha kodê bikar bîne",
+    "alreadyUsed": "Ev navnîşana e-nameyê berê koda xwe ya daxistinê bikar aniye.",
+    "errorConsent": "Ji bo koda daxistinê qutîkê nîşan bike.",
+    "error": "Niha nebû. Piştî demekê dîsa biceribîne.",
+    "homeTitle": "Ji bo meha yekem {percent} % daxistin",
+    "homeText": "Bi e-nameya xwe tomar bibe û kodek daxistinê ya kesane bistîne.",
+    "homeCta": "Koda daxistinê bistîne",
+    "mailSubject": "Koda te ya daxistinê: {percent} % daxistin",
+    "mailBody": "Silav!\nSpas ku te xwe tomar kir. Koda te ya kesane: {code}\nJi bo meha yekem {percent} % daxistin dide û carekê tê bikaranîn.\nLi vir bikar bîne: {link}",
+    "mailFooter": "Ev e-name ji te re hat ji ber ku te xwe li {brand} tomar kir. E-nameyên din naxwazî? Bersiva vê e-nameyê bide û em ê te rakin."
   }
 }

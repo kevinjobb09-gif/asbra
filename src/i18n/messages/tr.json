@@ -243,7 +243,9 @@
     "canceled": "Ödeme iptal edildi. Hiç para çekilmedi.",
     "subscriptionInfo": "Abonelik sen iptal edene kadar her ay otomatik yenilenir. Hesap sayfasından tek tıkla iptal edersin. Erişimin o anda sona erer ve önceden ödenmiş süre iade edilmez.",
     "thenPrice": "Sonra aylık {price}",
-    "loginToAccess": "Ödeme tamamlandı ve abonelik aktif. {email} ile zaten bir hesabın var – her şeyi kullanmak için bu e-posta adresiyle giriş yap."
+    "loginToAccess": "Ödeme tamamlandı ve abonelik aktif. {email} ile zaten bir hesabın var – her şeyi kullanmak için bu e-posta adresiyle giriş yap.",
+    "codeInvalid": "İndirim kodu bulunamadı veya zaten kullanılmış.",
+    "codeWrongEmail": "İndirim kodu yalnızca gönderildiği e-posta adresiyle geçerlidir."
   },
   "refBanner": {
     "text": "İndirim kodu {code} aktif: ilk ay %{percent} indirim."
@@ -301,5 +303,27 @@
   "notFound": {
     "title": "Sayfa bulunamadı",
     "text": "Aradığın sayfa yok veya taşınmış."
+  },
+  "welcome": {
+    "nav": "%{percent} indirim",
+    "title": "İlk ayda %{percent} indirim kazan",
+    "intro": "E-postanı yaz ve kişisel bir indirim kodu al. Ayrıca sınav için ipuçları ve haberler, örneğin yeni sınav tarihleri açıklandığında, göndereceğiz. İstediğin zaman abonelikten çıkabilirsin.",
+    "emailLabel": "E-posta adresin",
+    "consent": "Evet, e-posta ile ipuçları ve teklifler almak istiyorum. İstediğim zaman abonelikten çıkabilirim.",
+    "button": "İndirim kodumu al",
+    "sending": "Gönderiliyor …",
+    "successTitle": "İşte indirim kodun",
+    "successText": "Kod ilk ayda %{percent} indirim sağlar. Yalnızca bir kez, {email} e-posta adresiyle kullanılabilir.",
+    "emailed": "Kodu e-postana da gönderdik.",
+    "useNow": "Kodu şimdi kullan",
+    "alreadyUsed": "Bu e-posta adresi indirim kodunu zaten kullandı.",
+    "errorConsent": "İndirim kodunu almak için kutuyu işaretle.",
+    "error": "Şu anda olmadı. Biraz sonra tekrar dene.",
+    "homeTitle": "İlk ayda %{percent} indirim",
+    "homeText": "E-postanla kaydol ve kişisel bir indirim kodu al.",
+    "homeCta": "İndirim kodunu al",
+    "mailSubject": "İndirim kodun: %{percent} indirim",
+    "mailBody": "Merhaba!\nKaydolduğun için teşekkürler. Kişisel indirim kodun: {code}\nİlk ayda %{percent} indirim sağlar ve bir kez kullanılabilir.\nBuradan kullan: {link}",
+    "mailFooter": "Bu e-postayı {brand} sitesine kaydolduğun için alıyorsun. Başka e-posta istemiyor musun? Bu e-postayı yanıtla, seni listeden çıkaralım."
   }
 }

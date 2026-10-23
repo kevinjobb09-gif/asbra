@@ -243,7 +243,9 @@
     "canceled": "The payment was canceled. No money has been taken.",
     "subscriptionInfo": "The subscription renews automatically every month until you cancel it. You cancel with one click under Account. Your access then ends immediately, and time already paid for is not refunded.",
     "thenPrice": "Then {price} per month",
-    "loginToAccess": "The payment is complete and the subscription is active. You already have an account with {email} – log in with that email address to use everything."
+    "loginToAccess": "The payment is complete and the subscription is active. You already have an account with {email} – log in with that email address to use everything.",
+    "codeInvalid": "The discount code doesn't exist or has already been used.",
+    "codeWrongEmail": "The discount code only works with the email address it was sent to."
   },
   "refBanner": {
     "text": "Discount code {code} is active: {percent} % off the first month."
@@ -301,5 +303,27 @@
   "notFound": {
     "title": "The page does not exist",
     "text": "The page you are looking for does not exist or has moved."
+  },
+  "welcome": {
+    "nav": "{percent} % off",
+    "title": "Get {percent} % off your first month",
+    "intro": "Enter your email and get a personal discount code. We'll also send you tips for the test and news, for example when new test dates are announced. You can unsubscribe at any time.",
+    "emailLabel": "Your email address",
+    "consent": "Yes, I want to receive tips and offers by email. I can unsubscribe at any time.",
+    "button": "Get my discount code",
+    "sending": "Sending …",
+    "successTitle": "Here is your discount code",
+    "successText": "The code gives {percent} % off your first month. It can be used once, with the email address {email}.",
+    "emailed": "We have also sent the code to your email.",
+    "useNow": "Use the code now",
+    "alreadyUsed": "This email address has already used its discount code.",
+    "errorConsent": "Tick the box to get the discount code.",
+    "error": "That didn't work right now. Please try again in a moment.",
+    "homeTitle": "{percent} % off your first month",
+    "homeText": "Sign up with your email and get a personal discount code.",
+    "homeCta": "Get the discount code",
+    "mailSubject": "Your discount code: {percent} % off",
+    "mailBody": "Hi!\nThanks for signing up. Your personal discount code is: {code}\nIt gives {percent} % off your first month and can be used once.\nUse it here: {link}",
+    "mailFooter": "You are receiving this email because you signed up with {brand}. Don't want more emails? Reply to this email and we'll remove you."
   }
 }

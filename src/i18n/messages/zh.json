@@ -243,7 +243,9 @@
     "canceled": "付款已取消，没有扣款。",
     "subscriptionInfo": "订阅每月自动续费，直到你取消为止。在“账户”页面一键取消。取消后使用权限立即结束，已支付的时间不予退款。",
     "thenPrice": "之后每月 {price}",
-    "loginToAccess": "付款已完成，订阅已生效。你已有使用 {email} 的账户——请用该邮箱登录以使用全部内容。"
+    "loginToAccess": "付款已完成，订阅已生效。你已有使用 {email} 的账户——请用该邮箱登录以使用全部内容。",
+    "codeInvalid": "该优惠码不存在或已被使用。",
+    "codeWrongEmail": "该优惠码只能与接收它的电子邮箱一起使用。"
   },
   "refBanner": {
     "text": "优惠码 {code} 已生效：首月优惠 {percent} %。"
@@ -301,5 +303,27 @@
   "notFound": {
     "title": "页面不存在",
     "text": "你要找的页面不存在或已移动。"
+  },
+  "welcome": {
+    "nav": "{percent} % 折扣",
+    "title": "首月享 {percent} % 优惠",
+    "intro": "填写你的邮箱，即可获得个人优惠码。我们还会发送备考建议和最新消息，例如公布新的考试日期时。你可以随时退订。",
+    "emailLabel": "你的电子邮箱",
+    "consent": "是的，我想通过电子邮件接收建议和优惠。我可以随时退订。",
+    "button": "领取我的优惠码",
+    "sending": "发送中 …",
+    "successTitle": "这是你的优惠码",
+    "successText": "该优惠码首月可享 {percent} % 优惠，只能使用一次，并且需使用邮箱 {email}。",
+    "emailed": "我们也已将优惠码发送到你的邮箱。",
+    "useNow": "立即使用优惠码",
+    "alreadyUsed": "该邮箱已使用过优惠码。",
+    "errorConsent": "请勾选方框以领取优惠码。",
+    "error": "暂时无法完成，请稍后再试。",
+    "homeTitle": "首月享 {percent} % 优惠",
+    "homeText": "用邮箱注册，即可获得个人优惠码。",
+    "homeCta": "领取优惠码",
+    "mailSubject": "你的优惠码：{percent} % 优惠",
+    "mailBody": "你好！\n感谢你的注册。你的个人优惠码是：{code}\n首月可享 {percent} % 优惠，只能使用一次。\n在这里使用：{link}",
+    "mailFooter": "你收到这封邮件是因为你在 {brand} 注册了。不想再收到邮件？回复这封邮件，我们会将你移除。"
   }
 }

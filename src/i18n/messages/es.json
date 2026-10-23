@@ -243,7 +243,9 @@
     "canceled": "El pago se canceló. No se ha cobrado nada.",
     "subscriptionInfo": "La suscripción se renueva automáticamente cada mes hasta que la canceles. Cancelas con un clic en Cuenta. El acceso termina entonces al instante y el tiempo ya pagado no se reembolsa.",
     "thenPrice": "Después {price} al mes",
-    "loginToAccess": "El pago se ha completado y la suscripción está activa. Ya tienes una cuenta con {email}: inicia sesión con ese correo para usarlo todo."
+    "loginToAccess": "El pago se ha completado y la suscripción está activa. Ya tienes una cuenta con {email}: inicia sesión con ese correo para usarlo todo.",
+    "codeInvalid": "El código de descuento no existe o ya se ha usado.",
+    "codeWrongEmail": "El código de descuento solo funciona con el correo al que se envió."
   },
   "refBanner": {
     "text": "El código de descuento {code} está activo: {percent} % de descuento el primer mes."
@@ -301,5 +303,27 @@
   "notFound": {
     "title": "La página no existe",
     "text": "La página que buscas no existe o se ha movido."
+  },
+  "welcome": {
+    "nav": "{percent} % de descuento",
+    "title": "Consigue un {percent} % de descuento el primer mes",
+    "intro": "Escribe tu correo y recibe un código de descuento personal. También te enviaremos consejos para el examen y novedades, por ejemplo cuando se anuncien nuevas fechas. Puedes darte de baja cuando quieras.",
+    "emailLabel": "Tu correo electrónico",
+    "consent": "Sí, quiero recibir consejos y ofertas por correo. Puedo darme de baja cuando quiera.",
+    "button": "Quiero mi código de descuento",
+    "sending": "Enviando …",
+    "successTitle": "Aquí tienes tu código de descuento",
+    "successText": "El código da un {percent} % de descuento el primer mes. Se puede usar una vez, con el correo {email}.",
+    "emailed": "También te hemos enviado el código por correo.",
+    "useNow": "Usar el código ahora",
+    "alreadyUsed": "Este correo ya ha usado su código de descuento.",
+    "errorConsent": "Marca la casilla para recibir el código de descuento.",
+    "error": "No funcionó ahora. Inténtalo de nuevo en un momento.",
+    "homeTitle": "{percent} % de descuento el primer mes",
+    "homeText": "Regístrate con tu correo y recibe un código de descuento personal.",
+    "homeCta": "Consigue el código",
+    "mailSubject": "Tu código de descuento: {percent} % de descuento",
+    "mailBody": "¡Hola!\nGracias por registrarte. Tu código de descuento personal es: {code}\nDa un {percent} % de descuento el primer mes y se puede usar una vez.\nÚsalo aquí: {link}",
+    "mailFooter": "Recibes este correo porque te registraste en {brand}. ¿No quieres más correos? Responde a este correo y te daremos de baja."
   }
 }

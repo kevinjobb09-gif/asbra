@@ -243,7 +243,9 @@
     "canceled": "Płatność została anulowana. Nie pobrano żadnych pieniędzy.",
     "subscriptionInfo": "Subskrypcja odnawia się automatycznie co miesiąc, dopóki jej nie anulujesz. Anulujesz jednym kliknięciem w zakładce Konto. Dostęp kończy się wtedy od razu, a za już opłacony czas nie zwracamy pieniędzy.",
     "thenPrice": "Potem {price} miesięcznie",
-    "loginToAccess": "Płatność zakończona, subskrypcja jest aktywna. Masz już konto z adresem {email} – zaloguj się tym adresem, aby korzystać ze wszystkiego."
+    "loginToAccess": "Płatność zakończona, subskrypcja jest aktywna. Masz już konto z adresem {email} – zaloguj się tym adresem, aby korzystać ze wszystkiego.",
+    "codeInvalid": "Taki kod rabatowy nie istnieje lub został już użyty.",
+    "codeWrongEmail": "Kod rabatowy działa tylko z adresem e-mail, na który został wysłany."
   },
   "refBanner": {
     "text": "Kod rabatowy {code} jest aktywny: {percent} % zniżki na pierwszy miesiąc."
@@ -301,5 +303,27 @@
   "notFound": {
     "title": "Strona nie istnieje",
     "text": "Strona, której szukasz, nie istnieje lub została przeniesiona."
+  },
+  "welcome": {
+    "nav": "{percent} % zniżki",
+    "title": "Odbierz {percent} % zniżki na pierwszy miesiąc",
+    "intro": "Wpisz swój e-mail i odbierz osobisty kod rabatowy. Będziemy też wysyłać wskazówki do egzaminu i nowości, na przykład gdy pojawią się nowe terminy egzaminu. Możesz w każdej chwili zrezygnować.",
+    "emailLabel": "Twój adres e-mail",
+    "consent": "Tak, chcę otrzymywać wskazówki i oferty e-mailem. Mogę zrezygnować w każdej chwili.",
+    "button": "Odbierz mój kod rabatowy",
+    "sending": "Wysyłanie …",
+    "successTitle": "Oto Twój kod rabatowy",
+    "successText": "Kod daje {percent} % zniżki na pierwszy miesiąc. Można go użyć raz, z adresem {email}.",
+    "emailed": "Wysłaliśmy też kod na Twój e-mail.",
+    "useNow": "Użyj kodu teraz",
+    "alreadyUsed": "Ten adres e-mail już wykorzystał swój kod rabatowy.",
+    "errorConsent": "Zaznacz pole, aby otrzymać kod rabatowy.",
+    "error": "Teraz się nie udało. Spróbuj ponownie za chwilę.",
+    "homeTitle": "{percent} % zniżki na pierwszy miesiąc",
+    "homeText": "Zapisz się e-mailem i odbierz osobisty kod rabatowy.",
+    "homeCta": "Odbierz kod rabatowy",
+    "mailSubject": "Twój kod rabatowy: {percent} % zniżki",
+    "mailBody": "Cześć!\nDziękujemy za zapisanie się. Twój osobisty kod rabatowy: {code}\nDaje {percent} % zniżki na pierwszy miesiąc i można go użyć raz.\nUżyj go tutaj: {link}",
+    "mailFooter": "Otrzymujesz tę wiadomość, ponieważ zapisałeś się w {brand}. Nie chcesz więcej wiadomości? Odpowiedz na tę wiadomość, a usuniemy Cię z listy."
   }
 }

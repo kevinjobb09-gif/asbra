@@ -243,7 +243,9 @@
     "canceled": "Đã hủy thanh toán. Không bị trừ tiền.",
     "subscriptionInfo": "Gói đăng ký tự động gia hạn mỗi tháng cho đến khi bạn hủy. Bạn hủy chỉ với một lần bấm trong Tài khoản. Khi đó quyền truy cập kết thúc ngay và thời gian đã trả trước sẽ không được hoàn tiền.",
     "thenPrice": "Sau đó {price} mỗi tháng",
-    "loginToAccess": "Thanh toán đã hoàn tất và gói đăng ký đang hoạt động. Bạn đã có tài khoản với {email} – hãy đăng nhập bằng email đó để dùng tất cả."
+    "loginToAccess": "Thanh toán đã hoàn tất và gói đăng ký đang hoạt động. Bạn đã có tài khoản với {email} – hãy đăng nhập bằng email đó để dùng tất cả.",
+    "codeInvalid": "Mã giảm giá không tồn tại hoặc đã được sử dụng.",
+    "codeWrongEmail": "Mã giảm giá chỉ dùng được với địa chỉ email đã nhận mã."
   },
   "refBanner": {
     "text": "Mã giảm giá {code} đang áp dụng: giảm {percent} % tháng đầu."
@@ -301,5 +303,27 @@
   "notFound": {
     "title": "Không tìm thấy trang",
     "text": "Trang bạn tìm không tồn tại hoặc đã được chuyển đi."
+  },
+  "welcome": {
+    "nav": "Giảm {percent} %",
+    "title": "Nhận giảm {percent} % tháng đầu",
+    "intro": "Nhập email để nhận mã giảm giá riêng. Chúng tôi cũng sẽ gửi mẹo ôn thi và tin tức, ví dụ khi có lịch thi mới. Bạn có thể hủy đăng ký bất cứ lúc nào.",
+    "emailLabel": "Địa chỉ email của bạn",
+    "consent": "Có, tôi muốn nhận mẹo và ưu đãi qua email. Tôi có thể hủy đăng ký bất cứ lúc nào.",
+    "button": "Nhận mã giảm giá của tôi",
+    "sending": "Đang gửi …",
+    "successTitle": "Đây là mã giảm giá của bạn",
+    "successText": "Mã giảm {percent} % tháng đầu. Chỉ dùng được một lần, với email {email}.",
+    "emailed": "Chúng tôi cũng đã gửi mã đến email của bạn.",
+    "useNow": "Dùng mã ngay",
+    "alreadyUsed": "Email này đã dùng mã giảm giá của mình.",
+    "errorConsent": "Đánh dấu vào ô để nhận mã giảm giá.",
+    "error": "Hiện chưa thực hiện được. Hãy thử lại sau ít phút.",
+    "homeTitle": "Giảm {percent} % tháng đầu",
+    "homeText": "Đăng ký bằng email và nhận mã giảm giá riêng.",
+    "homeCta": "Nhận mã giảm giá",
+    "mailSubject": "Mã giảm giá của bạn: giảm {percent} %",
+    "mailBody": "Xin chào!\nCảm ơn bạn đã đăng ký. Mã giảm giá riêng của bạn là: {code}\nMã giảm {percent} % tháng đầu và chỉ dùng được một lần.\nDùng mã tại đây: {link}",
+    "mailFooter": "Bạn nhận email này vì đã đăng ký tại {brand}. Không muốn nhận thêm email? Hãy trả lời email này, chúng tôi sẽ xóa bạn khỏi danh sách."
   }
 }

@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 import Stripe from "stripe";
 import { commissionMinor, computePrice, normalizeRefCode } from "@/lib/payments/pricing";
+import { normalizeWelcomeCode } from "@/lib/welcome";
 import {
   accessUntil,
   handleCheckoutCompleted,
@@ -31,6 +32,13 @@ describe("pris och rabatt", () => {
 
   it("priset blir aldrig lägre än Stripes minimum på 3 kr", () => {
     expect(computePrice(5, 90).amountMinor).toBe(300);
+  });
+
+  it("välkomstkoder normaliseras och ogiltiga koder avvisas", () => {
+    expect(normalizeWelcomeCode("  VALKOMMEN-ab12cd34 ")).toBe("valkommen-ab12cd34");
+    expect(normalizeWelcomeCode("ab")).toBeNull();
+    expect(normalizeWelcomeCode("kod med mellanslag")).toBeNull();
+    expect(normalizeWelcomeCode(null)).toBeNull();
   });
 
   it("provision räknas på betalt belopp", () => {

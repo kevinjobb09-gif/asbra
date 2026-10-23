@@ -3,6 +3,9 @@
  * Rena funktioner som testas i tests/payments.test.ts.
  */
 
+/** Rabatt för den som skriver upp sig med sin e-post på /rabatt (gäller första månaden, en gång). */
+export const WELCOME_DISCOUNT_PERCENT = 10;
+
 /** Stripe kräver minst 3 kr per betalning i SEK. */
 export const MIN_AMOUNT_MINOR = 300;
 

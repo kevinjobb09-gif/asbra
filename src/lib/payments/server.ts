@@ -12,6 +12,7 @@ import {
   type StripeSubscriptionState,
 } from "./fulfill";
 import { normalizeRefCode } from "./pricing";
+import { markWelcomeCodeUsed } from "@/lib/welcome";
 
 export const REF_COOKIE = "ref";
 
@@ -150,6 +151,7 @@ function checkoutDeps(): CheckoutDeps {
         .update({ status: "paid", user_id: u.userId, email: u.email, paid_at: u.paidAt.toISOString(), stripe_subscription_id: u.subscriptionId })
         .eq("id", purchaseId);
       if (error) throw new Error(`Kunde inte markera köpet: ${error.message}`);
+      await markWelcomeCodeUsed(purchaseId, u.userId);
     },
     recordEvent: (p) => recordEvent("paid", { language: p.language, refCode: p.ref_code }),
   };

@@ -6,9 +6,9 @@ import { Lock } from "lucide-react";
 import { useI18n } from "@/i18n/client";
 import { startCheckout, type CheckoutState } from "./actions";
 
-type Props = { price: string; defaultEmail?: string };
+type Props = { price: string; defaultEmail?: string; defaultCode?: string };
 
-export function BuyForm({ price, defaultEmail }: Props) {
+export function BuyForm({ price, defaultEmail, defaultCode }: Props) {
   const { t } = useI18n();
   const [state, action, pending] = useActionState<CheckoutState, FormData>(startCheckout, { email: defaultEmail });
 
@@ -28,6 +28,9 @@ export function BuyForm({ price, defaultEmail }: Props) {
         />
         <span className="mt-1 block text-sm text-muted">{t("buy.emailHelp")}</span>
       </label>
+
+      {/* Personlig rabattkod från /rabatt (valfri). Partnerkoder kommer i stället via länk. */}
+      {defaultCode && <input type="hidden" name="code" value={defaultCode} />}
 
       {/* Uttryckligt samtycke enligt reglerna för digitalt innehåll – rutorna är aldrig förifyllda. */}
       <label className="flex items-start gap-3 rounded-xl border-2 border-line bg-surface p-3">

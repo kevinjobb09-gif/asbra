@@ -243,7 +243,9 @@
     "canceled": "Lacag bixinta waa la joojiyay. Wax lacag ah lagama jarin.",
     "subscriptionInfo": "Rukummadu si toos ah ayay u cusboonaataa bil kasta ilaa aad joojiso. Waxaad ku joojinaysaa hal guji oo Akoonka ah. Markaas helitaanku isla markiiba wuu dhammaanayaa, waqtiga horay loo bixiyayna lacagtiisa lagu celin maayo.",
     "thenPrice": "Kadibna {price} bishii",
-    "loginToAccess": "Lacag bixintu way dhammaatay, rukummaduna waa firfircoon tahay. Horeba waxaad leedahay akoon {email} ah – ku gal ciwaankaas si aad wax walba u isticmaasho."
+    "loginToAccess": "Lacag bixintu way dhammaatay, rukummaduna waa firfircoon tahay. Horeba waxaad leedahay akoon {email} ah – ku gal ciwaankaas si aad wax walba u isticmaasho.",
+    "codeInvalid": "Koodhka qiimo dhimista ma jiro ama horay ayaa loo isticmaalay.",
+    "codeWrongEmail": "Koodhka qiimo dhimistu wuxuu kaliya ku shaqeeyaa iimaylka loo diray."
   },
   "refBanner": {
     "text": "Koodhka qiimo dhimista {code} waa shaqaynayaa: {percent} % qiimo dhimis bisha koowaad."
@@ -301,5 +303,27 @@
   "notFound": {
     "title": "Boggan ma jiro",
     "text": "Bogga aad raadinayso ma jiro ama waa la wareejiyay."
+  },
+  "welcome": {
+    "nav": "{percent} % qiimo dhimis",
+    "title": "Hel {percent} % qiimo dhimis bisha koowaad",
+    "intro": "Qor iimaylkaaga oo hel koodh qiimo dhimis oo gaar kuu ah. Waxaan sidoo kale kuu soo diri doonnaa talooyin imtixaanka iyo war, tusaale ahaan marka taariikhaha cusub ee imtixaanka la shaaciyo. Waad iska joojin kartaa goor kasta.",
+    "emailLabel": "Iimaylkaaga",
+    "consent": "Haa, waxaan rabaa inaan iimayl ku helo talooyin iyo dalabyo. Waan iska joojin karaa goor kasta.",
+    "button": "I sii koodhkayga qiimo dhimista",
+    "sending": "Waa la dirayaa …",
+    "successTitle": "Kani waa koodhkaaga qiimo dhimista",
+    "successText": "Koodhku wuxuu ku siinayaa {percent} % qiimo dhimis bisha koowaad. Hal mar ayaa la isticmaali karaa, iimaylka {email}.",
+    "emailed": "Koodhka waxaan sidoo kale u dirnay iimaylkaaga.",
+    "useNow": "Hadda isticmaal koodhka",
+    "alreadyUsed": "Iimaylkan horay ayuu u isticmaalay koodhkiisa qiimo dhimista.",
+    "errorConsent": "Calaamadee sanduuqa si aad u hesho koodhka qiimo dhimista.",
+    "error": "Hadda ma shaqayn. Mar kale isku day wax yar kadib.",
+    "homeTitle": "{percent} % qiimo dhimis bisha koowaad",
+    "homeText": "Iska diiwaangeli iimaylkaaga oo hel koodh qiimo dhimis oo gaar ah.",
+    "homeCta": "Hel koodhka qiimo dhimista",
+    "mailSubject": "Koodhkaaga qiimo dhimista: {percent} % qiimo dhimis",
+    "mailBody": "Salaan!\nWaad ku mahadsan tahay is-diiwaangelinta. Koodhkaaga gaarka ah: {code}\nWuxuu ku siinayaa {percent} % qiimo dhimis bisha koowaad, hal mar ayaana la isticmaali karaa.\nHalkan ka isticmaal: {link}",
+    "mailFooter": "Iimaylkan waxaad u heshay sababtoo ah waxaad isku diiwaangelisay {brand}. Ma rabtid iimaylo kale? Ka jawaab iimaylkan, waana ku saari doonnaa."
   }
 }

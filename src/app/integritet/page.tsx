@@ -34,6 +34,11 @@ export default function PrivacyPage() {
           Laglig grund: avtal.
         </li>
         <li>
+          <strong>E-postlistan</strong> – om du skriver upp dig på sidan Rabatt sparar vi din e-postadress, din rabattkod
+          och när du gav ditt samtycke, för att skicka koden, tips och erbjudanden. Laglig grund: samtycke. Du kan när som
+          helst återkalla samtycket genom att svara på ett mejl från oss eller mejla oss, så tas du bort från listan.
+        </li>
+        <li>
           <strong>Köpuppgifter</strong> (belopp, datum, ev. rabattkod och att du har godkänt villkoren) – för att
           leverera tjänsten och för bokföring. Laglig grund: avtal och rättslig förpliktelse.
         </li>
@@ -57,7 +62,7 @@ export default function PrivacyPage() {
         <li>Supabase – databas och inloggning. Data lagras inom EU.</li>
         <li>Stripe – betalningar. Stripe är självständigt ansvarig för betaluppgifter.</li>
         <li>Netlify – driftar webbplatsen.</li>
-        <li>[E-POSTTJÄNST] – skickar inloggningsmejl.</li>
+        <li>Resend – skickar inloggningsmejl och mejl med rabattkoder. Data lagras inom EU (Irland).</li>
       </ul>
       <p>
         Vissa av dessa företag kan överföra uppgifter till länder utanför EU/EES. Det sker då med stöd av EU-kommissionens
@@ -68,6 +73,7 @@ export default function PrivacyPage() {
       <ul>
         <li>Övningsdata och konto: tills du raderar kontot, eller två år efter att din tillgång har gått ut.</li>
         <li>Köpuppgifter: sju år enligt bokföringslagen (kvittona finns hos Stripe).</li>
+        <li>E-postlistan: tills du avregistrerar dig eller raderar ditt konto.</li>
       </ul>
 
       <h2>Dina rättigheter</h2>

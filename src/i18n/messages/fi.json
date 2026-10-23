@@ -243,7 +243,9 @@
     "canceled": "Maksu peruttiin. Rahaa ei veloitettu.",
     "subscriptionInfo": "Tilaus uusiutuu automaattisesti joka kuukausi, kunnes perut sen. Perut yhdellä klikkauksella kohdassa Tili. Käyttöoikeus päättyy silloin heti, eikä jo maksettua aikaa hyvitetä.",
     "thenPrice": "Sen jälkeen {price} kuukaudessa",
-    "loginToAccess": "Maksu on valmis ja tilaus on voimassa. Sinulla on jo tili osoitteella {email} – kirjaudu sillä sähköpostiosoitteella käyttääksesi kaikkea."
+    "loginToAccess": "Maksu on valmis ja tilaus on voimassa. Sinulla on jo tili osoitteella {email} – kirjaudu sillä sähköpostiosoitteella käyttääksesi kaikkea.",
+    "codeInvalid": "Alennuskoodia ei ole tai se on jo käytetty.",
+    "codeWrongEmail": "Alennuskoodi toimii vain sillä sähköpostiosoitteella, johon se lähetettiin."
   },
   "refBanner": {
     "text": "Alennuskoodi {code} on voimassa: {percent} % alennus ensimmäisestä kuukaudesta."
@@ -301,5 +303,27 @@
   "notFound": {
     "title": "Sivua ei löydy",
     "text": "Etsimääsi sivua ei ole olemassa tai se on siirretty."
+  },
+  "welcome": {
+    "nav": "{percent} % alennus",
+    "title": "Saat {percent} % alennuksen ensimmäisestä kuukaudesta",
+    "intro": "Kirjoita sähköpostisi ja saat henkilökohtaisen alennuskoodin. Lähetämme myös vinkkejä kokeeseen ja uutisia, esimerkiksi kun uusia koepäiviä julkaistaan. Voit perua tilauksen milloin tahansa.",
+    "emailLabel": "Sähköpostiosoitteesi",
+    "consent": "Kyllä, haluan saada vinkkejä ja tarjouksia sähköpostilla. Voin perua milloin tahansa.",
+    "button": "Hae alennuskoodini",
+    "sending": "Lähetetään …",
+    "successTitle": "Tässä on alennuskoodisi",
+    "successText": "Koodi antaa {percent} % alennuksen ensimmäisestä kuukaudesta. Sen voi käyttää kerran, sähköpostiosoitteella {email}.",
+    "emailed": "Lähetimme koodin myös sähköpostiisi.",
+    "useNow": "Käytä koodia nyt",
+    "alreadyUsed": "Tämä sähköpostiosoite on jo käyttänyt alennuskoodinsa.",
+    "errorConsent": "Rastita ruutu saadaksesi alennuskoodin.",
+    "error": "Se ei onnistunut nyt. Yritä hetken päästä uudelleen.",
+    "homeTitle": "{percent} % alennus ensimmäisestä kuukaudesta",
+    "homeText": "Liity sähköpostilla ja saat henkilökohtaisen alennuskoodin.",
+    "homeCta": "Hae alennuskoodi",
+    "mailSubject": "Alennuskoodisi: {percent} % alennus",
+    "mailBody": "Hei!\nKiitos, että liityit. Henkilökohtainen alennuskoodisi on: {code}\nSe antaa {percent} % alennuksen ensimmäisestä kuukaudesta ja sen voi käyttää kerran.\nKäytä sitä täällä: {link}",
+    "mailFooter": "Saat tämän viestin, koska liityit palveluun {brand}. Etkö halua enempää viestejä? Vastaa tähän viestiin, niin poistamme sinut listalta."
   }
 }

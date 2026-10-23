@@ -1,6 +1,7 @@
-import { BookOpen, Clock, Languages, RotateCcw, ShieldCheck, TrendingUp } from "lucide-react";
+import { BookOpen, Clock, Gift, Languages, RotateCcw, ShieldCheck, TrendingUp } from "lucide-react";
 import { brand, formatPrice, getCountry, languages, type LanguageCode } from "@/config";
 import { getI18n } from "@/i18n/server";
+import { WELCOME_DISCOUNT_PERCENT } from "@/lib/welcome";
 import { ButtonLink } from "./ButtonLink";
 import { AnswerOption } from "./AnswerOption";
 import { Disclaimer } from "./Disclaimer";
@@ -88,6 +89,17 @@ export async function HomeContent({ lang: langOverride }: { lang?: LanguageCode 
             {t("home.featureCheckedText")}
           </Feature>
         </ul>
+      </section>
+
+      <section className="mt-12 flex flex-col items-center gap-3 rounded-3xl border-2 border-cta bg-cta-soft p-6 text-center sm:flex-row sm:text-start">
+        <Gift className="size-10 shrink-0 text-cta" aria-hidden />
+        <div className="flex-1">
+          <h2 className="text-xl font-extrabold">{t("welcome.homeTitle", { percent: WELCOME_DISCOUNT_PERCENT })}</h2>
+          <p className="text-sm">{t("welcome.homeText")}</p>
+        </div>
+        <ButtonLink href="/rabatt" className="w-full sm:w-auto">
+          {t("welcome.homeCta")}
+        </ButtonLink>
       </section>
 
       <section className="mt-12 rounded-3xl bg-primary p-6 text-center text-white sm:p-10">

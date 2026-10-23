@@ -243,7 +243,9 @@
     "canceled": "Le paiement a été annulé. Aucun argent n’a été prélevé.",
     "subscriptionInfo": "L’abonnement se renouvelle automatiquement chaque mois jusqu’à ce que vous le résiliiez. Vous résiliez en un clic dans Compte. L’accès prend alors fin immédiatement et le temps déjà payé n’est pas remboursé.",
     "thenPrice": "Ensuite {price} par mois",
-    "loginToAccess": "Le paiement est terminé et l’abonnement est actif. Vous avez déjà un compte avec {email} – connectez-vous avec cette adresse pour tout utiliser."
+    "loginToAccess": "Le paiement est terminé et l’abonnement est actif. Vous avez déjà un compte avec {email} – connectez-vous avec cette adresse pour tout utiliser.",
+    "codeInvalid": "Ce code promo n’existe pas ou a déjà été utilisé.",
+    "codeWrongEmail": "Le code promo ne fonctionne qu’avec l’adresse e-mail à laquelle il a été envoyé."
   },
   "refBanner": {
     "text": "Le code promo {code} est actif : {percent} % de réduction le premier mois."
@@ -301,5 +303,27 @@
   "notFound": {
     "title": "Page introuvable",
     "text": "La page que vous cherchez n’existe pas ou a été déplacée."
+  },
+  "welcome": {
+    "nav": "{percent} % de réduction",
+    "title": "Obtenez {percent} % de réduction sur le premier mois",
+    "intro": "Indiquez votre e-mail et recevez un code promo personnel. Nous vous enverrons aussi des conseils pour l’examen et des nouvelles, par exemple quand de nouvelles dates sont annoncées. Vous pouvez vous désinscrire à tout moment.",
+    "emailLabel": "Votre adresse e-mail",
+    "consent": "Oui, je veux recevoir des conseils et des offres par e-mail. Je peux me désinscrire à tout moment.",
+    "button": "Obtenir mon code promo",
+    "sending": "Envoi …",
+    "successTitle": "Voici votre code promo",
+    "successText": "Le code donne {percent} % de réduction sur le premier mois. Il est utilisable une fois, avec l’adresse {email}.",
+    "emailed": "Nous avons aussi envoyé le code à votre adresse e-mail.",
+    "useNow": "Utiliser le code maintenant",
+    "alreadyUsed": "Cette adresse e-mail a déjà utilisé son code promo.",
+    "errorConsent": "Cochez la case pour recevoir le code promo.",
+    "error": "Cela n’a pas fonctionné. Réessayez dans un instant.",
+    "homeTitle": "{percent} % de réduction sur le premier mois",
+    "homeText": "Inscrivez-vous avec votre e-mail et recevez un code promo personnel.",
+    "homeCta": "Obtenir le code promo",
+    "mailSubject": "Votre code promo : {percent} % de réduction",
+    "mailBody": "Bonjour !\nMerci pour votre inscription. Votre code promo personnel : {code}\nIl donne {percent} % de réduction sur le premier mois et s’utilise une fois.\nUtilisez-le ici : {link}",
+    "mailFooter": "Vous recevez cet e-mail car vous vous êtes inscrit sur {brand}. Vous ne voulez plus d’e-mails ? Répondez à cet e-mail et nous vous retirerons."
   }
 }
