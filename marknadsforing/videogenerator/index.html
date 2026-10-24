@@ -301,6 +301,24 @@ function scheduleSound(audio, dest, kind, tl, voices) {
 
 // Kodar varje bildruta exakt med WebCodecs och packar en vanlig MP4 (H.264 + AAC) med längduppgift.
 const SR = 48000;
+
+// Windows H.264-kodare (som Chrome använder) lägger en "prefix"-NAL (typ 14, från SVC-tillägget) före varje bildruta.
+// Chrome och Windows bryr sig inte, men vissa spelare (t.ex. i appar) klarar inte av dem. De plockas därför bort,
+// så att filen blir vanlig H.264. Indata och utdata är i "avc"-format (varje NAL med 4 byte längd framför).
+function vanligH264(chunk) {
+  const src = new Uint8Array(chunk.byteLength); chunk.copyTo(src);
+  const delar = []; let p = 0, total = 0;
+  while (p + 4 <= src.length) {
+    const len = ((src[p] << 24) | (src[p + 1] << 16) | (src[p + 2] << 8) | src[p + 3]) >>> 0;
+    const typ = src[p + 4] & 31;
+    if (typ !== 14 && typ !== 20) { delar.push(src.subarray(p, p + 4 + len)); total += 4 + len; }
+    p += 4 + len;
+  }
+  if (total === src.length) return chunk;
+  const data = new Uint8Array(total); let o = 0;
+  for (const d of delar) { data.set(d, o); o += d.length; }
+  return new EncodedVideoChunk({ type: chunk.type, timestamp: chunk.timestamp, duration: chunk.duration ?? undefined, data });
+}
 async function renderAudio(kind, tl, voices) {
   const off = new OfflineAudioContext(2, Math.ceil(SR * tl.end), SR);
   scheduleSound(off, off.destination, kind, tl, voices);
@@ -333,8 +351,8 @@ async function record(job) {
   });
 
   let error = null;
-  const venc = new VideoEncoder({ output: (c, m) => muxer.addVideoChunk(c, m), error: (e) => (error = e) });
-  venc.configure({ codec: "avc1.640028", width: W, height: H, bitrate: 8_000_000, framerate: FPS });
+  const venc = new VideoEncoder({ output: (c, m) => muxer.addVideoChunk(vanligH264(c), m), error: (e) => (error = e) });
+  venc.configure({ codec: "avc1.640028", width: W, height: H, bitrate: 8_000_000, framerate: FPS, scalabilityMode: "L1T1", avc: { format: "avc" } });
   const draw = (t) => { background(t); logo(); scene(L, job.key, t, tl); };
   for (let i = 0; i < frames; i++) {
     draw(i / FPS);
