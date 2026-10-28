@@ -1,9 +1,8 @@
 "use server";
 
 import { z } from "zod";
-import { brand } from "@/config";
 import { getI18n } from "@/i18n/server";
-import { sendWelcomeEmail, signUpForWelcomeCode, welcomeLink } from "@/lib/welcome";
+import { joinMailingList } from "@/lib/welcome";
 
 export type SignupState = {
   error?: string;
@@ -24,18 +23,9 @@ export async function signUp(_prev: SignupState, formData: FormData): Promise<Si
   if (formData.get("consent_marketing") !== "on") return { error: t("welcome.errorConsent"), email };
 
   try {
-    const result = await signUpForWelcomeCode(email, lang);
+    const result = await joinMailingList(email, lang, t);
     if (result.used) return { email, used: true };
-    const link = welcomeLink(result.code);
-    // Mejlet skickas bara första gången, så att formuläret inte kan användas för att spamma.
-    const emailed = result.isNew
-      ? await sendWelcomeEmail(email, {
-          subject: t("welcome.mailSubject", { percent: result.discountPercent }),
-          body: t("welcome.mailBody", { code: result.code, percent: result.discountPercent, link }),
-          footer: t("welcome.mailFooter", { brand: brand.name }),
-        })
-      : false;
-    return { email, code: result.code, percent: result.discountPercent, emailed };
+    return { email, code: result.code, percent: result.discountPercent, emailed: result.emailed };
   } catch (e) {
     console.error(e instanceof Error ? e.message : e);
     return { error: t("welcome.error"), email };

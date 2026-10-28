@@ -3,6 +3,7 @@ import { randomBytes } from "node:crypto";
 import { brand } from "@/config";
 import { publicEnv } from "@/lib/env";
 import { createAdminClient } from "@/lib/supabase/admin";
+import type { Translate } from "@/i18n/translate";
 
 /**
  * VÄLKOMSTRABATT
@@ -86,6 +87,24 @@ export async function forgetSignup(email: string) {
 
 export function welcomeLink(code: string) {
   return `${publicEnv.siteUrl.replace(/\/$/, "")}/kop?kod=${encodeURIComponent(code)}`;
+}
+
+/**
+ * Skriver upp adressen på e-postlistan (kräver samtycke, som den som anropar har fått)
+ * och mejlar rabattkoden. Mejlet skickas bara första gången, så att formulären inte kan
+ * användas för att spamma någon annan.
+ */
+export async function joinMailingList(email: string, language: string, t: Translate) {
+  const result = await signUpForWelcomeCode(email, language);
+  const emailed =
+    result.isNew && !result.used
+      ? await sendWelcomeEmail(email, {
+          subject: t("welcome.mailSubject", { percent: result.discountPercent }),
+          body: t("welcome.mailBody", { code: result.code, percent: result.discountPercent, link: welcomeLink(result.code) }),
+          footer: t("welcome.mailFooter", { brand: brand.name }),
+        })
+      : false;
+  return { ...result, emailed };
 }
 
 /**

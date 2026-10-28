@@ -34,7 +34,7 @@
     "titleHighlight": "your language",
     "subtitle": "Questions in Swedish, just like in the test. Explanations in the language you understand best.",
     "ctaFree": "Start practicing for free",
-    "noAccount": "No account needed · {n} free questions",
+    "noAccount": "No account – just your email · {n} free questions",
     "explanationsIn": "Explanations in {n} languages, for example:",
     "demoTitle": "This is how practicing looks",
     "demoOptionA": "Answer option A",
@@ -64,7 +64,7 @@
     "faqLanguageQ": "What language are the questions in?",
     "faqLanguageA": "The questions and answers are in Swedish, because the test is in Swedish. You can read the explanations in your own language.",
     "faqAccountQ": "Do I need to create an account?",
-    "faqAccountA": "No, you can start practicing right away. You only give your email when you buy. What you have practiced is saved.",
+    "faqAccountA": "No. For the free questions, you only enter your email address – no password needed. An account is created only when you buy. What you have practised is saved.",
     "faqCancelQ": "Can I cancel whenever I want?",
     "faqCancelA": "Yes. There is no commitment period. You cancel with one click under Account, at no extra cost. The cancellation takes effect immediately: your access ends at once and no more payments are taken. Time already paid for is not refunded.",
     "faqFormatQ": "How many questions does the test have?",
@@ -78,7 +78,7 @@
     "title": "Practice",
     "intro": "Choose a chapter. You get one question at a time and see right away if your answer is correct.",
     "freeBannerTitle": "Start with {n} free questions",
-    "freeBannerText": "Questions from all chapters. No account needed.",
+    "freeBannerText": "Questions from all chapters. No account – just your email.",
     "freeBannerCta": "Practice for free now",
     "examCardTitle": "Practice test",
     "examCardText": "Practice test: {q} questions in {m} minutes",
@@ -128,10 +128,21 @@
     "label": "Free practice",
     "empty": "The free questions are coming soon. Please come back in a few days!",
     "usedUpTitle": "You have used your free questions",
-    "usedUpIntro": "Well done! Keep practicing with all questions and take a real practice test.",
+    "usedUpIntro": "Well done! Keep practising with all the questions and take a full practice test.",
     "done": "Free practice finished",
     "offerTitle": "Do you want to pass the test?",
     "offerIntro": "You have tried for free. Unlock all questions, the practice test and explanations in your language."
+  },
+  "freeGate": {
+    "title": "Start practising for free",
+    "intro": "Enter your email address and you can start with {n} free questions right away. No password needed.",
+    "emailLabel": "Your email address",
+    "consent": "Yes, Medborgarhjälpen may send me tips for the test and offers by email. I will also get {percent}% off the first month. I can unsubscribe at any time.",
+    "info": "We keep your email address for up to 12 months to give one free round per person and to fill it in for you if you buy. We only send offers if you tick the box.",
+    "usedUp": "This email address has already used its free questions. Unlock everything to keep practising.",
+    "button": "Start practising",
+    "starting": "Starting …",
+    "codeSent": "Thank you! We have sent your personal discount code ({percent}%) to your email."
   },
   "offer": {
     "title": "Unlock everything and get ready for the test",
@@ -299,7 +310,7 @@
     "deleteButton": "Delete my account and all data",
     "deleted": "Your account and all your data have been deleted.",
     "deleteError": "The account could not be deleted. Contact us and we will help you.",
-    "anonymousNote": "You are practicing without an account. Your answers are saved in this browser. If you want to delete them, you can do it here."
+    "anonymousNote": "You are practising without an account. Your answers and the email address you entered before the free questions are saved. If you want to delete them, you can do it here."
   },
   "share": {
     "question": "Do you know the answer?",
@@ -344,7 +355,7 @@
     "ovaTitle": "Practice questions for the Swedish citizenship test – all chapters",
     "ovaDescription": "Practise chapter by chapter with questions about Swedish society for the citizenship test. Questions in Swedish like the real test, explanations in your language.",
     "freeTitle": "Free practice questions for the Swedish citizenship test",
-    "freeDescription": "Try {n} questions for free without an account. Questions in Swedish like the citizenship test, with the right answer and explanation straight away.",
+    "freeDescription": "Try {n} questions for free – no account, just your email. Questions in Swedish like on the citizenship test, with the right answer and an explanation right away.",
     "examTitle": "Timed practice test for the Swedish citizenship test",
     "examDescription": "Take a full timed practice test. See your results for each chapter and what you need to study more.",
     "chapterDescription": "Practice questions about {chapter} for the Swedish citizenship test. Questions in Swedish with explanations in your language.",

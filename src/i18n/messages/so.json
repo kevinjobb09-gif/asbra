@@ -34,7 +34,7 @@
     "titleHighlight": "luqaddaada",
     "subtitle": "Su'aalaha waa af-Iswiidhish, sida imtixaanka. Sharaxaadda waxay ku qoran tahay luqadda aad sida fiican u fahanto.",
     "ctaFree": "Bilow tababar bilaash ah",
-    "noAccount": "Akoon looma baahna · {n} su'aalood oo bilaash ah",
+    "noAccount": "Akoon looma baahna – iimaylkaaga oo keliya · {n} su'aalood oo bilaash ah",
     "explanationsIn": "Sharaxaad {n} luqadood, tusaale:",
     "demoTitle": "Sidan ayuu u ekaadaa tababarku",
     "demoOptionA": "Jawaabta A",
@@ -64,7 +64,7 @@
     "faqLanguageQ": "Su'aalaha luqaddee ayay ku qoran yihiin?",
     "faqLanguageA": "Su'aalaha iyo jawaabaha waa af-Iswiidhish, maxaa yeelay imtixaanku waa af-Iswiidhish. Sharaxaadda waxaad ku akhrin kartaa luqaddaada.",
     "faqAccountQ": "Ma u baahanahay inaan akoon sameeyo?",
-    "faqAccountA": "Maya, hadda ayaad bilaabi kartaa. Email-kaaga waxaad qortaa oo keliya marka aad iibsanayso. Waxa aad ku tababaratay waa la kaydiyaa.",
+    "faqAccountA": "Maya. Su'aalaha bilaashka ah, waxaad qoraysaa iimaylkaaga oo keliya – furaha sirta ah looma baahna. Akoon waxaa la sameeyaa marka aad wax iibsato oo keliya. Waxyaabaha aad ku tababaratay waa la kaydiyaa.",
     "faqCancelQ": "Ma joojin karaa goorta aan rabo?",
     "faqCancelA": "Haa. Ma jiro muddo ballan qaad ah. Waxaad ku joojinaysaa hal guji oo Akoonka ah, kharash dheeraad ah la'aan. Joojintu isla markiiba way dhaqan gashaa: helitaankaagu wuu dhammaanayaa isla markiiba, lacag kalena lagaa jari maayo. Waqtiga horay loo bixiyay lacagtiisa lagu celin maayo.",
     "faqFormatQ": "Imtixaanku immisa su'aalood ayuu leeyahay?",
@@ -78,7 +78,7 @@
     "title": "Tababar",
     "intro": "Dooro cutub. Hal su'aal ayaad helaysaa markiiba, isla markaana waxaad arkaysaa in jawaabtaadu sax tahay.",
     "freeBannerTitle": "Ku bilow {n} su'aalood oo bilaash ah",
-    "freeBannerText": "Su'aalo ka yimid dhammaan cutubyada. Akoon looma baahna.",
+    "freeBannerText": "Su'aalo ka yimid dhammaan cutubyada. Akoon looma baahna – iimaylkaaga oo keliya.",
     "freeBannerCta": "Hadda bilaash ku tababar",
     "examCardTitle": "Imtixaan tijaabo",
     "examCardText": "Imtixaan tijaabo ah: {q} su'aalood {m} daqiiqo gudahood",
@@ -128,10 +128,21 @@
     "label": "Tababar bilaash ah",
     "empty": "Su'aalaha bilaashka ah dhowaan ayay imanayaan. Dib u soo noqo dhowr maalmood kadib!",
     "usedUpTitle": "Waad isticmaashay su'aalahaaga bilaashka ah",
-    "usedUpIntro": "Aad baad u fiicantahay! Ku sii wad tababarka dhammaan su'aalaha oo samee imtixaan tijaabo ah oo dhab ah.",
+    "usedUpIntro": "Si fiican ayaad u shaqaysay! Ku sii tababaro dhammaan su'aalaha oo samee imtixaan tijaabo ah oo dhammaystiran.",
     "done": "Tababarka bilaashka ah waa dhammaaday",
     "offerTitle": "Ma rabtaa inaad imtixaanka gudubto?",
     "offerIntro": "Waad isku dayday bilaash. Fur dhammaan su'aalaha, imtixaanka tijaabada iyo sharaxaadda luqaddaada."
+  },
+  "freeGate": {
+    "title": "Bilaash ku bilow tababarka",
+    "intro": "Qor iimaylkaaga, markaas waxaad isla markiiba ku bilaabi kartaa {n} su'aalood oo bilaash ah. Furaha sirta ah looma baahna.",
+    "emailLabel": "Iimaylkaaga",
+    "consent": "Haa, Medborgarhjälpen waxay ii soo diri kartaa talooyin ku saabsan imtixaanka iyo dalabyo iimayl ahaan. Markaas waxaan sidoo kale helayaa {percent} % qiimo dhimis bisha ugu horreysa. Waqti kasta waan iska joojin karaa.",
+    "info": "Iimaylkaaga waxaan kaydinaynaa ugu badnaan 12 bilood, si qof walba u helo hal mar oo bilaash ah, iyo si aan kuugu buuxinno haddii aad wax iibsato. Dalabyo waxaan kuu soo dirnaa oo keliya haddii aad calaamadiso sanduuqa.",
+    "usedUp": "Iimaylkan horay ayuu u isticmaalay su'aalihiisa bilaashka ah. Fur dhammaan si aad u sii tababarato.",
+    "button": "Bilow tababarka",
+    "starting": "Wuu bilaabanayaa …",
+    "codeSent": "Mahadsanid! Waxaan iimaylkaaga kuugu soo dirnay koodhkaaga qiimo dhimista ee gaarka ah ({percent} %)."
   },
   "offer": {
     "title": "Fur wax kasta oo u diyaar garow imtixaanka",
@@ -299,7 +310,7 @@
     "deleteButton": "Tirtir akoonkayga iyo dhammaan xogta",
     "deleted": "Akoonkaaga iyo dhammaan xogtaada waa la tirtiray.",
     "deleteError": "Akoonka lama tirtiri karin. Nala soo xiriir, waan ku caawin doonnaa.",
-    "anonymousNote": "Waxaad ku tababaranaysaa akoon la'aan. Jawaabahaaga waxaa lagu kaydiyaa browser-kan. Haddii aad rabto inaad tirtirto, halkan ayaad ka samayn kartaa."
+    "anonymousNote": "Akoon la'aan ayaad ku tababaranaysaa. Jawaabahaaga iyo iimaylka aad qortay ka hor su'aalaha bilaashka ah waa la kaydiyaa. Haddii aad rabto inaad tirtirto, halkan ayaad ka samayn kartaa."
   },
   "share": {
     "question": "Ma taqaannaa jawaabta?",
@@ -344,7 +355,7 @@
     "ovaTitle": "Su'aalo tababar oo loogu talagalay imtixaanka dhalashada Iswiidhan – dhammaan cutubyada",
     "ovaDescription": "Cutub cutub ugu tababaro su'aalaha bulshada Iswiidhan imtixaanka dhalashada. Su'aalo Iswiidhish ah sida imtixaanka, sharaxaadna afkaaga.",
     "freeTitle": "Su'aalo bilaash ah oo loogu talagalay imtixaanka dhalashada Iswiidhan",
-    "freeDescription": "Isku day {n} su'aalood bilaash, akoon la'aan. Su'aalo Iswiidhish ah sida imtixaanka dhalashada, jawaabta saxda ah iyo sharaxaadda isla markiiba.",
+    "freeDescription": "Tijaabi {n} su'aalood bilaash – akoon looma baahna, iimaylkaaga oo keliya. Su'aalo af Iswiidish ah sida imtixaanka dhalashada, oo leh jawaabta saxda ah iyo sharaxaad isla markiiba.",
     "examTitle": "Imtixaan tijaabo ah oo saacad leh oo loogu talagalay imtixaanka dhalashada Iswiidhan",
     "examDescription": "Samee imtixaan tijaabo ah oo dhammaystiran oo saacad leh. Arag natiijadaada cutub kasta iyo waxa aad u baahan tahay inaad wax badan ka barato.",
     "chapterDescription": "Su'aalo tababar oo ku saabsan {chapter} oo loogu talagalay imtixaanka dhalashada Iswiidhan. Su'aalo Iswiidhish ah oo sharaxaad afkaaga leh.",

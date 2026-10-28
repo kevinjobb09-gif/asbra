@@ -34,7 +34,7 @@
     "titleHighlight": "omalla kielelläsi",
     "subtitle": "Kysymykset ruotsiksi, kuten kokeessa. Selitykset kielellä, jota ymmärrät parhaiten.",
     "ctaFree": "Aloita ilmaiseksi",
-    "noAccount": "Ei tiliä · {n} ilmaista kysymystä",
+    "noAccount": "Ei tiliä – vain sähköpostisi · {n} ilmaista kysymystä",
     "explanationsIn": "Selitykset {n} kielellä, esimerkiksi:",
     "demoTitle": "Tältä harjoittelu näyttää",
     "demoOptionA": "Vastaus A",
@@ -64,7 +64,7 @@
     "faqLanguageQ": "Millä kielellä kysymykset ovat?",
     "faqLanguageA": "Kysymykset ja vastaukset ovat ruotsiksi, koska koe on ruotsiksi. Selitykset voit lukea omalla kielelläsi.",
     "faqAccountQ": "Pitääkö minun luoda tili?",
-    "faqAccountA": "Ei, voit aloittaa heti. Annat sähköpostisi vasta ostaessasi. Harjoittelusi tallentuu.",
+    "faqAccountA": "Ei. Ilmaisia kysymyksiä varten kirjoitat vain sähköpostiosoitteesi – salasanaa ei tarvita. Tili luodaan vasta, kun ostat. Harjoittelusi tallennetaan.",
     "faqCancelQ": "Voinko perua milloin tahansa?",
     "faqCancelA": "Kyllä. Määräaikaa ei ole. Perut yhdellä klikkauksella kohdassa Tili, ilman lisämaksuja. Peruutus tulee voimaan heti: käyttöoikeus päättyy välittömästi eikä uusia maksuja veloiteta. Jo maksettua aikaa ei hyvitetä.",
     "faqFormatQ": "Montako kysymystä kokeessa on?",
@@ -78,7 +78,7 @@
     "title": "Harjoittele",
     "intro": "Valitse luku. Saat yhden kysymyksen kerrallaan ja näet heti, vastasitko oikein.",
     "freeBannerTitle": "Aloita {n} ilmaisella kysymyksellä",
-    "freeBannerText": "Kysymyksiä kaikista luvuista. Ei tiliä.",
+    "freeBannerText": "Kysymyksiä kaikista luvuista. Ei tiliä – vain sähköpostisi.",
     "freeBannerCta": "Harjoittele ilmaiseksi nyt",
     "examCardTitle": "Harjoituskoe",
     "examCardText": "Harjoituskoe: {q} kysymystä {m} minuutissa",
@@ -128,10 +128,21 @@
     "label": "Ilmainen harjoittelu",
     "empty": "Ilmaiset kysymykset tulevat pian. Palaa muutaman päivän päästä!",
     "usedUpTitle": "Olet käyttänyt ilmaiset kysymyksesi",
-    "usedUpIntro": "Hienoa! Jatka harjoittelua kaikilla kysymyksillä ja tee oikea harjoituskoe.",
+    "usedUpIntro": "Hyvää työtä! Jatka harjoittelua kaikilla kysymyksillä ja tee kokonainen harjoituskoe.",
     "done": "Ilmainen harjoittelu valmis",
     "offerTitle": "Haluatko läpäistä kokeen?",
     "offerIntro": "Kokeilit ilmaiseksi. Avaa kaikki kysymykset, harjoituskoe ja selitykset omalla kielelläsi."
+  },
+  "freeGate": {
+    "title": "Aloita harjoittelu ilmaiseksi",
+    "intro": "Kirjoita sähköpostiosoitteesi, niin voit aloittaa heti {n} ilmaisella kysymyksellä. Salasanaa ei tarvita.",
+    "emailLabel": "Sähköpostiosoitteesi",
+    "consent": "Kyllä, Medborgarhjälpen saa lähettää minulle sähköpostilla vinkkejä koetta varten ja tarjouksia. Silloin saan myös {percent} % alennuksen ensimmäisestä kuukaudesta. Voin perua tilauksen milloin tahansa.",
+    "info": "Säilytämme sähköpostiosoitteesi enintään 12 kuukautta. Näin jokainen saa yhden ilmaisen kierroksen, ja voimme täyttää osoitteen puolestasi, jos ostat. Lähetämme tarjouksia vain, jos rastit ruudun.",
+    "usedUp": "Tämä sähköpostiosoite on jo käyttänyt ilmaiset kysymyksensä. Avaa kaikki, niin voit jatkaa harjoittelua.",
+    "button": "Aloita harjoittelu",
+    "starting": "Aloitetaan …",
+    "codeSent": "Kiitos! Lähetimme henkilökohtaisen alennuskoodisi ({percent} %) sähköpostiisi."
   },
   "offer": {
     "title": "Avaa kaikki ja valmistaudu kokeeseen",
@@ -299,7 +310,7 @@
     "deleteButton": "Poista tilini ja kaikki tiedot",
     "deleted": "Tilisi ja kaikki tietosi on poistettu.",
     "deleteError": "Tiliä ei voitu poistaa. Ota yhteyttä, niin autamme.",
-    "anonymousNote": "Harjoittelet ilman tiliä. Vastauksesi tallentuvat tähän selaimeen. Voit poistaa ne täällä."
+    "anonymousNote": "Harjoittelet ilman tiliä. Vastauksesi ja sähköpostiosoite, jonka kirjoitit ennen ilmaisia kysymyksiä, tallennetaan. Jos haluat poistaa ne, voit tehdä sen täällä."
   },
   "share": {
     "question": "Tiedätkö vastauksen?",
@@ -344,7 +355,7 @@
     "ovaTitle": "Harjoituskysymyksiä Ruotsin kansalaisuuskokeeseen – kaikki luvut",
     "ovaDescription": "Harjoittele luku kerrallaan kysymyksiä Ruotsin yhteiskunnasta kansalaisuuskoetta varten. Kysymykset ruotsiksi kuten kokeessa, selitykset omalla kielelläsi.",
     "freeTitle": "Ilmaisia kysymyksiä Ruotsin kansalaisuuskokeeseen",
-    "freeDescription": "Kokeile {n} kysymystä ilmaiseksi ilman tiliä. Kysymykset ruotsiksi kuten kansalaisuuskokeessa, oikea vastaus ja selitys heti.",
+    "freeDescription": "Kokeile {n} kysymystä ilmaiseksi – ei tiliä, vain sähköpostisi. Ruotsinkielisiä kysymyksiä kuten kansalaisuuskokeessa, oikeat vastaukset ja selitykset heti.",
     "examTitle": "Ajastettu harjoituskoe Ruotsin kansalaisuuskokeeseen",
     "examDescription": "Tee koko harjoituskoe kellon kanssa. Näet tuloksen jokaisesta luvusta ja sen, mitä sinun pitää vielä opiskella.",
     "chapterDescription": "Harjoituskysymyksiä aiheesta {chapter} Ruotsin kansalaisuuskokeeseen. Kysymykset ruotsiksi, selitykset omalla kielelläsi.",

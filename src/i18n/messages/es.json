@@ -34,7 +34,7 @@
     "titleHighlight": "tu idioma",
     "subtitle": "Preguntas en sueco, igual que en el examen. Explicaciones en el idioma que mejor entiendes.",
     "ctaFree": "Empieza a practicar gratis",
-    "noAccount": "Sin cuenta · {n} preguntas gratis",
+    "noAccount": "Sin cuenta: solo tu correo · {n} preguntas gratis",
     "explanationsIn": "Explicaciones en {n} idiomas, por ejemplo:",
     "demoTitle": "Así se ve la práctica",
     "demoOptionA": "Respuesta A",
@@ -64,7 +64,7 @@
     "faqLanguageQ": "¿En qué idioma están las preguntas?",
     "faqLanguageA": "Las preguntas y respuestas están en sueco, porque el examen es en sueco. Las explicaciones puedes leerlas en tu idioma.",
     "faqAccountQ": "¿Tengo que crear una cuenta?",
-    "faqAccountA": "No, puedes empezar ahora mismo. Solo escribes tu correo cuando compras. Lo que has practicado se guarda.",
+    "faqAccountA": "No. Para las preguntas gratis solo escribes tu correo electrónico. No necesitas contraseña. La cuenta se crea solo cuando compras. Lo que has practicado se guarda.",
     "faqCancelQ": "¿Puedo cancelar cuando quiera?",
     "faqCancelA": "Sí. No hay permanencia. Cancelas con un clic en Cuenta, sin coste adicional. La cancelación es inmediata: el acceso termina al instante y no se cobra nada más. El tiempo ya pagado no se reembolsa.",
     "faqFormatQ": "¿Cuántas preguntas tiene el examen?",
@@ -78,7 +78,7 @@
     "title": "Practicar",
     "intro": "Elige un capítulo. Recibes una pregunta a la vez y ves enseguida si acertaste.",
     "freeBannerTitle": "Empieza con {n} preguntas gratis",
-    "freeBannerText": "Preguntas de todos los capítulos. Sin cuenta.",
+    "freeBannerText": "Preguntas de todos los capítulos. Sin cuenta: solo tu correo.",
     "freeBannerCta": "Practica gratis ahora",
     "examCardTitle": "Examen de prueba",
     "examCardText": "Simulación: {q} preguntas en {m} minutos",
@@ -128,10 +128,21 @@
     "label": "Práctica gratis",
     "empty": "Las preguntas gratis llegarán pronto. ¡Vuelve en unos días!",
     "usedUpTitle": "Has usado tus preguntas gratis",
-    "usedUpIntro": "¡Muy bien! Sigue practicando con todas las preguntas y haz un examen de prueba real.",
+    "usedUpIntro": "¡Muy bien! Sigue practicando con todas las preguntas y haz un simulacro completo del examen.",
     "done": "Práctica gratis terminada",
     "offerTitle": "¿Quieres aprobar el examen?",
     "offerIntro": "Ya probaste gratis. Desbloquea todas las preguntas, el examen de prueba y las explicaciones en tu idioma."
+  },
+  "freeGate": {
+    "title": "Empieza a practicar gratis",
+    "intro": "Escribe tu correo electrónico y empieza ahora con {n} preguntas gratis. No necesitas contraseña.",
+    "emailLabel": "Tu correo electrónico",
+    "consent": "Sí, Medborgarhjälpen puede enviarme consejos para el examen y ofertas por correo. Así también recibo un {percent} % de descuento en el primer mes. Puedo darme de baja cuando quiera.",
+    "info": "Guardamos tu correo electrónico como máximo 12 meses. Lo usamos para dar una ronda gratis por persona y para escribirlo por ti si compras. Solo te enviamos ofertas si marcas la casilla.",
+    "usedUp": "Este correo electrónico ya usó sus preguntas gratis. Desbloquea todo para seguir practicando.",
+    "button": "Empezar a practicar",
+    "starting": "Empezando…",
+    "codeSent": "¡Gracias! Te enviamos a tu correo tu código de descuento personal ({percent} %)."
   },
   "offer": {
     "title": "Desbloquea todo y prepárate para el examen",
@@ -299,7 +310,7 @@
     "deleteButton": "Borrar mi cuenta y todos los datos",
     "deleted": "Tu cuenta y todos tus datos se han borrado.",
     "deleteError": "No se pudo borrar la cuenta. Contáctanos y te ayudaremos.",
-    "anonymousNote": "Practicas sin cuenta. Tus respuestas se guardan en este navegador. Si quieres borrarlas, puedes hacerlo aquí."
+    "anonymousNote": "Practicas sin cuenta. Se guardan tus respuestas y el correo que escribiste antes de las preguntas gratis. Si quieres borrarlos, puedes hacerlo aquí."
   },
   "share": {
     "question": "¿Sabes la respuesta?",
@@ -344,7 +355,7 @@
     "ovaTitle": "Preguntas de práctica para el examen de ciudadanía sueca – todos los capítulos",
     "ovaDescription": "Practica capítulo a capítulo preguntas sobre la sociedad sueca para el examen de ciudadanía. Preguntas en sueco como en el examen, explicaciones en tu idioma.",
     "freeTitle": "Preguntas gratis para el examen de ciudadanía sueca",
-    "freeDescription": "Prueba {n} preguntas gratis sin cuenta. Preguntas en sueco como en el examen de ciudadanía, con la respuesta correcta y la explicación al instante.",
+    "freeDescription": "Prueba {n} preguntas gratis: sin cuenta, solo tu correo. Preguntas en sueco como en el examen de ciudadanía, con la respuesta correcta y una explicación al instante.",
     "examTitle": "Examen de práctica con reloj para el examen de ciudadanía sueca",
     "examDescription": "Haz una simulación completa del examen con reloj. Mira tus resultados por capítulo y qué necesitas estudiar más.",
     "chapterDescription": "Preguntas de práctica sobre {chapter} para el examen de ciudadanía sueca. Preguntas en sueco con explicaciones en tu idioma.",

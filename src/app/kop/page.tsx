@@ -7,6 +7,7 @@ import { computePrice } from "@/lib/payments/pricing";
 import { getActiveRef } from "@/lib/payments/server";
 import { getCurrentUser } from "@/lib/supabase/user";
 import { getWelcomeCode, normalizeWelcomeCode } from "@/lib/welcome";
+import { getFreeSignupEmail } from "@/lib/freeSignup";
 import { BuyForm } from "./BuyForm";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -40,8 +41,12 @@ export default async function BuyPage({ searchParams }: Props) {
   const firstMonth = formatPrice({ ...country, pricing: { ...country.pricing, amount: price.amountMinor / 100 } });
   const monthly = formatPrice(country);
 
-  // Föreslå e-postadressen om användaren redan har ett konto.
-  const knownEmail = (useWelcome ? usableWelcome?.email : null) ?? user?.email ?? undefined;
+  // Föreslå e-postadressen om användaren redan har ett konto, eller skrev den före gratisfrågorna.
+  const knownEmail =
+    (useWelcome ? usableWelcome?.email : null) ??
+    user?.email ??
+    (user?.isAnonymous ? await getFreeSignupEmail(user.id) : null) ??
+    undefined;
 
   const benefits = [
     t("offer.benefitChapters", { n: country.chapters.length }),

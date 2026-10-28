@@ -25,7 +25,8 @@ export default function TermsPage() {
 
       <h2>2. Gratis och prenumeration</h2>
       <p>
-        Du kan öva på ett begränsat antal frågor gratis utan konto. Allt innehåll får du med en månadsprenumeration för{" "}
+        Du kan öva på ett begränsat antal frågor gratis utan konto. Du behöver bara skriva din e-postadress, och varje
+        e-postadress får en gratisomgång. Allt innehåll får du med en månadsprenumeration för{" "}
         {formatPrice(country)} i månaden (inklusive moms). Prenumerationen förnyas automatiskt varje månad tills du säger upp
         den. Har du kommit via en rabattkod gäller rabatten den första månaden.
       </p>

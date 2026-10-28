@@ -6,6 +6,7 @@ import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { getI18n } from "@/i18n/server";
 import { cancelAllSubscriptionsNow, cancelSubscriptionNow } from "@/lib/payments/server";
+import { forgetFreeSignup } from "@/lib/freeSignup";
 import { forgetSignup } from "@/lib/welcome";
 
 export type DeleteState = { error?: string };
@@ -29,7 +30,8 @@ export async function deleteAccount(_prev: DeleteState, formData: FormData): Pro
   await cancelAllSubscriptionsNow(data.user.id);
   const admin = createAdminClient();
   await admin.from("purchases").update({ email: null }).eq("user_id", data.user.id);
-  if (data.user.email) await forgetSignup(data.user.email);
+  // E-post från rabattsidan och gratisfrågorna. Anonyma användares adress försvinner med användaren.
+  if (data.user.email) await Promise.all([forgetSignup(data.user.email), forgetFreeSignup(data.user.email)]);
   const { error } = await admin.auth.admin.deleteUser(data.user.id);
   if (error) {
     console.error("Kunde inte radera konto:", error.message);

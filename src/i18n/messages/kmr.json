@@ -34,7 +34,7 @@
     "titleHighlight": "bi zimanê xwe",
     "subtitle": "Pirs bi swêdî ne, wek di îmtîhanê de. Ravekirin bi wî zimanî ku tu herî baş fêm dikî.",
     "ctaFree": "Belaş dest bi perwerdeyê bike",
-    "noAccount": "Hesab ne pêwîst e · {n} pirsên belaş",
+    "noAccount": "Hesab tune – tenê e-maila te · {n} pirsên belaş",
     "explanationsIn": "Ravekirin bi {n} zimanan, wek:",
     "demoTitle": "Perwerde wiha xuya dike",
     "demoOptionA": "Bersiva A",
@@ -64,7 +64,7 @@
     "faqLanguageQ": "Pirs bi kîjan zimanî ne?",
     "faqLanguageA": "Pirs û bersiv bi swêdî ne, ji ber ku îmtîhan bi swêdî ye. Tu dikarî ravekirinan bi zimanê xwe bixwînî.",
     "faqAccountQ": "Ma divê ez hesabekê çêkim?",
-    "faqAccountA": "Na, tu dikarî yekser dest pê bikî. Tu tenê dema kirînê e-maila xwe dinivîsî. Perwerdeya te tê tomarkirin.",
+    "faqAccountA": "Na. Ji bo pirsên belaş tenê e-maila xwe binivîse – şîfre ne pêwîst e. Hesab tenê dema ku tu dikirî tê çêkirin. Tiştên ku te li ser wan xebitî tên tomarkirin.",
     "faqCancelQ": "Ma ez dikarim kengê ku bixwazim betal bikim?",
     "faqCancelA": "Erê. Tu demê girêdanê tune. Tu bi yek klîkê di Hesab de, bê lêçûna zêde, betal dikî. Betalkirin yekser derbasdar e: gihîştina te di cih de diqede û tu dayînên din nayên kişandin. Pereyê dema ku berê hatiye dayîn nayê vegerandin.",
     "faqFormatQ": "Îmtîhan çend pirs e?",
@@ -78,7 +78,7 @@
     "title": "Perwerde",
     "intro": "Beşekê hilbijêre. Her carê pirsek distînî û yekser dibînî ka bersiva te rast e.",
     "freeBannerTitle": "Bi {n} pirsên belaş dest pê bike",
-    "freeBannerText": "Pirs ji hemû beşan. Hesab ne pêwîst e.",
+    "freeBannerText": "Pirs ji hemû beşan. Hesab tune – tenê e-maila te.",
     "freeBannerCta": "Niha belaş perwerde bibe",
     "examCardTitle": "Îmtîhana ceribandinê",
     "examCardText": "Simulasyon: {q} pirs di {m} deqîqeyan de",
@@ -128,10 +128,21 @@
     "label": "Perwerdeya belaş",
     "empty": "Pirsên belaş di demek nêz de tên. Çend roj şûnde vegere!",
     "usedUpTitle": "Te pirsên xwe yên belaş bi kar anîn",
-    "usedUpIntro": "Destê te xweş be! Bi hemû pirsan berdewam bike û îmtîhanek ceribandinê ya rastîn bike.",
+    "usedUpIntro": "Aferîn! Bi hemû pirsan re xebata xwe bidomîne û ceribandineke tevahî ya provê bike.",
     "done": "Perwerdeya belaş qediya",
     "offerTitle": "Tu dixwazî îmtîhanê derbas bikî?",
     "offerIntro": "Te belaş ceriband. Hemû pirsan, îmtîhana ceribandinê û ravekirinan bi zimanê xwe veke."
+  },
+  "freeGate": {
+    "title": "Belaş dest bi xebatê bike",
+    "intro": "E-maila xwe binivîse, û tu dikarî yekser bi {n} pirsên belaş dest pê bikî. Şîfre ne pêwîst e.",
+    "emailLabel": "E-maila te",
+    "consent": "Erê, Medborgarhjälpen dikare bi e-mailê ji min re şîretên ji bo provê û pêşniyaran bişîne. Wê demê ez ji bo meha yekem {percent} % daxistin jî distînim. Ez dikarim her dem abonetiyê betal bikim.",
+    "info": "Em e-maila te herî zêde 12 mehan diparêzin, da ku her kes tenê carekê pirsên belaş bistîne û da ku dema tu dikirî em wê ji te re binivîsin. Em tenê pêşniyaran dişînin eger tu qutîkê nîşan bikî.",
+    "usedUp": "Ev e-mail berê pirsên xwe yên belaş bi kar aniye. Her tiştî veke da ku xebata xwe bidomînî.",
+    "button": "Dest bi xebatê bike",
+    "starting": "Dest pê dike …",
+    "codeSent": "Spas! Me koda te ya daxistinê ya taybet ({percent} %) ji e-maila te re şand."
   },
   "offer": {
     "title": "Her tiştî veke û ji bo îmtîhanê amade bibe",
@@ -299,7 +310,7 @@
     "deleteButton": "Hesab û hemû daneyên min jê bibe",
     "deleted": "Hesab û hemû daneyên te hatin jêbirin.",
     "deleteError": "Hesab nehat jêbirin. Bi me re têkilî daynin û em ê alîkariya te bikin.",
-    "anonymousNote": "Tu bê hesab perwerde dibî. Bersivên te di vê gerokê de tên tomarkirin. Heke bixwazî tu dikarî wan li vir jê bibî."
+    "anonymousNote": "Tu bê hesab dixebitî. Bersivên te û e-maila ku te berî pirsên belaş nivîsî tên tomarkirin. Eger tu dixwazî wan jê bibî, tu dikarî li vir bikî."
   },
   "share": {
     "question": "Tu bersivê dizanî?",
@@ -344,7 +355,7 @@
     "ovaTitle": "Pirsên perwerdeyê ji bo azmûna hemwelatîbûna Swêdê – hemû beş",
     "ovaDescription": "Beş bi beş pirsên li ser civaka Swêdê ji bo azmûna hemwelatîbûnê perwerde bike. Pirs bi swêdî wek azmûnê, şirove bi zimanê te.",
     "freeTitle": "Pirsên belaş ji bo azmûna hemwelatîbûna Swêdê",
-    "freeDescription": "{n} pirsan belaş û bê hesab biceribîne. Pirs bi swêdî wek azmûna hemwelatîbûnê, bi bersiva rast û şiroveyê yekser.",
+    "freeDescription": "{n} pirsan belaş biceribîne – hesab tune, tenê e-maila te. Pirs bi swêdî wek di prova hemwelatîbûnê de, bi bersiva rast û ravekirinê yekser.",
     "examTitle": "Azmûna perwerdeyê bi demjimêr ji bo azmûna hemwelatîbûna Swêdê",
     "examDescription": "Simulasyoneke tevahî ya ezmûnê bi saetê bike. Encamê li gorî her beşê bibîne û fêr bibe ku divê tu bêtir li ser çi bixwînî.",
     "chapterDescription": "Pirsên perwerdeyê li ser {chapter} ji bo azmûna hemwelatîbûna Swêdê. Pirs bi swêdî bi şiroveyê bi zimanê te.",

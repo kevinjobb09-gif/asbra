@@ -34,7 +34,7 @@
     "titleHighlight": "na svom jeziku",
     "subtitle": "Pitanja na švedskom, kao na testu. Objašnjenja na jeziku koji najbolje razumiješ.",
     "ctaFree": "Počni vježbati besplatno",
-    "noAccount": "Bez računa · {n} besplatnih pitanja",
+    "noAccount": "Bez računa – samo tvoj e-mail · {n} besplatnih pitanja",
     "explanationsIn": "Objašnjenja na {n} jezika, npr.:",
     "demoTitle": "Ovako izgleda vježbanje",
     "demoOptionA": "Odgovor A",
@@ -64,7 +64,7 @@
     "faqLanguageQ": "Na kojem su jeziku pitanja?",
     "faqLanguageA": "Pitanja i odgovori su na švedskom, jer je test na švedskom. Objašnjenja možeš čitati na svom jeziku.",
     "faqAccountQ": "Moram li napraviti račun?",
-    "faqAccountA": "Ne, možeš odmah početi. E-mail upisuješ tek kad kupuješ. Tvoj napredak se čuva.",
+    "faqAccountA": "Ne. Za besplatna pitanja upišeš samo svoju e-mail adresu – lozinka nije potrebna. Račun se pravi tek kada kupiš. Ono što si vježbao/la se čuva.",
     "faqCancelQ": "Mogu li otkazati kad god želim?",
     "faqCancelA": "Da. Nema perioda obaveze. Otkazuješ jednim klikom pod Račun, bez dodatnih troškova. Otkazivanje važi odmah: pristup prestaje istog trena i više se ništa ne naplaćuje. Novac za već plaćeno vrijeme se ne vraća.",
     "faqFormatQ": "Koliko pitanja ima test?",
@@ -78,7 +78,7 @@
     "title": "Vježbaj",
     "intro": "Odaberi poglavlje. Dobijaš jedno pitanje odjednom i odmah vidiš je li odgovor tačan.",
     "freeBannerTitle": "Počni sa {n} besplatnih pitanja",
-    "freeBannerText": "Pitanja iz svih poglavlja. Bez računa.",
+    "freeBannerText": "Pitanja iz svih poglavlja. Bez računa – samo tvoj e-mail.",
     "freeBannerCta": "Vježbaj besplatno sada",
     "examCardTitle": "Probni test",
     "examCardText": "Simulacija: {q} pitanja za {m} minuta",
@@ -128,10 +128,21 @@
     "label": "Besplatno vježbanje",
     "empty": "Besplatna pitanja stižu uskoro. Navrati za nekoliko dana!",
     "usedUpTitle": "Iskoristio si besplatna pitanja",
-    "usedUpIntro": "Bravo! Nastavi vježbati sa svim pitanjima i uradi pravi probni test.",
+    "usedUpIntro": "Bravo! Nastavi vježbati sa svim pitanjima i uradi cijelu simulaciju testa.",
     "done": "Besplatno vježbanje je završeno",
     "offerTitle": "Želiš li položiti test?",
     "offerIntro": "Probao si besplatno. Otključaj sva pitanja, probni test i objašnjenja na svom jeziku."
+  },
+  "freeGate": {
+    "title": "Počni vježbati besplatno",
+    "intro": "Upiši svoju e-mail adresu i odmah možeš početi sa {n} besplatnih pitanja. Lozinka nije potrebna.",
+    "emailLabel": "Tvoja e-mail adresa",
+    "consent": "Da, Medborgarhjälpen mi smije slati savjete za test i ponude putem e-maila. Tada dobijam i {percent} % popusta na prvi mjesec. Mogu se odjaviti bilo kada.",
+    "info": "Tvoju e-mail adresu čuvamo najviše 12 mjeseci, da bismo dali jedan besplatni krug po osobi i da bismo je upisali za tebe ako kupiš. Ponude šaljemo samo ako označiš kvadratić.",
+    "usedUp": "Ova e-mail adresa je već iskoristila svoja besplatna pitanja. Otključaj sve da nastaviš vježbati.",
+    "button": "Počni vježbati",
+    "starting": "Pokreće se …",
+    "codeSent": "Hvala! Poslali smo tvoj lični kod za popust ({percent} %) na tvoj e-mail."
   },
   "offer": {
     "title": "Otključaj sve i pripremi se za test",
@@ -299,7 +310,7 @@
     "deleteButton": "Obriši moj račun i sve podatke",
     "deleted": "Tvoj račun i svi podaci su obrisani.",
     "deleteError": "Račun nije obrisan. Kontaktiraj nas i pomoći ćemo ti.",
-    "anonymousNote": "Vježbaš bez računa. Tvoji odgovori se čuvaju u ovom pregledniku. Ako želiš, možeš ih ovdje obrisati."
+    "anonymousNote": "Vježbaš bez računa. Tvoji odgovori i e-mail adresa koju si upisao/la prije besplatnih pitanja se čuvaju. Ako ih želiš izbrisati, možeš to uraditi ovdje."
   },
   "share": {
     "question": "Znaš li odgovor?",
@@ -344,7 +355,7 @@
     "ovaTitle": "Pitanja za vježbu za test za švedsko državljanstvo – sva poglavlja",
     "ovaDescription": "Vježbaj poglavlje po poglavlje pitanja o švedskom društvu za test za državljanstvo. Pitanja na švedskom kao na testu, objašnjenja na tvom jeziku.",
     "freeTitle": "Besplatna pitanja za test za švedsko državljanstvo",
-    "freeDescription": "Isprobaj {n} pitanja besplatno bez računa. Pitanja na švedskom kao na testu za državljanstvo, s tačnim odgovorom i objašnjenjem odmah.",
+    "freeDescription": "Isprobaj {n} pitanja besplatno – bez računa, samo tvoj e-mail. Pitanja na švedskom kao na testu za državljanstvo, s tačnim odgovorom i objašnjenjem odmah.",
     "examTitle": "Probni test sa satom za test za švedsko državljanstvo",
     "examDescription": "Uradi cijelu simulaciju testa sa satom. Pogledaj rezultat po poglavljima i šta trebaš još učiti.",
     "chapterDescription": "Pitanja za vježbu o temi {chapter} za test za švedsko državljanstvo. Pitanja na švedskom s objašnjenjima na tvom jeziku.",

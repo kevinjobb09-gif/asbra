@@ -34,7 +34,7 @@
     "titleHighlight": "kendi dilinde",
     "subtitle": "Sorular sınavda olduğu gibi İsveççe. Açıklamalar en iyi anladığın dilde.",
     "ctaFree": "Ücretsiz alıştırmaya başla",
-    "noAccount": "Hesap gerekmez · {n} ücretsiz soru",
+    "noAccount": "Hesap yok – sadece e-postan · {n} ücretsiz soru",
     "explanationsIn": "{n} dilde açıklama, örneğin:",
     "demoTitle": "Alıştırma böyle görünür",
     "demoOptionA": "Cevap A",
@@ -64,7 +64,7 @@
     "faqLanguageQ": "Sorular hangi dilde?",
     "faqLanguageA": "Sorular ve cevaplar İsveççedir, çünkü sınav İsveççedir. Açıklamaları kendi dilinde okuyabilirsin.",
     "faqAccountQ": "Hesap açmam gerekiyor mu?",
-    "faqAccountA": "Hayır, hemen başlayabilirsin. E-postanı sadece satın alırken yazarsın. Çalıştıkların kaydedilir.",
+    "faqAccountA": "Hayır. Ücretsiz sorular için sadece e-posta adresini yazarsın – şifre gerekmez. Hesap ancak satın aldığında oluşturulur. Çalıştıkların kaydedilir.",
     "faqCancelQ": "İstediğim zaman iptal edebilir miyim?",
     "faqCancelA": "Evet. Taahhüt süresi yok. Hesap sayfasından tek tıkla, ek ücret olmadan iptal edersin. İptal hemen geçerli olur: erişimin anında sona erer ve başka ödeme alınmaz. Önceden ödenmiş süre iade edilmez.",
     "faqFormatQ": "Sınavda kaç soru var?",
@@ -78,7 +78,7 @@
     "title": "Alıştırma",
     "intro": "Bir bölüm seç. Her seferinde bir soru alırsın ve cevabının doğru olup olmadığını hemen görürsün.",
     "freeBannerTitle": "{n} ücretsiz soruyla başla",
-    "freeBannerText": "Tüm bölümlerden sorular. Hesap gerekmez.",
+    "freeBannerText": "Tüm bölümlerden sorular. Hesap yok – sadece e-postan.",
     "freeBannerCta": "Şimdi ücretsiz çalış",
     "examCardTitle": "Deneme sınavı",
     "examCardText": "Deneme sınavı: {m} dakikada {q} soru",
@@ -128,10 +128,21 @@
     "label": "Ücretsiz alıştırma",
     "empty": "Ücretsiz sorular yakında geliyor. Birkaç gün sonra tekrar gel!",
     "usedUpTitle": "Ücretsiz sorularını kullandın",
-    "usedUpIntro": "Aferin! Tüm sorularla çalışmaya devam et ve gerçek bir deneme sınavı yap.",
+    "usedUpIntro": "Aferin! Tüm sorularla çalışmaya devam et ve tam bir sınav denemesi yap.",
     "done": "Ücretsiz alıştırma bitti",
     "offerTitle": "Sınavı geçmek ister misin?",
     "offerIntro": "Ücretsiz denedin. Tüm soruların, deneme sınavının ve kendi dilindeki açıklamaların kilidini aç."
+  },
+  "freeGate": {
+    "title": "Ücretsiz çalışmaya başla",
+    "intro": "E-posta adresini yaz, hemen {n} ücretsiz soruyla başlayabilirsin. Şifre gerekmez.",
+    "emailLabel": "E-posta adresin",
+    "consent": "Evet, Medborgarhjälpen bana e-postla sınav için ipuçları ve kampanyalar gönderebilir. Böylece ilk ayda {percent} % indirim de alırım. Aboneliğimi istediğim zaman iptal edebilirim.",
+    "info": "E-posta adresini en fazla 12 ay saklıyoruz. Böylece herkes ücretsiz soruları bir kez kullanır ve satın alırsan adresin senin için otomatik yazılır. Kampanyaları sadece kutuyu işaretlersen göndeririz.",
+    "usedUp": "Bu e-posta adresi ücretsiz sorularını zaten kullandı. Çalışmaya devam etmek için her şeyin kilidini aç.",
+    "button": "Çalışmaya başla",
+    "starting": "Başlıyor …",
+    "codeSent": "Teşekkürler! Kişisel indirim kodunu ({percent} %) e-postana gönderdik."
   },
   "offer": {
     "title": "Her şeyin kilidini aç ve sınava hazırlan",
@@ -299,7 +310,7 @@
     "deleteButton": "Hesabımı ve tüm verilerimi sil",
     "deleted": "Hesabın ve tüm verilerin silindi.",
     "deleteError": "Hesap silinemedi. Bize ulaş, sana yardım edelim.",
-    "anonymousNote": "Hesapsız çalışıyorsun. Cevapların bu tarayıcıda kaydedilir. Silmek istersen burada silebilirsin."
+    "anonymousNote": "Hesap olmadan çalışıyorsun. Cevapların ve ücretsiz sorulardan önce yazdığın e-posta adresi kaydedilir. Bunları silmek istersen burada silebilirsin."
   },
   "share": {
     "question": "Cevabı biliyor musun?",
@@ -344,7 +355,7 @@
     "ovaTitle": "İsveç vatandaşlık sınavı için alıştırma soruları – tüm bölümler",
     "ovaDescription": "Vatandaşlık sınavı için İsveç toplumu hakkındaki soruları bölüm bölüm çalış. Sorular sınavdaki gibi İsveççe, açıklamalar kendi dilinde.",
     "freeTitle": "İsveç vatandaşlık sınavı için ücretsiz sorular",
-    "freeDescription": "Hesap açmadan {n} soruyu ücretsiz dene. Vatandaşlık sınavındaki gibi İsveççe sorular, doğru cevap ve açıklama hemen.",
+    "freeDescription": "{n} soruyu ücretsiz dene – hesap yok, sadece e-postan. Vatandaşlık sınavındaki gibi İsveççe sorular, doğru cevap ve açıklama hemen.",
     "examTitle": "İsveç vatandaşlık sınavı için süreli deneme sınavı",
     "examDescription": "Süreli, tam bir deneme sınavı çöz. Sonucunu bölüm bölüm gör ve hangi konulara daha çok çalışman gerektiğini öğren.",
     "chapterDescription": "İsveç vatandaşlık sınavı için {chapter} hakkında alıştırma soruları. İsveççe sorular, kendi dilinde açıklamalar.",

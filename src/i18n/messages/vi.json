@@ -34,7 +34,7 @@
     "titleHighlight": "ngôn ngữ của bạn",
     "subtitle": "Câu hỏi bằng tiếng Thụy Điển, giống như bài thi. Giải thích bằng ngôn ngữ bạn hiểu rõ nhất.",
     "ctaFree": "Bắt đầu luyện tập miễn phí",
-    "noAccount": "Không cần tài khoản · {n} câu hỏi miễn phí",
+    "noAccount": "Không cần tài khoản – chỉ cần email của bạn · {n} câu hỏi miễn phí",
     "explanationsIn": "Giải thích bằng {n} ngôn ngữ, ví dụ:",
     "demoTitle": "Luyện tập trông như thế này",
     "demoOptionA": "Đáp án A",
@@ -64,7 +64,7 @@
     "faqLanguageQ": "Câu hỏi bằng ngôn ngữ nào?",
     "faqLanguageA": "Câu hỏi và câu trả lời bằng tiếng Thụy Điển vì bài thi bằng tiếng Thụy Điển. Bạn có thể đọc giải thích bằng ngôn ngữ của mình.",
     "faqAccountQ": "Tôi có cần tạo tài khoản không?",
-    "faqAccountA": "Không, bạn có thể bắt đầu ngay. Bạn chỉ nhập email khi mua. Những gì bạn đã luyện tập sẽ được lưu.",
+    "faqAccountA": "Không. Để làm các câu hỏi miễn phí, bạn chỉ cần nhập địa chỉ email – không cần mật khẩu. Tài khoản chỉ được tạo khi bạn mua. Những gì bạn đã luyện tập sẽ được lưu lại.",
     "faqCancelQ": "Tôi có thể hủy bất cứ lúc nào không?",
     "faqCancelA": "Có. Không có thời gian ràng buộc. Bạn hủy chỉ với một lần bấm trong Tài khoản, không mất thêm phí. Việc hủy có hiệu lực ngay: quyền truy cập kết thúc lập tức và sẽ không trừ tiền thêm. Thời gian đã trả trước sẽ không được hoàn tiền.",
     "faqFormatQ": "Bài thi có bao nhiêu câu?",
@@ -78,7 +78,7 @@
     "title": "Luyện tập",
     "intro": "Chọn một chương. Bạn nhận từng câu một và biết ngay mình trả lời đúng hay sai.",
     "freeBannerTitle": "Bắt đầu với {n} câu miễn phí",
-    "freeBannerText": "Câu hỏi từ tất cả các chương. Không cần tài khoản.",
+    "freeBannerText": "Câu hỏi từ tất cả các chương. Không cần tài khoản – chỉ cần email của bạn.",
     "freeBannerCta": "Luyện tập miễn phí ngay",
     "examCardTitle": "Thi thử",
     "examCardText": "Thi thử: {q} câu hỏi trong {m} phút",
@@ -128,10 +128,21 @@
     "label": "Luyện tập miễn phí",
     "empty": "Câu hỏi miễn phí sắp có. Hãy quay lại sau vài ngày!",
     "usedUpTitle": "Bạn đã dùng hết câu hỏi miễn phí",
-    "usedUpIntro": "Giỏi lắm! Tiếp tục luyện với tất cả câu hỏi và làm một bài thi thử thật.",
+    "usedUpIntro": "Bạn làm tốt lắm! Hãy tiếp tục luyện tập với tất cả câu hỏi và làm một bài thi thử đầy đủ.",
     "done": "Đã xong phần luyện tập miễn phí",
     "offerTitle": "Bạn muốn thi đậu?",
     "offerIntro": "Bạn đã dùng thử miễn phí. Mở khóa tất cả câu hỏi, bài thi thử và giải thích bằng ngôn ngữ của bạn."
+  },
+  "freeGate": {
+    "title": "Bắt đầu luyện tập miễn phí",
+    "intro": "Nhập địa chỉ email của bạn để bắt đầu ngay với {n} câu hỏi miễn phí. Không cần mật khẩu.",
+    "emailLabel": "Địa chỉ email của bạn",
+    "consent": "Có, tôi đồng ý để Medborgarhjälpen gửi cho tôi mẹo ôn thi và ưu đãi qua email. Khi đó tôi cũng được giảm {percent} % cho tháng đầu tiên. Tôi có thể hủy đăng ký bất cứ lúc nào.",
+    "info": "Chúng tôi lưu địa chỉ email của bạn tối đa 12 tháng để mỗi người chỉ được một lượt miễn phí và để điền sẵn cho bạn nếu bạn mua. Chúng tôi chỉ gửi ưu đãi nếu bạn đánh dấu vào ô.",
+    "usedUp": "Địa chỉ email này đã dùng hết câu hỏi miễn phí. Hãy mở khóa toàn bộ để tiếp tục luyện tập.",
+    "button": "Bắt đầu luyện tập",
+    "starting": "Đang bắt đầu …",
+    "codeSent": "Cảm ơn bạn! Chúng tôi đã gửi mã giảm giá cá nhân ({percent} %) đến email của bạn."
   },
   "offer": {
     "title": "Mở khóa tất cả và sẵn sàng cho kỳ thi",
@@ -299,7 +310,7 @@
     "deleteButton": "Xóa tài khoản và toàn bộ dữ liệu",
     "deleted": "Tài khoản và toàn bộ dữ liệu của bạn đã bị xóa.",
     "deleteError": "Không thể xóa tài khoản. Hãy liên hệ, chúng tôi sẽ giúp bạn.",
-    "anonymousNote": "Bạn đang luyện tập không cần tài khoản. Câu trả lời được lưu trong trình duyệt này. Bạn có thể xóa chúng ở đây."
+    "anonymousNote": "Bạn đang luyện tập mà không có tài khoản. Câu trả lời của bạn và địa chỉ email bạn đã nhập trước khi làm câu hỏi miễn phí được lưu lại. Nếu muốn xóa, bạn có thể xóa ở đây."
   },
   "share": {
     "question": "Bạn có biết đáp án không?",
@@ -344,7 +355,7 @@
     "ovaTitle": "Câu hỏi luyện thi quốc tịch Thụy Điển – tất cả các chương",
     "ovaDescription": "Luyện từng chương câu hỏi về xã hội Thụy Điển cho kỳ thi quốc tịch. Câu hỏi bằng tiếng Thụy Điển như bài thi, giải thích bằng ngôn ngữ của bạn.",
     "freeTitle": "Câu hỏi miễn phí cho kỳ thi quốc tịch Thụy Điển",
-    "freeDescription": "Làm thử {n} câu miễn phí, không cần tài khoản. Câu hỏi bằng tiếng Thụy Điển như kỳ thi quốc tịch, có đáp án và giải thích ngay.",
+    "freeDescription": "Thử {n} câu hỏi miễn phí – không cần tài khoản, chỉ cần email của bạn. Câu hỏi bằng tiếng Thụy Điển giống như trong bài thi quốc tịch, có đáp án đúng và giải thích ngay.",
     "examTitle": "Bài thi thử có tính giờ cho kỳ thi quốc tịch Thụy Điển",
     "examDescription": "Làm một bài thi thử đầy đủ có tính giờ. Xem kết quả theo từng chương và biết bạn cần học thêm phần nào.",
     "chapterDescription": "Câu hỏi luyện thi về {chapter} cho kỳ thi quốc tịch Thụy Điển. Câu hỏi bằng tiếng Thụy Điển, giải thích bằng ngôn ngữ của bạn.",

@@ -34,7 +34,7 @@
     "titleHighlight": "w swoim języku",
     "subtitle": "Pytania po szwedzku, tak jak na teście. Wyjaśnienia w języku, który rozumiesz najlepiej.",
     "ctaFree": "Zacznij ćwiczyć za darmo",
-    "noAccount": "Bez konta · {n} darmowych pytań",
+    "noAccount": "Bez konta – tylko Twój e-mail · {n} darmowych pytań",
     "explanationsIn": "Wyjaśnienia w {n} językach, np.:",
     "demoTitle": "Tak wygląda ćwiczenie",
     "demoOptionA": "Odpowiedź A",
@@ -64,7 +64,7 @@
     "faqLanguageQ": "W jakim języku są pytania?",
     "faqLanguageA": "Pytania i odpowiedzi są po szwedzku, bo test jest po szwedzku. Wyjaśnienia możesz czytać w swoim języku.",
     "faqAccountQ": "Czy muszę założyć konto?",
-    "faqAccountA": "Nie, możesz zacząć od razu. E-mail podajesz dopiero przy zakupie. Twoje postępy są zapisywane.",
+    "faqAccountA": "Nie. Do darmowych pytań wpisujesz tylko swój adres e-mail – hasło nie jest potrzebne. Konto zakładamy dopiero, gdy coś kupisz. To, co już przećwiczyłeś, zostaje zapisane.",
     "faqCancelQ": "Czy mogę zrezygnować w dowolnym momencie?",
     "faqCancelA": "Tak. Nie ma okresu zobowiązania. Rezygnujesz jednym kliknięciem w zakładce Konto, bez dodatkowych kosztów. Rezygnacja działa od razu: dostęp kończy się natychmiast i nie pobierzemy już żadnych płatności. Za już opłacony czas nie zwracamy pieniędzy.",
     "faqFormatQ": "Ile pytań ma test?",
@@ -78,7 +78,7 @@
     "title": "Ćwicz",
     "intro": "Wybierz rozdział. Dostajesz jedno pytanie naraz i od razu widzisz, czy odpowiedź jest poprawna.",
     "freeBannerTitle": "Zacznij od {n} darmowych pytań",
-    "freeBannerText": "Pytania ze wszystkich rozdziałów. Bez konta.",
+    "freeBannerText": "Pytania ze wszystkich rozdziałów. Bez konta – tylko Twój e-mail.",
     "freeBannerCta": "Ćwicz teraz za darmo",
     "examCardTitle": "Test próbny",
     "examCardText": "Symulacja: {q} pytań w {m} minut",
@@ -128,10 +128,21 @@
     "label": "Darmowe ćwiczenia",
     "empty": "Darmowe pytania pojawią się wkrótce. Wróć za kilka dni!",
     "usedUpTitle": "Wykorzystałeś darmowe pytania",
-    "usedUpIntro": "Brawo! Ćwicz dalej na wszystkich pytaniach i zrób prawdziwy test próbny.",
+    "usedUpIntro": "Dobra robota! Ćwicz dalej ze wszystkimi pytaniami i zrób pełną symulację testu.",
     "done": "Darmowe ćwiczenia zakończone",
     "offerTitle": "Chcesz zdać test?",
     "offerIntro": "Wypróbowałeś za darmo. Odblokuj wszystkie pytania, test próbny i wyjaśnienia w swoim języku."
+  },
+  "freeGate": {
+    "title": "Zacznij ćwiczyć za darmo",
+    "intro": "Wpisz swój adres e-mail, a od razu zaczniesz {n} darmowych pytań. Hasło nie jest potrzebne.",
+    "emailLabel": "Twój adres e-mail",
+    "consent": "Tak, Medborgarhjälpen może wysyłać mi e-mailem porady przed testem i oferty. Dostanę też {percent} % zniżki na pierwszy miesiąc. Mogę wypisać się w każdej chwili.",
+    "info": "Przechowujemy Twój adres e-mail maksymalnie 12 miesięcy, aby każda osoba dostała jedną darmową rundę i aby wpisać go za Ciebie, gdy coś kupisz. Oferty wysyłamy tylko wtedy, gdy zaznaczysz pole.",
+    "usedUp": "Ten adres e-mail już wykorzystał swoje darmowe pytania. Odblokuj wszystko, aby ćwiczyć dalej.",
+    "button": "Zacznij ćwiczyć",
+    "starting": "Uruchamianie …",
+    "codeSent": "Dziękujemy! Wysłaliśmy Twój osobisty kod rabatowy ({percent} %) na Twój e-mail."
   },
   "offer": {
     "title": "Odblokuj wszystko i przygotuj się do testu",
@@ -299,7 +310,7 @@
     "deleteButton": "Usuń moje konto i wszystkie dane",
     "deleted": "Twoje konto i wszystkie dane zostały usunięte.",
     "deleteError": "Nie udało się usunąć konta. Skontaktuj się z nami, pomożemy.",
-    "anonymousNote": "Ćwiczysz bez konta. Twoje odpowiedzi są zapisane w tej przeglądarce. Możesz je tu usunąć."
+    "anonymousNote": "Ćwiczysz bez konta. Twoje odpowiedzi i adres e-mail wpisany przed darmowymi pytaniami są zapisane. Jeśli chcesz je usunąć, możesz to zrobić tutaj."
   },
   "share": {
     "question": "Znasz odpowiedź?",
@@ -344,7 +355,7 @@
     "ovaTitle": "Pytania ćwiczeniowe do egzaminu na szwedzkie obywatelstwo – wszystkie rozdziały",
     "ovaDescription": "Ćwicz rozdział po rozdziale pytania o szwedzkie społeczeństwo do egzaminu na obywatelstwo. Pytania po szwedzku jak na egzaminie, wyjaśnienia w Twoim języku.",
     "freeTitle": "Darmowe pytania do egzaminu na szwedzkie obywatelstwo",
-    "freeDescription": "Wypróbuj {n} pytań za darmo bez konta. Pytania po szwedzku jak na egzaminie na obywatelstwo, z poprawną odpowiedzią i wyjaśnieniem od razu.",
+    "freeDescription": "Wypróbuj {n} pytań za darmo – bez konta, tylko Twój e-mail. Pytania po szwedzku jak na teście na obywatelstwo, od razu z poprawną odpowiedzią i wyjaśnieniem.",
     "examTitle": "Egzamin próbny z zegarem do egzaminu na szwedzkie obywatelstwo",
     "examDescription": "Zrób całą symulację testu z zegarem. Zobacz wynik dla każdego rozdziału i czego musisz się jeszcze nauczyć.",
     "chapterDescription": "Pytania ćwiczeniowe o temacie {chapter} do egzaminu na szwedzkie obywatelstwo. Pytania po szwedzku z wyjaśnieniami w Twoim języku.",

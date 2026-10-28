@@ -34,7 +34,7 @@
     "titleHighlight": "votre langue",
     "subtitle": "Des questions en suédois, comme au test. Des explications dans la langue que vous comprenez le mieux.",
     "ctaFree": "Commencer gratuitement",
-    "noAccount": "Sans compte · {n} questions gratuites",
+    "noAccount": "Pas de compte – juste ton e-mail · {n} questions gratuites",
     "explanationsIn": "Explications en {n} langues, par exemple :",
     "demoTitle": "Voici à quoi ressemble l’entraînement",
     "demoOptionA": "Réponse A",
@@ -64,7 +64,7 @@
     "faqLanguageQ": "Dans quelle langue sont les questions ?",
     "faqLanguageA": "Les questions et les réponses sont en suédois, car le test est en suédois. Vous pouvez lire les explications dans votre langue.",
     "faqAccountQ": "Dois-je créer un compte ?",
-    "faqAccountA": "Non, vous pouvez commencer tout de suite. Vous donnez votre e-mail seulement au moment de l’achat. Vos progrès sont enregistrés.",
+    "faqAccountA": "Non. Pour les questions gratuites, tu écris seulement ton adresse e-mail – pas besoin de mot de passe. Un compte est créé seulement quand tu achètes. Ce que tu as déjà pratiqué est gardé.",
     "faqCancelQ": "Puis-je résilier quand je veux ?",
     "faqCancelA": "Oui. Il n’y a pas de durée d’engagement. Vous résiliez en un clic dans Compte, sans frais supplémentaires. La résiliation est immédiate : l’accès prend fin aussitôt et aucun autre paiement n’est prélevé. Le temps déjà payé n’est pas remboursé.",
     "faqFormatQ": "Combien de questions compte le test ?",
@@ -78,7 +78,7 @@
     "title": "S’entraîner",
     "intro": "Choisissez un chapitre. Vous recevez une question à la fois et voyez tout de suite si votre réponse est juste.",
     "freeBannerTitle": "Commencez avec {n} questions gratuites",
-    "freeBannerText": "Des questions de tous les chapitres. Sans compte.",
+    "freeBannerText": "Des questions de tous les chapitres. Pas de compte – juste ton e-mail.",
     "freeBannerCta": "S’entraîner gratuitement",
     "examCardTitle": "Test blanc",
     "examCardText": "Simulation : {q} questions en {m} minutes",
@@ -128,10 +128,21 @@
     "label": "Entraînement gratuit",
     "empty": "Les questions gratuites arrivent bientôt. Revenez dans quelques jours !",
     "usedUpTitle": "Vous avez utilisé vos questions gratuites",
-    "usedUpIntro": "Bravo ! Continuez avec toutes les questions et faites un vrai test blanc.",
+    "usedUpIntro": "Bravo ! Continue à t'entraîner avec toutes les questions et fais un examen blanc complet.",
     "done": "Entraînement gratuit terminé",
     "offerTitle": "Vous voulez réussir le test ?",
     "offerIntro": "Vous avez essayé gratuitement. Débloquez toutes les questions, le test blanc et les explications dans votre langue."
+  },
+  "freeGate": {
+    "title": "Commence à t'entraîner gratuitement",
+    "intro": "Écris ton adresse e-mail et commence tout de suite avec {n} questions gratuites. Pas besoin de mot de passe.",
+    "emailLabel": "Ton adresse e-mail",
+    "consent": "Oui, Medborgarhjälpen peut m'envoyer par e-mail des conseils pour l'examen et des offres. J'ai aussi {percent} % de réduction sur le premier mois. Je peux me désinscrire à tout moment.",
+    "info": "Nous gardons ton adresse e-mail 12 mois maximum, pour donner une seule série gratuite par personne et pour la remplir pour toi si tu achètes. Nous t'envoyons des offres seulement si tu coches la case.",
+    "usedUp": "Cette adresse e-mail a déjà utilisé ses questions gratuites. Débloque tout pour continuer à t'entraîner.",
+    "button": "Commencer",
+    "starting": "Démarrage …",
+    "codeSent": "Merci ! Nous avons envoyé ton code de réduction personnel ({percent} %) à ton adresse e-mail."
   },
   "offer": {
     "title": "Débloquez tout et préparez-vous au test",
@@ -299,7 +310,7 @@
     "deleteButton": "Supprimer mon compte et toutes les données",
     "deleted": "Votre compte et toutes vos données ont été supprimés.",
     "deleteError": "Le compte n’a pas pu être supprimé. Contactez-nous, nous vous aiderons.",
-    "anonymousNote": "Vous vous entraînez sans compte. Vos réponses sont enregistrées dans ce navigateur. Vous pouvez les supprimer ici."
+    "anonymousNote": "Tu t'entraînes sans compte. Tes réponses et l'adresse e-mail que tu as écrite avant les questions gratuites sont gardées. Si tu veux les supprimer, tu peux le faire ici."
   },
   "share": {
     "question": "Connaissez-vous la réponse ?",
@@ -344,7 +355,7 @@
     "ovaTitle": "Questions d’entraînement pour l’examen de citoyenneté suédoise – tous les chapitres",
     "ovaDescription": "Entraînez-vous chapitre par chapitre sur la société suédoise pour l’examen de citoyenneté. Questions en suédois comme à l’examen, explications dans votre langue.",
     "freeTitle": "Questions gratuites pour l’examen de citoyenneté suédoise",
-    "freeDescription": "Essayez {n} questions gratuitement sans compte. Questions en suédois comme à l’examen de citoyenneté, avec la bonne réponse et l’explication tout de suite.",
+    "freeDescription": "Essaie {n} questions gratuitement – pas de compte, juste ton e-mail. Des questions en suédois comme à l'examen de citoyenneté, avec la bonne réponse et une explication tout de suite.",
     "examTitle": "Examen blanc chronométré pour l’examen de citoyenneté suédoise",
     "examDescription": "Fais une simulation complète et chronométrée de l'examen. Vois tes résultats par chapitre et ce que tu dois encore réviser.",
     "chapterDescription": "Questions d’entraînement sur {chapter} pour l’examen de citoyenneté suédoise. Questions en suédois avec explications dans votre langue.",

@@ -34,7 +34,7 @@
     "titleHighlight": "sarili mong wika",
     "subtitle": "Mga tanong sa Swedish, gaya ng sa pagsusulit. Mga paliwanag sa wikang pinakanaiintindihan mo.",
     "ctaFree": "Magsimulang magsanay nang libre",
-    "noAccount": "Walang kailangang account · {n} libreng tanong",
+    "noAccount": "Walang account – email mo lang · {n} libreng tanong",
     "explanationsIn": "Mga paliwanag sa {n} wika, halimbawa:",
     "demoTitle": "Ganito ang hitsura ng pagsasanay",
     "demoOptionA": "Sagot A",
@@ -64,7 +64,7 @@
     "faqLanguageQ": "Anong wika ang mga tanong?",
     "faqLanguageA": "Ang mga tanong at sagot ay nasa Swedish dahil Swedish ang pagsusulit. Mababasa mo ang mga paliwanag sa sarili mong wika.",
     "faqAccountQ": "Kailangan ko bang gumawa ng account?",
-    "faqAccountA": "Hindi, puwede kang magsimula agad. Ilalagay mo lang ang email mo kapag bumili ka. Nai-save ang iyong pagsasanay.",
+    "faqAccountA": "Hindi. Para sa mga libreng tanong, isulat mo lang ang iyong email address – hindi kailangan ng password. Gagawa lang ng account kapag bumili ka. Mase-save ang mga pinagpraktisan mo.",
     "faqCancelQ": "Puwede ba akong mag-cancel kahit kailan?",
     "faqCancelA": "Oo. Walang lock-in period. Mag-cancel sa isang click sa Account, walang dagdag na bayad. Agad na magkakabisa ang pag-cancel: matatapos agad ang access mo at wala nang ibabawas na bayad. Hindi ibinabalik ang perang naibayad na para sa natitirang panahon.",
     "faqFormatQ": "Ilang tanong ang pagsusulit?",
@@ -78,7 +78,7 @@
     "title": "Magsanay",
     "intro": "Pumili ng kabanata. Isang tanong bawat beses at makikita mo agad kung tama ang sagot mo.",
     "freeBannerTitle": "Magsimula sa {n} libreng tanong",
-    "freeBannerText": "Mga tanong mula sa lahat ng kabanata. Walang kailangang account.",
+    "freeBannerText": "Mga tanong mula sa lahat ng kabanata. Walang account – email mo lang.",
     "freeBannerCta": "Magsanay nang libre ngayon",
     "examCardTitle": "Practice test",
     "examCardText": "Simulasyon: {q} tanong sa loob ng {m} minuto",
@@ -128,10 +128,21 @@
     "label": "Libreng pagsasanay",
     "empty": "Malapit nang dumating ang mga libreng tanong. Bumalik makalipas ang ilang araw!",
     "usedUpTitle": "Nagamit mo na ang mga libreng tanong",
-    "usedUpIntro": "Magaling! Ipagpatuloy ang pagsasanay sa lahat ng tanong at kumuha ng tunay na practice test.",
+    "usedUpIntro": "Magaling! Magpatuloy sa pagpraktis gamit ang lahat ng tanong at subukan ang buong simulation ng pagsusulit.",
     "done": "Tapos na ang libreng pagsasanay",
     "offerTitle": "Gusto mo bang pumasa?",
     "offerIntro": "Nasubukan mo na nang libre. I-unlock ang lahat ng tanong, ang practice test at mga paliwanag sa sarili mong wika."
+  },
+  "freeGate": {
+    "title": "Magsimulang magpraktis nang libre",
+    "intro": "Isulat ang iyong email address, at makakapagsimula ka agad sa {n} libreng tanong. Hindi kailangan ng password.",
+    "emailLabel": "Ang iyong email address",
+    "consent": "Oo, puwede akong padalhan ng Medborgarhjälpen ng mga tip para sa pagsusulit at mga alok sa email. Makakakuha rin ako ng {percent} % diskwento sa unang buwan. Puwede akong mag-unsubscribe anumang oras.",
+    "info": "Itatago namin ang iyong email address nang hanggang 12 buwan para makapagbigay ng isang libreng round bawat tao at para mailagay ito para sa iyo kung bibili ka. Magpapadala lang kami ng mga alok kung lalagyan mo ng tsek ang kahon.",
+    "usedUp": "Nagamit na ng email address na ito ang mga libreng tanong nito. I-unlock ang lahat para magpatuloy sa pagpraktis.",
+    "button": "Magsimulang magpraktis",
+    "starting": "Nagsisimula …",
+    "codeSent": "Salamat! Ipinadala namin ang iyong personal na discount code ({percent} %) sa iyong email."
   },
   "offer": {
     "title": "I-unlock ang lahat at maghanda para sa pagsusulit",
@@ -299,7 +310,7 @@
     "deleteButton": "Burahin ang aking account at lahat ng data",
     "deleted": "Nabura na ang iyong account at lahat ng data.",
     "deleteError": "Hindi nabura ang account. Makipag-ugnayan sa amin at tutulungan ka namin.",
-    "anonymousNote": "Nagsasanay ka nang walang account. Naka-save ang mga sagot mo sa browser na ito. Kung gusto mo, mabubura mo ang mga ito dito."
+    "anonymousNote": "Nagpapraktis ka nang walang account. Naka-save ang iyong mga sagot at ang email address na isinulat mo bago ang mga libreng tanong. Kung gusto mong burahin ang mga ito, magagawa mo iyon dito."
   },
   "share": {
     "question": "Alam mo ba ang sagot?",
@@ -344,7 +355,7 @@
     "ovaTitle": "Mga practice question para sa Swedish citizenship test – lahat ng kabanata",
     "ovaDescription": "Mag-practice kada kabanata ng mga tanong tungkol sa lipunan ng Sweden para sa citizenship test. Mga tanong sa Swedish gaya ng test, paliwanag sa wika mo.",
     "freeTitle": "Libreng tanong para sa Swedish citizenship test",
-    "freeDescription": "Subukan ang {n} tanong nang libre nang walang account. Mga tanong sa Swedish gaya ng citizenship test, may tamang sagot at paliwanag agad.",
+    "freeDescription": "Subukan ang {n} tanong nang libre – walang account, email mo lang. Mga tanong sa Swedish gaya sa pagsusulit para sa citizenship, may tamang sagot at paliwanag agad.",
     "examTitle": "Practice test na may timer para sa Swedish citizenship test",
     "examDescription": "Gumawa ng buong simulasyon ng Provet na may orasan. Tingnan ang resulta mo sa bawat kabanata at kung ano pa ang kailangan mong pag-aralan.",
     "chapterDescription": "Mga practice question tungkol sa {chapter} para sa Swedish citizenship test. Mga tanong sa Swedish na may paliwanag sa wika mo.",
