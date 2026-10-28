@@ -156,7 +156,7 @@ export const sv = {
     tryFree: "Prova gratis först",
     chapterTitle: "Lås upp kapitel {n}",
     chapterIntro: "Övning per kapitel ingår när du låser upp allt.",
-    examTitle: "Gör ett riktigt provtest",
+    examTitle: "Gör en hel provsimulering",
     examIntro: "Provsimuleringen ingår när du låser upp allt.",
     reviewTitle: "Repetera dina fel",
     reviewIntro: "Öva på frågorna du svarat fel på tills du kan dem.",
