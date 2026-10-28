@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { brand } from "@/config";
+import { brand, sellerDetails } from "@/config";
 import { LegalPage } from "@/components/LegalPage";
 
 export const metadata: Metadata = { title: "Integritetspolicy" };
@@ -9,9 +9,8 @@ export const metadata: Metadata = { title: "Integritetspolicy" };
  * Kontrollera att listan över tjänster (personuppgiftsbiträden) stämmer.
  */
 export default function PrivacyPage() {
-  const { company } = brand;
   return (
-    <LegalPage title="Integritetspolicy" updated="[DATUM]">
+    <LegalPage title="Integritetspolicy" updated="28 oktober 2026">
       <p>
         Vi samlar bara in det som behövs för att tjänsten ska fungera: din e-postadress och vad du har övat på. Vi säljer
         aldrig dina uppgifter och använder ingen spårning för annonser.
@@ -19,7 +18,7 @@ export default function PrivacyPage() {
 
       <h2>Personuppgiftsansvarig</h2>
       <p>
-        {company.legalName}, organisationsnummer {company.orgNumber}, {company.address}. E-post:{" "}
+        {sellerDetails()}. E-post:{" "}
         <a href={`mailto:${brand.contactEmail}`}>{brand.contactEmail}</a>
       </p>
 

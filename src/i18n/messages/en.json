@@ -21,6 +21,13 @@
     "contact": "Contact",
     "guide": "Guide: the citizenship test"
   },
+  "contact": {
+    "title": "Contact us",
+    "text": "Do you have a question, found a mistake or want to work with us? Send an email to the address below and we will reply as soon as we can.",
+    "copy": "Copy the address",
+    "copied": "Address copied",
+    "write": "Write an email"
+  },
   "home": {
     "badge": "The citizenship test in civics",
     "titleStart": "Practice for the test. Understand the answers in",

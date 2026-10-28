@@ -21,6 +21,13 @@
     "contact": "Makipag-ugnayan",
     "guide": "Gabay: citizenship test"
   },
+  "contact": {
+    "title": "Makipag-ugnayan sa amin",
+    "text": "May tanong ka ba, may nakitang mali, o gustong makipagtulungan sa amin? Magpadala ng email sa address sa ibaba at sasagot kami sa lalong madaling panahon.",
+    "copy": "Kopyahin ang address",
+    "copied": "Nakopya na ang address",
+    "write": "Sumulat ng email"
+  },
   "home": {
     "badge": "Pagsusulit sa pagkamamamayan tungkol sa lipunan",
     "titleStart": "Magsanay para sa pagsusulit. Unawain ang mga sagot sa",

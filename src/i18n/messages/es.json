@@ -21,6 +21,13 @@
     "contact": "Contacto",
     "guide": "Guía: el examen de ciudadanía"
   },
+  "contact": {
+    "title": "Contacto",
+    "text": "¿Tienes una pregunta, has encontrado un error o quieres colaborar con nosotros? Envía un correo a la dirección de abajo y te responderemos lo antes posible.",
+    "copy": "Copiar la dirección",
+    "copied": "Dirección copiada",
+    "write": "Escribir un correo"
+  },
   "home": {
     "badge": "El examen de ciudadanía de educación cívica",
     "titleStart": "Prepárate para el examen. Entiende las respuestas en",

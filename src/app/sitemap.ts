@@ -6,7 +6,7 @@ import { GUIDE_LANGUAGES, guidePath } from "@/content/guideLanguages";
 /** Lista över sidor som Google ska hitta, inklusive språksidor och delbara gratisfrågor. */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const site = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
-  const pages = ["", "/ova", "/ova/gratis", "/prov", "/rabatt", "/dagens-fraga", "/om", "/villkor", "/integritet"];
+  const pages = ["", "/ova", "/ova/gratis", "/prov", "/rabatt", "/dagens-fraga", "/om", "/kontakt", "/villkor", "/integritet"];
   const guidePages = GUIDE_LANGUAGES.map(guidePath);
   const chapterPages = getCountry().chapters.map((c) => `/ova/kapitel/${c.number}`);
   const languagePages = LANGUAGE_CODES.filter((c) => c !== "sv").map((c) => `/${c}`);

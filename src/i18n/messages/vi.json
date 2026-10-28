@@ -21,6 +21,13 @@
     "contact": "Liên hệ",
     "guide": "Hướng dẫn: kỳ thi quốc tịch"
   },
+  "contact": {
+    "title": "Liên hệ với chúng tôi",
+    "text": "Bạn có câu hỏi, phát hiện lỗi hoặc muốn hợp tác với chúng tôi? Hãy gửi email đến địa chỉ bên dưới, chúng tôi sẽ trả lời sớm nhất có thể.",
+    "copy": "Sao chép địa chỉ",
+    "copied": "Đã sao chép địa chỉ",
+    "write": "Viết email"
+  },
   "home": {
     "badge": "Bài kiểm tra quốc tịch môn hiểu biết xã hội",
     "titleStart": "Luyện thi. Hiểu câu trả lời bằng",

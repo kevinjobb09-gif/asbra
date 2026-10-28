@@ -31,6 +31,13 @@ export const sv = {
     contact: "Kontakt",
     guide: "Guide: medborgarskapsprovet",
   },
+  contact: {
+    title: "Kontakta oss",
+    text: "Har du en fråga, hittat ett fel eller vill samarbeta? Skicka ett mejl till adressen nedan, så svarar vi så snart vi kan.",
+    copy: "Kopiera adressen",
+    copied: "Adressen är kopierad",
+    write: "Skriv ett mejl",
+  },
   home: {
     badge: "Medborgarskapsprovet i samhällskunskap",
     titleStart: "Öva inför provet. Förstå svaren på",

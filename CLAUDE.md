@@ -24,7 +24,7 @@ API:er du är osäker på. `middleware` heter nu `proxy`, och `params`, `searchP
 
 ## Drift
 - Hosting: Netlify (inte Vercel). Databas/inloggning: Supabase. Betalning: Stripe (befintligt konto).
-- Kontaktadress för tjänsten: kevinjobb09@gmail.com.
+- Kontaktadress för tjänsten: medborgarhjalpen@gmail.com (i `src/config/brand.ts`). Adminkontot är fortfarande kevinjobb09@gmail.com.
 - Senare: mobilappar för App Store / Google Play.
 
 ## Kommandon

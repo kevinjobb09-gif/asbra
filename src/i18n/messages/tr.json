@@ -21,6 +21,13 @@
     "contact": "İletişim",
     "guide": "Rehber: vatandaşlık sınavı"
   },
+  "contact": {
+    "title": "Bize ulaşın",
+    "text": "Bir sorunuz mu var, bir hata mı buldunuz ya da bizimle iş birliği yapmak mı istiyorsunuz? Aşağıdaki adrese e-posta gönderin, en kısa sürede yanıt verelim.",
+    "copy": "Adresi kopyala",
+    "copied": "Adres kopyalandı",
+    "write": "E-posta yaz"
+  },
   "home": {
     "badge": "Toplum bilgisi vatandaşlık sınavı",
     "titleStart": "Sınava hazırlan. Cevapları anla:",

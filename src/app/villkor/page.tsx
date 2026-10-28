@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { brand, formatPrice, getCountry } from "@/config";
+import { brand, formatPrice, getCountry, sellerDetails } from "@/config";
 import { LegalPage } from "@/components/LegalPage";
 
 export const metadata: Metadata = { title: "Användarvillkor" };
@@ -10,13 +10,12 @@ export const metadata: Metadata = { title: "Användarvillkor" };
  */
 export default function TermsPage() {
   const country = getCountry();
-  const { company } = brand;
   return (
-    <LegalPage title="Användarvillkor" updated="[DATUM]">
+    <LegalPage title="Användarvillkor" updated="28 oktober 2026">
       <h2>1. Om tjänsten</h2>
       <p>
         {brand.name} är en digital övningstjänst inför medborgarskapsprovet i samhällskunskap. Tjänsten tillhandahålls av{" "}
-        {company.legalName}, organisationsnummer {company.orgNumber}, {company.address} (&quot;vi&quot;).
+        {sellerDetails()} (&quot;vi&quot;).
       </p>
       <p>
         {brand.name} är en privat tjänst och är inte kopplad till {country.unaffiliatedAuthorities.join(" eller ")}.
@@ -87,7 +86,7 @@ export default function TermsPage() {
 
       <h2>10. Kontakt</h2>
       <p>
-        {company.legalName}, {company.address}. E-post: <a href={`mailto:${brand.contactEmail}`}>{brand.contactEmail}</a>
+        {sellerDetails()}. E-post: <a href={`mailto:${brand.contactEmail}`}>{brand.contactEmail}</a>
       </p>
     </LegalPage>
   );

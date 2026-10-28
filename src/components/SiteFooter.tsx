@@ -24,7 +24,7 @@ export function SiteFooter() {
           <Link href="/villkor" className="hover:text-primary">{t("footer.terms")}</Link>
           <Link href="/integritet" className="hover:text-primary">{t("footer.privacy")}</Link>
           <Link href="/om" className="hover:text-primary">{t("footer.about")}</Link>
-          <a href={`mailto:${brand.contactEmail}`} className="hover:text-primary">{t("footer.contact")}</a>
+          <Link href="/kontakt" className="hover:text-primary">{t("footer.contact")}</Link>
         </nav>
         <p className="text-xs text-muted" dir="ltr">
           © {new Date().getFullYear()} {brand.company.legalName}

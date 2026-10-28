@@ -21,6 +21,13 @@
     "contact": "Contact",
     "guide": "Guide : l’examen de citoyenneté"
   },
+  "contact": {
+    "title": "Nous contacter",
+    "text": "Vous avez une question, vous avez trouvé une erreur ou vous souhaitez collaborer avec nous ? Envoyez un e-mail à l’adresse ci-dessous, nous vous répondrons dès que possible.",
+    "copy": "Copier l’adresse",
+    "copied": "Adresse copiée",
+    "write": "Écrire un e-mail"
+  },
   "home": {
     "badge": "Le test de citoyenneté en éducation civique",
     "titleStart": "Entraînez-vous pour le test. Comprenez les réponses dans",

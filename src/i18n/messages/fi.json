@@ -21,6 +21,13 @@
     "contact": "Yhteystiedot",
     "guide": "Opas: kansalaisuuskoe"
   },
+  "contact": {
+    "title": "Ota yhteyttä",
+    "text": "Onko sinulla kysyttävää, löysitkö virheen tai haluatko tehdä yhteistyötä kanssamme? Lähetä sähköpostia alla olevaan osoitteeseen, niin vastaamme mahdollisimman pian.",
+    "copy": "Kopioi osoite",
+    "copied": "Osoite kopioitu",
+    "write": "Kirjoita sähköposti"
+  },
   "home": {
     "badge": "Kansalaisuuskoe yhteiskuntatiedossa",
     "titleStart": "Harjoittele koetta varten. Ymmärrä vastaukset",

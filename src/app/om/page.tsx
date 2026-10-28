@@ -6,17 +6,11 @@ export const metadata: Metadata = { title: "Om oss" };
 
 export default function AboutPage() {
   const country = getCountry();
-  const { company } = brand;
   return (
-    <LegalPage title={`Om ${brand.name}`} updated="[DATUM]">
+    <LegalPage title={`Om ${brand.name}`} updated="28 oktober 2026">
       <p>
         {brand.name} hjälper dig att förbereda dig inför medborgarskapsprovet i samhällskunskap – på svenska, med
         förklaringar på ditt eget språk.
-      </p>
-
-      <h2>Vem står bakom?</h2>
-      <p>
-        {brand.name} drivs av {company.legalName}, organisationsnummer {company.orgNumber}, {company.address}.
       </p>
 
       <h2>Vi är inte en myndighet</h2>

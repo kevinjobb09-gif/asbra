@@ -1,7 +1,7 @@
 import { se } from "./countries/se";
 import type { CountryCode, CountryConfig } from "./countries/types";
 
-export { brand } from "./brand";
+export { brand, sellerDetails } from "./brand";
 export { languages, isRtl, isLanguageCode, LANGUAGE_CODES } from "./languages";
 export type { LanguageCode, Language } from "./languages";
 export type { CountryCode, CountryConfig, Chapter } from "./countries/types";

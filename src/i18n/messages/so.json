@@ -21,6 +21,13 @@
     "contact": "La xiriir",
     "guide": "Hage: imtixaanka dhalashada"
   },
+  "contact": {
+    "title": "Nala soo xiriir",
+    "text": "Su'aal ma qabtaa, khalad ma aragtay mise waxaad rabtaa inaad nala shaqeyso? Iimayl u dir cinwaanka hoose, waxaanan kuu jawaabi doonnaa sida ugu dhakhsaha badan.",
+    "copy": "Koobiyee cinwaanka",
+    "copied": "Cinwaanka waa la koobiyeeyay",
+    "write": "Qor iimayl"
+  },
   "home": {
     "badge": "Imtixaanka dhalashada ee cilmiga bulshada",
     "titleStart": "Ku tababar imtixaanka. Fahan jawaabaha",

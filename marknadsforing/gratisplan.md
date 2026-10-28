@@ -65,7 +65,7 @@ Vad du erbjuder:
 > Vänliga hälsningar
 > Kevin [efternamn]
 > Medborgarhjälpen – privat övningstjänst, inte kopplad till UHR eller Migrationsverket
-> kevinjobb09@gmail.com
+> medborgarhjalpen@gmail.com
 
 ### Mejlmall – förening (med provision)
 
@@ -85,7 +85,7 @@ Vad du erbjuder:
 >
 > Vänliga hälsningar
 > Kevin – Medborgarhjälpen
-> kevinjobb09@gmail.com
+> medborgarhjalpen@gmail.com
 
 **Påminnelse efter en vecka (bara en):**
 > Hej igen! Jag ville bara höra om ni hann titta på mitt förra mejl om övningsfrågor inför

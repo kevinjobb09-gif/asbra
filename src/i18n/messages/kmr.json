@@ -21,6 +21,13 @@
     "contact": "Têkilî",
     "guide": "Rêber: azmûna hemwelatîbûnê"
   },
+  "contact": {
+    "title": "Bi me re têkilî daynin",
+    "text": "Pirsek te heye, te şaşiyek dît an tu dixwazî bi me re hevkariyê bikî? Ji navnîşana jêrîn re e-nameyekê bişîne, em ê di zûtirîn demê de bersivê bidin.",
+    "copy": "Navnîşanê kopî bike",
+    "copied": "Navnîşan hate kopîkirin",
+    "write": "E-nameyekê binivîse"
+  },
   "home": {
     "badge": "Îmtîhana hemwelatîbûnê di zanista civakî de",
     "titleStart": "Ji bo îmtîhanê perwerde bibe. Bersivan fêm bike",

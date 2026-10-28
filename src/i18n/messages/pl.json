@@ -21,6 +21,13 @@
     "contact": "Kontakt",
     "guide": "Przewodnik: egzamin na obywatelstwo"
   },
+  "contact": {
+    "title": "Kontakt z nami",
+    "text": "Masz pytanie, znalazłeś błąd albo chcesz z nami współpracować? Napisz na adres poniżej, a odpowiemy najszybciej, jak to możliwe.",
+    "copy": "Skopiuj adres",
+    "copied": "Adres skopiowany",
+    "write": "Napisz e-mail"
+  },
   "home": {
     "badge": "Test na obywatelstwo z wiedzy o społeczeństwie",
     "titleStart": "Ćwicz do testu. Rozumiej odpowiedzi",

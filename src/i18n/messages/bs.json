@@ -21,6 +21,13 @@
     "contact": "Kontakt",
     "guide": "Vodič: test za državljanstvo"
   },
+  "contact": {
+    "title": "Kontaktirajte nas",
+    "text": "Imate pitanje, pronašli ste grešku ili želite sarađivati s nama? Pošaljite e-mail na adresu ispod i odgovorit ćemo što prije.",
+    "copy": "Kopiraj adresu",
+    "copied": "Adresa je kopirana",
+    "write": "Napiši e-mail"
+  },
   "home": {
     "badge": "Test za državljanstvo iz poznavanja društva",
     "titleStart": "Vježbaj za test. Razumij odgovore",

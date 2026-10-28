@@ -15,13 +15,16 @@ export const brand = {
   tagline: "Öva inför medborgarskapsprovet",
 
   /** Kontaktadress som visas på sajten och i villkoren. */
-  contactEmail: "kevinjobb09@gmail.com",
+  contactEmail: "medborgarhjalpen@gmail.com",
 
-  /** Uppgifter om säljaren. Fyll i innan sajten publiceras. */
+  /**
+   * Uppgifter om säljaren. Organisationsnummer och adress visas i villkoren och
+   * integritetspolicyn först när de är ifyllda (lämna tomt tills de finns).
+   */
   company: {
-    legalName: "[FÖRETAGSNAMN]",
-    orgNumber: "[ORGANISATIONSNUMMER]",
-    address: "[ADRESS]",
+    legalName: "Medborgarhjälpen",
+    orgNumber: "",
+    address: "",
   },
 
   /** Färger som används i appikonen och manifestet (övriga färger finns i globals.css). */
@@ -30,3 +33,9 @@ export const brand = {
     background: "#fffaf3",
   },
 } as const;
+
+/** Säljarens namn, följt av organisationsnummer och adress när de är ifyllda. */
+export function sellerDetails(): string {
+  const { legalName, orgNumber, address } = brand.company as { legalName: string; orgNumber: string; address: string };
+  return [legalName, orgNumber && `organisationsnummer ${orgNumber}`, address].filter(Boolean).join(", ");
+}
