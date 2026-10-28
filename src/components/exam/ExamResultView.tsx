@@ -8,6 +8,7 @@ import { Explanation } from "@/components/practice/Explanation";
 import type { Chapter } from "@/config";
 import { useI18n } from "@/i18n/client";
 import type { ExamResult } from "@/lib/exam/exam";
+import { latestTestValues } from "@/lib/exam/latestTest";
 import { formatClock } from "@/lib/exam/timer";
 import type { PracticeQuestion } from "@/lib/practice/session";
 
@@ -37,7 +38,8 @@ export function ExamResultView({
   saveFailed,
   onRestart,
 }: Props) {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
+  const latest = latestTestValues(lang);
   const [onlyWrong, setOnlyWrong] = useState(true);
   const percent = Math.round(result.share * 100);
   const chapterTitle = (n: number) => chapters.find((c) => c.number === n)?.title ?? `${n}`;
@@ -60,11 +62,14 @@ export function ExamResultView({
         {result.passed !== null ? (
           <p className="mt-3 text-lg font-bold">{result.passed ? t("examResult.passed") : t("examResult.notPassed")}</p>
         ) : (
-          <p className="mt-3 text-sm text-muted">
-            <a href={officialInfoUrl} className="underline-offset-2 hover:underline" target="_blank" rel="noreferrer">
-              {t("examResult.thresholdUnknown")}
-            </a>
-          </p>
+          <div className="mt-3 space-y-1 text-sm text-muted">
+            {latest && <p className="font-semibold text-ink">{t("examResult.latestTest", latest)}</p>}
+            <p>
+              <a href={officialInfoUrl} className="underline-offset-2 hover:underline" target="_blank" rel="noreferrer">
+                {t("examResult.thresholdUnknown")}
+              </a>
+            </p>
+          </div>
         )}
         <p className="mt-3 text-sm text-muted">
           {t("examResult.time", { time: formatClock(usedSeconds * 1000) })}

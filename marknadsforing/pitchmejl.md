@@ -1,67 +1,90 @@
 # Pitchmejl – omgång 1 (oktober 2026)
 
-Skicka från **medborgarhjalpen@gmail.com**, ett mejl i taget. Varje mottagare har en egen rabattkod
-(20 % första månaden) som redan är skapad, så att du ser på `/admin/partner` vem som ger köp.
-Max en påminnelse efter en vecka (mallen finns i `gratisplan.md`). Erbjud inte besök – bara om
-mottagaren själv ber om det.
+Skicka från **medborgarhjalpen@gmail.com**, ett mejl i taget. Varje mottagare har en egen rabattlänk
+(20 % första månaden, fungerar för obegränsat antal kunder så länge koden är aktiv på `/admin/partner`).
+Max en påminnelse efter en vecka (mall i `gratisplan.md`). Erbjud inte besök – bara om mottagaren ber om det.
+Skriv aldrig Kevins ålder i mejlen.
 
-Adresserna är hämtade från organisationernas egna webbplatser i oktober 2026.
+Adresserna är hämtade från organisationernas egna webbplatser/dokument i oktober 2026.
 
-| # | Mottagare | Adress | Kod |
-|---|---|---|---|
-| 1 | Göteborgs Stad – Arbetsmarknad och vuxenutbildning (SFI) | info@arbvux.goteborg.se | sfi-goteborg |
-| 2 | Folkuniversitetet Vuxenutbildning Göteborg (SFI) | vux.gbg@folkuniversitetet.se | fu-vux-goteborg |
-| 3 | Folkuniversitetets sfi-skola Göteborg (Sundbybergs folkhögskola) | sfi.fhskgbg@folkuniversitetet.se | fu-sfi-goteborg |
-| 4 | Komvux Malmö – SFI | sfi.komvux@malmo.se | sfi-malmo |
-| 5 | Medborgarskolan (studieförbund, hela Sverige) | info@medborgarskolan.se | medborgarskolan |
-| 6 | Röda Korset Göteborgskretsen (språkcaféer) | krets.gbg@redcross.se | rodakorset-gbg |
+| # | Mottagare | Till | Kod | Mall |
+|---|---|---|---|---|
+| 1 | Göteborgs Stad – Arbetsmarknad och vuxenutbildning (SFI) | info@arbvux.goteborg.se | sfi-goteborg | A |
+| 2 | Folkuniversitetet Vuxenutbildning Göteborg (SFI) | vux.gbg@folkuniversitetet.se | fu-vux-goteborg | A |
+| 3 | Folkuniversitetets sfi-skola Göteborg | sfi.fhskgbg@folkuniversitetet.se | fu-sfi-goteborg | A |
+| 4 | Komvux Malmö – SFI | sfi.komvux@malmo.se | sfi-malmo | A |
+| 5 | Uppsala kommun – Arbetsmarknadsförvaltningen (SFI) | arbetsmarknadsforvaltningen@uppsala.se | sfi-uppsala | A |
+| 6 | Medborgarskolan | info@medborgarskolan.se | medborgarskolan | B |
+| 7 | Studiefrämjandet | info@studieframjandet.se | studieframjandet | B |
+| 8 | Sensus Göteborg | goteborg@sensus.se | sensus-goteborg | B |
+| 9 | Sensus Stockholm | stockholm@sensus.se | sensus-stockholm | B |
+| 10 | Röda Korset Göteborgskretsen | krets.gbg@redcross.se | rodakorset-gbg | B (språkcaféer) |
 
----
-
-## Mejl till SFI (nr 1–4) – byt bara länken
-
-**Ämne:** 17-årig elev har byggt en övningstjänst inför medborgarskapsprovet – för era elever
-
-Hej!
-
-Jag heter Kevin, är 17 år och går andra året på ekonomiprogrammet på Kungstensgymnasiet. Vid sidan av skolan har jag byggt Medborgarhjälpen (medborgarhjalpen.se), en övningstjänst inför medborgarskapsprovet i samhällskunskap.
-
-Så fungerar den:
-- Frågorna är på svenska, precis som på provet, och följer de 13 kapitlen i studiematerialet Sverige i fokus.
-- Efter varje fråga finns en förklaring som eleven kan läsa på sitt eget språk, bland annat arabiska, dari, persiska, somaliska, tigrinja och kurdiska. Översättningarna är maskinöversatta och märkta så, och den svenska förklaringen finns alltid ett klick bort – så eleverna tränar svenskan samtidigt.
-- 15 frågor är gratis utan konto. Hela tjänsten, med 336 frågor och en provsimulering med klocka, kostar 129 kr i månaden utan bindningstid.
-
-Era elever får 20 % rabatt första månaden via den här länken: [LÄNK]
-Vill ni titta på hela tjänsten ordnar jag gärna gratis tillgång för er lärare.
-
-Skulle ni vilja dela länken med elever som planerar att skriva provet? Jag skickar gärna en färdig affisch med QR-kod.
-
-Vänliga hälsningar
-Kevin
-Medborgarhjälpen – privat övningstjänst, inte kopplad till UHR eller Migrationsverket
-medborgarhjalpen.se · medborgarhjalpen@gmail.com
-
-Länkar: 1 `medborgarhjalpen.se/?ref=sfi-goteborg` · 2 `medborgarhjalpen.se/?ref=fu-vux-goteborg` ·
-3 `medborgarhjalpen.se/?ref=fu-sfi-goteborg` · 4 `medborgarhjalpen.se/?ref=sfi-malmo`
+Länk: `medborgarhjalpen.se/?ref=<kod>`
 
 ---
 
-## Mejl till andra aktörer (nr 5–6)
+## Mall A – SFI
 
-**Ämne:** Gratis övning inför medborgarskapsprovet – för era deltagare
+**Ämne:** Digitalt övningsmaterial inför medborgarskapsprovet – erbjudande till era sfi-elever
 
-Hej!
+Hej,
 
-Jag heter Kevin och har byggt Medborgarhjälpen (medborgarhjalpen.se), en övningstjänst inför medborgarskapsprovet i samhällskunskap.
+Mitt namn är Kevin och jag är grundare av Medborgarhjälpen (medborgarhjalpen.se), en digital övningstjänst inför medborgarskapsprovet i samhällskunskap. Jag studerar på ekonomiprogrammet vid Kungstensgymnasiet och har utvecklat tjänsten för att göra det enklare för vuxna med svenska som andraspråk att förbereda sig inför provet.
 
-Frågorna är på svenska, precis som på provet, och efter varje fråga kan man läsa förklaringen på sitt eget språk – bland annat arabiska, dari, somaliska, tigrinja och kurdiska. 15 frågor är gratis utan konto, och den som vill fortsätta får 20 % rabatt första månaden via er egen länk: [LÄNK]
+Enligt UHR planeras nästa provtillfälle till april–maj 2027, och jag tror att många av era elever kommer att behöva ett bra sätt att öva. Medborgarhjälpen erbjuder:
 
-Skulle ni vilja dela länken med deltagare som ska skriva provet, till exempel [i era kurser / på era språkcaféer]? Jag skickar gärna en färdig affisch med QR-kod.
+• 336 övningsfrågor som följer de 13 kapitlen i studiematerialet Sverige i fokus
+• Frågor på svenska i samma format som provet, med en förklaring efter varje svar
+• Förklaringar på 24 språk, bland annat arabiska, dari, somaliska, tigrinja och kurdiska – maskinöversatta och tydligt märkta, med den svenska texten alltid ett klick bort
+• Provsimulering med tidtagning och resultat per kapitel
+• 15 kostnadsfria frågor utan konto. Full tillgång kostar 129 kr per månad utan bindningstid.
 
-Vänliga hälsningar
+Era elever får 20 % rabatt på första månaden via följande länk: [LÄNK]
+Jag ger också gärna era lärare kostnadsfri tillgång, så att ni kan bedöma materialet innan ni rekommenderar det.
+
+Skulle ni vara intresserade av att dela länken med elever som planerar att skriva provet? Jag skickar gärna en färdig affisch med QR-kod till klassrum eller anslagstavla.
+
+Tack för er tid – jag ser fram emot att höra från er.
+
+Med vänliga hälsningar
 Kevin
-Medborgarhjälpen – privat övningstjänst, inte kopplad till UHR eller Migrationsverket
-medborgarhjalpen.se · medborgarhjalpen@gmail.com
+Grundare, Medborgarhjälpen
+medborgarhjalpen.se | medborgarhjalpen@gmail.com
 
-Länkar: 5 `medborgarhjalpen.se/?ref=medborgarskolan` (i era kurser) ·
-6 `medborgarhjalpen.se/?ref=rodakorset-gbg` (på era språkcaféer)
+Medborgarhjälpen är en privat övningstjänst och är inte kopplad till UHR eller Migrationsverket.
+
+---
+
+## Mall B – studieförbund och organisationer
+
+**Ämne:** Samarbetsförslag: digital övning inför medborgarskapsprovet för era deltagare
+
+Hej,
+
+Mitt namn är Kevin och jag är grundare av Medborgarhjälpen (medborgarhjalpen.se), en digital övningstjänst inför medborgarskapsprovet i samhällskunskap.
+
+[ANPASSAD MENING] Enligt UHR planeras nästa provtillfälle till april–maj 2027.
+
+Kort om tjänsten:
+• Frågor på svenska i samma format som provet, baserade på studiematerialet Sverige i fokus
+• Förklaringar på 24 språk, bland annat arabiska, dari, somaliska, tigrinja och kurdiska
+• 15 kostnadsfria frågor utan konto. Full tillgång kostar 129 kr per månad utan bindningstid.
+
+Era deltagare får 20 % rabatt på första månaden via följande länk: [LÄNK]
+
+Skulle ni vilja sprida länken till deltagare som planerar att skriva provet, [TILL EXEMPEL …]? Jag skickar gärna en färdig affisch med QR-kod.
+
+Tack för er tid – jag ser fram emot att höra från er.
+
+Med vänliga hälsningar
+Kevin
+Grundare, Medborgarhjälpen
+medborgarhjalpen.se | medborgarhjalpen@gmail.com
+
+Medborgarhjälpen är en privat övningstjänst och är inte kopplad till UHR eller Migrationsverket.
+
+Anpassad mening, studieförbund (6–9): "Eftersom många studieförbund arbetar med svenskträning och etablering tror jag att tjänsten kan vara ett bra komplement för deltagare som ska skriva provet."
+Till exempel (6–9): "till exempel i nyhetsbrev, i sociala medier eller på anslagstavlor"
+Anpassad mening, Röda Korset (10): "Era språkcaféer samlar många som tränar svenska, och jag tror att tjänsten kan vara ett bra komplement för deltagare som ska skriva provet."
+Till exempel (10): "till exempel på språkcaféerna eller på anslagstavlor"

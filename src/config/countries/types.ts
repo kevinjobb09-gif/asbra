@@ -40,6 +40,11 @@ export type CountryConfig = {
     /** Datum (ÅÅÅÅ-MM-DD) då uppgifterna senast kontrollerades. */
     lastVerified: string;
     officialInfoUrl: string;
+    /**
+     * Det senaste riktiga provtillfället. Visas vid simuleringen så att det är tydligt
+     * att den är en övning och hur det riktiga provet såg ut. null = inget prov har hållits.
+     */
+    latestTest: { date: string; questionCount: number; passMark: number } | null;
   };
 
   pricing: {

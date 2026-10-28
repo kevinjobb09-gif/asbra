@@ -73,7 +73,8 @@ async function main() {
     const input = todo.map((k) => `${k}: ${source[k]}`).join("\n");
     const res = await client.beta.messages.parse({
       model: MODEL,
-      max_tokens: 64000,
+      // Över ~21 000 kräver SDK:n streaming. Räcker gott för de texter som ändras åt gången.
+      max_tokens: 16000,
       betas: ["server-side-fallback-2026-07-01"],
       fallbacks: "default",
       output_config: { effort: "medium", format: betaZodOutputFormat(Output) },

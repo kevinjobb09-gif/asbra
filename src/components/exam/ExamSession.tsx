@@ -9,6 +9,7 @@ import { formatClock, isTimeUp, remainingMs, timeWarning, usedSeconds } from "@/
 import type { PracticeQuestion } from "@/lib/practice/session";
 import { ensureUser, getBrowserClient } from "@/lib/supabase/client";
 import { useI18n } from "@/i18n/client";
+import { latestTestValues } from "@/lib/exam/latestTest";
 import { ExamResultView } from "./ExamResultView";
 
 type Props = {
@@ -51,7 +52,8 @@ const currentTime = () => Date.now();
 
 export function ExamSession(props: Props) {
   const { pool, questionCount, timeLimitSeconds, passThreshold, chapters, country, officialInfoUrl, preview = false } = props;
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
+  const latest = latestTestValues(lang);
   const storageKey = `${country}:prov:v1${preview ? ":preview" : ""}`;
 
   const [phase, setPhase] = useState<Phase>({ name: "intro" });
@@ -158,6 +160,10 @@ export function ExamSession(props: Props) {
     return (
       <div className="space-y-5">
         <h1 className="text-3xl font-extrabold">{t("exam.title")}</h1>
+        <div className="space-y-2 rounded-2xl bg-primary-soft p-4">
+          <p className="font-bold">{t("exam.disclaimer")}</p>
+          {latest && <p>{t("exam.latestTest", { ...latest, q: questionCount, m: minutes })}</p>}
+        </div>
         <ul className="list-disc space-y-3 rounded-2xl border border-line bg-surface p-5 ps-9">
           <li>{t("exam.ruleQuestions", { n })}</li>
           <li>{t("exam.ruleTime", { m: minutes })}</li>
@@ -169,7 +175,6 @@ export function ExamSession(props: Props) {
             {t("exam.shorter", { n: pool.length, total: questionCount })}
           </p>
         )}
-        <p className="text-sm text-muted">{t("exam.disclaimer")}</p>
         <button
           type="button"
           onClick={start}

@@ -29,8 +29,10 @@ export const se: CountryConfig = {
     durationMinutes: 90,
     optionsPerQuestion: 4,
     passThreshold: null, // Inte officiellt fastställd enligt de uppgifter vi har.
-    lastVerified: "2026-10-19",
+    lastVerified: "2026-10-28",
     officialInfoUrl: "https://www.uhr.se/medborgarskapsprovet/",
+    // Provet 15 augusti 2026: 40 frågor, 28 rätt för godkänt (Sveriges Radio 22 okt 2026).
+    latestTest: { date: "2026-08-15", questionCount: 40, passMark: 28 },
   },
 
   // Månadsprenumeration utan bindningstid. Ändra priset här.

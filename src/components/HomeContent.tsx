@@ -7,6 +7,7 @@ import { JsonLd } from "./JsonLd";
 import { publicEnv } from "@/lib/env";
 import { hasGuide } from "@/content/guideLanguages";
 import { homePath } from "@/lib/seo";
+import { latestTestValues } from "@/lib/exam/latestTest";
 import { AnswerOption } from "./AnswerOption";
 import { Disclaimer } from "./Disclaimer";
 
@@ -18,6 +19,7 @@ export async function HomeContent({ lang: langOverride }: { lang?: LanguageCode 
   const { t, lang } = await getI18n(langOverride);
   const country = getCountry();
   const { exam, freeQuestionLimit, chapters } = country;
+  const latest = latestTestValues(lang);
   const material = country.studyMaterial.title;
   const site = publicEnv.siteUrl.replace(/\/$/, "");
   const faq: [string, string][] = [
@@ -25,7 +27,12 @@ export async function HomeContent({ lang: langOverride }: { lang?: LanguageCode 
     [t("home.faqLanguageQ"), t("home.faqLanguageA")],
     [t("home.faqAccountQ"), t("home.faqAccountA")],
     [t("home.faqCancelQ"), t("home.faqCancelA")],
-    [t("home.faqFormatQ"), t("home.faqFormatA", { q: exam.questionCount, m: exam.durationMinutes })],
+    [
+      t("home.faqFormatQ"),
+      [latest && t("home.faqFormatLatest", latest), t("home.faqFormatA", { q: exam.questionCount, m: exam.durationMinutes })]
+        .filter(Boolean)
+        .join(" "),
+    ],
   ];
   const showcase = [lang, ...SHOWCASE.filter((c) => c !== lang)].filter((c) => c !== "sv").slice(0, 9);
 

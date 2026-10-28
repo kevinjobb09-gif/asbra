@@ -7,7 +7,7 @@ import type { LanguageCode } from "@/config";
  * (t.ex. när UHR publicerar datum, avgift, provtid och antal frågor).
  * Kapitlens namn hämtas från konfigurationen och visas på svenska.
  */
-export const GUIDE_CHECKED = "2026-10-23";
+export const GUIDE_CHECKED = "2026-10-28";
 
 export const GUIDE_LINKS = {
   uhr: "https://www.uhr.se/medborgarskapsprovet/",
@@ -71,6 +71,7 @@ const sv: Guide = {
         "Det skrivs på papper.",
         "Alla frågor är flervalsfrågor med fyra svarsalternativ, där ett är rätt.",
         "Det finns inga minuspoäng – svara därför på alla frågor.",
+        "På det första provet i augusti 2026 fanns 40 frågor, och det krävdes 28 rätt för godkänt.",
         "Provtid och antal frågor för nästa prov är inte publicerade än.",
       ],
     },
@@ -154,6 +155,7 @@ const en: Guide = {
         "It is taken on paper.",
         "All questions are multiple choice with four options, one of which is correct.",
         "There are no minus points – so answer every question.",
+        "The first test in August 2026 had 40 questions, and 28 correct answers were needed to pass.",
         "The test time and number of questions for the next test have not been published yet.",
       ],
     },
@@ -237,6 +239,7 @@ const ar: Guide = {
         "يُجرى على الورق.",
         "جميع الأسئلة اختيار من متعدد بأربعة خيارات، واحد منها صحيح.",
         "لا توجد نقاط سالبة – لذلك أجب عن كل الأسئلة.",
+        "ضمّ الاختبار الأول في أغسطس 2026 أربعين سؤالًا، وكان النجاح يتطلب 28 إجابة صحيحة.",
         "لم تُنشر بعد مدة الاختبار القادم وعدد أسئلته.",
       ],
     },
@@ -320,6 +323,7 @@ const fa: Guide = {
         "روی کاغذ برگزار می‌شود.",
         "همهٔ سؤال‌ها چهارگزینه‌ای هستند و یک گزینه درست است.",
         "نمرهٔ منفی وجود ندارد – پس به همهٔ سؤال‌ها پاسخ دهید.",
+        "آزمون اول در اوت ۲۰۲۶ چهل سؤال داشت و برای قبولی ۲۸ پاسخ درست لازم بود.",
         "زمان آزمون و تعداد سؤال‌های آزمون بعدی هنوز منتشر نشده است.",
       ],
     },
@@ -403,6 +407,7 @@ const so: Guide = {
         "Waxaa lagu qoraa warqad.",
         "Dhammaan su'aaluhu waa doorasho badan oo leh afar jawaab, mid ayaa sax ah.",
         "Ma jiraan dhibco laga jaro – sidaa darteed ka jawaab su'aal kasta.",
+        "Imtixaankii ugu horreeyay ee Ogosto 2026 wuxuu lahaa 40 su'aalood, waxaana lagu gudbayay 28 jawaab oo sax ah.",
         "Waqtiga iyo tirada su'aalaha imtixaanka xiga weli lama daabicin.",
       ],
     },
@@ -486,6 +491,7 @@ const ti: Guide = {
         "ኣብ ወረቐት ይጽሓፍ።",
         "ኩሎም ሕቶታት ኣርባዕተ ምርጫ ዘለዎም እዮም፣ ሓደ ካብኦም ቅኑዕ እዩ።",
         "ዝጐድል ነጥቢ የለን – ስለዚ ንኹሉ ሕቶ መልሲ ሃብ።",
+        "እቲ ቀዳማይ ፈተና ኣብ ነሓሰ 2026 40 ሕቶታት ነይርዎ፣ ንምሕላፍ ድማ 28 ቅኑዓት መልስታት የድልዩ ነይሮም።",
         "ግዜን ብዝሒ ሕቶታትን ናይቲ ዝቕጽል ፈተና ገና ኣይተሓበረን።",
       ],
     },
@@ -569,6 +575,7 @@ const ckb: Guide = {
         "لەسەر کاغەز دەنووسرێت.",
         "هەموو پرسیارەکان هەڵبژاردنی چەندانەن بە چوار وەڵام، یەکێکیان ڕاستە.",
         "خاڵی سالب نییە – بۆیە وەڵامی هەموو پرسیارەکان بدەرەوە.",
+        "یەکەم تاقیکردنەوە لە ئابی 2026 چل پرسیاری تێدابوو، و بۆ دەرچوون 28 وەڵامی ڕاست پێویست بوو.",
         "کات و ژمارەی پرسیارەکانی تاقیکردنەوەی داهاتوو هێشتا بڵاو نەکراونەتەوە.",
       ],
     },
