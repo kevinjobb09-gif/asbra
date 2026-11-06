@@ -47,7 +47,7 @@ export async function getActiveRef(): Promise<ActiveRef | null> {
 
 /** Sparar en händelse i statistiken (utan att koppla den till någon användare). */
 export async function recordEvent(
-  name: "free_started" | "free_finished" | "checkout_opened" | "paid",
+  name: "free_email" | "free_started" | "free_finished" | "checkout_opened" | "paid",
   extra: { language?: string | null; refCode?: string | null } = {},
 ) {
   const { error } = await createAdminClient()

@@ -9,6 +9,7 @@ import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
 import { RefBanner } from "@/components/RefBanner";
 import { LanguageNotice } from "@/components/LanguagePicker";
 import { NavigationProgress } from "@/components/NavigationProgress";
+import { PageTracker } from "@/components/PageTracker";
 import "./globals.css";
 
 // Ett typsnitt per skriftsystem. Webbläsaren laddar bara de tecken som faktiskt
@@ -60,6 +61,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
           <LanguageNotice show={!choice.hasChosen} suggested={choice.suggested} />
         </I18nProvider>
         <ServiceWorkerRegister />
+        <PageTracker />
       </body>
     </html>
   );

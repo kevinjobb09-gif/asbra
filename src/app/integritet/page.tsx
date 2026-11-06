@@ -10,7 +10,7 @@ export const metadata: Metadata = { title: "Integritetspolicy" };
  */
 export default function PrivacyPage() {
   return (
-    <LegalPage title="Integritetspolicy" updated="28 oktober 2026">
+    <LegalPage title="Integritetspolicy" updated="6 november 2026">
       <p>
         Vi samlar bara in det som behövs: din e-postadress, vad du har övat på och – om du säger ja – att du vill ha tips och
         erbjudanden. Vi säljer eller lämnar aldrig ut e-postadresser och använder ingen spårning för annonser.
@@ -51,9 +51,11 @@ export default function PrivacyPage() {
           leverera tjänsten och för bokföring. Laglig grund: avtal och rättslig förpliktelse.
         </li>
         <li>
-          <strong>Statistik</strong> – vi räknar hur många som börjar öva, avslutar gratisövningen, öppnar betalningen
-          och betalar. Statistiken innehåller inga personuppgifter: ingen IP-adress, ingen identitet och inga
-          spårningscookies.
+          <strong>Statistik</strong> – vi räknar hur många som besöker sajten, vilka sidor som visas, hur länge sidorna
+          syns och var besöken slutar, och hur många som börjar öva, avslutar gratisövningen, öppnar betalningen och
+          betalar. Statistiken innehåller inga personuppgifter: ingen IP-adress, ingen identitet, inga cookies och inget
+          som sparas i din webbläsare. Ett slumpat besöksnummer finns bara i minnet medan fliken är öppen. Sidvisningar
+          raderas efter 13 månader.
         </li>
       </ul>
 

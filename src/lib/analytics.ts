@@ -5,7 +5,7 @@
  * Sparar bara att en händelse hände, vilket språk sidan visades på och ev.
  * rabattkod – aldrig vem det var. Inga cookies, inga annonsföretag.
  */
-export const EVENTS = ["free_started", "free_finished", "checkout_opened", "paid"] as const;
+export const EVENTS = ["free_email", "free_started", "free_finished", "checkout_opened", "paid"] as const;
 export type EventName = (typeof EVENTS)[number];
 
 export function track(name: EventName) {

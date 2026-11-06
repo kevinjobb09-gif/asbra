@@ -4,6 +4,8 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { getCountry } from "@/config";
 import { getI18n } from "@/i18n/server";
+import { normalizeRefCode } from "@/lib/payments/pricing";
+import { recordEvent } from "@/lib/payments/server";
 import {
   FREE_GATE_COOKIE,
   FREE_GATE_COOKIE_MAX_AGE,
@@ -37,6 +39,8 @@ export async function startFreePractice(_prev: GateState, formData: FormData): P
       return { usedUp: true, email: form.email };
     }
     await saveFreeSignup(form.email, userId, lang);
+    // Statistik: bara att någon skrev sin e-post (inte vem).
+    await recordEvent("free_email", { language: lang, refCode: normalizeRefCode((await cookies()).get("ref")?.value) });
     if (form.consent) emailed = (await joinMailingList(form.email, lang, t)).emailed;
   } catch (e) {
     console.error(e instanceof Error ? e.message : e);
