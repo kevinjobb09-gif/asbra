@@ -55,7 +55,7 @@ type Props = { searchParams: Promise<{ dagar?: string }> };
 /** Integritetsvänlig statistik: besök, tid, utgångssidor och tratten. Bara för admin (skyddat av layouten). */
 export default async function StatsPage({ searchParams }: Props) {
   const requested = Number((await searchParams).dagar);
-  const days = [7, 30, 90].includes(requested) ? requested : 30;
+  const days = [3, 7, 30, 90].includes(requested) ? requested : 30;
   const since = daysAgoIso(days);
   const db = createAdminClient();
   const [eventsRes, viewsRes] = await Promise.all([
@@ -108,7 +108,7 @@ export default async function StatsPage({ searchParams }: Props) {
       <div className="flex flex-wrap items-center justify-between gap-2">
         <h1 className="text-2xl font-extrabold">Statistik</h1>
         <div className="flex gap-2 text-sm">
-          {[7, 30, 90].map((d) => (
+          {[3, 7, 30, 90].map((d) => (
             <a
               key={d}
               href={`/admin/statistik?dagar=${d}`}
