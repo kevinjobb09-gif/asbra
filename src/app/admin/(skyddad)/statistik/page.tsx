@@ -1,16 +1,6 @@
 import { languages, isLanguageCode } from "@/config";
-import { createAdminClient } from "@/lib/supabase/admin";
-import {
-  biggestDrop,
-  formatDuration,
-  funnel,
-  groupVisits,
-  perDay,
-  perPage,
-  summarize,
-  visitsReaching,
-  type PageViewRow,
-} from "@/lib/pageViews";
+import { biggestDrop, formatDuration, type perPage } from "@/lib/pageViews";
+import { loadStats } from "@/lib/statsData";
 
 const EVENTS = [
   { name: "free_email", label: "Skrev e-post" },
@@ -43,49 +33,16 @@ const PAGE_NAMES: Record<string, string> = {
 };
 const pageName = (path: string) => PAGE_NAMES[path] ?? (isLanguageCode(path.slice(1)) ? `Språksida: ${languages[path.slice(1) as keyof typeof languages].swedishName}` : null);
 
-/** Tidpunkt för N dagar sedan (räknas när sidan hämtas på servern). */
-function daysAgoIso(days: number): string {
-  return new Date(Date.now() - days * 86_400_000).toISOString();
-}
-
 const pct = (v: number | null) => (v === null ? "–" : `${Math.round(v * 100)} %`);
 
 type Props = { searchParams: Promise<{ dagar?: string }> };
 
 /** Integritetsvänlig statistik: besök, tid, utgångssidor och tratten. Bara för admin (skyddat av layouten). */
 export default async function StatsPage({ searchParams }: Props) {
-  const requested = Number((await searchParams).dagar);
-  const days = [3, 7, 30, 90].includes(requested) ? requested : 30;
-  const since = daysAgoIso(days);
-  const db = createAdminClient();
-  const [eventsRes, viewsRes] = await Promise.all([
-    db.from("analytics_events").select("name, language, ref_code, created_at").gte("created_at", since).limit(50_000),
-    db
-      .from("page_views")
-      .select("visit_id, seq, path, duration_ms, created_at")
-      .gte("created_at", since)
-      .order("created_at", { ascending: false })
-      .limit(100_000),
-  ]);
-  const events = eventsRes.data ?? [];
-  const visits = groupVisits((viewsRes.data ?? []) as PageViewRow[]);
-  const summary = summarize(visits);
-  const days_ = perDay(visits);
-  const pages = perPage(visits);
+  // Hämtningen och beräkningen ligger i lib/statsData.ts, så att den samlade översikten (/api/oversikt) visar samma siffror.
+  const { days, events, summary, days_, pages, steps, error } = await loadStats((await searchParams).dagar);
   const exits = [...pages].sort((a, b) => b.exits - a.exits).filter((p) => p.exits > 0).slice(0, 10);
   const entries = [...pages].sort((a, b) => b.entries - a.entries).filter((p) => p.entries > 0).slice(0, 10);
-  const count = (name: string) => events.filter((r) => r.name === name).length;
-
-  const steps = funnel([
-    { label: "Besök på sajten", count: summary.visits },
-    { label: "Såg gratisfrågorna", count: visitsReaching(visits, "/ova/gratis") },
-    { label: "Skrev e-post", count: count("free_email") },
-    { label: "Startade gratisövning", count: count("free_started") },
-    { label: "Avslutade gratisövning", count: count("free_finished") },
-    { label: "Såg köpsidan", count: visitsReaching(visits, "/kop") },
-    { label: "Öppnade betalning", count: count("checkout_opened") },
-    { label: "Betalade", count: count("paid") },
-  ]);
   const drop = biggestDrop(steps);
   const maxDay = Math.max(1, ...days_.map((d) => d.visits));
 
@@ -100,8 +57,6 @@ export default async function StatsPage({ searchParams }: Props) {
     }
     return [...m.entries()].sort((a, b) => (b[1].free_started ?? 0) - (a[1].free_started ?? 0));
   };
-
-  const error = eventsRes.error?.message ?? viewsRes.error?.message;
 
   return (
     <div className="space-y-8">
